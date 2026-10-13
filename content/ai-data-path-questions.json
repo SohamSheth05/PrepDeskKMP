@@ -1,0 +1,903 @@
+[
+  {
+    "id": "ai-data-path-01",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "Learning types",
+    "round": "Fundamentals",
+    "q": "How do supervised and unsupervised learning differ?",
+    "a": "Supervised learning uses target labels.",
+    "explanation": "Supervised learning uses target labels. Unsupervised learning explores structure without those labels. Choose from the actual objective.",
+    "mistake": "Assuming every clustering result has known ground truth.",
+    "rubric": [
+      "Supervised learning uses target labels",
+      "Unsupervised learning explores structure without those labels",
+      "Choose from the actual objective"
+    ],
+    "followups": [
+      "When would classification fit the problem?",
+      "Walk through a concrete example of learning types and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-02",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "Data splits",
+    "round": "Fundamentals",
+    "q": "Why separate training validation and test data?",
+    "a": "Training fits model parameters.",
+    "explanation": "Training fits model parameters. Validation guides choices. Test estimates final unseen performance.",
+    "mistake": "Repeatedly tuning from test-set results.",
+    "rubric": [
+      "Training fits model parameters",
+      "Validation guides choices",
+      "Test estimates final unseen performance"
+    ],
+    "followups": [
+      "How should time-series data be split?",
+      "Walk through a concrete example of data splits and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-03",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "Overfitting",
+    "round": "Fundamentals",
+    "q": "How can you recognize overfitting?",
+    "a": "Training performance exceeds representative unseen performance.",
+    "explanation": "Training performance exceeds representative unseen performance. Model capacity and data issues can contribute. Use validated regularization or simpler models.",
+    "mistake": "Judging quality only from training accuracy.",
+    "rubric": [
+      "Training performance exceeds representative unseen performance",
+      "Model capacity and data issues can contribute",
+      "Use validated regularization or simpler models"
+    ],
+    "followups": [
+      "How would more representative data help?",
+      "Walk through a concrete example of overfitting and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-04",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "Features",
+    "round": "Fundamentals",
+    "q": "Why must preprocessing fit only on training data?",
+    "a": "Fitting can learn information from the dataset.",
+    "explanation": "Fitting can learn information from the dataset. Test information would leak into training. Apply learned transformations to later data.",
+    "mistake": "Normalizing from combined training and test data.",
+    "rubric": [
+      "Fitting can learn information from the dataset",
+      "Test information would leak into training",
+      "Apply learned transformations to later data"
+    ],
+    "followups": [
+      "How would a pipeline enforce separation?",
+      "Walk through a concrete example of features and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-05",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "Metrics",
+    "round": "Fundamentals",
+    "q": "Why can accuracy mislead for imbalanced classification?",
+    "a": "Majority predictions can score highly.",
+    "explanation": "Majority predictions can score highly. Measure class-specific errors. Choose metrics from decision costs.",
+    "mistake": "Accepting a high score without a baseline.",
+    "rubric": [
+      "Majority predictions can score highly",
+      "Measure class-specific errors",
+      "Choose metrics from decision costs"
+    ],
+    "followups": [
+      "When would recall matter more than precision?",
+      "Walk through a concrete example of metrics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-06",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "Missing data",
+    "round": "Fundamentals",
+    "q": "How should missing values be handled?",
+    "a": "Understand why values are missing.",
+    "explanation": "Understand why values are missing. Choose an explicit imputation or model strategy. Validate behavior on unseen data.",
+    "mistake": "Filling all missing values with zero blindly.",
+    "rubric": [
+      "Understand why values are missing",
+      "Choose an explicit imputation or model strategy",
+      "Validate behavior on unseen data"
+    ],
+    "followups": [
+      "Could missingness itself be informative?",
+      "Walk through a concrete example of missing data and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-07",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "SQL analytics",
+    "round": "Fundamentals",
+    "q": "Why should an analyst check join cardinality?",
+    "a": "Joins can multiply rows.",
+    "explanation": "Joins can multiply rows. Counts and sums can become inflated. Validate expected relationship uniqueness.",
+    "mistake": "Assuming every join preserves row count.",
+    "rubric": [
+      "Joins can multiply rows",
+      "Counts and sums can become inflated",
+      "Validate expected relationship uniqueness"
+    ],
+    "followups": [
+      "How would duplicate dimension keys be detected?",
+      "Walk through a concrete example of sql analytics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-08",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "Baselines",
+    "round": "Fundamentals",
+    "q": "Why build a simple baseline model?",
+    "a": "It establishes useful reference performance.",
+    "explanation": "It establishes useful reference performance. It reveals data and metric problems. Complexity needs demonstrated benefit.",
+    "mistake": "Starting with the most complex available model.",
+    "rubric": [
+      "It establishes useful reference performance",
+      "It reveals data and metric problems",
+      "Complexity needs demonstrated benefit"
+    ],
+    "followups": [
+      "What would a non-ML baseline look like?",
+      "Walk through a concrete example of baselines and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-09",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Leakage",
+    "round": "Scenario",
+    "q": "How can a highly predictive feature be invalid?",
+    "a": "It may contain future or target information.",
+    "explanation": "It may contain future or target information. Training access may differ from inference. Validate feature availability timing.",
+    "mistake": "Using information available only after the outcome.",
+    "rubric": [
+      "It may contain future or target information",
+      "Training access may differ from inference",
+      "Validate feature availability timing"
+    ],
+    "followups": [
+      "How would you audit feature timestamps?",
+      "Walk through a concrete example of leakage and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-10",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Cross-validation",
+    "round": "Scenario",
+    "q": "When can random cross-validation be inappropriate?",
+    "a": "Time or group dependencies violate independence assumptions.",
+    "explanation": "Time or group dependencies violate independence assumptions. Use splits reflecting deployment conditions. Keep related examples together when required.",
+    "mistake": "Splitting one user's related records across folds blindly.",
+    "rubric": [
+      "Time or group dependencies violate independence assumptions",
+      "Use splits reflecting deployment conditions",
+      "Keep related examples together when required"
+    ],
+    "followups": [
+      "How would grouped validation work?",
+      "Walk through a concrete example of cross-validation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-11",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Thresholds",
+    "round": "Scenario",
+    "q": "How should a classification threshold be selected?",
+    "a": "Use relevant error costs and constraints.",
+    "explanation": "Use relevant error costs and constraints. Evaluate precision-recall trade-offs. Validate on representative data.",
+    "mistake": "Always using a default threshold without justification.",
+    "rubric": [
+      "Use relevant error costs and constraints",
+      "Evaluate precision-recall trade-offs",
+      "Validate on representative data"
+    ],
+    "followups": [
+      "How would review capacity affect the choice?",
+      "Walk through a concrete example of thresholds and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-12",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Calibration",
+    "round": "Scenario",
+    "q": "What does probability calibration measure?",
+    "a": "Predicted probabilities should match observed frequencies.",
+    "explanation": "Predicted probabilities should match observed frequencies. Ranking and calibration differ. Evaluate under representative conditions.",
+    "mistake": "Treating every high-ranked score as a reliable probability.",
+    "rubric": [
+      "Predicted probabilities should match observed frequencies",
+      "Ranking and calibration differ",
+      "Evaluate under representative conditions"
+    ],
+    "followups": [
+      "How would calibration affect decision thresholds?",
+      "Walk through a concrete example of calibration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-13",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Experiment tracking",
+    "round": "Scenario",
+    "q": "What should a reproducible model experiment record?",
+    "a": "Data code parameters and environment versions.",
+    "explanation": "Data code parameters and environment versions. Metrics and split definitions. Artifact and feature lineage.",
+    "mistake": "Recording only the final score.",
+    "rubric": [
+      "Data code parameters and environment versions",
+      "Metrics and split definitions",
+      "Artifact and feature lineage"
+    ],
+    "followups": [
+      "How would another engineer reproduce the result?",
+      "Walk through a concrete example of experiment tracking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-14",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Data quality",
+    "round": "Scenario",
+    "q": "How should a pipeline detect harmful data changes?",
+    "a": "Validate schema range and completeness.",
+    "explanation": "Validate schema range and completeness. Monitor distributions and freshness. Define recoverable rejection or quarantine.",
+    "mistake": "Assuming successful parsing means valid business data.",
+    "rubric": [
+      "Validate schema range and completeness",
+      "Monitor distributions and freshness",
+      "Define recoverable rejection or quarantine"
+    ],
+    "followups": [
+      "Which check detects a sudden unit change?",
+      "Walk through a concrete example of data quality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-15",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Serving",
+    "round": "Scenario",
+    "q": "How should batch and online inference be compared?",
+    "a": "Latency freshness and volume requirements differ.",
+    "explanation": "Latency freshness and volume requirements differ. Operational ownership and cost matter. Keep transformation behavior consistent.",
+    "mistake": "Choosing online serving without user latency needs.",
+    "rubric": [
+      "Latency freshness and volume requirements differ",
+      "Operational ownership and cost matter",
+      "Keep transformation behavior consistent"
+    ],
+    "followups": [
+      "When would scheduled batch predictions suffice?",
+      "Walk through a concrete example of serving and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-16",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What belongs in ML testing besides a metric check?",
+    "a": "Validate data transformations and contracts.",
+    "explanation": "Validate data transformations and contracts. Test model serving failures and edge cases. Monitor representative quality slices.",
+    "mistake": "Expecting unit tests alone to prove model quality.",
+    "rubric": [
+      "Validate data transformations and contracts",
+      "Test model serving failures and edge cases",
+      "Monitor representative quality slices"
+    ],
+    "followups": [
+      "How would you test unknown categories?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-17",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Drift",
+    "round": "Debugging",
+    "q": "How should a system respond to data drift?",
+    "a": "Measure changes in relevant input and outcome signals.",
+    "explanation": "Measure changes in relevant input and outcome signals. Assess user impact before retraining. Validate candidate models against current data.",
+    "mistake": "Automatically replacing models after any distribution change.",
+    "rubric": [
+      "Measure changes in relevant input and outcome signals",
+      "Assess user impact before retraining",
+      "Validate candidate models against current data"
+    ],
+    "followups": [
+      "How would label delay affect diagnosis?",
+      "Walk through a concrete example of drift and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-18",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Training-serving skew",
+    "round": "Debugging",
+    "q": "How do you prevent inconsistent feature computation?",
+    "a": "Share versioned transformation contracts.",
+    "explanation": "Share versioned transformation contracts. Test equivalent offline and online examples. Track feature freshness and ownership.",
+    "mistake": "Maintaining unrelated transformation code paths.",
+    "rubric": [
+      "Share versioned transformation contracts",
+      "Test equivalent offline and online examples",
+      "Track feature freshness and ownership"
+    ],
+    "followups": [
+      "How would a feature schema change roll out?",
+      "Walk through a concrete example of training-serving skew and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-19",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Recommendation",
+    "round": "Debugging",
+    "q": "What must a recommendation evaluation consider?",
+    "a": "Measure relevance and user outcomes.",
+    "explanation": "Measure relevance and user outcomes. Account for exposure and popularity bias. Validate online behavior safely.",
+    "mistake": "Judging only offline ranking scores.",
+    "rubric": [
+      "Measure relevance and user outcomes",
+      "Account for exposure and popularity bias",
+      "Validate online behavior safely"
+    ],
+    "followups": [
+      "How would you avoid a feedback loop?",
+      "Walk through a concrete example of recommendation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-20",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Embeddings",
+    "round": "Debugging",
+    "q": "What makes embedding similarity useful but imperfect?",
+    "a": "It represents learned semantic relationships.",
+    "explanation": "It represents learned semantic relationships. Similarity depends on model and domain. Evaluate against actual retrieval tasks.",
+    "mistake": "Assuming nearest vectors always mean correct answers.",
+    "rubric": [
+      "It represents learned semantic relationships",
+      "Similarity depends on model and domain",
+      "Evaluate against actual retrieval tasks"
+    ],
+    "followups": [
+      "How would domain-specific terms affect retrieval?",
+      "Walk through a concrete example of embeddings and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-21",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Retrieval",
+    "round": "Debugging",
+    "q": "How should a retrieval pipeline be evaluated?",
+    "a": "Measure whether relevant evidence is found.",
+    "explanation": "Measure whether relevant evidence is found. Inspect ranking and coverage failures. Separate retrieval quality from generation quality.",
+    "mistake": "Blaming the generator for missing retrieved evidence.",
+    "rubric": [
+      "Measure whether relevant evidence is found",
+      "Inspect ranking and coverage failures",
+      "Separate retrieval quality from generation quality"
+    ],
+    "followups": [
+      "How would you build a representative query set?",
+      "Walk through a concrete example of retrieval and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-22",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Generated answers",
+    "round": "Debugging",
+    "q": "How should AI-generated responses be assessed?",
+    "a": "Use task-specific quality and safety criteria.",
+    "explanation": "Use task-specific quality and safety criteria. Verify factual claims against trusted evidence. Measure representative failures and human review needs.",
+    "mistake": "Treating fluent output as proof of correctness.",
+    "rubric": [
+      "Use task-specific quality and safety criteria",
+      "Verify factual claims against trusted evidence",
+      "Measure representative failures and human review needs"
+    ],
+    "followups": [
+      "How would uncertain answers be presented?",
+      "Walk through a concrete example of generated answers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema",
+      "owasp-llm"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-23",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Prompt injection",
+    "round": "Debugging",
+    "q": "Why is retrieved text not trusted model instruction?",
+    "a": "External content can contain adversarial directions.",
+    "explanation": "External content can contain adversarial directions. Separate evidence from authorized instructions. Restrict tools and validate actions server-side.",
+    "mistake": "Giving retrieved documents authority over system policy.",
+    "rubric": [
+      "External content can contain adversarial directions",
+      "Separate evidence from authorized instructions",
+      "Restrict tools and validate actions server-side"
+    ],
+    "followups": [
+      "How would tool permissions limit damage?",
+      "Walk through a concrete example of prompt injection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema",
+      "owasp-llm"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-24",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "Model rollout",
+    "round": "Debugging",
+    "q": "How should a new model reach production?",
+    "a": "Version artifacts and inference contracts.",
+    "explanation": "Version artifacts and inference contracts. Stage traffic with measured quality. Keep rollback and comparison paths.",
+    "mistake": "Replacing the model solely from one benchmark.",
+    "rubric": [
+      "Version artifacts and inference contracts",
+      "Stage traffic with measured quality",
+      "Keep rollback and comparison paths"
+    ],
+    "followups": [
+      "Which quality slices could reveal regression?",
+      "Walk through a concrete example of model rollout and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-25",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "AI architecture",
+    "round": "Design",
+    "q": "When should a product use rules instead of ML?",
+    "a": "Stable explicit rules may be simpler.",
+    "explanation": "Stable explicit rules may be simpler. Data quality and uncertainty determine feasibility. Compare maintenance cost and measured value.",
+    "mistake": "Using ML where deterministic rules already satisfy the task.",
+    "rubric": [
+      "Stable explicit rules may be simpler",
+      "Data quality and uncertainty determine feasibility",
+      "Compare maintenance cost and measured value"
+    ],
+    "followups": [
+      "What evidence justifies a model?",
+      "Walk through a concrete example of ai architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-26",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Governance",
+    "round": "Design",
+    "q": "What should model ownership include?",
+    "a": "Data lineage evaluation and release responsibility.",
+    "explanation": "Data lineage evaluation and release responsibility. Monitoring retraining and incident response. Documented limits and intended use.",
+    "mistake": "Publishing a model with no maintenance owner.",
+    "rubric": [
+      "Data lineage evaluation and release responsibility",
+      "Monitoring retraining and incident response",
+      "Documented limits and intended use"
+    ],
+    "followups": [
+      "Who decides when retraining is needed?",
+      "Walk through a concrete example of governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema",
+      "owasp-llm"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-27",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Fairness",
+    "round": "Design",
+    "q": "How should a model's performance across groups be reviewed?",
+    "a": "Define relevant groups and harms.",
+    "explanation": "Define relevant groups and harms. Measure quality with representative data. Review limitations and mitigation trade-offs.",
+    "mistake": "Assuming one aggregate metric proves equal outcomes.",
+    "rubric": [
+      "Define relevant groups and harms",
+      "Measure quality with representative data",
+      "Review limitations and mitigation trade-offs"
+    ],
+    "followups": [
+      "How would sparse subgroup data affect confidence?",
+      "Walk through a concrete example of fairness and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-28",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Privacy",
+    "round": "Design",
+    "q": "How should AI pipelines minimize personal data exposure?",
+    "a": "Limit collection and access.",
+    "explanation": "Limit collection and access. Redact or transform where appropriate. Define retention deletion and provider contracts.",
+    "mistake": "Sending raw personal content without purpose review.",
+    "rubric": [
+      "Limit collection and access",
+      "Redact or transform where appropriate",
+      "Define retention deletion and provider contracts"
+    ],
+    "followups": [
+      "How would deletion reach training-derived artifacts?",
+      "Walk through a concrete example of privacy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema",
+      "owasp-llm"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-29",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Capacity",
+    "round": "Design",
+    "q": "How do you control AI inference cost and latency?",
+    "a": "Measure token compute and request distributions.",
+    "explanation": "Measure token compute and request distributions. Bound input output and concurrency. Choose caching or smaller models where justified.",
+    "mistake": "Allowing unrestricted expensive inference requests.",
+    "rubric": [
+      "Measure token compute and request distributions",
+      "Bound input output and concurrency",
+      "Choose caching or smaller models where justified"
+    ],
+    "followups": [
+      "How would quotas preserve availability?",
+      "Walk through a concrete example of capacity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-30",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Incident recovery",
+    "round": "Design",
+    "q": "How should a team respond to a model producing harmful regressions?",
+    "a": "Limit exposure and restore a validated version.",
+    "explanation": "Limit exposure and restore a validated version. Preserve redacted diagnostic evidence. Analyze data model and serving changes.",
+    "mistake": "Continuing rollout because aggregate metrics look good.",
+    "rubric": [
+      "Limit exposure and restore a validated version",
+      "Preserve redacted diagnostic evidence",
+      "Analyze data model and serving changes"
+    ],
+    "followups": [
+      "Which signals justify immediate rollback?",
+      "Walk through a concrete example of incident recovery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-31",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Data contracts",
+    "round": "Design",
+    "q": "How should teams govern shared analytical datasets?",
+    "a": "Define schema semantics freshness and ownership.",
+    "explanation": "Define schema semantics freshness and ownership. Version incompatible changes. Test downstream consumer expectations.",
+    "mistake": "Changing column meanings without a schema change.",
+    "rubric": [
+      "Define schema semantics freshness and ownership",
+      "Version incompatible changes",
+      "Test downstream consumer expectations"
+    ],
+    "followups": [
+      "How would consumers learn about deprecation?",
+      "Walk through a concrete example of data contracts and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-path-32",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Evaluation strategy",
+    "round": "Design",
+    "q": "How should an AI product's evaluation evolve over time?",
+    "a": "Add real representative failure cases.",
+    "explanation": "Add real representative failure cases. Version datasets and criteria. Combine automated checks with targeted human review.",
+    "mistake": "Optimizing only for a static benchmark.",
+    "rubric": [
+      "Add real representative failure cases",
+      "Version datasets and criteria",
+      "Combine automated checks with targeted human review"
+    ],
+    "followups": [
+      "How would you prevent evaluation-set leakage?",
+      "Walk through a concrete example of evaluation strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn",
+      "postgres-schema",
+      "owasp-llm"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

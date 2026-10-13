@@ -1,0 +1,866 @@
+[
+  {
+    "id": "lead-path-01",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Ownership",
+    "round": "Fundamentals",
+    "q": "How do you demonstrate ownership without formal authority?",
+    "a": "Clarify the desired outcome.",
+    "explanation": "Clarify the desired outcome. Follow through on agreed responsibilities. Surface risks and ask for needed help.",
+    "mistake": "Equating ownership with doing everything alone.",
+    "rubric": [
+      "Clarify the desired outcome",
+      "Follow through on agreed responsibilities",
+      "Surface risks and ask for needed help"
+    ],
+    "followups": [
+      "How would you communicate a blocked task?",
+      "Walk through a concrete example of ownership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-02",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Feedback",
+    "round": "Fundamentals",
+    "q": "How should you give useful code-review feedback?",
+    "a": "Describe observable behavior and impact.",
+    "explanation": "Describe observable behavior and impact. Distinguish required fixes from suggestions. Offer a clear actionable rationale.",
+    "mistake": "Criticizing the person instead of the change.",
+    "rubric": [
+      "Describe observable behavior and impact",
+      "Distinguish required fixes from suggestions",
+      "Offer a clear actionable rationale"
+    ],
+    "followups": [
+      "How would you handle disagreement respectfully?",
+      "Walk through a concrete example of feedback and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-03",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Learning",
+    "round": "Fundamentals",
+    "q": "How do you help a teammate learn a new system?",
+    "a": "Explain useful context and boundaries.",
+    "explanation": "Explain useful context and boundaries. Work through a realistic task together. Provide references and room for questions.",
+    "mistake": "Dumping all documentation without guidance.",
+    "rubric": [
+      "Explain useful context and boundaries",
+      "Work through a realistic task together",
+      "Provide references and room for questions"
+    ],
+    "followups": [
+      "How would you check understanding?",
+      "Walk through a concrete example of learning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-04",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Estimation",
+    "round": "Fundamentals",
+    "q": "How do you discuss uncertainty in an estimate?",
+    "a": "State assumptions and unknowns.",
+    "explanation": "State assumptions and unknowns. Break work into understandable pieces. Update the estimate when evidence changes.",
+    "mistake": "Presenting uncertain work as an exact promise.",
+    "rubric": [
+      "State assumptions and unknowns",
+      "Break work into understandable pieces",
+      "Update the estimate when evidence changes"
+    ],
+    "followups": [
+      "Which unknown would you investigate first?",
+      "Walk through a concrete example of estimation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-05",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Quality",
+    "round": "Fundamentals",
+    "q": "How do you decide whether a change is ready?",
+    "a": "Check behavior against acceptance needs.",
+    "explanation": "Check behavior against acceptance needs. Verify meaningful failure paths. Explain remaining risk and evidence.",
+    "mistake": "Calling compile success sufficient validation.",
+    "rubric": [
+      "Check behavior against acceptance needs",
+      "Verify meaningful failure paths",
+      "Explain remaining risk and evidence"
+    ],
+    "followups": [
+      "Which defect would block release?",
+      "Walk through a concrete example of quality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-06",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Communication",
+    "round": "Fundamentals",
+    "q": "How should technical updates help stakeholders?",
+    "a": "Lead with outcomes and impact.",
+    "explanation": "Lead with outcomes and impact. Describe risks and needed decisions plainly. Use detail appropriate to the audience.",
+    "mistake": "Listing implementation activity without explaining progress.",
+    "rubric": [
+      "Lead with outcomes and impact",
+      "Describe risks and needed decisions plainly",
+      "Use detail appropriate to the audience"
+    ],
+    "followups": [
+      "How would you communicate a delay?",
+      "Walk through a concrete example of communication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-07",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Prioritization",
+    "round": "Fundamentals",
+    "q": "How do you handle conflicting small tasks?",
+    "a": "Compare user impact urgency and dependencies.",
+    "explanation": "Compare user impact urgency and dependencies. Confirm priorities with accountable owners. Make trade-offs visible.",
+    "mistake": "Silently choosing whichever task is easiest.",
+    "rubric": [
+      "Compare user impact urgency and dependencies",
+      "Confirm priorities with accountable owners",
+      "Make trade-offs visible"
+    ],
+    "followups": [
+      "How would you handle an urgent interruption?",
+      "Walk through a concrete example of prioritization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-08",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Reliability",
+    "round": "Fundamentals",
+    "q": "How should a developer respond to an incident?",
+    "a": "Help mitigate user impact.",
+    "explanation": "Help mitigate user impact. Coordinate through clear ownership. Preserve evidence and document observations.",
+    "mistake": "Making independent production changes without coordination.",
+    "rubric": [
+      "Help mitigate user impact",
+      "Coordinate through clear ownership",
+      "Preserve evidence and document observations"
+    ],
+    "followups": [
+      "When would you escalate immediately?",
+      "Walk through a concrete example of reliability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-09",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Delegation",
+    "round": "Scenario",
+    "q": "How do you delegate a feature effectively?",
+    "a": "Define outcomes constraints and decision ownership.",
+    "explanation": "Define outcomes constraints and decision ownership. Match support to experience. Agree on meaningful checkpoints.",
+    "mistake": "Delegating tasks while retaining every small decision.",
+    "rubric": [
+      "Define outcomes constraints and decision ownership",
+      "Match support to experience",
+      "Agree on meaningful checkpoints"
+    ],
+    "followups": [
+      "How would you respond when progress stalls?",
+      "Walk through a concrete example of delegation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-10",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Mentoring",
+    "round": "Scenario",
+    "q": "How should mentoring differ from taking over?",
+    "a": "Support reasoning and independent action.",
+    "explanation": "Support reasoning and independent action. Provide appropriately scoped feedback. Let the teammate own a achievable outcome.",
+    "mistake": "Solving every problem before the teammate can try.",
+    "rubric": [
+      "Support reasoning and independent action",
+      "Provide appropriately scoped feedback",
+      "Let the teammate own a achievable outcome"
+    ],
+    "followups": [
+      "How would you measure growing autonomy?",
+      "Walk through a concrete example of mentoring and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-11",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Technical debt",
+    "round": "Scenario",
+    "q": "How should a team prioritize technical debt?",
+    "a": "Connect debt to delivery or reliability costs.",
+    "explanation": "Connect debt to delivery or reliability costs. Compare effort against product impact. Use measurable incremental improvements.",
+    "mistake": "Calling every disliked design urgent debt.",
+    "rubric": [
+      "Connect debt to delivery or reliability costs",
+      "Compare effort against product impact",
+      "Use measurable incremental improvements"
+    ],
+    "followups": [
+      "Which debt justifies delaying a feature?",
+      "Walk through a concrete example of technical debt and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-12",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Design reviews",
+    "round": "Scenario",
+    "q": "What makes a design review useful?",
+    "a": "Clarify requirements and assumptions.",
+    "explanation": "Clarify requirements and assumptions. Compare alternatives and failure behavior. Record decisions and ownership.",
+    "mistake": "Reviewing only technology preferences.",
+    "rubric": [
+      "Clarify requirements and assumptions",
+      "Compare alternatives and failure behavior",
+      "Record decisions and ownership"
+    ],
+    "followups": [
+      "How would you resolve an unresolved trade-off?",
+      "Walk through a concrete example of design reviews and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-13",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Team standards",
+    "round": "Scenario",
+    "q": "How should coding standards be introduced?",
+    "a": "Automate clear useful conventions.",
+    "explanation": "Automate clear useful conventions. Explain the reason behind requirements. Allow documented justified exceptions.",
+    "mistake": "Mandating style without considering maintenance cost.",
+    "rubric": [
+      "Automate clear useful conventions",
+      "Explain the reason behind requirements",
+      "Allow documented justified exceptions"
+    ],
+    "followups": [
+      "How would you handle existing violations?",
+      "Walk through a concrete example of team standards and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-14",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Delivery planning",
+    "round": "Scenario",
+    "q": "How do you make a feature plan actionable?",
+    "a": "Identify dependencies acceptance and risks.",
+    "explanation": "Identify dependencies acceptance and risks. Create reviewable increments. Keep scope and decision ownership clear.",
+    "mistake": "Planning only implementation tasks without validation.",
+    "rubric": [
+      "Identify dependencies acceptance and risks",
+      "Create reviewable increments",
+      "Keep scope and decision ownership clear"
+    ],
+    "followups": [
+      "Which increment provides early user evidence?",
+      "Walk through a concrete example of delivery planning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-15",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Conflict",
+    "round": "Scenario",
+    "q": "How would you resolve a technical disagreement?",
+    "a": "Restate shared goals and constraints.",
+    "explanation": "Restate shared goals and constraints. Compare evidence and reversible experiments. Choose an accountable decision path.",
+    "mistake": "Treating disagreement as a personal contest.",
+    "rubric": [
+      "Restate shared goals and constraints",
+      "Compare evidence and reversible experiments",
+      "Choose an accountable decision path"
+    ],
+    "followups": [
+      "When would you time-box the discussion?",
+      "Walk through a concrete example of conflict and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-16",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Feedback loops",
+    "round": "Scenario",
+    "q": "How do you detect process problems early?",
+    "a": "Observe recurring delays defects and unclear ownership.",
+    "explanation": "Observe recurring delays defects and unclear ownership. Ask teams for concrete examples. Try bounded improvements and measure outcomes.",
+    "mistake": "Adding meetings for every observed problem.",
+    "rubric": [
+      "Observe recurring delays defects and unclear ownership",
+      "Ask teams for concrete examples",
+      "Try bounded improvements and measure outcomes"
+    ],
+    "followups": [
+      "How would you evaluate a new review process?",
+      "Walk through a concrete example of feedback loops and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-17",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Architecture",
+    "round": "Debugging",
+    "q": "How should a lead balance consistency and local needs?",
+    "a": "Define shared essential contracts.",
+    "explanation": "Define shared essential contracts. Let teams adapt justified details. Review outcomes and boundary compatibility.",
+    "mistake": "Forcing identical internals in every service.",
+    "rubric": [
+      "Define shared essential contracts",
+      "Let teams adapt justified details",
+      "Review outcomes and boundary compatibility"
+    ],
+    "followups": [
+      "Which choices need organization-wide agreement?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-18",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Incident learning",
+    "round": "Debugging",
+    "q": "How do you turn an incident review into improvement?",
+    "a": "Identify system conditions and failure paths.",
+    "explanation": "Identify system conditions and failure paths. Create owned prioritized actions. Verify actions reduce recurrence risk.",
+    "mistake": "Ending with vague promises to be more careful.",
+    "rubric": [
+      "Identify system conditions and failure paths",
+      "Create owned prioritized actions",
+      "Verify actions reduce recurrence risk"
+    ],
+    "followups": [
+      "How would you assess an action item later?",
+      "Walk through a concrete example of incident learning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-19",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Roadmaps",
+    "round": "Debugging",
+    "q": "How do you align technical investment with a product roadmap?",
+    "a": "Connect engineering constraints to user outcomes.",
+    "explanation": "Connect engineering constraints to user outcomes. Make alternatives and costs visible. Stage investment around validated needs.",
+    "mistake": "Treating technology upgrades as isolated goals.",
+    "rubric": [
+      "Connect engineering constraints to user outcomes",
+      "Make alternatives and costs visible",
+      "Stage investment around validated needs"
+    ],
+    "followups": [
+      "Which platform work enables the next product milestone?",
+      "Walk through a concrete example of roadmaps and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-20",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Hiring",
+    "round": "Debugging",
+    "q": "How should a technical interview be structured?",
+    "a": "Define job-relevant competencies.",
+    "explanation": "Define job-relevant competencies. Use consistent questions and evidence criteria. Review signals without unsupported assumptions.",
+    "mistake": "Judging mainly from similarity to existing teammates.",
+    "rubric": [
+      "Define job-relevant competencies",
+      "Use consistent questions and evidence criteria",
+      "Review signals without unsupported assumptions"
+    ],
+    "followups": [
+      "How would you calibrate interviewers?",
+      "Walk through a concrete example of hiring and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-21",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Performance feedback",
+    "round": "Debugging",
+    "q": "How should you discuss a teammate's performance concern?",
+    "a": "Use specific observable examples.",
+    "explanation": "Use specific observable examples. Clarify expectations and support. Agree on follow-up evidence and timing.",
+    "mistake": "Using vague personality judgments.",
+    "rubric": [
+      "Use specific observable examples",
+      "Clarify expectations and support",
+      "Agree on follow-up evidence and timing"
+    ],
+    "followups": [
+      "How would you distinguish skill from unclear expectations?",
+      "Walk through a concrete example of performance feedback and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-22",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Cross-team dependencies",
+    "round": "Debugging",
+    "q": "How do you coordinate an API change across teams?",
+    "a": "Agree on contract ownership and compatibility.",
+    "explanation": "Agree on contract ownership and compatibility. Use staged adoption and clear deadlines. Track blockers and migration evidence.",
+    "mistake": "Assuming sending a document completes coordination.",
+    "rubric": [
+      "Agree on contract ownership and compatibility",
+      "Use staged adoption and clear deadlines",
+      "Track blockers and migration evidence"
+    ],
+    "followups": [
+      "How would you support lagging consumers?",
+      "Walk through a concrete example of cross-team dependencies and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-23",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Risk management",
+    "round": "Debugging",
+    "q": "How should a lead handle a high-risk deadline?",
+    "a": "Make risks and scope options explicit.",
+    "explanation": "Make risks and scope options explicit. Protect essential quality and recovery paths. Escalate decisions to accountable owners.",
+    "mistake": "Hiding risk to preserve an optimistic plan.",
+    "rubric": [
+      "Make risks and scope options explicit",
+      "Protect essential quality and recovery paths",
+      "Escalate decisions to accountable owners"
+    ],
+    "followups": [
+      "What would you reduce first?",
+      "Walk through a concrete example of risk management and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-24",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Observability",
+    "round": "Debugging",
+    "q": "How do you ensure teams can operate what they build?",
+    "a": "Define ownership signals and runbooks.",
+    "explanation": "Define ownership signals and runbooks. Include failure behavior in design reviews. Rehearse critical recovery paths.",
+    "mistake": "Handing operations undocumented services.",
+    "rubric": [
+      "Define ownership signals and runbooks",
+      "Include failure behavior in design reviews",
+      "Rehearse critical recovery paths"
+    ],
+    "followups": [
+      "Which alert needs a named responder?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-25",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Organizational design",
+    "round": "Design",
+    "q": "How should team boundaries relate to system boundaries?",
+    "a": "Align ownership with cohesive capabilities.",
+    "explanation": "Align ownership with cohesive capabilities. Minimize costly coordination paths. Review changes as products and skills evolve.",
+    "mistake": "Restructuring solely from an architecture diagram.",
+    "rubric": [
+      "Align ownership with cohesive capabilities",
+      "Minimize costly coordination paths",
+      "Review changes as products and skills evolve"
+    ],
+    "followups": [
+      "Which boundary creates repeated handoffs?",
+      "Walk through a concrete example of organizational design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-26",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Platform investment",
+    "round": "Design",
+    "q": "How do you choose an internal platform investment?",
+    "a": "Identify repeated developer pain and risk.",
+    "explanation": "Identify repeated developer pain and risk. Offer a useful supported workflow. Measure adoption and outcomes.",
+    "mistake": "Building a platform without user research.",
+    "rubric": [
+      "Identify repeated developer pain and risk",
+      "Offer a useful supported workflow",
+      "Measure adoption and outcomes"
+    ],
+    "followups": [
+      "Which metric proves reduced delivery friction?",
+      "Walk through a concrete example of platform investment and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-27",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Engineering metrics",
+    "round": "Design",
+    "q": "How should leadership use engineering metrics?",
+    "a": "Measure outcomes and process signals together.",
+    "explanation": "Measure outcomes and process signals together. Interpret with workload context. Avoid incentives that distort behavior.",
+    "mistake": "Ranking developers by commit counts.",
+    "rubric": [
+      "Measure outcomes and process signals together",
+      "Interpret with workload context",
+      "Avoid incentives that distort behavior"
+    ],
+    "followups": [
+      "Which metric reveals an unreliable release process?",
+      "Walk through a concrete example of engineering metrics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-28",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Strategy",
+    "round": "Design",
+    "q": "How do you choose between building and buying a capability?",
+    "a": "Compare differentiation cost and operational ownership.",
+    "explanation": "Compare differentiation cost and operational ownership. Review security and integration requirements. Keep exit and migration options explicit.",
+    "mistake": "Comparing only initial purchase cost.",
+    "rubric": [
+      "Compare differentiation cost and operational ownership",
+      "Review security and integration requirements",
+      "Keep exit and migration options explicit"
+    ],
+    "followups": [
+      "What would make vendor lock-in unacceptable?",
+      "Walk through a concrete example of strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-29",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Change management",
+    "round": "Design",
+    "q": "How do you introduce a major engineering practice change?",
+    "a": "Explain the problem and intended outcome.",
+    "explanation": "Explain the problem and intended outcome. Pilot with supportive teams. Use feedback and measurable adoption.",
+    "mistake": "Mandating a broad change without a trial.",
+    "rubric": [
+      "Explain the problem and intended outcome",
+      "Pilot with supportive teams",
+      "Use feedback and measurable adoption"
+    ],
+    "followups": [
+      "How would you handle a justified objection?",
+      "Walk through a concrete example of change management and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-30",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Succession",
+    "round": "Design",
+    "q": "How do you reduce a team's dependence on one expert?",
+    "a": "Document critical context and runbooks.",
+    "explanation": "Document critical context and runbooks. Pair on meaningful ownership transfer. Create multiple capable maintainers.",
+    "mistake": "Treating documentation alone as knowledge transfer.",
+    "rubric": [
+      "Document critical context and runbooks",
+      "Pair on meaningful ownership transfer",
+      "Create multiple capable maintainers"
+    ],
+    "followups": [
+      "How would you rehearse expert absence?",
+      "Walk through a concrete example of succession and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-31",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Executive communication",
+    "round": "Design",
+    "q": "How do you explain a technical risk to executives?",
+    "a": "Describe business impact likelihood and timing.",
+    "explanation": "Describe business impact likelihood and timing. Offer clear options with trade-offs. Identify the required decision and owner.",
+    "mistake": "Using jargon without connecting to outcomes.",
+    "rubric": [
+      "Describe business impact likelihood and timing",
+      "Offer clear options with trade-offs",
+      "Identify the required decision and owner"
+    ],
+    "followups": [
+      "How would you communicate uncertainty honestly?",
+      "Walk through a concrete example of executive communication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "lead-path-32",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Leadership reflection",
+    "round": "Design",
+    "q": "How do you assess your effectiveness as a technical leader?",
+    "a": "Examine team outcomes autonomy and reliability.",
+    "explanation": "Examine team outcomes autonomy and reliability. Seek concrete stakeholder feedback. Identify a measurable improvement.",
+    "mistake": "Equating personal coding volume with team leadership success.",
+    "rubric": [
+      "Examine team outcomes autonomy and reliability",
+      "Seek concrete stakeholder feedback",
+      "Identify a measurable improvement"
+    ],
+    "followups": [
+      "Which recent decision would you change?",
+      "Walk through a concrete example of leadership reflection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

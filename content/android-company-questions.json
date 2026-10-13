@@ -1,0 +1,500 @@
+[
+  {
+    "id": "android-company-rotation-callbacks",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Lifecycle",
+    "round": "Fundamentals",
+    "q": "The user rotates the phone while an Activity is visible. Which callbacks run, and what survives?",
+    "a": "By default the Activity is destroyed and recreated. The old instance gets onPause, onStop, onSaveInstanceState and onDestroy; the new one gets onCreate with the saved Bundle, onStart, onRestoreInstanceState and onResume. ViewModels and saved instance state survive; the old views and Activity fields do not.",
+    "explanation": "Recreation exists so the new configuration loads the right resources. Since API 28 onSaveInstanceState runs after onStop. Anything held only in Activity fields is lost, so screen data belongs in a ViewModel and small UI values in saved state. Handling the change yourself with android:configChanges skips recreation but makes you responsible for updating every resource-dependent view.",
+    "mistake": "Assuming the same Activity instance continues after rotation, or adding android:configChanges just to avoid losing state.",
+    "rubric": [
+      "Explains that a new Activity instance is created",
+      "Orders the main callbacks correctly",
+      "Separates what survives (ViewModel, saved state) from what does not",
+      "Mentions the trade-off of android:configChanges"
+    ],
+    "followups": [
+      "What changes if the Activity handles orientation through android:configChanges?",
+      "Why can a Fragment's view be destroyed while the Fragment itself survives?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-lifecycle"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-request-rotation",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Lifecycle",
+    "round": "Scenario",
+    "q": "A network request is in flight when the user rotates the screen. How do you avoid repeating it or losing its result?",
+    "a": "Start the request in the ViewModel using viewModelScope and expose the outcome as state. The ViewModel outlives the recreated Activity, so the new UI collects the same in-flight or finished result instead of starting another call.",
+    "explanation": "Work launched from an Activity or its lifecycleScope is cancelled when that instance is destroyed, so the result is lost and onCreate starts the call again. Keeping the load in the ViewModel (for example, triggered once in init or guarded by current state) ties it to the screen rather than to one Activity instance. If the user leaves the screen, viewModelScope cancels the request; work that must finish regardless belongs in WorkManager.",
+    "mistake": "Launching the request from onCreate or lifecycleScope with no guard, so each rotation repeats it.",
+    "rubric": [
+      "Owns the request in the ViewModel",
+      "Exposes the result as observable state",
+      "Avoids triggering a reload on every recreation",
+      "Knows when work should outlive the screen"
+    ],
+    "followups": [
+      "What happens to this request after process death?",
+      "How would you show a cached result while the refresh runs?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-hilt-components",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Dependency injection",
+    "round": "Fundamentals",
+    "q": "How do Hilt components and scope annotations decide how long an injected object lives?",
+    "a": "Each Hilt component is tied to an Android owner: SingletonComponent to the application, ActivityRetainedComponent and ViewModelComponent across configuration changes, ActivityComponent and FragmentComponent to one instance. A binding annotated with the matching scope (@Singleton, @ActivityRetainedScoped, @ViewModelScoped, @ActivityScoped) is created once per component instance; unscoped bindings are created on every injection. Child components can use parent bindings, not the reverse.",
+    "explanation": "Hilt builds a fixed hierarchy of Dagger components, so you choose a lifetime instead of wiring subcomponents by hand; in plain Dagger, a subcomponent likewise inherits its parent's bindings. Pick the narrowest scope that matches the object's real owner. Scoping too wide keeps state and memory alive longer than intended, and a singleton must never hold an Activity or Fragment.",
+    "mistake": "Marking everything @Singleton for convenience, or injecting an Activity-scoped object into a singleton.",
+    "rubric": [
+      "Links components to Android lifetimes",
+      "Explains scoped versus unscoped bindings",
+      "Describes parent-to-child binding visibility",
+      "Chooses the narrowest scope that fits"
+    ],
+    "followups": [
+      "Where would you scope a repository that caches data in memory?",
+      "What breaks if a singleton receives an Activity Context?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-livedata-flow",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Flow",
+    "round": "Fundamentals",
+    "q": "Would you still choose LiveData over StateFlow for a new screen? What does each give you?",
+    "a": "LiveData is lifecycle-aware on its own: it only delivers to active observers and removes them when the owner is destroyed, but it is Android-only and has few operators. StateFlow is plain Kotlin, works in domain and multiplatform code, always has a value, and supports every Flow operator, but the UI must collect it with repeatOnLifecycle or collectAsStateWithLifecycle. For new Kotlin and Compose code StateFlow is the usual default; LiveData stays reasonable in existing View-based or Java code.",
+    "explanation": "The deciding questions are where the type is used and who handles the lifecycle. LiveData puts lifecycle handling in the type; StateFlow puts it in the collector. StateFlow also conflates and skips equal values, while LiveData re-delivers its value to each new observer.",
+    "mistake": "Collecting a StateFlow with a plain lifecycleScope.launch, so it keeps updating a stopped screen.",
+    "rubric": [
+      "Explains LiveData's built-in lifecycle awareness",
+      "Notes StateFlow is platform-independent with full operators",
+      "Names a lifecycle-aware way to collect StateFlow",
+      "Gives a sensible default for new code"
+    ],
+    "followups": [
+      "How would you migrate a LiveData-based ViewModel to StateFlow gradually?",
+      "How would you represent one-time navigation events with each?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-mvp-mvvm",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Architecture",
+    "round": "Fundamentals",
+    "q": "How do MVP and MVVM differ in how the view gets its data?",
+    "a": "In MVP the Presenter holds a reference to a View interface and calls it directly (showLoading, showItems). In MVVM the ViewModel holds no view reference; it exposes observable state that the view collects and renders. MVVM suits Android because a ViewModel survives configuration changes without attaching and detaching a view.",
+    "explanation": "MVP's direct calls are easy to follow but need careful detach logic to avoid leaking or updating a destroyed view. MVVM's observable state gives a single description of the screen that the UI re-renders, which pairs naturally with Compose. Both keep logic out of the Activity and make it testable without the UI.",
+    "mistake": "Defining MVVM as 'using data binding', or letting a Presenter keep a destroyed Activity alive.",
+    "rubric": [
+      "Describes the Presenter-to-View interface calls",
+      "Describes ViewModel state observed by the view",
+      "Explains lifecycle and leak implications",
+      "Relates the choice to Compose or modern Android"
+    ],
+    "followups": [
+      "How does MVI differ from MVVM?",
+      "How would you unit test a Presenter versus a ViewModel?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-parcelable",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "App components",
+    "round": "Fundamentals",
+    "q": "Why does Android prefer Parcelable over Serializable for passing objects between components?",
+    "a": "Serializable relies on reflection and creates many temporary objects, so it is slower. Parcelable writes fields explicitly into a Parcel, the format Bundles use, and Kotlin's @Parcelize generates that code. Either way, pass small data such as IDs: a Binder transaction has a limited buffer and large payloads cause TransactionTooLargeException.",
+    "explanation": "Intents, Fragment arguments and saved instance state all travel as Bundles, so Parcelable avoids the reflection cost on every hand-off. The bigger design point is size: pass an identifier and load the object from a repository on the other side rather than parcelling a large list or bitmap.",
+    "mistake": "Passing a large object list through an Intent or saved state because it is Parcelable.",
+    "rubric": [
+      "Explains the performance difference",
+      "Mentions @Parcelize",
+      "Warns about Bundle and Binder size limits",
+      "Prefers passing identifiers"
+    ],
+    "followups": [
+      "What happens if a saved-state Bundle grows too large?",
+      "How would you pass a selected item to a detail screen?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-lifecycle"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-compose-stability",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Compose",
+    "round": "Debugging",
+    "q": "A list item recomposes every time anything on the screen changes, even though its data did not. What would you check?",
+    "a": "Check whether its parameters are stable and compared correctly, whether state is read higher up than it needs to be, and whether lazy items have stable keys. Read fast-changing values inside lambdas (such as Modifier.offset { }) or through derivedStateOf. Confirm with Layout Inspector recomposition counts or the Compose compiler's stability reports.",
+    "explanation": "Compose skips a composable only when its inputs are unchanged. Types it cannot prove stable, such as classes with var properties or collections from modules not compiled with Compose, can defeat skipping; with strong skipping (the default in recent Kotlin versions) unstable parameters are compared by instance, so creating a new list or lambda on each recomposition still forces work. Reading a scroll position at the top of the screen makes the whole screen recompose on every pixel.",
+    "mistake": "Sprinkling remember or @Stable everywhere without measuring which parameter changes.",
+    "rubric": [
+      "Explains skipping and parameter stability",
+      "Considers where state is read",
+      "Mentions keys and deferred reads",
+      "Measures with tooling before and after"
+    ],
+    "followups": [
+      "What does @Immutable promise, and what happens if it is wrong?",
+      "How does derivedStateOf reduce recompositions?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "compose-state",
+      "android-performance"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-remember-saveable",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Compose",
+    "round": "Fundamentals",
+    "q": "When do you use remember, rememberSaveable, or a ViewModel for Compose state?",
+    "a": "remember keeps a value across recompositions but loses it when the composable leaves composition or the Activity is recreated. rememberSaveable also stores it in saved instance state, so it survives rotation and process death; use it for small UI values such as text input or a selected tab. Screen data and business logic belong in a ViewModel, backed by a repository for anything durable.",
+    "explanation": "Choose by lifetime and size. Saved state is a Bundle, so it suits small, serializable values. A ViewModel survives configuration changes but not process death, so it reloads from the repository or SavedStateHandle after the process is restored.",
+    "mistake": "Putting a whole data list in rememberSaveable, or assuming remember survives rotation.",
+    "rubric": [
+      "States what survives recomposition, rotation and process death for each",
+      "Limits saved state to small values",
+      "Places screen data in the ViewModel",
+      "Mentions persistence for durable data"
+    ],
+    "followups": [
+      "How would you save a custom type with rememberSaveable?",
+      "What does SavedStateHandle add to a ViewModel?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "compose-state"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-state-hoisting",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Compose",
+    "round": "Fundamentals",
+    "q": "What is state hoisting in Compose, and why do it?",
+    "a": "Hoisting moves state up to the caller: the composable receives a value and an event callback (value, onValueChange) instead of owning the state. That makes it stateless, reusable, previewable and easy to test, and gives the state a single source of truth. Hoist to the lowest common parent that reads or changes it, often the ViewModel for screen state.",
+    "explanation": "Data flows down and events flow up. A hoisted text field can be validated, reset or shared by its parent; one that owns its text privately cannot. Over-hoisting has a cost too: purely visual state such as an expanded animation can stay local.",
+    "mistake": "Hoisting every piece of state to the ViewModel, including purely visual details.",
+    "rubric": [
+      "Describes the value plus callback pattern",
+      "Explains reuse and testability benefits",
+      "Chooses the lowest common owner",
+      "Knows when local state is fine"
+    ],
+    "followups": [
+      "Where would you keep the expanded state of a list item?",
+      "How do you hoist state for a component with many fields?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "compose-state"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-globalscope",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Coroutines",
+    "round": "Fundamentals",
+    "q": "Why is GlobalScope.launch discouraged in an Android app, and what do you use instead?",
+    "a": "GlobalScope is not tied to any lifecycle, so its coroutines are never cancelled with a screen: they can leak references, keep doing unneeded work, and their failures are not reported to a parent. Use viewModelScope or lifecycleScope for UI work, an injected application-level CoroutineScope for work that must outlive a screen, and WorkManager for work that must survive process death.",
+    "explanation": "Structured concurrency means every coroutine has an owner that cancels it and receives its errors. GlobalScope opts out of that. An injected application scope keeps the same lifetime but stays visible, testable and replaceable in tests.",
+    "mistake": "Using GlobalScope to make work survive leaving a screen, when an application scope or WorkManager is the right owner.",
+    "rubric": [
+      "Explains the missing lifecycle and cancellation",
+      "Mentions leaks and lost error handling",
+      "Matches each alternative scope to a lifetime",
+      "Knows when WorkManager is needed"
+    ],
+    "followups": [
+      "How would you test code that uses an application scope?",
+      "What happens to an application-scope coroutine when the process is killed?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "kotlin-coroutines",
+      "android-work"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-certificate-pinning",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Security",
+    "round": "Scenario",
+    "q": "Your security team asks for certificate pinning. How would you implement it, and what can go wrong?",
+    "a": "Pin public-key hashes rather than whole certificates, through Network Security Config's pin-set or OkHttp's CertificatePinner. Always include a backup pin for the next key, agree a rotation plan with the backend team, and set an expiry so old app versions do not stay pinned forever. Pinning defends against mis-issued or user-installed CAs, but a wrong or stale pin locks users out until they update the app.",
+    "explanation": "Pinning narrows which certificates the app trusts for your domains. Key pins survive certificate renewal when the key is kept, which is why they are preferred. The real risk is operational: a server key change without a matching app release breaks every connection, so treat pins like a release dependency and monitor failures.",
+    "mistake": "Pinning a single leaf certificate with no backup pin or rotation plan.",
+    "rubric": [
+      "Explains what pinning protects against",
+      "Prefers public-key pins with a backup",
+      "Plans rotation and expiry",
+      "Recognises the lock-out risk"
+    ],
+    "followups": [
+      "How would you detect pin failures in production?",
+      "Does pinning stop someone inspecting traffic on a rooted device?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-security"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-keystore-tokens",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Security",
+    "round": "Fundamentals",
+    "q": "Where should an Android app store a user's refresh token?",
+    "a": "In app-private storage, encrypted with a key held in the Android Keystore, which keeps key material inside secure hardware where available and never hands it to the app. Keep it out of plain SharedPreferences, logs and backups. Keystore protects the key, not a compromised device, so tokens should also be short-lived and revocable on the server.",
+    "explanation": "The Keystore can perform encryption without exposing the key, optionally requiring user authentication. Jetpack Security's EncryptedSharedPreferences is deprecated, so new code typically uses a Keystore-backed key directly or through a library such as Tink to encrypt DataStore or file contents. Exclude secrets from Auto Backup so they are not restored onto another device.",
+    "mistake": "Treating Base64 or obfuscation as encryption, or backing tokens up to the cloud with other preferences.",
+    "rubric": [
+      "Uses a Keystore-protected key",
+      "Keeps the token in private storage and out of logs and backups",
+      "Notes the limits on compromised devices",
+      "Mentions server-side expiry and revocation"
+    ],
+    "followups": [
+      "How would you require biometric authentication before using a key?",
+      "What should happen to stored tokens on sign-out?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-security"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-clean-architecture",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Architecture",
+    "round": "Fundamentals",
+    "q": "Explain the layers of Clean Architecture in an Android app and the rule that connects them.",
+    "a": "Presentation holds UI and ViewModels, domain holds business rules and use cases in plain Kotlin, and data holds repositories, databases and network code. The dependency rule says source dependencies point inward: presentation and data depend on domain, and domain depends on nothing Android-specific. Domain declares repository interfaces and data implements them, so business logic can be tested and data sources swapped.",
+    "explanation": "Google's app architecture guide uses UI, optional domain and data layers with a similar intent. Add use cases when logic is reused or complex; for a simple screen, a ViewModel calling a repository is enough. The rule matters more than the number of layers.",
+    "mistake": "Creating a use case for every repository call regardless of whether it adds logic.",
+    "rubric": [
+      "Names the three layers and their responsibilities",
+      "States the inward dependency rule",
+      "Explains interfaces in the domain layer",
+      "Avoids layering for its own sake"
+    ],
+    "followups": [
+      "How would you split these layers into Gradle modules?",
+      "Where does mapping between network and domain models belong?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-fakes-mocks",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Fundamentals",
+    "q": "When testing a ViewModel, would you use a mocking library or a fake repository?",
+    "a": "Usually a fake: a small working implementation such as an in-memory repository. Fakes test behaviour rather than exact call sequences and can be reused across tests. Use a mock when a fake is impractical or when the interaction itself is the requirement, such as checking that an analytics event is sent exactly once.",
+    "explanation": "Heavy mocking couples tests to implementation details, so refactors break tests that should still pass. Android's testing guidance prefers fakes for this reason. Depending on interfaces rather than concrete classes is what makes a fake easy to substitute.",
+    "mistake": "Mocking every collaborator and asserting internal call order instead of observable results.",
+    "rubric": [
+      "Defines fakes and mocks correctly",
+      "Prefers fakes for state-based tests",
+      "Gives a valid case for a mock",
+      "Links substitution to depending on interfaces"
+    ],
+    "followups": [
+      "How would you fake a repository that exposes a Flow?",
+      "What makes a fake trustworthy?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-testing"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-network-calls",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Networking",
+    "round": "Scenario",
+    "q": "Your app makes too many network calls. How would you reduce them without showing stale data?",
+    "a": "Measure first which calls repeat and why. Then cache with HTTP headers (ETag, Cache-Control) or an offline-first local database, deduplicate identical in-flight requests, debounce search and cancel superseded requests, paginate instead of loading everything, batch small writes, and refresh on meaningful triggers rather than every screen visit. Set a freshness policy per data type so caching never hides important changes.",
+    "explanation": "Typical causes are screens refetching on every recreation, several components requesting the same data, and search firing on each keystroke. A repository that owns caching and request sharing fixes most of these in one place. Conditional requests still check freshness while avoiding re-downloading unchanged data.",
+    "mistake": "Adding a cache with no expiry or invalidation, so users see outdated data.",
+    "rubric": [
+      "Starts by measuring the duplicate calls",
+      "Uses caching with a freshness policy",
+      "Deduplicates, debounces and cancels requests",
+      "Uses pagination or batching where they fit"
+    ],
+    "followups": [
+      "How would you share one in-flight request between two collectors?",
+      "Which data should never be served from cache?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-performance",
+      "android-room"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-chat-client",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design the Android client for a chat app that must work offline and deliver messages in real time.",
+    "a": "Make the local database the source of truth: the UI observes it, and sending writes the message locally with a client-generated ID and a pending status. A sync layer, using WorkManager for reliable retries, uploads pending messages; the server acknowledges with its ID and sequence. Receive over a WebSocket while in the foreground and through push notifications in the background, then fetch missed messages by cursor on reconnect.",
+    "explanation": "Client-generated IDs make sends idempotent, so retries never duplicate messages. Order by the server sequence, not device clocks. Page history from the database, track delivery and read status per message, and keep the connection only while needed to save battery. Encryption, attachments uploaded separately from message text, and conflict-free status updates are natural follow-ups.",
+    "mistake": "Showing messages only after the server responds, so the app is unusable offline and retries create duplicates.",
+    "rubric": [
+      "Uses local storage as the source of truth",
+      "Makes sends idempotent with retry",
+      "Combines a live connection with push and catch-up sync",
+      "Handles ordering, paging and delivery status"
+    ],
+    "followups": [
+      "How would you handle a message edited on another device while this one is offline?",
+      "How would you send large attachments reliably?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-architecture",
+      "android-work"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "android-company-memory-leaks",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Memory",
+    "round": "Fundamentals",
+    "q": "Name common causes of memory leaks in Android apps and how you would find them.",
+    "a": "A leak is a long-lived object holding a reference to something that should be gone, usually an Activity, Fragment view or Context. Common causes are singletons or static fields holding an Activity Context, listeners that are registered but never unregistered, long-running threads or coroutines that capture an Activity, and Fragment view bindings kept after onDestroyView. Find them with LeakCanary in debug builds and heap dumps in the Android Studio Memory Profiler.",
+    "explanation": "Every leak is an ownership mismatch: the holder lives longer than what it references. Fix it by using the application Context for long-lived objects, unregistering in the matching lifecycle callback, scoping work to the right lifecycle, and clearing view references when the view is destroyed.",
+    "mistake": "Calling System.gc() or increasing heap size instead of fixing the reference that keeps the object alive.",
+    "rubric": [
+      "Defines a leak as an unwanted live reference",
+      "Lists several realistic causes",
+      "Names detection tools",
+      "Fixes the ownership rather than the symptom"
+    ],
+    "followups": [
+      "How would you read a LeakCanary trace?",
+      "Why is the application Context safe for a singleton but not for inflating views?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "android-performance",
+      "android-lifecycle"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  }
+]

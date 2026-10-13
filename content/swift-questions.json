@@ -1,0 +1,213 @@
+[
+  {
+    "id": "swift-optionals",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Swift basics",
+    "round": "Fundamentals",
+    "q": "How should a Swift app handle a missing value from an API?",
+    "a": "Model absence with an optional or explicit result, then unwrap deliberately with a suitable fallback or error path.",
+    "explanation": "Force-unwrapping asserts that the value exists and can trap when it does not. Decide whether missing data is valid, recoverable, or a contract violation and test each case.",
+    "mistake": "Using force unwrap for every parsed API field.",
+    "rubric": [
+      "Model absence explicitly",
+      "Choose safe unwrapping",
+      "Test missing and invalid values"
+    ],
+    "followups": [
+      "When is guard let useful?",
+      "How does optional chaining behave?"
+    ],
+    "sourceIds": [
+      "swift-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-retain-cycle",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "A view controller stays alive after dismissal. What ownership issue might cause it?",
+    "a": "A strong reference cycle may involve stored closures or delegates. Inspect ownership and use weak references where lifetime requires them.",
+    "explanation": "ARC releases objects when strong ownership disappears. A weak reference can become nil; unowned requires a stronger lifetime guarantee. Avoid weakening references blindly without understanding needed ownership.",
+    "mistake": "Using unowned solely to avoid handling nil.",
+    "rubric": [
+      "Trace strong ownership",
+      "Break the actual cycle",
+      "Distinguish weak and unowned"
+    ],
+    "followups": [
+      "Can a closure capture self strongly safely?",
+      "How would you verify deallocation?"
+    ],
+    "sourceIds": [
+      "swift-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-mainactor",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Concurrency",
+    "round": "Coding",
+    "q": "A background fetch updates SwiftUI state. How should you define the UI boundary?",
+    "a": "Isolate UI state to the main actor and cross that boundary explicitly when publishing results.",
+    "explanation": "Actor isolation concerns access safety, while async describes suspension. Avoid doing heavy synchronous computation on the main actor and handle stale results and cancellation.",
+    "mistake": "Assuming every async method runs away from UI execution.",
+    "rubric": [
+      "Isolate UI mutations",
+      "Keep heavy work off UI execution",
+      "Handle cancellation and stale results"
+    ],
+    "followups": [
+      "Does await always change threads?",
+      "How should errors reach the view?"
+    ],
+    "sourceIds": [
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-state",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "SwiftUI state",
+    "round": "Debugging",
+    "q": "A SwiftUI screen repeatedly recreates its model or loses edits. What do you inspect?",
+    "a": "Check model ownership, view identity, and the observation/state mechanism appropriate to the app deployment target.",
+    "explanation": "Views are frequently rebuilt value descriptions. The model lifetime must belong to a stable owner, and drafts should not reset whenever remote data is refreshed. Verify navigation and identity changes.",
+    "mistake": "Treating every view initialization as a new user session.",
+    "rubric": [
+      "Define stable model ownership",
+      "Inspect view identity",
+      "Preserve draft lifetime intentionally"
+    ],
+    "followups": [
+      "What should reset on sign-out?",
+      "How does a list identity change affect state?"
+    ],
+    "sourceIds": [
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-reentrancy",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Actors",
+    "round": "Debugging",
+    "q": "An actor validates balance, awaits another service, and later writes balance. Why might it still be wrong?",
+    "a": "Actor isolation prevents simultaneous unsafe access, but another task can change actor state while the method is suspended.",
+    "explanation": "Revalidate assumptions after await or restructure the invariant so critical updates happen without suspension. External side effects need idempotency and reconciliation beyond local actor isolation.",
+    "mistake": "Assuming an actor method is atomic across every await.",
+    "rubric": [
+      "Explain suspension and reentrancy",
+      "Revalidate business invariants",
+      "Handle external side effects"
+    ],
+    "followups": [
+      "What if two reservations interleave?",
+      "When should work be split into phases?"
+    ],
+    "sourceIds": [
+      "swift-concurrency"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-offline",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "App architecture",
+    "round": "System design",
+    "q": "Design an iOS notes app that works offline and syncs later.",
+    "a": "Use a local source of truth with durable pending operations, stable note IDs, and an explicit conflict policy.",
+    "explanation": "Separate rendering from synchronization and account for background execution limits. Test interrupted saves and retries. Decide whether conflicts are merged, duplicated, or shown to the user.",
+    "mistake": "Assuming background work will run at a precise time.",
+    "rubric": [
+      "Persist local edits and pending work",
+      "Define conflict resolution",
+      "Test interruption and retries"
+    ],
+    "followups": [
+      "How do you represent deletions?",
+      "What if two devices edit the same note?"
+    ],
+    "sourceIds": [
+      "swiftui-data",
+      "android-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-module",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "How would you modularize a large iOS app without slowing delivery?",
+    "a": "Create boundaries around capabilities and stable contracts, then measure build, runtime, and coordination costs.",
+    "explanation": "Define navigation, state ownership, and dependency rules. Move incrementally with compatibility checks and clear owners. Module count alone is not evidence of better architecture.",
+    "mistake": "Splitting files into packages without changing dependency direction.",
+    "rubric": [
+      "Define capability and contract boundaries",
+      "Assign ownership",
+      "Measure build and delivery outcomes"
+    ],
+    "followups": [
+      "How should modules share design components?",
+      "What belongs in a shared core?"
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-concurrency-migration",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Platform evolution",
+    "round": "Leadership",
+    "q": "Plan adoption of stricter Swift concurrency checking in a mature app.",
+    "a": "Inventory isolation violations and foreign APIs, establish actor and Sendable rules, and migrate in reviewed increments.",
+    "explanation": "Do not silence diagnostics globally. Bridge callbacks with cancellation and lifetime guarantees, test UI behavior, and document justified exceptions. Supported platform/toolchain combinations need explicit validation.",
+    "mistake": "Suppressing every concurrency warning without reviewing ownership.",
+    "rubric": [
+      "Map isolation boundaries",
+      "Validate callback bridges",
+      "Govern exceptions and rollout"
+    ],
+    "followups": [
+      "How do you handle non-Sendable legacy objects?",
+      "Which module would you migrate first?"
+    ],
+    "sourceIds": [
+      "swift-concurrency"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

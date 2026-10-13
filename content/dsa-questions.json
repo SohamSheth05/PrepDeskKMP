@@ -1,0 +1,210 @@
+[
+  {
+    "id": "dsa-two-sum",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Hash maps",
+    "round": "Coding",
+    "q": "Find two distinct indices whose values sum to a target. Explain your algorithm.",
+    "a": "Scan once with a map of previously seen values; look for target minus the current value before adding the current index.",
+    "explanation": "Checking before insertion avoids using the same index twice. Expected time is O(n) with O(n) extra space under normal hash assumptions. State how duplicates and no solution are handled.",
+    "mistake": "Storing the current value first and accidentally returning one index twice.",
+    "rubric": [
+      "Explain complement lookup",
+      "Handle duplicates and distinct indices",
+      "State complexity assumptions"
+    ],
+    "followups": [
+      "What if the input is sorted?",
+      "How do you return every valid pair?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-binary-search",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Search",
+    "round": "Debugging",
+    "q": "A binary search misses boundary values or loops forever. What would you inspect?",
+    "a": "Define a consistent interval convention and ensure every branch strictly reduces the interval.",
+    "explanation": "For a half-open interval [lo, hi), derive midpoint and update rules together. Test empty input, one item, duplicates, and values outside the range. Avoid mixing inclusive and exclusive bounds.",
+    "mistake": "Memorizing update expressions without an interval invariant.",
+    "rubric": [
+      "State the search invariant",
+      "Ensure interval progress",
+      "Test boundaries and duplicates"
+    ],
+    "followups": [
+      "How do you find the first match?",
+      "How can midpoint overflow be avoided?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-window",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Sliding windows",
+    "round": "Coding",
+    "q": "Find the longest substring with no repeated characters.",
+    "a": "Maintain a sliding window and last-seen positions; move the left boundary forward when a repeated element is inside the window.",
+    "explanation": "Never move the left boundary backwards. Clarify whether elements are bytes, code points, or grapheme clusters. Expected time is linear in the number of chosen elements.",
+    "mistake": "Updating the left boundary to an older position.",
+    "rubric": [
+      "Maintain a unique-window invariant",
+      "Move the boundary monotonically",
+      "Clarify text representation and complexity"
+    ],
+    "followups": [
+      "How do you return the substring?",
+      "What changes for a streaming input?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-bfs",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Graphs",
+    "round": "Coding",
+    "q": "Find the shortest path in an unweighted graph and return the path.",
+    "a": "Use BFS, mark nodes when enqueued, and store predecessor links to reconstruct the path.",
+    "explanation": "BFS explores increasing edge distance. It is O(V+E) for adjacency lists, while arbitrary weighted edges require a different method. Test disconnected nodes and a source equal to the target.",
+    "mistake": "Marking nodes only on removal and enqueueing duplicates.",
+    "rubric": [
+      "Explain BFS distance order",
+      "Record predecessors",
+      "Test disconnected and trivial cases"
+    ],
+    "followups": [
+      "What if edge weights differ?",
+      "How would bidirectional search help?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-top-k",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Heaps",
+    "round": "Coding",
+    "q": "Return the top k most frequent events from a large collection.",
+    "a": "Count frequencies, then keep a bounded min-heap of the best k entries, with an explicit tie policy.",
+    "explanation": "With u distinct events, selection can take O(u log k) after counting. The frequency map still needs O(u) space. If that is too large, discuss external aggregation or approximate methods explicitly.",
+    "mistake": "Calling the entire solution O(k) memory while retaining every distinct count.",
+    "rubric": [
+      "Separate counting and selection cost",
+      "Maintain a bounded heap",
+      "Define tie and memory behavior"
+    ],
+    "followups": [
+      "When is sorting simpler?",
+      "What if approximate counts are acceptable?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-lru",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Data structures",
+    "round": "Coding",
+    "q": "Design an LRU cache with expected constant-time get and put.",
+    "a": "Combine a hash map with a doubly linked recency list; accesses move nodes and eviction removes the least recent node.",
+    "explanation": "Keep map and list updates consistent and define capacity-zero and overwrite behavior. Concurrency requires protecting compound operations. Clarify expected hash complexity rather than promising worst-case constant time.",
+    "mistake": "Updating the map without maintaining recency-list invariants.",
+    "rubric": [
+      "Combine lookup and ordering",
+      "Maintain structural invariants",
+      "Handle capacity and updates"
+    ],
+    "followups": [
+      "How would expiration interact with LRU?",
+      "What changes for concurrent callers?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-external-sort",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Large-scale algorithms",
+    "round": "System design",
+    "q": "Sort data larger than available memory with bounded resources.",
+    "a": "Create sorted runs that fit memory, then merge them with a bounded multiway merge and controlled temporary storage.",
+    "explanation": "Choose run and fan-in sizes from memory and file-handle limits. Define crash recovery, disk-space bounds, stable ordering needs, and cleanup. Analyze I/O cost as well as comparison complexity.",
+    "mistake": "Using an in-memory sort and hoping virtual memory is sufficient.",
+    "rubric": [
+      "Define bounded run generation",
+      "Design a controlled merge",
+      "Account for I/O and recovery"
+    ],
+    "followups": [
+      "How do you limit open files?",
+      "When can partial runs be reused?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-algorithm-choice",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Performance strategy",
+    "round": "Leadership",
+    "q": "A theoretically faster algorithm is slower in production. How do you choose the implementation?",
+    "a": "Compare representative measurements, constraints, constant factors, memory layout, and maintainability while preserving correctness.",
+    "explanation": "Asymptotic complexity describes growth, not every workload. Test realistic sizes and worst cases, inspect allocation and cache behavior, and keep an evidence-based threshold if multiple strategies are useful.",
+    "mistake": "Choosing solely by big-O or a tiny synthetic benchmark.",
+    "rubric": [
+      "Preserve correctness and worst-case needs",
+      "Benchmark representative workloads",
+      "Explain operational and maintenance trade-offs"
+    ],
+    "followups": [
+      "When should you keep the simpler algorithm?",
+      "How do you detect benchmark bias?"
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

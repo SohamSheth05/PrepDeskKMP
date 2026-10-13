@@ -1,0 +1,930 @@
+[
+  {
+    "id": "system-path-01",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Requirements",
+    "round": "Fundamentals",
+    "q": "What should you clarify before drawing a system design?",
+    "a": "Identify core user operations.",
+    "explanation": "Identify core user operations. Define scale reliability and latency goals. State assumptions and exclusions.",
+    "mistake": "Starting with infrastructure before requirements.",
+    "rubric": [
+      "Identify core user operations",
+      "Define scale reliability and latency goals",
+      "State assumptions and exclusions"
+    ],
+    "followups": [
+      "Which operation is most business-critical?",
+      "Walk through a concrete example of requirements and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-02",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Estimation",
+    "round": "Fundamentals",
+    "q": "How do rough capacity estimates improve a design?",
+    "a": "They reveal likely resource orders of magnitude.",
+    "explanation": "They reveal likely resource orders of magnitude. Use explicit workload assumptions. Validate rather than overstate precision.",
+    "mistake": "Inventing exact numbers without assumptions.",
+    "rubric": [
+      "They reveal likely resource orders of magnitude",
+      "Use explicit workload assumptions",
+      "Validate rather than overstate precision"
+    ],
+    "followups": [
+      "How would peak demand differ from average?",
+      "Walk through a concrete example of estimation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-03",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Load balancing",
+    "round": "Fundamentals",
+    "q": "What does a load balancer need to consider?",
+    "a": "Distribute useful workload across healthy capacity.",
+    "explanation": "Distribute useful workload across healthy capacity. Handle connection and session behavior. Define failure and overload policy.",
+    "mistake": "Assuming round-robin fits unequal requests perfectly.",
+    "rubric": [
+      "Distribute useful workload across healthy capacity",
+      "Handle connection and session behavior",
+      "Define failure and overload policy"
+    ],
+    "followups": [
+      "How would sticky sessions affect failover?",
+      "Walk through a concrete example of load balancing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-04",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Caching",
+    "round": "Fundamentals",
+    "q": "When should a design add a cache?",
+    "a": "Repeated access may justify reuse.",
+    "explanation": "Repeated access may justify reuse. Define freshness and ownership. Measure actual bottlenecks first.",
+    "mistake": "Adding caches everywhere without invalidation rules.",
+    "rubric": [
+      "Repeated access may justify reuse",
+      "Define freshness and ownership",
+      "Measure actual bottlenecks first"
+    ],
+    "followups": [
+      "Which data must bypass stale caches?",
+      "Walk through a concrete example of caching and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-05",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Queues",
+    "round": "Fundamentals",
+    "q": "What does a queue decouple?",
+    "a": "It separates acceptance from processing.",
+    "explanation": "It separates acceptance from processing. Buffers need limits and deadlines. Define delivery and recovery contracts.",
+    "mistake": "Treating a queue as unlimited free storage.",
+    "rubric": [
+      "It separates acceptance from processing",
+      "Buffers need limits and deadlines",
+      "Define delivery and recovery contracts"
+    ],
+    "followups": [
+      "How would consumers handle redelivery?",
+      "Walk through a concrete example of queues and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-06",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Identifiers",
+    "round": "Fundamentals",
+    "q": "What makes an identifier strategy useful?",
+    "a": "Provide required uniqueness and stability.",
+    "explanation": "Provide required uniqueness and stability. Consider ordering and generation locality. Avoid exposing sensitive sequence assumptions.",
+    "mistake": "Assuming all identifiers must be globally sequential.",
+    "rubric": [
+      "Provide required uniqueness and stability",
+      "Consider ordering and generation locality",
+      "Avoid exposing sensitive sequence assumptions"
+    ],
+    "followups": [
+      "How would multiple writers generate identifiers?",
+      "Walk through a concrete example of identifiers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-07",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Storage selection",
+    "round": "Fundamentals",
+    "q": "How should you choose a storage technology?",
+    "a": "Start from access and consistency needs.",
+    "explanation": "Start from access and consistency needs. Evaluate transactions scale and operations. Test representative data and workloads.",
+    "mistake": "Choosing solely from a popular architecture diagram.",
+    "rubric": [
+      "Start from access and consistency needs",
+      "Evaluate transactions scale and operations",
+      "Test representative data and workloads"
+    ],
+    "followups": [
+      "Which query must be efficient?",
+      "Walk through a concrete example of storage selection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-08",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "API boundaries",
+    "round": "Fundamentals",
+    "q": "What makes an API boundary durable?",
+    "a": "Contracts expose meaningful domain operations.",
+    "explanation": "Contracts expose meaningful domain operations. Define errors limits and compatibility. Keep implementation details private.",
+    "mistake": "Exposing internal tables directly as permanent contracts.",
+    "rubric": [
+      "Contracts expose meaningful domain operations",
+      "Define errors limits and compatibility",
+      "Keep implementation details private"
+    ],
+    "followups": [
+      "How would the contract evolve?",
+      "Walk through a concrete example of api boundaries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-09",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "URL shortening",
+    "round": "Scenario",
+    "q": "How would you design a basic URL shortener?",
+    "a": "Map stable short identifiers to validated destinations.",
+    "explanation": "Map stable short identifiers to validated destinations. Optimize read-heavy redirects. Define expiry abuse and collision handling.",
+    "mistake": "Ignoring malicious or expired destinations.",
+    "rubric": [
+      "Map stable short identifiers to validated destinations",
+      "Optimize read-heavy redirects",
+      "Define expiry abuse and collision handling"
+    ],
+    "followups": [
+      "How would custom aliases work?",
+      "Walk through a concrete example of url shortening and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-10",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Notifications",
+    "round": "Scenario",
+    "q": "How would you design a notification pipeline?",
+    "a": "Persist notification intent durably.",
+    "explanation": "Persist notification intent durably. Deliver through bounded provider workers. Track deduplication preferences and outcomes.",
+    "mistake": "Sending synchronously inside a long database transaction.",
+    "rubric": [
+      "Persist notification intent durably",
+      "Deliver through bounded provider workers",
+      "Track deduplication preferences and outcomes"
+    ],
+    "followups": [
+      "How would retries avoid duplicate notifications?",
+      "Walk through a concrete example of notifications and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-11",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Feeds",
+    "round": "Scenario",
+    "q": "How do push and pull feed generation differ?",
+    "a": "Push precomputes recipient feeds.",
+    "explanation": "Push precomputes recipient feeds. Pull computes at reading time. Choose from fan-out and freshness requirements.",
+    "mistake": "Using one strategy for both ordinary and celebrity accounts.",
+    "rubric": [
+      "Push precomputes recipient feeds",
+      "Pull computes at reading time",
+      "Choose from fan-out and freshness requirements"
+    ],
+    "followups": [
+      "How would a hybrid feed work?",
+      "Walk through a concrete example of feeds and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-12",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Search",
+    "round": "Scenario",
+    "q": "How should a search index relate to authoritative storage?",
+    "a": "The index serves retrieval needs.",
+    "explanation": "The index serves retrieval needs. Changes propagate through explicit indexing workflows. Expose freshness and repair behavior.",
+    "mistake": "Assuming index updates share the source transaction automatically.",
+    "rubric": [
+      "The index serves retrieval needs",
+      "Changes propagate through explicit indexing workflows",
+      "Expose freshness and repair behavior"
+    ],
+    "followups": [
+      "How would you rebuild an index?",
+      "Walk through a concrete example of search and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-13",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Chat",
+    "round": "Scenario",
+    "q": "What must a basic chat system define?",
+    "a": "Message identity and ordering expectations.",
+    "explanation": "Message identity and ordering expectations. Durable delivery and reconnect behavior. Access control and presence semantics.",
+    "mistake": "Equating transport delivery with durable message storage.",
+    "rubric": [
+      "Message identity and ordering expectations",
+      "Durable delivery and reconnect behavior",
+      "Access control and presence semantics"
+    ],
+    "followups": [
+      "How would users resume after disconnect?",
+      "Walk through a concrete example of chat and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-14",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Uploads",
+    "round": "Scenario",
+    "q": "How would you design a large-file upload service?",
+    "a": "Separate metadata from object storage.",
+    "explanation": "Separate metadata from object storage. Support bounded resumable transfer. Validate ownership content and completion.",
+    "mistake": "Routing every byte through one unbounded application buffer.",
+    "rubric": [
+      "Separate metadata from object storage",
+      "Support bounded resumable transfer",
+      "Validate ownership content and completion"
+    ],
+    "followups": [
+      "How would abandoned uploads be cleaned up?",
+      "Walk through a concrete example of uploads and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-15",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Scheduling",
+    "round": "Scenario",
+    "q": "How would you design a background job scheduler?",
+    "a": "Persist schedules and execution identity.",
+    "explanation": "Persist schedules and execution identity. Coordinate ownership and retries. Define timing and missed-run semantics.",
+    "mistake": "Assuming a timer in one process is durable scheduling.",
+    "rubric": [
+      "Persist schedules and execution identity",
+      "Coordinate ownership and retries",
+      "Define timing and missed-run semantics"
+    ],
+    "followups": [
+      "How would clock changes affect scheduling?",
+      "Walk through a concrete example of scheduling and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-16",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Rate limits",
+    "round": "Scenario",
+    "q": "How would you design rate limits for a public API?",
+    "a": "Choose identity scope and windows.",
+    "explanation": "Choose identity scope and windows. Use atomic shared accounting where needed. Define overload and failure behavior.",
+    "mistake": "Trusting easily spoofed identity headers.",
+    "rubric": [
+      "Choose identity scope and windows",
+      "Use atomic shared accounting where needed",
+      "Define overload and failure behavior"
+    ],
+    "followups": [
+      "How would burst allowances work?",
+      "Walk through a concrete example of rate limits and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-17",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Consistency",
+    "round": "Debugging",
+    "q": "How should you choose a consistency model?",
+    "a": "Start from user-visible invariants.",
+    "explanation": "Start from user-visible invariants. Identify acceptable stale observations. Match storage and replication guarantees.",
+    "mistake": "Choosing strongest consistency without cost analysis.",
+    "rubric": [
+      "Start from user-visible invariants",
+      "Identify acceptable stale observations",
+      "Match storage and replication guarantees"
+    ],
+    "followups": [
+      "Which operation requires read-your-writes behavior?",
+      "Walk through a concrete example of consistency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-18",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Partitions",
+    "round": "Debugging",
+    "q": "What does a network partition force a distributed design to address?",
+    "a": "Some nodes cannot communicate.",
+    "explanation": "Some nodes cannot communicate. Operations need explicit consistency and availability choices. Recover divergent state deliberately.",
+    "mistake": "Assuming every partition is detectable instantly.",
+    "rubric": [
+      "Some nodes cannot communicate",
+      "Operations need explicit consistency and availability choices",
+      "Recover divergent state deliberately"
+    ],
+    "followups": [
+      "Which writes would you refuse during isolation?",
+      "Walk through a concrete example of partitions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-19",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Consensus",
+    "round": "Debugging",
+    "q": "What purpose does consensus serve in a system?",
+    "a": "Participants agree on a shared decision sequence.",
+    "explanation": "Participants agree on a shared decision sequence. Fault assumptions define the guarantee. It adds coordination latency and complexity.",
+    "mistake": "Using consensus as a synonym for replication.",
+    "rubric": [
+      "Participants agree on a shared decision sequence",
+      "Fault assumptions define the guarantee",
+      "It adds coordination latency and complexity"
+    ],
+    "followups": [
+      "Which metadata needs a single agreed leader?",
+      "Walk through a concrete example of consensus and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-20",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Sharding",
+    "round": "Debugging",
+    "q": "How would you choose a shard key?",
+    "a": "Match access and ownership boundaries.",
+    "explanation": "Match access and ownership boundaries. Avoid hot or skewed partitions. Plan rebalancing and cross-shard work.",
+    "mistake": "Choosing a key only from evenly distributed row counts.",
+    "rubric": [
+      "Match access and ownership boundaries",
+      "Avoid hot or skewed partitions",
+      "Plan rebalancing and cross-shard work"
+    ],
+    "followups": [
+      "How would a very large tenant behave?",
+      "Walk through a concrete example of sharding and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-21",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Event processing",
+    "round": "Debugging",
+    "q": "How do you make event consumers resilient?",
+    "a": "Persist processing outcomes or checkpoints.",
+    "explanation": "Persist processing outcomes or checkpoints. Handle duplicate and out-of-order events. Bound retries and poison-message handling.",
+    "mistake": "Assuming exactly-once delivery removes all duplicate effects.",
+    "rubric": [
+      "Persist processing outcomes or checkpoints",
+      "Handle duplicate and out-of-order events",
+      "Bound retries and poison-message handling"
+    ],
+    "followups": [
+      "How would schema versions affect consumers?",
+      "Walk through a concrete example of event processing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-22",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Regional recovery",
+    "round": "Debugging",
+    "q": "How should a system fail over between regions?",
+    "a": "Define authoritative data and recovery goals.",
+    "explanation": "Define authoritative data and recovery goals. Coordinate traffic and write ownership. Rehearse failure and return behavior.",
+    "mistake": "Switching traffic without considering replication lag.",
+    "rubric": [
+      "Define authoritative data and recovery goals",
+      "Coordinate traffic and write ownership",
+      "Rehearse failure and return behavior"
+    ],
+    "followups": [
+      "How would split-brain writes be prevented?",
+      "Walk through a concrete example of regional recovery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-23",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Hot keys",
+    "round": "Debugging",
+    "q": "How would you handle a heavily accessed single key?",
+    "a": "Measure the hot operation's actual cost.",
+    "explanation": "Measure the hot operation's actual cost. Use caching aggregation or partitioned representation. Preserve required consistency.",
+    "mistake": "Adding shards without changing single-key contention.",
+    "rubric": [
+      "Measure the hot operation's actual cost",
+      "Use caching aggregation or partitioned representation",
+      "Preserve required consistency"
+    ],
+    "followups": [
+      "How would cache stampedes be controlled?",
+      "Walk through a concrete example of hot keys and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-24",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Sagas",
+    "round": "Debugging",
+    "q": "When can a saga coordinate a multi-step workflow?",
+    "a": "Each step has a local durable outcome.",
+    "explanation": "Each step has a local durable outcome. Failures need business-defined compensation. Track progress and retries explicitly.",
+    "mistake": "Assuming compensation perfectly reverses every side effect.",
+    "rubric": [
+      "Each step has a local durable outcome",
+      "Failures need business-defined compensation",
+      "Track progress and retries explicitly"
+    ],
+    "followups": [
+      "Which step has an irreversible effect?",
+      "Walk through a concrete example of sagas and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-25",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Architecture trade-offs",
+    "round": "Design",
+    "q": "How do you defend a design decision in an interview?",
+    "a": "Connect choices to explicit requirements.",
+    "explanation": "Connect choices to explicit requirements. Compare a plausible alternative. Describe failure behavior and operational cost.",
+    "mistake": "Listing technologies without explaining their purpose.",
+    "rubric": [
+      "Connect choices to explicit requirements",
+      "Compare a plausible alternative",
+      "Describe failure behavior and operational cost"
+    ],
+    "followups": [
+      "What requirement would change your decision?",
+      "Walk through a concrete example of architecture trade-offs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-26",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Evolution",
+    "round": "Design",
+    "q": "How should a system grow from modest initial scale?",
+    "a": "Keep boundaries and data contracts clear.",
+    "explanation": "Keep boundaries and data contracts clear. Measure actual bottlenecks. Introduce distribution when benefits justify complexity.",
+    "mistake": "Building maximum-scale infrastructure before product evidence.",
+    "rubric": [
+      "Keep boundaries and data contracts clear",
+      "Measure actual bottlenecks",
+      "Introduce distribution when benefits justify complexity"
+    ],
+    "followups": [
+      "Which scaling trigger would you monitor?",
+      "Walk through a concrete example of evolution and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-27",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Multi-tenancy",
+    "round": "Design",
+    "q": "How should tenant isolation affect system design?",
+    "a": "Scope identity data caches and jobs.",
+    "explanation": "Scope identity data caches and jobs. Define noisy-neighbor protections. Test administrative and recovery paths.",
+    "mistake": "Applying tenant checks only at the UI.",
+    "rubric": [
+      "Scope identity data caches and jobs",
+      "Define noisy-neighbor protections",
+      "Test administrative and recovery paths"
+    ],
+    "followups": [
+      "When would physical isolation be justified?",
+      "Walk through a concrete example of multi-tenancy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-28",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Cost modeling",
+    "round": "Design",
+    "q": "How do you compare two architecture costs?",
+    "a": "Estimate useful operations storage and transfer.",
+    "explanation": "Estimate useful operations storage and transfer. Include operational and failure-recovery effort. Validate sensitive assumptions.",
+    "mistake": "Comparing only compute instance prices.",
+    "rubric": [
+      "Estimate useful operations storage and transfer",
+      "Include operational and failure-recovery effort",
+      "Validate sensitive assumptions"
+    ],
+    "followups": [
+      "Which workload dominates total cost?",
+      "Walk through a concrete example of cost modeling and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-29",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Data governance",
+    "round": "Design",
+    "q": "How should deletion propagate through a distributed system?",
+    "a": "Track primary derived and cached copies.",
+    "explanation": "Track primary derived and cached copies. Use explicit bounded deletion workflows. Respect retention and recovery requirements.",
+    "mistake": "Deleting one table and ignoring event-derived views.",
+    "rubric": [
+      "Track primary derived and cached copies",
+      "Use explicit bounded deletion workflows",
+      "Respect retention and recovery requirements"
+    ],
+    "followups": [
+      "How would you prove completion?",
+      "Walk through a concrete example of data governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-30",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Observability design",
+    "round": "Design",
+    "q": "How should observability be designed before launch?",
+    "a": "Define useful service objectives and signals.",
+    "explanation": "Define useful service objectives and signals. Propagate request and operation identity. Control sensitive data and telemetry volume.",
+    "mistake": "Adding logs only after an outage.",
+    "rubric": [
+      "Define useful service objectives and signals",
+      "Propagate request and operation identity",
+      "Control sensitive data and telemetry volume"
+    ],
+    "followups": [
+      "Which alert should wake an operator?",
+      "Walk through a concrete example of observability design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-31",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Migration design",
+    "round": "Design",
+    "q": "How do you migrate a critical service with minimal interruption?",
+    "a": "Use compatible staged data and traffic moves.",
+    "explanation": "Use compatible staged data and traffic moves. Verify completeness and consistency. Keep a clear recovery path.",
+    "mistake": "Performing one irreversible untested cutover.",
+    "rubric": [
+      "Use compatible staged data and traffic moves",
+      "Verify completeness and consistency",
+      "Keep a clear recovery path"
+    ],
+    "followups": [
+      "How would shadow reads help validation?",
+      "Walk through a concrete example of migration design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-path-32",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Risk review",
+    "round": "Design",
+    "q": "How do you review a large design for production risk?",
+    "a": "Identify bottlenecks trust boundaries and failure modes.",
+    "explanation": "Identify bottlenecks trust boundaries and failure modes. Test highest-impact assumptions. Assign ownership and mitigation.",
+    "mistake": "Reviewing only the happy-path architecture.",
+    "rubric": [
+      "Identify bottlenecks trust boundaries and failure modes",
+      "Test highest-impact assumptions",
+      "Assign ownership and mitigation"
+    ],
+    "followups": [
+      "Which dependency failure would you rehearse first?",
+      "Walk through a concrete example of risk review and explain one trade-off."
+    ],
+    "sourceIds": [
+      "sre-book",
+      "sre-overload",
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

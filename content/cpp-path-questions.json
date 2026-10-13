@@ -1,0 +1,834 @@
+[
+  {
+    "id": "cpp-path-01",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Pointers",
+    "round": "Fundamentals",
+    "q": "How do pointers and references differ in C++?",
+    "a": "Pointers can be reseated and null.",
+    "explanation": "Pointers can be reseated and null. References bind to an existing object. Both require valid object lifetime.",
+    "mistake": "Assuming a reference prevents dangling access.",
+    "rubric": [
+      "Pointers can be reseated and null",
+      "References bind to an existing object",
+      "Both require valid object lifetime"
+    ],
+    "followups": [
+      "When would an optional pointer be clearer?",
+      "Walk through a concrete example of pointers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-02",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Storage",
+    "round": "Fundamentals",
+    "q": "How do automatic and dynamic storage lifetimes differ?",
+    "a": "Automatic objects follow scope lifetime.",
+    "explanation": "Automatic objects follow scope lifetime. Dynamic objects require ownership management. Prefer explicit RAII ownership.",
+    "mistake": "Assuming heap allocation automatically extends safe access.",
+    "rubric": [
+      "Automatic objects follow scope lifetime",
+      "Dynamic objects require ownership management",
+      "Prefer explicit RAII ownership"
+    ],
+    "followups": [
+      "Who owns a dynamically allocated object?",
+      "Walk through a concrete example of storage and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-03",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Initialization",
+    "round": "Fundamentals",
+    "q": "Why prefer initializing members over assigning later?",
+    "a": "Initialization establishes valid state.",
+    "explanation": "Initialization establishes valid state. Some members require initialization. Avoid unnecessary default construction.",
+    "mistake": "Assigning const members in the constructor body.",
+    "rubric": [
+      "Initialization establishes valid state",
+      "Some members require initialization",
+      "Avoid unnecessary default construction"
+    ],
+    "followups": [
+      "How does member declaration order matter?",
+      "Walk through a concrete example of initialization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-04",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Const",
+    "round": "Fundamentals",
+    "q": "What does const express in a C++ interface?",
+    "a": "It restricts mutation through that interface.",
+    "explanation": "It restricts mutation through that interface. It documents permitted operations. It does not guarantee deep immutability.",
+    "mistake": "Assuming const pointers freeze all referenced data.",
+    "rubric": [
+      "It restricts mutation through that interface",
+      "It documents permitted operations",
+      "It does not guarantee deep immutability"
+    ],
+    "followups": [
+      "How do const pointer and pointer-to-const differ?",
+      "Walk through a concrete example of const and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-05",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Arrays",
+    "round": "Fundamentals",
+    "q": "Why must a C buffer track its length explicitly?",
+    "a": "Raw pointers carry no bounds.",
+    "explanation": "Raw pointers carry no bounds. Operations need valid capacity and length. Check input before copying.",
+    "mistake": "Using string termination as proof of available capacity.",
+    "rubric": [
+      "Raw pointers carry no bounds",
+      "Operations need valid capacity and length",
+      "Check input before copying"
+    ],
+    "followups": [
+      "How would you prevent an off-by-one write?",
+      "Walk through a concrete example of arrays and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-06",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Structures",
+    "round": "Fundamentals",
+    "q": "How do C structs and C++ classes support data modeling?",
+    "a": "Both group fields.",
+    "explanation": "Both group fields. C++ supports members and access control. Keep representation and invariants explicit.",
+    "mistake": "Assuming a C struct enforces domain invariants.",
+    "rubric": [
+      "Both group fields",
+      "C++ supports members and access control",
+      "Keep representation and invariants explicit"
+    ],
+    "followups": [
+      "How would you expose an opaque C handle?",
+      "Walk through a concrete example of structures and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-07",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Strings",
+    "round": "Fundamentals",
+    "q": "Why prefer std::string for ordinary owned text?",
+    "a": "It manages owned storage.",
+    "explanation": "It manages owned storage. Length is explicit. Use views only within valid lifetimes.",
+    "mistake": "Returning a pointer to temporary string storage.",
+    "rubric": [
+      "It manages owned storage",
+      "Length is explicit",
+      "Use views only within valid lifetimes"
+    ],
+    "followups": [
+      "When is string_view suitable?",
+      "Walk through a concrete example of strings and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-08",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Undefined behavior",
+    "round": "Fundamentals",
+    "q": "What makes undefined behavior dangerous?",
+    "a": "The language provides no outcome guarantee.",
+    "explanation": "The language provides no outcome guarantee. Optimization may assume it never occurs. Prevent invalid memory and arithmetic operations.",
+    "mistake": "Assuming observed behavior is portable correctness.",
+    "rubric": [
+      "The language provides no outcome guarantee",
+      "Optimization may assume it never occurs",
+      "Prevent invalid memory and arithmetic operations"
+    ],
+    "followups": [
+      "How would signed overflow affect reasoning?",
+      "Walk through a concrete example of undefined behavior and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-09",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "RAII",
+    "round": "Scenario",
+    "q": "How does RAII improve exception safety?",
+    "a": "Resources follow object lifetime.",
+    "explanation": "Resources follow object lifetime. Destructors release owned resources. Scope exit handles multiple control paths.",
+    "mistake": "Using manual cleanup scattered across returns.",
+    "rubric": [
+      "Resources follow object lifetime",
+      "Destructors release owned resources",
+      "Scope exit handles multiple control paths"
+    ],
+    "followups": [
+      "How would a file wrapper apply RAII?",
+      "Walk through a concrete example of raii and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-10",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Smart pointers",
+    "round": "Scenario",
+    "q": "When choose unique_ptr instead of shared_ptr?",
+    "a": "Unique ownership is simpler and explicit.",
+    "explanation": "Unique ownership is simpler and explicit. Shared ownership has coordination overhead. Use sharing only when lifetimes require it.",
+    "mistake": "Using shared_ptr for every allocation.",
+    "rubric": [
+      "Unique ownership is simpler and explicit",
+      "Shared ownership has coordination overhead",
+      "Use sharing only when lifetimes require it"
+    ],
+    "followups": [
+      "How would ownership transfer work?",
+      "Walk through a concrete example of smart pointers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-11",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Copy and move",
+    "round": "Scenario",
+    "q": "What is a move operation intended to transfer?",
+    "a": "It can transfer owned resources.",
+    "explanation": "It can transfer owned resources. Moved-from objects remain valid under their contract. Do not assume every move is free.",
+    "mistake": "Reading unspecified moved-from contents as original data.",
+    "rubric": [
+      "It can transfer owned resources",
+      "Moved-from objects remain valid under their contract",
+      "Do not assume every move is free"
+    ],
+    "followups": [
+      "How would you design a movable resource wrapper?",
+      "Walk through a concrete example of copy and move and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-12",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Containers",
+    "round": "Scenario",
+    "q": "How can vector growth invalidate pointers?",
+    "a": "Reallocation moves element storage.",
+    "explanation": "Reallocation moves element storage. Existing addresses can become invalid. Choose stable ownership or avoid retained addresses.",
+    "mistake": "Keeping element pointers through arbitrary pushes.",
+    "rubric": [
+      "Reallocation moves element storage",
+      "Existing addresses can become invalid",
+      "Choose stable ownership or avoid retained addresses"
+    ],
+    "followups": [
+      "How would reserve affect reallocation?",
+      "Walk through a concrete example of containers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-13",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Virtual dispatch",
+    "round": "Scenario",
+    "q": "Why do polymorphic base classes often need virtual destructors?",
+    "a": "Deletion through a base needs correct destruction.",
+    "explanation": "Deletion through a base needs correct destruction. Virtual dispatch supports runtime behavior. Make intended deletion ownership explicit.",
+    "mistake": "Deleting derived objects through an unsafe base interface.",
+    "rubric": [
+      "Deletion through a base needs correct destruction",
+      "Virtual dispatch supports runtime behavior",
+      "Make intended deletion ownership explicit"
+    ],
+    "followups": [
+      "When would a protected destructor be appropriate?",
+      "Walk through a concrete example of virtual dispatch and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-14",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Exceptions",
+    "round": "Scenario",
+    "q": "What do exception-safety guarantees describe?",
+    "a": "Basic safety preserves invariants and resources.",
+    "explanation": "Basic safety preserves invariants and resources. Strong safety preserves prior observable state. No-throw operations cannot propagate exceptions.",
+    "mistake": "Claiming exception safety without defining state after failure.",
+    "rubric": [
+      "Basic safety preserves invariants and resources",
+      "Strong safety preserves prior observable state",
+      "No-throw operations cannot propagate exceptions"
+    ],
+    "followups": [
+      "How would you test a failed insertion?",
+      "Walk through a concrete example of exceptions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-15",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Templates",
+    "round": "Scenario",
+    "q": "When do templates improve a C++ API?",
+    "a": "They express typed reusable operations.",
+    "explanation": "They express typed reusable operations. Constraints communicate valid requirements. Account for compilation and diagnostic cost.",
+    "mistake": "Writing unrestricted templates with hidden assumptions.",
+    "rubric": [
+      "They express typed reusable operations",
+      "Constraints communicate valid requirements",
+      "Account for compilation and diagnostic cost"
+    ],
+    "followups": [
+      "How would concepts clarify a requirement?",
+      "Walk through a concrete example of templates and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-16",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Tests",
+    "round": "Scenario",
+    "q": "How do sanitizers complement C++ tests?",
+    "a": "They detect executed memory or concurrency violations.",
+    "explanation": "They detect executed memory or concurrency violations. Tests must exercise meaningful paths. They do not prove all behavior safe.",
+    "mistake": "Treating a clean sanitizer run as formal correctness.",
+    "rubric": [
+      "They detect executed memory or concurrency violations",
+      "Tests must exercise meaningful paths",
+      "They do not prove all behavior safe"
+    ],
+    "followups": [
+      "Which sanitizer fits a data race?",
+      "Walk through a concrete example of tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-17",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "Why is a data race more than an unpredictable value?",
+    "a": "Conflicting unsynchronized access can be undefined behavior.",
+    "explanation": "Conflicting unsynchronized access can be undefined behavior. Use synchronization or ownership isolation. Protect compound invariants together.",
+    "mistake": "Assuming naturally sized writes make all races safe.",
+    "rubric": [
+      "Conflicting unsynchronized access can be undefined behavior",
+      "Use synchronization or ownership isolation",
+      "Protect compound invariants together"
+    ],
+    "followups": [
+      "When would atomics be insufficient?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-18",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Atomics",
+    "round": "Debugging",
+    "q": "How should you approach memory-order choices?",
+    "a": "Start from the required synchronization relation.",
+    "explanation": "Start from the required synchronization relation. Prefer simpler correct ordering when unsure. Document relaxed ordering invariants.",
+    "mistake": "Choosing relaxed ordering solely for speed.",
+    "rubric": [
+      "Start from the required synchronization relation",
+      "Prefer simpler correct ordering when unsure",
+      "Document relaxed ordering invariants"
+    ],
+    "followups": [
+      "How would publication of an object work?",
+      "Walk through a concrete example of atomics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-19",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Deadlocks",
+    "round": "Debugging",
+    "q": "How can multiple locks create a deadlock?",
+    "a": "Conflicting acquisition order creates cycles.",
+    "explanation": "Conflicting acquisition order creates cycles. Establish consistent order or combined locking. Keep critical sections bounded.",
+    "mistake": "Adding timeouts without fixing ownership cycles.",
+    "rubric": [
+      "Conflicting acquisition order creates cycles",
+      "Establish consistent order or combined locking",
+      "Keep critical sections bounded"
+    ],
+    "followups": [
+      "How would you analyze a lock dependency graph?",
+      "Walk through a concrete example of deadlocks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-20",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Views",
+    "round": "Debugging",
+    "q": "What is the lifetime risk in non-owning views?",
+    "a": "Views do not keep owners alive.",
+    "explanation": "Views do not keep owners alive. Mutation may invalidate referenced storage. Document and enforce valid usage lifetime.",
+    "mistake": "Returning a view into a local container.",
+    "rubric": [
+      "Views do not keep owners alive",
+      "Mutation may invalidate referenced storage",
+      "Document and enforce valid usage lifetime"
+    ],
+    "followups": [
+      "How would an owning result avoid the bug?",
+      "Walk through a concrete example of views and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-21",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "C interoperability",
+    "round": "Debugging",
+    "q": "How should C++ expose a C-compatible API?",
+    "a": "Use compatible layouts and calling contracts.",
+    "explanation": "Use compatible layouts and calling contracts. Make allocation ownership explicit. Keep exceptions from crossing unsupported boundaries.",
+    "mistake": "Exporting C++ containers as a stable C ABI.",
+    "rubric": [
+      "Use compatible layouts and calling contracts",
+      "Make allocation ownership explicit",
+      "Keep exceptions from crossing unsupported boundaries"
+    ],
+    "followups": [
+      "Who releases a returned buffer?",
+      "Walk through a concrete example of c interoperability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-22",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "How do you investigate a slow native hot path?",
+    "a": "Profile representative inputs.",
+    "explanation": "Profile representative inputs. Measure cache allocation and contention costs. Optimize the dominant measured bottleneck.",
+    "mistake": "Rewriting everything with raw pointers.",
+    "rubric": [
+      "Profile representative inputs",
+      "Measure cache allocation and contention costs",
+      "Optimize the dominant measured bottleneck"
+    ],
+    "followups": [
+      "How would data layout affect cache locality?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-23",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Memory ownership",
+    "round": "Debugging",
+    "q": "How can shared_ptr ownership cycles leak memory?",
+    "a": "Cyclic owners keep reference counts positive.",
+    "explanation": "Cyclic owners keep reference counts positive. Use weak references for non-owning links. Define graph ownership explicitly.",
+    "mistake": "Assuming reference counting collects cycles.",
+    "rubric": [
+      "Cyclic owners keep reference counts positive",
+      "Use weak references for non-owning links",
+      "Define graph ownership explicitly"
+    ],
+    "followups": [
+      "Which side of a parent-child relation should own?",
+      "Walk through a concrete example of memory ownership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-24",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Error contracts",
+    "round": "Debugging",
+    "q": "How should a low-level API represent expected failure?",
+    "a": "Choose an explicit error result or exception policy.",
+    "explanation": "Choose an explicit error result or exception policy. Preserve diagnostic context. Avoid ambiguous sentinel values.",
+    "mistake": "Returning zero for both success and failure.",
+    "rubric": [
+      "Choose an explicit error result or exception policy",
+      "Preserve diagnostic context",
+      "Avoid ambiguous sentinel values"
+    ],
+    "followups": [
+      "How would allocation failure be communicated?",
+      "Walk through a concrete example of error contracts and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-25",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "ABI stability",
+    "round": "Design",
+    "q": "Why can a C++ library change break existing binaries?",
+    "a": "Layout symbol and calling conventions matter.",
+    "explanation": "Layout symbol and calling conventions matter. Source compatibility does not ensure ABI compatibility. Version or isolate public binary contracts.",
+    "mistake": "Checking only header recompilation.",
+    "rubric": [
+      "Layout symbol and calling conventions matter",
+      "Source compatibility does not ensure ABI compatibility",
+      "Version or isolate public binary contracts"
+    ],
+    "followups": [
+      "How would an opaque implementation boundary help?",
+      "Walk through a concrete example of abi stability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-26",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Build strategy",
+    "round": "Design",
+    "q": "How do you reduce native build time responsibly?",
+    "a": "Measure translation and linking costs.",
+    "explanation": "Measure translation and linking costs. Limit unnecessary header dependencies. Use supported caching and incremental workflows.",
+    "mistake": "Splitting files without measuring included dependency cost.",
+    "rubric": [
+      "Measure translation and linking costs",
+      "Limit unnecessary header dependencies",
+      "Use supported caching and incremental workflows"
+    ],
+    "followups": [
+      "How would public headers affect downstream builds?",
+      "Walk through a concrete example of build strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-27",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Migration",
+    "round": "Design",
+    "q": "How would you modernize legacy manual-memory code?",
+    "a": "Map existing ownership first.",
+    "explanation": "Map existing ownership first. Introduce RAII at bounded seams. Test behavior and error paths incrementally.",
+    "mistake": "Replacing pointers mechanically without ownership analysis.",
+    "rubric": [
+      "Map existing ownership first",
+      "Introduce RAII at bounded seams",
+      "Test behavior and error paths incrementally"
+    ],
+    "followups": [
+      "Which module has the highest migration value?",
+      "Walk through a concrete example of migration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-28",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Security",
+    "round": "Design",
+    "q": "How should native code handle untrusted binary input?",
+    "a": "Validate lengths and integer arithmetic.",
+    "explanation": "Validate lengths and integer arithmetic. Keep parsing within explicit bounds. Fuzz malformed and truncated inputs.",
+    "mistake": "Trusting lengths stored in the payload.",
+    "rubric": [
+      "Validate lengths and integer arithmetic",
+      "Keep parsing within explicit bounds",
+      "Fuzz malformed and truncated inputs"
+    ],
+    "followups": [
+      "How would you detect arithmetic overflow?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-29",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Portability",
+    "round": "Design",
+    "q": "What matters when supporting multiple native targets?",
+    "a": "Compiler ABI and library differences.",
+    "explanation": "Compiler ABI and library differences. Integer layout alignment and endianness. Test supported platforms explicitly.",
+    "mistake": "Assuming local machine behavior is universal.",
+    "rubric": [
+      "Compiler ABI and library differences",
+      "Integer layout alignment and endianness",
+      "Test supported platforms explicitly"
+    ],
+    "followups": [
+      "How would you serialize portable numeric fields?",
+      "Walk through a concrete example of portability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-30",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Operational safety",
+    "round": "Design",
+    "q": "How would you diagnose a native production crash?",
+    "a": "Preserve symbols and build identity.",
+    "explanation": "Preserve symbols and build identity. Inspect stack and memory evidence. Reproduce affected input and platform conditions.",
+    "mistake": "Discarding crash dumps before diagnosis.",
+    "rubric": [
+      "Preserve symbols and build identity",
+      "Inspect stack and memory evidence",
+      "Reproduce affected input and platform conditions"
+    ],
+    "followups": [
+      "How would you distinguish use-after-free from null access?",
+      "Walk through a concrete example of operational safety and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-31",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Dependency governance",
+    "round": "Design",
+    "q": "How should a native team evaluate a library?",
+    "a": "Review maintenance security license and ABI needs.",
+    "explanation": "Review maintenance security license and ABI needs. Inspect build and transitive costs. Keep integration boundaries replaceable.",
+    "mistake": "Choosing solely by benchmark claims.",
+    "rubric": [
+      "Review maintenance security license and ABI needs",
+      "Inspect build and transitive costs",
+      "Keep integration boundaries replaceable"
+    ],
+    "followups": [
+      "How would a vulnerable static dependency reach shipped binaries?",
+      "Walk through a concrete example of dependency governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-path-32",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How do you balance low-level optimization and maintainability?",
+    "a": "Set measurable performance requirements.",
+    "explanation": "Set measurable performance requirements. Keep ownership and invariants clear. Optimize bounded critical paths.",
+    "mistake": "Sacrificing safety without demonstrated performance need.",
+    "rubric": [
+      "Set measurable performance requirements",
+      "Keep ownership and invariants clear",
+      "Optimize bounded critical paths"
+    ],
+    "followups": [
+      "What evidence justifies a custom allocator?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

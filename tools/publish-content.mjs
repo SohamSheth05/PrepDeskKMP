@@ -1,0 +1,11 @@
+import { execFileSync } from 'node:child_process';
+import fs from 'node:fs';
+execFileSync(process.execPath, ['tools/generate-questions.mjs', '--check'], { stdio: 'inherit' });
+const url = process.env.PREPDESK_SUPABASE_URL;
+const key = process.env.PREPDESK_SUPABASE_SERVICE_ROLE_KEY;
+if (!/^https:\/\/[a-zA-Z0-9.-]+$/.test(url ?? '') || !key) throw new Error('Set the Supabase URL and server-only service role key');
+const files = ['questions.json', ...fs.readdirSync('content').filter(x => x.endsWith('-questions.json')).sort()];
+const pack = { format: 1, questions: files.flatMap(x => JSON.parse(fs.readFileSync(`content/${x}`, 'utf8'))), sources: JSON.parse(fs.readFileSync('content/sources.json', 'utf8')), resources: JSON.parse(fs.readFileSync('content/resources.json', 'utf8')) };
+const response = await fetch(`${url}/rest/v1/rpc/publish_content`, { method: 'POST', headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' }, body: JSON.stringify({ new_document: pack }), redirect: 'error', signal: AbortSignal.timeout(30000) });
+if (!response.ok) throw new Error(`Content publish failed (${response.status}); previous release remains active`);
+console.log(`Published content release ${await response.json()}: ${pack.questions.length} questions`);

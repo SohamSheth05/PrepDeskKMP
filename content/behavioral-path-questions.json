@@ -1,0 +1,834 @@
+[
+  {
+    "id": "behavioral-path-01",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Introduction",
+    "round": "Fundamentals",
+    "q": "How should you introduce yourself in an interview?",
+    "a": "Connect your experience to the role.",
+    "explanation": "Connect your experience to the role. Use a concise relevant progression. Highlight one credible contribution.",
+    "mistake": "Reciting every detail of your resume.",
+    "rubric": [
+      "Connect your experience to the role",
+      "Use a concise relevant progression",
+      "Highlight one credible contribution"
+    ],
+    "followups": [
+      "Which experience best matches this position?",
+      "Walk through a concrete example of introduction and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-02",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Motivation",
+    "round": "Fundamentals",
+    "q": "How should you explain interest in a role?",
+    "a": "Describe specific work and growth alignment.",
+    "explanation": "Describe specific work and growth alignment. Use evidence from the product or role. Keep expectations honest.",
+    "mistake": "Giving a generic answer suitable for any company.",
+    "rubric": [
+      "Describe specific work and growth alignment",
+      "Use evidence from the product or role",
+      "Keep expectations honest"
+    ],
+    "followups": [
+      "What would you want to learn in the role?",
+      "Walk through a concrete example of motivation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-03",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Projects",
+    "round": "Fundamentals",
+    "q": "How do you explain your contribution to a team project?",
+    "a": "Describe context and your own responsibility.",
+    "explanation": "Describe context and your own responsibility. Explain decisions and collaboration. State the observed result.",
+    "mistake": "Taking credit for the whole team's work.",
+    "rubric": [
+      "Describe context and your own responsibility",
+      "Explain decisions and collaboration",
+      "State the observed result"
+    ],
+    "followups": [
+      "What did you personally change?",
+      "Walk through a concrete example of projects and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-04",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Learning",
+    "round": "Fundamentals",
+    "q": "How do you discuss learning an unfamiliar technology?",
+    "a": "Explain the goal and knowledge gap.",
+    "explanation": "Explain the goal and knowledge gap. Describe a practical learning approach. Show how you validated understanding.",
+    "mistake": "Listing tutorials without applied outcomes.",
+    "rubric": [
+      "Explain the goal and knowledge gap",
+      "Describe a practical learning approach",
+      "Show how you validated understanding"
+    ],
+    "followups": [
+      "What mistake did you correct while learning?",
+      "Walk through a concrete example of learning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-05",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Feedback",
+    "round": "Fundamentals",
+    "q": "How do you describe receiving difficult feedback?",
+    "a": "State the specific feedback fairly.",
+    "explanation": "State the specific feedback fairly. Explain your response and changed behavior. Reflect on evidence of improvement.",
+    "mistake": "Claiming you have never received criticism.",
+    "rubric": [
+      "State the specific feedback fairly",
+      "Explain your response and changed behavior",
+      "Reflect on evidence of improvement"
+    ],
+    "followups": [
+      "How did you know the change helped?",
+      "Walk through a concrete example of feedback and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-06",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Mistakes",
+    "round": "Fundamentals",
+    "q": "How should you discuss a professional mistake?",
+    "a": "Take responsibility for your part.",
+    "explanation": "Take responsibility for your part. Explain mitigation and learning. Describe prevention based on the cause.",
+    "mistake": "Blaming others or hiding the impact.",
+    "rubric": [
+      "Take responsibility for your part",
+      "Explain mitigation and learning",
+      "Describe prevention based on the cause"
+    ],
+    "followups": [
+      "What would you do differently now?",
+      "Walk through a concrete example of mistakes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-07",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Collaboration",
+    "round": "Fundamentals",
+    "q": "How do you show effective collaboration?",
+    "a": "Use a concrete shared goal.",
+    "explanation": "Use a concrete shared goal. Explain communication and coordination. Describe your contribution to the result.",
+    "mistake": "Saying you are a team player without evidence.",
+    "rubric": [
+      "Use a concrete shared goal",
+      "Explain communication and coordination",
+      "Describe your contribution to the result"
+    ],
+    "followups": [
+      "Where did collaboration change your original idea?",
+      "Walk through a concrete example of collaboration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-08",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Questions",
+    "round": "Fundamentals",
+    "q": "What should you ask an interviewer about the role?",
+    "a": "Ask about real responsibilities and success criteria.",
+    "explanation": "Ask about real responsibilities and success criteria. Explore team support and constraints. Connect questions to your priorities.",
+    "mistake": "Asking only questions answered clearly in the job description.",
+    "rubric": [
+      "Ask about real responsibilities and success criteria",
+      "Explore team support and constraints",
+      "Connect questions to your priorities"
+    ],
+    "followups": [
+      "How would success be judged after six months?",
+      "Walk through a concrete example of questions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-09",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Deadlines",
+    "round": "Scenario",
+    "q": "How do you describe handling a tight deadline?",
+    "a": "Explain constraints and prioritization.",
+    "explanation": "Explain constraints and prioritization. Communicate risks and scope options. State results and remaining trade-offs.",
+    "mistake": "Claiming unlimited overtime solves every deadline.",
+    "rubric": [
+      "Explain constraints and prioritization",
+      "Communicate risks and scope options",
+      "State results and remaining trade-offs"
+    ],
+    "followups": [
+      "What did you intentionally defer?",
+      "Walk through a concrete example of deadlines and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-10",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Conflict",
+    "round": "Scenario",
+    "q": "How do you discuss disagreement with a teammate?",
+    "a": "Describe differing views without personal attacks.",
+    "explanation": "Describe differing views without personal attacks. Explain shared goals and evidence. Show the decision and working relationship.",
+    "mistake": "Presenting the story only as proving yourself right.",
+    "rubric": [
+      "Describe differing views without personal attacks",
+      "Explain shared goals and evidence",
+      "Show the decision and working relationship"
+    ],
+    "followups": [
+      "What did you learn from their viewpoint?",
+      "Walk through a concrete example of conflict and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-11",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Ambiguity",
+    "round": "Scenario",
+    "q": "How do you handle an unclear task?",
+    "a": "Identify what is known and uncertain.",
+    "explanation": "Identify what is known and uncertain. Clarify outcomes and decision ownership. Make bounded progress under explicit assumptions.",
+    "mistake": "Waiting indefinitely for perfect instructions.",
+    "rubric": [
+      "Identify what is known and uncertain",
+      "Clarify outcomes and decision ownership",
+      "Make bounded progress under explicit assumptions"
+    ],
+    "followups": [
+      "Which assumption would you validate first?",
+      "Walk through a concrete example of ambiguity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-12",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Initiative",
+    "round": "Scenario",
+    "q": "How do you show initiative responsibly?",
+    "a": "Identify a concrete useful problem.",
+    "explanation": "Identify a concrete useful problem. Align with relevant owners and constraints. Follow through with evidence of impact.",
+    "mistake": "Making broad changes without informing affected people.",
+    "rubric": [
+      "Identify a concrete useful problem",
+      "Align with relevant owners and constraints",
+      "Follow through with evidence of impact"
+    ],
+    "followups": [
+      "How did you choose the scope?",
+      "Walk through a concrete example of initiative and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-13",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Priorities",
+    "round": "Scenario",
+    "q": "How do you handle competing requests?",
+    "a": "Compare impact urgency and commitments.",
+    "explanation": "Compare impact urgency and commitments. Clarify priorities with accountable owners. Communicate trade-offs and updated timing.",
+    "mistake": "Promising everything immediately.",
+    "rubric": [
+      "Compare impact urgency and commitments",
+      "Clarify priorities with accountable owners",
+      "Communicate trade-offs and updated timing"
+    ],
+    "followups": [
+      "How did you explain a lower-priority delay?",
+      "Walk through a concrete example of priorities and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-14",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Resilience",
+    "round": "Scenario",
+    "q": "How should you discuss a setback?",
+    "a": "Describe the actual obstacle and impact.",
+    "explanation": "Describe the actual obstacle and impact. Explain recovery actions and support. Show learning without exaggeration.",
+    "mistake": "Pretending every setback became an instant success.",
+    "rubric": [
+      "Describe the actual obstacle and impact",
+      "Explain recovery actions and support",
+      "Show learning without exaggeration"
+    ],
+    "followups": [
+      "What remained difficult afterward?",
+      "Walk through a concrete example of resilience and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-15",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Customer focus",
+    "round": "Scenario",
+    "q": "How do you demonstrate understanding user needs?",
+    "a": "Use concrete user evidence.",
+    "explanation": "Use concrete user evidence. Connect decisions to the need. Measure or observe the resulting effect.",
+    "mistake": "Assuming your preference represents every user.",
+    "rubric": [
+      "Use concrete user evidence",
+      "Connect decisions to the need",
+      "Measure or observe the resulting effect"
+    ],
+    "followups": [
+      "Which feedback changed the solution?",
+      "Walk through a concrete example of customer focus and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-16",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Career change",
+    "round": "Scenario",
+    "q": "How should you explain leaving a previous role?",
+    "a": "Give a truthful concise reason.",
+    "explanation": "Give a truthful concise reason. Focus on desired work and growth. Keep confidential details private.",
+    "mistake": "Speaking disparagingly about former colleagues.",
+    "rubric": [
+      "Give a truthful concise reason",
+      "Focus on desired work and growth",
+      "Keep confidential details private"
+    ],
+    "followups": [
+      "What are you seeking in the next role?",
+      "Walk through a concrete example of career change and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-17",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Leadership",
+    "round": "Debugging",
+    "q": "How do you show leadership without a formal title?",
+    "a": "Align people around a useful outcome.",
+    "explanation": "Align people around a useful outcome. Clarify responsibilities and support. Describe results and shared contribution.",
+    "mistake": "Equating leadership with issuing instructions.",
+    "rubric": [
+      "Align people around a useful outcome",
+      "Clarify responsibilities and support",
+      "Describe results and shared contribution"
+    ],
+    "followups": [
+      "How did you help others act independently?",
+      "Walk through a concrete example of leadership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-18",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Influence",
+    "round": "Debugging",
+    "q": "How do you persuade stakeholders about a technical trade-off?",
+    "a": "Connect options to stakeholder goals.",
+    "explanation": "Connect options to stakeholder goals. Explain evidence risks and costs plainly. Seek a clear accountable decision.",
+    "mistake": "Relying on authority or jargon alone.",
+    "rubric": [
+      "Connect options to stakeholder goals",
+      "Explain evidence risks and costs plainly",
+      "Seek a clear accountable decision"
+    ],
+    "followups": [
+      "What alternative did you seriously consider?",
+      "Walk through a concrete example of influence and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-19",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Mentoring",
+    "round": "Debugging",
+    "q": "How do you describe helping someone grow?",
+    "a": "Identify their goal and current gap.",
+    "explanation": "Identify their goal and current gap. Provide tailored guidance and practice. Show increased capability or autonomy.",
+    "mistake": "Taking over the work and calling it mentoring.",
+    "rubric": [
+      "Identify their goal and current gap",
+      "Provide tailored guidance and practice",
+      "Show increased capability or autonomy"
+    ],
+    "followups": [
+      "How did you adapt to their feedback?",
+      "Walk through a concrete example of mentoring and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-20",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Ownership",
+    "round": "Debugging",
+    "q": "How do you describe owning a difficult outcome?",
+    "a": "Explain responsibilities and constraints.",
+    "explanation": "Explain responsibilities and constraints. Coordinate actions and communicate risk. Acknowledge both results and limits.",
+    "mistake": "Claiming responsibility only for successful parts.",
+    "rubric": [
+      "Explain responsibilities and constraints",
+      "Coordinate actions and communicate risk",
+      "Acknowledge both results and limits"
+    ],
+    "followups": [
+      "What did you escalate and why?",
+      "Walk through a concrete example of ownership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-21",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Ethics",
+    "round": "Debugging",
+    "q": "How would you respond to pressure to misrepresent results?",
+    "a": "Keep evidence and reporting truthful.",
+    "explanation": "Keep evidence and reporting truthful. Explain concerns and safer alternatives. Use appropriate escalation and documentation.",
+    "mistake": "Changing numbers to satisfy a preferred narrative.",
+    "rubric": [
+      "Keep evidence and reporting truthful",
+      "Explain concerns and safer alternatives",
+      "Use appropriate escalation and documentation"
+    ],
+    "followups": [
+      "How would you preserve confidentiality while escalating?",
+      "Walk through a concrete example of ethics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-22",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Failure discussion",
+    "round": "Debugging",
+    "q": "How do you discuss a project that missed its goal?",
+    "a": "Describe the goal and actual outcome.",
+    "explanation": "Describe the goal and actual outcome. Separate causes from excuses. Explain actions and lessons with ownership.",
+    "mistake": "Reframing every failure as complete success.",
+    "rubric": [
+      "Describe the goal and actual outcome",
+      "Separate causes from excuses",
+      "Explain actions and lessons with ownership"
+    ],
+    "followups": [
+      "Which early signal did you miss?",
+      "Walk through a concrete example of failure discussion and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-23",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Adaptability",
+    "round": "Debugging",
+    "q": "How do you describe responding to major organizational change?",
+    "a": "Explain changed constraints and priorities.",
+    "explanation": "Explain changed constraints and priorities. Show how you adjusted behavior. Reflect on outcomes and ongoing uncertainty.",
+    "mistake": "Claiming change never affects you.",
+    "rubric": [
+      "Explain changed constraints and priorities",
+      "Show how you adjusted behavior",
+      "Reflect on outcomes and ongoing uncertainty"
+    ],
+    "followups": [
+      "What support did you need?",
+      "Walk through a concrete example of adaptability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-24",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Cross-functional work",
+    "round": "Debugging",
+    "q": "How do you work with teams using different priorities?",
+    "a": "Clarify shared outcomes and constraints.",
+    "explanation": "Clarify shared outcomes and constraints. Translate technical and business concerns. Agree on ownership and trade-offs.",
+    "mistake": "Assuming another team simply does not understand.",
+    "rubric": [
+      "Clarify shared outcomes and constraints",
+      "Translate technical and business concerns",
+      "Agree on ownership and trade-offs"
+    ],
+    "followups": [
+      "How did you resolve a dependency disagreement?",
+      "Walk through a concrete example of cross-functional work and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-25",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Strategy",
+    "round": "Design",
+    "q": "How do you describe making a consequential long-term decision?",
+    "a": "State objectives assumptions and alternatives.",
+    "explanation": "State objectives assumptions and alternatives. Explain evidence and risk management. Reflect on outcomes and revisions.",
+    "mistake": "Presenting hindsight as certainty you had originally.",
+    "rubric": [
+      "State objectives assumptions and alternatives",
+      "Explain evidence and risk management",
+      "Reflect on outcomes and revisions"
+    ],
+    "followups": [
+      "Which assumption proved wrong?",
+      "Walk through a concrete example of strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-26",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Organizational impact",
+    "round": "Design",
+    "q": "How do you show impact beyond your immediate team?",
+    "a": "Identify a broader recurring problem.",
+    "explanation": "Identify a broader recurring problem. Explain coalition ownership and adoption. Use credible outcome evidence.",
+    "mistake": "Claiming organization-wide impact from a local change.",
+    "rubric": [
+      "Identify a broader recurring problem",
+      "Explain coalition ownership and adoption",
+      "Use credible outcome evidence"
+    ],
+    "followups": [
+      "How was the improvement adopted elsewhere?",
+      "Walk through a concrete example of organizational impact and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-27",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Decision quality",
+    "round": "Design",
+    "q": "How do you explain a decision made with incomplete information?",
+    "a": "State available evidence and uncertainty.",
+    "explanation": "State available evidence and uncertainty. Choose a proportional reversible or bounded action. Revisit when new information arrives.",
+    "mistake": "Pretending incomplete evidence was conclusive.",
+    "rubric": [
+      "State available evidence and uncertainty",
+      "Choose a proportional reversible or bounded action",
+      "Revisit when new information arrives"
+    ],
+    "followups": [
+      "What trigger would make you reverse the decision?",
+      "Walk through a concrete example of decision quality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-28",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "People development",
+    "round": "Design",
+    "q": "How do you evaluate your effect on others' growth?",
+    "a": "Use observed autonomy skill and outcomes.",
+    "explanation": "Use observed autonomy skill and outcomes. Describe specific support and feedback. Acknowledge the person's own contribution.",
+    "mistake": "Taking all credit for another person's success.",
+    "rubric": [
+      "Use observed autonomy skill and outcomes",
+      "Describe specific support and feedback",
+      "Acknowledge the person's own contribution"
+    ],
+    "followups": [
+      "How did you adjust your support over time?",
+      "Walk through a concrete example of people development and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-29",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Crisis leadership",
+    "round": "Design",
+    "q": "How do you describe leading during a serious incident?",
+    "a": "Focus on mitigation coordination and truthful communication.",
+    "explanation": "Focus on mitigation coordination and truthful communication. Delegate clear responsibilities. Explain recovery and learning.",
+    "mistake": "Presenting yourself as the only person who helped.",
+    "rubric": [
+      "Focus on mitigation coordination and truthful communication",
+      "Delegate clear responsibilities",
+      "Explain recovery and learning"
+    ],
+    "followups": [
+      "Which decision most reduced user impact?",
+      "Walk through a concrete example of crisis leadership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-30",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Culture",
+    "round": "Design",
+    "q": "How do you contribute to a healthy engineering culture?",
+    "a": "Model clear respectful evidence-based work.",
+    "explanation": "Model clear respectful evidence-based work. Address recurring process problems. Support shared ownership and learning.",
+    "mistake": "Using slogans without concrete actions.",
+    "rubric": [
+      "Model clear respectful evidence-based work",
+      "Address recurring process problems",
+      "Support shared ownership and learning"
+    ],
+    "followups": [
+      "How did you handle a harmful team practice?",
+      "Walk through a concrete example of culture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-31",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Self-awareness",
+    "round": "Design",
+    "q": "How do you discuss a genuine development area?",
+    "a": "Choose a relevant truthful limitation.",
+    "explanation": "Choose a relevant truthful limitation. Explain its effect and current actions. Use evidence of progress without claiming perfection.",
+    "mistake": "Disguising a strength as a weakness.",
+    "rubric": [
+      "Choose a relevant truthful limitation",
+      "Explain its effect and current actions",
+      "Use evidence of progress without claiming perfection"
+    ],
+    "followups": [
+      "What feedback helps you track improvement?",
+      "Walk through a concrete example of self-awareness and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-path-32",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Career direction",
+    "round": "Design",
+    "q": "How should you explain your longer-term ambitions?",
+    "a": "Connect interests to realistic next responsibilities.",
+    "explanation": "Connect interests to realistic next responsibilities. Show openness to learning. Be honest about preferred work.",
+    "mistake": "Giving a title-only answer with no work motivation.",
+    "rubric": [
+      "Connect interests to realistic next responsibilities",
+      "Show openness to learning",
+      "Be honest about preferred work"
+    ],
+    "followups": [
+      "What experience would prepare you for that direction?",
+      "Walk through a concrete example of career direction and explain one trade-off."
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

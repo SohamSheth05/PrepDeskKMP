@@ -1,0 +1,214 @@
+[
+  {
+    "id": "frontend-semantics",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "Accessibility",
+    "round": "Fundamentals",
+    "q": "Why use a button element instead of a clickable div for an action?",
+    "a": "A native button supplies action semantics and standard keyboard behavior; a div requires that behavior to be built and tested.",
+    "explanation": "Include accessible naming, focus visibility, and appropriate disabled behavior. Native semantics reduce work but do not excuse poor labels or unreachable controls.",
+    "mistake": "Adding a click handler and considering accessibility finished.",
+    "rubric": [
+      "Use meaningful semantics",
+      "Support keyboard and focus",
+      "Provide an accessible name"
+    ],
+    "followups": [
+      "When should an anchor be used?",
+      "How would you test without a mouse?"
+    ],
+    "sourceIds": [
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-layout",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "CSS and rendering",
+    "round": "Debugging",
+    "q": "A modal looks correct but keyboard focus moves behind it. What is missing?",
+    "a": "Modal interaction needs deliberate focus entry, containment while open, and return to the triggering control.",
+    "explanation": "Use appropriate dialog semantics and test escape/close behavior and assistive technologies. Hiding content visually is not enough to define keyboard interaction.",
+    "mistake": "Treating a high z-index as a complete modal implementation.",
+    "rubric": [
+      "Manage focus entry and return",
+      "Contain modal interaction",
+      "Test keyboard and naming"
+    ],
+    "followups": [
+      "What if the trigger disappears?",
+      "How should nested dialogs behave?"
+    ],
+    "sourceIds": [
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-cache",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "HTTP caching",
+    "round": "Debugging",
+    "q": "Users see stale frontend assets after a release. How do you design caching?",
+    "a": "Use content-versioned asset URLs and appropriate cache directives, while giving the entry document a deliberate freshness policy.",
+    "explanation": "Cache behavior involves browsers, CDNs, and service workers. Identify the layer serving old data before changing headers. Personal data needs a different policy from public static assets.",
+    "mistake": "Disabling all caching instead of diagnosing the stale layer.",
+    "rubric": [
+      "Version immutable assets",
+      "Define document freshness",
+      "Inspect browser/CDN behavior"
+    ],
+    "followups": [
+      "What does no-cache mean?",
+      "How would a service worker affect this?"
+    ],
+    "sourceIds": [
+      "http-caching"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-form",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Forms",
+    "round": "Coding",
+    "q": "Design a form with async validation and accessible errors.",
+    "a": "Keep field values and validation state clear, associate errors with fields, and validate again at the server boundary.",
+    "explanation": "Prevent stale validation responses from overwriting newer input. Preserve typed data on failure and guide focus appropriately after submission. Client validation improves feedback, not server trust.",
+    "mistake": "Treating client-side validation as a security boundary.",
+    "rubric": [
+      "Associate errors and fields",
+      "Handle asynchronous races",
+      "Validate on the server"
+    ],
+    "followups": [
+      "How do you announce a form-level error?",
+      "When should validation run?"
+    ],
+    "sourceIds": [
+      "w3c-accessibility",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-loading",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "System design",
+    "q": "A web app loads megabytes of JavaScript before showing its main workflow. What would you change?",
+    "a": "Measure critical-path assets and user interactions, then split unnecessary code and defer suitable work.",
+    "explanation": "Account for parsing and execution on slow devices as well as transfer size. Prefetch only with evidence and monitor failures at loading boundaries. Keep essential controls usable early.",
+    "mistake": "Optimizing bundle size while ignoring main-thread execution cost.",
+    "rubric": [
+      "Measure the user critical path",
+      "Reduce initial execution and data",
+      "Validate loading and failure behavior"
+    ],
+    "followups": [
+      "When can code splitting hurt?",
+      "What would you test on a slow device?"
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "http-caching"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-race",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Browser async state",
+    "round": "Debugging",
+    "q": "Navigating quickly between records sometimes displays the wrong record. How do you reason about this?",
+    "a": "Tie each response to the active record/request and prevent obsolete responses from changing the current view.",
+    "explanation": "Cancellation helps but should not be the only guard. Model loading and errors per request, avoid sharing unrelated cache keys, and reproduce deliberately reversed response order.",
+    "mistake": "Assuming responses arrive in navigation order.",
+    "rubric": [
+      "Use stable request identity",
+      "Guard obsolete results",
+      "Test reversed completion order"
+    ],
+    "followups": [
+      "How does caching change the design?",
+      "What should be shown during navigation?"
+    ],
+    "sourceIds": [
+      "mdn-javascript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-design-platform",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Leadership",
+    "q": "Several frontend teams build incompatible controls. How would you improve the shared platform?",
+    "a": "Define accessible contracts and contribution ownership, then deliver reusable components with measured adoption and migration support.",
+    "explanation": "Validate real product workflows and avoid forcing every exceptional interaction into one component. Establish versioning, compatibility checks, and an escalation path for product-specific needs.",
+    "mistake": "Equating shared code with consistent user behavior.",
+    "rubric": [
+      "Define accessible contracts",
+      "Validate product consumers",
+      "Govern versions and exceptions"
+    ],
+    "followups": [
+      "How do you prioritize requests?",
+      "What signals a component should be split?"
+    ],
+    "sourceIds": [
+      "w3c-accessibility",
+      "react"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-multiapp",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Would independently deployed frontend modules help a large organization?",
+    "a": "Compare team autonomy with integration, dependency, performance, and user-experience costs before choosing boundaries.",
+    "explanation": "Define routing, authentication, shared design contracts, and failure containment. A modular monolith may meet the need with less operational cost. Pilot a boundary with objective delivery metrics.",
+    "mistake": "Adopting micro frontends solely because many teams exist.",
+    "rubric": [
+      "Clarify organizational needs",
+      "Define integration contracts",
+      "Measure performance and delivery trade-offs"
+    ],
+    "followups": [
+      "How do modules share authentication?",
+      "What happens when one module fails?"
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

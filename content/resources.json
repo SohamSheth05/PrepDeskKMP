@@ -1,0 +1,523 @@
+[
+  {
+    "sourceId": "amit-android",
+    "areas": [
+      "Android"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Android topic checklist and question collection. Use alongside the in-app answers and current Android documentation."
+  },
+  {
+    "sourceId": "android-midlevel-blog",
+    "areas": [
+      "Android"
+    ],
+    "levels": [
+      2
+    ],
+    "note": "Architecture, persistence, coroutines, and security topics for mid-level preparation. Check version-sensitive APIs against official documentation."
+  },
+  {
+    "sourceId": "android-modern-blog",
+    "areas": [
+      "Android",
+      "Kotlin"
+    ],
+    "levels": [
+      2,
+      3
+    ],
+    "note": "A question checklist spanning Android, Kotlin, Compose, and testing. Published in 2022; use current documentation for API recommendations."
+  },
+  {
+    "sourceId": "android-lifecycle-blog",
+    "areas": [
+      "Android"
+    ],
+    "levels": [
+      3,
+      4
+    ],
+    "note": "Lifecycle scenarios for senior preparation. Cross-check lifecycle states and deprecated APIs with the Android references below."
+  },
+  {
+    "sourceId": "kotlin-interview-blog",
+    "areas": [
+      "Android",
+      "Kotlin"
+    ],
+    "levels": [
+      1,
+      2,
+      3
+    ],
+    "note": "Kotlin language topics and further reading, including inline functions, scope functions, and class design."
+  },
+  {
+    "sourceId": "android-experienced-blog",
+    "areas": [
+      "Android"
+    ],
+    "levels": [
+      3
+    ],
+    "note": "User-supplied reading link for experienced Android developers. Article text was unavailable for review; it may require sign-in or membership."
+  },
+  {
+    "sourceId": "frontend-handbook",
+    "areas": [
+      "Frontend"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Interview formats, HTML/CSS/JavaScript topics, and frontend system design preparation."
+  },
+  {
+    "sourceId": "react-interviews",
+    "areas": [
+      "React"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "React question collection. Compare API-specific answers with the current React learning references."
+  },
+  {
+    "sourceId": "javascript-interviews",
+    "areas": [
+      "JavaScript and TypeScript"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "JavaScript language and browser questions. Use the separate TypeScript reference for TypeScript topics."
+  },
+  {
+    "sourceId": "design-primer",
+    "areas": [
+      "System Design",
+      "Backend",
+      "Tech Lead"
+    ],
+    "levels": [
+      2,
+      3,
+      4
+    ],
+    "note": "Design problems, trade-offs, scalability concepts, and sample solutions."
+  },
+  {
+    "sourceId": "devops-exercises",
+    "areas": [
+      "DevOps and Cloud"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Interview questions and exercises covering Linux, cloud infrastructure, containers, networking, and operations."
+  },
+  {
+    "sourceId": "interview-handbook",
+    "areas": [
+      "DSA and Coding",
+      "HR and Behavioral"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Coding interview study plans, algorithms, and behavioral preparation."
+  },
+  {
+    "sourceId": "python-interviews",
+    "areas": [
+      "Python"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Python language questions and answers. Validate runtime-specific claims against the Python references below. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "node-interviews",
+    "areas": [
+      "Node.js"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Node.js runtime and backend interview topics; cross-check with current Node.js documentation. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "java-interviews",
+    "areas": [
+      "Java and Spring"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Java language and JVM interview topics. Spring transaction references are available separately below. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "golang-interviews",
+    "areas": [
+      "Go"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Go language and concurrency interview topics alongside Effective Go and the race detector guide. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "flutter-interviews",
+    "areas": [
+      "Flutter"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Flutter framework question collection; pair it with the architecture and performance references. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "swift-interviews",
+    "areas": [
+      "iOS and Swift"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Swift language interview topics; Apple and Swift documentation cover platform and concurrency details. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "c-sharp-interviews",
+    "areas": [
+      "C# and .NET"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "C# interview topic collection. Cross-check API and runtime details with the technical references below. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "rust-interviews",
+    "areas": [
+      "Rust"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Rust interview topic collection. Cross-check API and runtime details with the technical references below. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "kotlin-interviews",
+    "areas": [
+      "Kotlin"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Kotlin interview topic collection. Cross-check API and runtime details with the technical references below. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "sql-interviews",
+    "areas": [
+      "Database"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "SQL interview topic collection. Cross-check API and runtime details with the technical references below. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "cpp-interviews",
+    "areas": [
+      "C and C++"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "C++ interview topic collection. Cross-check API and runtime details with the technical references below. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "android-preparation-series",
+    "areas": [
+      "Android",
+      "Mobile"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "A reading series covering Android, architecture, coroutines, and coding preparation. Individual articles may require Medium membership."
+  },
+  {
+    "sourceId": "android-basics-2024",
+    "areas": [
+      "Android"
+    ],
+    "levels": [
+      1,
+      2
+    ],
+    "note": "Components, Context, lifecycle, intents, services, and fragments. Published November 2024; check deprecated background-work APIs against current Android documentation."
+  },
+  {
+    "sourceId": "android-sde-roadmap",
+    "areas": [
+      "Android"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "A preparation roadmap from fundamentals through architecture, performance, and system design. Its SDE labels are not identical to PrepDesk experience tiers."
+  },
+  {
+    "sourceId": "spring-interviews",
+    "areas": [
+      "Java and Spring",
+      "Backend"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Spring, Spring Boot, MVC, persistence, and web-service questions with examples. Some examples use older framework versions; verify APIs using current Spring documentation."
+  },
+  {
+    "sourceId": "typescript-interviews",
+    "areas": [
+      "JavaScript and TypeScript",
+      "Frontend"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Types, generics, narrowing, and TypeScript language questions. Some further answers may be hosted on an external service."
+  },
+  {
+    "sourceId": "qa-capco",
+    "areas": [
+      "Testing and QA"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Automation frameworks, Java, SQL, API testing, and practical testing topics. Employer-specific topic lists; they do not guarantee questions at other companies."
+  },
+  {
+    "sourceId": "backend-capco",
+    "areas": [
+      "Backend",
+      "Java and Spring",
+      "Node.js"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Backend engineering interview topics published by Capco; prepare concrete examples and compare runtime details with official documentation. Employer-specific topic lists; they do not guarantee questions at other companies."
+  },
+  {
+    "sourceId": "data-capco",
+    "areas": [
+      "AI and Data",
+      "Database"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "SQL, data pipelines, warehousing, and data engineering preparation; complements the separate machine-learning resource. Employer-specific topic lists; they do not guarantee questions at other companies."
+  },
+  {
+    "sourceId": "ios-capco",
+    "areas": [
+      "iOS and Swift",
+      "Mobile"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Swift and iOS platform interview topics published by Capco. Employer-specific topic lists; they do not guarantee questions at other companies."
+  },
+  {
+    "sourceId": "devops-capco",
+    "areas": [
+      "DevOps and Cloud"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Cloud, containers, operations, networking, and delivery topics. Employer-specific topic lists; they do not guarantee questions at other companies."
+  },
+  {
+    "sourceId": "frontend-capco",
+    "areas": [
+      "Frontend",
+      "React",
+      "JavaScript and TypeScript"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Web engineering interview topics published by Capco. Employer-specific topic lists; they do not guarantee questions at other companies."
+  },
+  {
+    "sourceId": "delivery-capco",
+    "areas": [
+      "Project Management",
+      "Tech Lead"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Technical delivery discussion prompts for preparing examples of planning, risk, stakeholder work, and team delivery. Employer-specific topic lists; they do not guarantee questions at other companies."
+  },
+  {
+    "sourceId": "ml-interviews-book",
+    "areas": [
+      "AI and Data",
+      "Python"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "ML roles, interview preparation, and technical questions. A foundational guide; it does not cover every recent generative-AI tool."
+  },
+  {
+    "sourceId": "security-interviews",
+    "areas": [
+      "Security"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Application, API, cloud, network, and DevSecOps interview question collections. Validate security recommendations using current OWASP and provider guidance."
+  },
+  {
+    "sourceId": "leadership-interviews",
+    "areas": [
+      "Tech Lead",
+      "HR and Behavioral"
+    ],
+    "levels": [
+      3,
+      4
+    ],
+    "note": "Leadership discussion prompts for senior individual contributors and engineering managers. Prepare evidence from your own work instead of memorized scripts."
+  },
+  {
+    "sourceId": "scrum-assessments",
+    "areas": [
+      "Project Management"
+    ],
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "note": "Free self-check assessments for Scrum knowledge. These are certification practice assessments, not a collection of employer interview questions."
+  },
+  {
+    "sourceId": "android-company-experiences",
+    "areas": [
+      "Android",
+      "Kotlin"
+    ],
+    "levels": [
+      1,
+      2,
+      3
+    ],
+    "note": "Questions reported from Android interviews at several companies, grouped by employer. Use it as a topic checklist; the in-app answers cover each topic."
+  }
+]

@@ -1,0 +1,866 @@
+[
+  {
+    "id": "project-path-01",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Scope",
+    "round": "Fundamentals",
+    "q": "How should project scope be defined?",
+    "a": "Describe intended outcomes and boundaries.",
+    "explanation": "Describe intended outcomes and boundaries. Agree on acceptance criteria. Make exclusions and assumptions visible.",
+    "mistake": "Treating a vague feature title as complete scope.",
+    "rubric": [
+      "Describe intended outcomes and boundaries",
+      "Agree on acceptance criteria",
+      "Make exclusions and assumptions visible"
+    ],
+    "followups": [
+      "How would you handle a new requested feature?",
+      "Walk through a concrete example of scope and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-02",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Stakeholders",
+    "round": "Fundamentals",
+    "q": "How do you identify relevant stakeholders?",
+    "a": "Map users decision makers and dependencies.",
+    "explanation": "Map users decision makers and dependencies. Clarify communication and approval roles. Review the map as scope evolves.",
+    "mistake": "Assuming only sponsors influence delivery.",
+    "rubric": [
+      "Map users decision makers and dependencies",
+      "Clarify communication and approval roles",
+      "Review the map as scope evolves"
+    ],
+    "followups": [
+      "Who owns final acceptance?",
+      "Walk through a concrete example of stakeholders and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-03",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Milestones",
+    "round": "Fundamentals",
+    "q": "What makes a milestone meaningful?",
+    "a": "It represents a verified outcome.",
+    "explanation": "It represents a verified outcome. Dependencies and acceptance are explicit. Progress is evidenced rather than guessed.",
+    "mistake": "Calling a date alone a milestone.",
+    "rubric": [
+      "It represents a verified outcome",
+      "Dependencies and acceptance are explicit",
+      "Progress is evidenced rather than guessed"
+    ],
+    "followups": [
+      "How would you measure completion?",
+      "Walk through a concrete example of milestones and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-04",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Risks",
+    "round": "Fundamentals",
+    "q": "How do risks differ from current issues?",
+    "a": "Risks are uncertain future events.",
+    "explanation": "Risks are uncertain future events. Issues already affect the project. Both need ownership and response.",
+    "mistake": "Keeping only a list without actions.",
+    "rubric": [
+      "Risks are uncertain future events",
+      "Issues already affect the project",
+      "Both need ownership and response"
+    ],
+    "followups": [
+      "When should a risk become an issue?",
+      "Walk through a concrete example of risks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-05",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Estimates",
+    "round": "Fundamentals",
+    "q": "How should estimates communicate uncertainty?",
+    "a": "State assumptions and confidence.",
+    "explanation": "State assumptions and confidence. Use ranges when appropriate. Update with new evidence.",
+    "mistake": "Presenting early estimates as guaranteed delivery dates.",
+    "rubric": [
+      "State assumptions and confidence",
+      "Use ranges when appropriate",
+      "Update with new evidence"
+    ],
+    "followups": [
+      "What would you investigate to narrow uncertainty?",
+      "Walk through a concrete example of estimates and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-06",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Backlogs",
+    "round": "Fundamentals",
+    "q": "What makes a backlog item ready to discuss?",
+    "a": "The desired outcome is understandable.",
+    "explanation": "The desired outcome is understandable. Acceptance and dependencies are visible. Size permits useful planning.",
+    "mistake": "Requiring exhaustive implementation details for every idea.",
+    "rubric": [
+      "The desired outcome is understandable",
+      "Acceptance and dependencies are visible",
+      "Size permits useful planning"
+    ],
+    "followups": [
+      "How would you split an oversized item?",
+      "Walk through a concrete example of backlogs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-07",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Status reporting",
+    "round": "Fundamentals",
+    "q": "What should a useful project update contain?",
+    "a": "Current outcome progress and forecast.",
+    "explanation": "Current outcome progress and forecast. Risks blockers and decisions needed. Clear ownership and next steps.",
+    "mistake": "Reporting only hours worked.",
+    "rubric": [
+      "Current outcome progress and forecast",
+      "Risks blockers and decisions needed",
+      "Clear ownership and next steps"
+    ],
+    "followups": [
+      "How would you explain a forecast change?",
+      "Walk through a concrete example of status reporting and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-08",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Change requests",
+    "round": "Fundamentals",
+    "q": "How should a requested scope change be evaluated?",
+    "a": "Assess outcome value and delivery impact.",
+    "explanation": "Assess outcome value and delivery impact. Compare cost timing and risk. Record the accountable decision.",
+    "mistake": "Accepting every change without revising the plan.",
+    "rubric": [
+      "Assess outcome value and delivery impact",
+      "Compare cost timing and risk",
+      "Record the accountable decision"
+    ],
+    "followups": [
+      "Which option preserves the original deadline?",
+      "Walk through a concrete example of change requests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-09",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Dependencies",
+    "round": "Scenario",
+    "q": "How should cross-team dependencies be tracked?",
+    "a": "Define needed outcomes owners and dates.",
+    "explanation": "Define needed outcomes owners and dates. Confirm commitment and compatibility. Monitor blockers and fallback options.",
+    "mistake": "Assuming another team's work will arrive automatically.",
+    "rubric": [
+      "Define needed outcomes owners and dates",
+      "Confirm commitment and compatibility",
+      "Monitor blockers and fallback options"
+    ],
+    "followups": [
+      "How would you escalate a missed dependency?",
+      "Walk through a concrete example of dependencies and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-10",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Prioritization",
+    "round": "Scenario",
+    "q": "How do you prioritize when capacity is limited?",
+    "a": "Compare user value urgency and risk.",
+    "explanation": "Compare user value urgency and risk. Account for dependencies and effort. Make trade-offs explicit.",
+    "mistake": "Prioritizing solely by whoever asks loudest.",
+    "rubric": [
+      "Compare user value urgency and risk",
+      "Account for dependencies and effort",
+      "Make trade-offs explicit"
+    ],
+    "followups": [
+      "How would you handle mandatory compliance work?",
+      "Walk through a concrete example of prioritization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-11",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Scrum goals",
+    "round": "Scenario",
+    "q": "What purpose does a Sprint Goal serve?",
+    "a": "It provides a coherent intended outcome.",
+    "explanation": "It provides a coherent intended outcome. Teams adapt work toward that goal. It supports focused inspection and trade-offs.",
+    "mistake": "Treating every backlog item as an independent goal.",
+    "rubric": [
+      "It provides a coherent intended outcome",
+      "Teams adapt work toward that goal",
+      "It supports focused inspection and trade-offs"
+    ],
+    "followups": [
+      "How would new urgent work affect the goal?",
+      "Walk through a concrete example of scrum goals and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-12",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Definition of Done",
+    "round": "Scenario",
+    "q": "How should completion criteria support delivery quality?",
+    "a": "Define required usable-product conditions.",
+    "explanation": "Define required usable-product conditions. Keep criteria shared and observable. Inspect actual evidence before declaring done.",
+    "mistake": "Calling code complete without required verification.",
+    "rubric": [
+      "Define required usable-product conditions",
+      "Keep criteria shared and observable",
+      "Inspect actual evidence before declaring done"
+    ],
+    "followups": [
+      "How would deployment readiness be represented?",
+      "Walk through a concrete example of definition of done and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-13",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Retrospectives",
+    "round": "Scenario",
+    "q": "What makes a retrospective useful?",
+    "a": "Inspect concrete process outcomes.",
+    "explanation": "Inspect concrete process outcomes. Select feasible owned improvements. Review whether previous actions helped.",
+    "mistake": "Repeating discussion without follow-up.",
+    "rubric": [
+      "Inspect concrete process outcomes",
+      "Select feasible owned improvements",
+      "Review whether previous actions helped"
+    ],
+    "followups": [
+      "Which improvement would you try next iteration?",
+      "Walk through a concrete example of retrospectives and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-14",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Forecasting",
+    "round": "Scenario",
+    "q": "How should delivery forecasts use team evidence?",
+    "a": "Use observed throughput and variability.",
+    "explanation": "Use observed throughput and variability. Consider changing scope and dependencies. Communicate confidence and assumptions.",
+    "mistake": "Treating historical averages as guaranteed future dates.",
+    "rubric": [
+      "Use observed throughput and variability",
+      "Consider changing scope and dependencies",
+      "Communicate confidence and assumptions"
+    ],
+    "followups": [
+      "What invalidates a forecast?",
+      "Walk through a concrete example of forecasting and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-15",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Negotiation",
+    "round": "Scenario",
+    "q": "How do you negotiate a deadline that appears unrealistic?",
+    "a": "Explain evidence and constraints.",
+    "explanation": "Explain evidence and constraints. Offer scope resource or timing alternatives. Protect essential acceptance and risk controls.",
+    "mistake": "Agreeing silently then hiding slippage.",
+    "rubric": [
+      "Explain evidence and constraints",
+      "Offer scope resource or timing alternatives",
+      "Protect essential acceptance and risk controls"
+    ],
+    "followups": [
+      "Which deliverable can be staged?",
+      "Walk through a concrete example of negotiation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-16",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Communication",
+    "round": "Scenario",
+    "q": "How should project communication vary by audience?",
+    "a": "Connect updates to each audience's decisions.",
+    "explanation": "Connect updates to each audience's decisions. Use clear outcome and risk language. Keep a reliable source of truth.",
+    "mistake": "Sending identical detailed reports to everyone.",
+    "rubric": [
+      "Connect updates to each audience's decisions",
+      "Use clear outcome and risk language",
+      "Keep a reliable source of truth"
+    ],
+    "followups": [
+      "What does a sponsor need to decide?",
+      "Walk through a concrete example of communication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-17",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Critical paths",
+    "round": "Debugging",
+    "q": "How does dependency analysis reveal schedule risk?",
+    "a": "Dependent work limits parallel progress.",
+    "explanation": "Dependent work limits parallel progress. Long chains can determine earliest completion. Monitor high-impact uncertainty and slack.",
+    "mistake": "Assuming more people shorten every dependency chain.",
+    "rubric": [
+      "Dependent work limits parallel progress",
+      "Long chains can determine earliest completion",
+      "Monitor high-impact uncertainty and slack"
+    ],
+    "followups": [
+      "Which dependency could be removed?",
+      "Walk through a concrete example of critical paths and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-18",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Budget control",
+    "round": "Debugging",
+    "q": "How should project cost be monitored?",
+    "a": "Compare actual and forecast spend.",
+    "explanation": "Compare actual and forecast spend. Connect changes to scope and outcomes. Escalate material variance with options.",
+    "mistake": "Tracking spend without forecasting completion cost.",
+    "rubric": [
+      "Compare actual and forecast spend",
+      "Connect changes to scope and outcomes",
+      "Escalate material variance with options"
+    ],
+    "followups": [
+      "How would a vendor delay affect budget?",
+      "Walk through a concrete example of budget control and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-19",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Vendor management",
+    "round": "Debugging",
+    "q": "How should outsourced delivery be governed?",
+    "a": "Define contracts acceptance and responsibilities.",
+    "explanation": "Define contracts acceptance and responsibilities. Track dependency and security obligations. Verify usable outcomes incrementally.",
+    "mistake": "Treating signed agreements as delivery evidence.",
+    "rubric": [
+      "Define contracts acceptance and responsibilities",
+      "Track dependency and security obligations",
+      "Verify usable outcomes incrementally"
+    ],
+    "followups": [
+      "How would you handle failed acceptance?",
+      "Walk through a concrete example of vendor management and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-20",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Quality planning",
+    "round": "Debugging",
+    "q": "How should quality work enter a project plan?",
+    "a": "Include verification recovery and release needs.",
+    "explanation": "Include verification recovery and release needs. Match effort to user impact. Assign clear acceptance ownership.",
+    "mistake": "Leaving all testing to the final week.",
+    "rubric": [
+      "Include verification recovery and release needs",
+      "Match effort to user impact",
+      "Assign clear acceptance ownership"
+    ],
+    "followups": [
+      "Which upgrade path needs explicit time?",
+      "Walk through a concrete example of quality planning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-21",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Incident impact",
+    "round": "Debugging",
+    "q": "How should an incident affect ongoing project plans?",
+    "a": "Prioritize customer mitigation under ownership.",
+    "explanation": "Prioritize customer mitigation under ownership. Reforecast disrupted capacity and dependencies. Communicate recovery and follow-up needs.",
+    "mistake": "Keeping the old plan unchanged after major disruption.",
+    "rubric": [
+      "Prioritize customer mitigation under ownership",
+      "Reforecast disrupted capacity and dependencies",
+      "Communicate recovery and follow-up needs"
+    ],
+    "followups": [
+      "Which work should pause?",
+      "Walk through a concrete example of incident impact and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-22",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Distributed teams",
+    "round": "Debugging",
+    "q": "How do you coordinate teams across time zones?",
+    "a": "Use clear asynchronous context and decisions.",
+    "explanation": "Use clear asynchronous context and decisions. Reserve meetings for useful coordination. Make ownership and handoffs explicit.",
+    "mistake": "Requiring every decision in a live meeting.",
+    "rubric": [
+      "Use clear asynchronous context and decisions",
+      "Reserve meetings for useful coordination",
+      "Make ownership and handoffs explicit"
+    ],
+    "followups": [
+      "How would you prevent overnight blocking?",
+      "Walk through a concrete example of distributed teams and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-23",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Outcome tracking",
+    "round": "Debugging",
+    "q": "How do outputs differ from project outcomes?",
+    "a": "Outputs are delivered artifacts.",
+    "explanation": "Outputs are delivered artifacts. Outcomes describe user or business effects. Validate whether delivery achieved its purpose.",
+    "mistake": "Equating shipped features with demonstrated value.",
+    "rubric": [
+      "Outputs are delivered artifacts",
+      "Outcomes describe user or business effects",
+      "Validate whether delivery achieved its purpose"
+    ],
+    "followups": [
+      "Which metric measures adoption?",
+      "Walk through a concrete example of outcome tracking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-24",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Escalation",
+    "round": "Debugging",
+    "q": "When should a project blocker be escalated?",
+    "a": "Impact exceeds the team's decision authority.",
+    "explanation": "Impact exceeds the team's decision authority. Useful local options have been explored. Provide evidence options and needed decision.",
+    "mistake": "Escalating without explaining impact or ownership.",
+    "rubric": [
+      "Impact exceeds the team's decision authority",
+      "Useful local options have been explored",
+      "Provide evidence options and needed decision"
+    ],
+    "followups": [
+      "How would you avoid surprise escalation?",
+      "Walk through a concrete example of escalation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-25",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Portfolio planning",
+    "round": "Design",
+    "q": "How should multiple projects compete for shared capacity?",
+    "a": "Compare strategic outcomes dependencies and risk.",
+    "explanation": "Compare strategic outcomes dependencies and risk. Make commitments and limits explicit. Revisit priorities when evidence changes.",
+    "mistake": "Starting every proposed project simultaneously.",
+    "rubric": [
+      "Compare strategic outcomes dependencies and risk",
+      "Make commitments and limits explicit",
+      "Revisit priorities when evidence changes"
+    ],
+    "followups": [
+      "How would you identify work to stop?",
+      "Walk through a concrete example of portfolio planning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-26",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Governance",
+    "round": "Design",
+    "q": "How can project governance remain useful rather than ceremonial?",
+    "a": "Focus reviews on actual decisions and risk.",
+    "explanation": "Focus reviews on actual decisions and risk. Require proportional evidence. Clarify ownership and exception paths.",
+    "mistake": "Adding approvals with no accountable decision.",
+    "rubric": [
+      "Focus reviews on actual decisions and risk",
+      "Require proportional evidence",
+      "Clarify ownership and exception paths"
+    ],
+    "followups": [
+      "Which review can be simplified?",
+      "Walk through a concrete example of governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-27",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Transformation",
+    "round": "Design",
+    "q": "How should a major delivery-process change begin?",
+    "a": "Identify concrete problems and intended outcomes.",
+    "explanation": "Identify concrete problems and intended outcomes. Pilot a bounded change. Use feedback and evidence to refine adoption.",
+    "mistake": "Renaming ceremonies without changing behavior.",
+    "rubric": [
+      "Identify concrete problems and intended outcomes",
+      "Pilot a bounded change",
+      "Use feedback and evidence to refine adoption"
+    ],
+    "followups": [
+      "What signal proves improvement?",
+      "Walk through a concrete example of transformation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-28",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Benefits realization",
+    "round": "Design",
+    "q": "How do you verify benefits after project delivery?",
+    "a": "Assign benefit ownership and measures.",
+    "explanation": "Assign benefit ownership and measures. Compare observed outcomes to assumptions. Adapt or stop ineffective work.",
+    "mistake": "Ending measurement at feature launch.",
+    "rubric": [
+      "Assign benefit ownership and measures",
+      "Compare observed outcomes to assumptions",
+      "Adapt or stop ineffective work"
+    ],
+    "followups": [
+      "When should you review benefits?",
+      "Walk through a concrete example of benefits realization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-29",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Strategic trade-offs",
+    "round": "Design",
+    "q": "How do you recommend delaying or canceling a project?",
+    "a": "Compare remaining cost benefit and risk.",
+    "explanation": "Compare remaining cost benefit and risk. Explain alternatives and opportunity cost. Seek an accountable explicit decision.",
+    "mistake": "Continuing solely because money was already spent.",
+    "rubric": [
+      "Compare remaining cost benefit and risk",
+      "Explain alternatives and opportunity cost",
+      "Seek an accountable explicit decision"
+    ],
+    "followups": [
+      "What evidence would change the decision?",
+      "Walk through a concrete example of strategic trade-offs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-30",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Organizational dependencies",
+    "round": "Design",
+    "q": "How should executives resolve repeated cross-team blockers?",
+    "a": "Inspect ownership incentives and capacity.",
+    "explanation": "Inspect ownership incentives and capacity. Agree on a coordinated priority. Change recurring structural causes.",
+    "mistake": "Treating every blocker as an isolated scheduling mistake.",
+    "rubric": [
+      "Inspect ownership incentives and capacity",
+      "Agree on a coordinated priority",
+      "Change recurring structural causes"
+    ],
+    "followups": [
+      "Which boundary needs clearer ownership?",
+      "Walk through a concrete example of organizational dependencies and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-31",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Crisis planning",
+    "round": "Design",
+    "q": "How do you manage a critical program at risk?",
+    "a": "Create a truthful shared situation view.",
+    "explanation": "Create a truthful shared situation view. Prioritize recovery options and decisions. Communicate frequently with clear ownership.",
+    "mistake": "Maintaining optimistic reports despite contrary evidence.",
+    "rubric": [
+      "Create a truthful shared situation view",
+      "Prioritize recovery options and decisions",
+      "Communicate frequently with clear ownership"
+    ],
+    "followups": [
+      "What would you stop immediately?",
+      "Walk through a concrete example of crisis planning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-path-32",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Continuous improvement",
+    "round": "Design",
+    "q": "How do you evaluate a project-management practice?",
+    "a": "Measure decision speed predictability and outcomes.",
+    "explanation": "Measure decision speed predictability and outcomes. Gather concrete team feedback. Keep useful practices and retire waste.",
+    "mistake": "Measuring success by report volume.",
+    "rubric": [
+      "Measure decision speed predictability and outcomes",
+      "Gather concrete team feedback",
+      "Keep useful practices and retire waste"
+    ],
+    "followups": [
+      "Which practice would you simplify first?",
+      "Walk through a concrete example of continuous improvement and explain one trade-off."
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

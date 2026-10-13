@@ -1,0 +1,930 @@
+[
+  {
+    "id": "flutter-path-01",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Widgets",
+    "round": "Fundamentals",
+    "q": "How do StatelessWidget and StatefulWidget differ?",
+    "a": "StatefulWidget has a separate State lifetime.",
+    "explanation": "StatefulWidget has a separate State lifetime. StatelessWidget renders from supplied configuration. Both widgets are immutable descriptions.",
+    "mistake": "Putting mutable fields directly on a widget.",
+    "rubric": [
+      "StatefulWidget has a separate State lifetime",
+      "StatelessWidget renders from supplied configuration",
+      "Both widgets are immutable descriptions"
+    ],
+    "followups": [
+      "When should state live above a child?",
+      "Walk through a concrete example of widgets and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-02",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Build",
+    "round": "Fundamentals",
+    "q": "Why should build methods avoid side effects?",
+    "a": "Build can run repeatedly.",
+    "explanation": "Build can run repeatedly. Render from current inputs. Trigger external work through explicit lifecycle ownership.",
+    "mistake": "Starting a request on every build.",
+    "rubric": [
+      "Build can run repeatedly",
+      "Render from current inputs",
+      "Trigger external work through explicit lifecycle ownership"
+    ],
+    "followups": [
+      "Where should initial loading begin?",
+      "Walk through a concrete example of build and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-03",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "State",
+    "round": "Fundamentals",
+    "q": "What does setState actually request?",
+    "a": "It marks owned state for rebuilding.",
+    "explanation": "It marks owned state for rebuilding. The callback updates synchronously. Keep asynchronous work outside the callback.",
+    "mistake": "Using an async callback inside setState.",
+    "rubric": [
+      "It marks owned state for rebuilding",
+      "The callback updates synchronously",
+      "Keep asynchronous work outside the callback"
+    ],
+    "followups": [
+      "How would you apply an async result safely?",
+      "Walk through a concrete example of state and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-04",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Layouts",
+    "round": "Fundamentals",
+    "q": "How do parent constraints shape child layout?",
+    "a": "Parents provide constraints.",
+    "explanation": "Parents provide constraints. Children choose sizes within them. Parents place the children.",
+    "mistake": "Assuming children can demand any size.",
+    "rubric": [
+      "Parents provide constraints",
+      "Children choose sizes within them",
+      "Parents place the children"
+    ],
+    "followups": [
+      "What creates an unbounded-height error?",
+      "Walk through a concrete example of layouts and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-05",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Keys",
+    "round": "Fundamentals",
+    "q": "When are stable widget keys important?",
+    "a": "They associate elements with identity.",
+    "explanation": "They associate elements with identity. Reordering can preserve item state. Use domain identifiers when appropriate.",
+    "mistake": "Assigning a new random key every build.",
+    "rubric": [
+      "They associate elements with identity",
+      "Reordering can preserve item state",
+      "Use domain identifiers when appropriate"
+    ],
+    "followups": [
+      "What happens to a reordered editable row?",
+      "Walk through a concrete example of keys and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-06",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Async values",
+    "round": "Fundamentals",
+    "q": "How do Future and Stream differ?",
+    "a": "Future produces one eventual completion.",
+    "explanation": "Future produces one eventual completion. Stream emits multiple events. Handle errors and completion explicitly.",
+    "mistake": "Expecting a Future to publish ongoing updates.",
+    "rubric": [
+      "Future produces one eventual completion",
+      "Stream emits multiple events",
+      "Handle errors and completion explicitly"
+    ],
+    "followups": [
+      "Which fits a live message feed?",
+      "Walk through a concrete example of async values and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-07",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Dart null safety",
+    "round": "Fundamentals",
+    "q": "Why still validate decoded JSON with Dart null safety?",
+    "a": "External values are not trusted types.",
+    "explanation": "External values are not trusted types. Decode and validate required fields. Represent optional values explicitly.",
+    "mistake": "Casting every decoded object without checks.",
+    "rubric": [
+      "External values are not trusted types",
+      "Decode and validate required fields",
+      "Represent optional values explicitly"
+    ],
+    "followups": [
+      "How would you handle a missing required field?",
+      "Walk through a concrete example of dart null safety and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-08",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Lists",
+    "round": "Fundamentals",
+    "q": "Why use a builder for a large scrolling list?",
+    "a": "It constructs visible items on demand.",
+    "explanation": "It constructs visible items on demand. This limits unnecessary widget work. Keep item identity and scroll behavior stable.",
+    "mistake": "Building thousands of children eagerly.",
+    "rubric": [
+      "It constructs visible items on demand",
+      "This limits unnecessary widget work",
+      "Keep item identity and scroll behavior stable"
+    ],
+    "followups": [
+      "How would varying row heights affect scrolling?",
+      "Walk through a concrete example of lists and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-09",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Lifecycle",
+    "round": "Scenario",
+    "q": "Why check mounted before applying certain async UI updates?",
+    "a": "State may have been disposed.",
+    "explanation": "State may have been disposed. An async result can arrive later. Cancel owned work when possible.",
+    "mistake": "Updating disposed state after navigation.",
+    "rubric": [
+      "State may have been disposed",
+      "An async result can arrive later",
+      "Cancel owned work when possible"
+    ],
+    "followups": [
+      "How would you test leaving during a request?",
+      "Walk through a concrete example of lifecycle and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-10",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Controllers",
+    "round": "Scenario",
+    "q": "How should a State object manage a text controller?",
+    "a": "Create it under a clear owner.",
+    "explanation": "Create it under a clear owner. Dispose it when ownership ends. Avoid recreating it during build.",
+    "mistake": "Leaking controllers across screen exits.",
+    "rubric": [
+      "Create it under a clear owner",
+      "Dispose it when ownership ends",
+      "Avoid recreating it during build"
+    ],
+    "followups": [
+      "How would externally owned controllers differ?",
+      "Walk through a concrete example of controllers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-11",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Navigation",
+    "round": "Scenario",
+    "q": "How should a Flutter app handle direct deep-link entry?",
+    "a": "Parse and validate the route.",
+    "explanation": "Parse and validate the route. Restore required authentication flow. Build a consistent navigation state.",
+    "mistake": "Assuming every route came from the home screen.",
+    "rubric": [
+      "Parse and validate the route",
+      "Restore required authentication flow",
+      "Build a consistent navigation state"
+    ],
+    "followups": [
+      "How would you support an invalid link?",
+      "Walk through a concrete example of navigation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-12",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "State management",
+    "round": "Scenario",
+    "q": "How do you choose where Flutter state lives?",
+    "a": "Place state at its useful lifetime.",
+    "explanation": "Place state at its useful lifetime. Separate domain state from widget details. Choose a simple testable ownership model.",
+    "mistake": "Selecting a library before defining ownership.",
+    "rubric": [
+      "Place state at its useful lifetime",
+      "Separate domain state from widget details",
+      "Choose a simple testable ownership model"
+    ],
+    "followups": [
+      "How would two screens share a cart?",
+      "Walk through a concrete example of state management and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-13",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Networking",
+    "round": "Scenario",
+    "q": "How should a Flutter feature display a failed request?",
+    "a": "Separate loading success and failure states.",
+    "explanation": "Separate loading success and failure states. Preserve useful existing data. Offer safe recovery or retry.",
+    "mistake": "Displaying an endless loading spinner.",
+    "rubric": [
+      "Separate loading success and failure states",
+      "Preserve useful existing data",
+      "Offer safe recovery or retry"
+    ],
+    "followups": [
+      "How would offline errors differ from invalid input?",
+      "Walk through a concrete example of networking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-14",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What does a widget test validate?",
+    "a": "It exercises rendered interaction in a test environment.",
+    "explanation": "It exercises rendered interaction in a test environment. Control dependencies and time. Use integration tests for native boundaries.",
+    "mistake": "Assuming widget tests prove plugin behavior on devices.",
+    "rubric": [
+      "It exercises rendered interaction in a test environment",
+      "Control dependencies and time",
+      "Use integration tests for native boundaries"
+    ],
+    "followups": [
+      "How would you test an accessible button label?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-15",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Accessibility",
+    "round": "Scenario",
+    "q": "How do you support large text in Flutter?",
+    "a": "Use flexible layouts and text scaling.",
+    "explanation": "Use flexible layouts and text scaling. Expose meaningful semantics. Test overflow and focus behavior.",
+    "mistake": "Fixing text height for one font size.",
+    "rubric": [
+      "Use flexible layouts and text scaling",
+      "Expose meaningful semantics",
+      "Test overflow and focus behavior"
+    ],
+    "followups": [
+      "How should an icon-only control be labeled?",
+      "Walk through a concrete example of accessibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-16",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Animations",
+    "round": "Scenario",
+    "q": "What ownership should an animation controller have?",
+    "a": "A lifecycle owner manages the controller.",
+    "explanation": "A lifecycle owner manages the controller. Dispose it when no longer needed. Keep duration and interruption behavior deliberate.",
+    "mistake": "Creating controllers repeatedly during build.",
+    "rubric": [
+      "A lifecycle owner manages the controller",
+      "Dispose it when no longer needed",
+      "Keep duration and interruption behavior deliberate"
+    ],
+    "followups": [
+      "How would you reverse an interrupted animation?",
+      "Walk through a concrete example of animations and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-17",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Rebuilds",
+    "round": "Debugging",
+    "q": "How do you investigate excessive Flutter rebuild work?",
+    "a": "Profile actual frame workloads.",
+    "explanation": "Profile actual frame workloads. Localize changing state. Use stable immutable subtrees where useful.",
+    "mistake": "Assuming every rebuild causes visible repaint.",
+    "rubric": [
+      "Profile actual frame workloads",
+      "Localize changing state",
+      "Use stable immutable subtrees where useful"
+    ],
+    "followups": [
+      "What distinguishes build layout and paint cost?",
+      "Walk through a concrete example of rebuilds and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-18",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Isolates",
+    "round": "Debugging",
+    "q": "When should work move to a Dart isolate?",
+    "a": "CPU-heavy independent work may benefit.",
+    "explanation": "CPU-heavy independent work may benefit. Isolates have separate memory. Account for messaging and startup cost.",
+    "mistake": "Moving trivial work despite transfer overhead.",
+    "rubric": [
+      "CPU-heavy independent work may benefit",
+      "Isolates have separate memory",
+      "Account for messaging and startup cost"
+    ],
+    "followups": [
+      "How would you send a large result efficiently?",
+      "Walk through a concrete example of isolates and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-19",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Images",
+    "round": "Debugging",
+    "q": "How can large images harm Flutter performance?",
+    "a": "Decoded images consume substantial memory.",
+    "explanation": "Decoded images consume substantial memory. Decode near the needed dimensions. Bound cache and prefetch behavior.",
+    "mistake": "Loading full-resolution assets into small thumbnails.",
+    "rubric": [
+      "Decoded images consume substantial memory",
+      "Decode near the needed dimensions",
+      "Bound cache and prefetch behavior"
+    ],
+    "followups": [
+      "How would you detect image memory pressure?",
+      "Walk through a concrete example of images and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-20",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Persistence",
+    "round": "Debugging",
+    "q": "How should a Flutter app evolve local storage schemas?",
+    "a": "Use compatible versioned migrations.",
+    "explanation": "Use compatible versioned migrations. Preserve user data. Test upgrades and interrupted operations.",
+    "mistake": "Resetting storage whenever the schema changes.",
+    "rubric": [
+      "Use compatible versioned migrations",
+      "Preserve user data",
+      "Test upgrades and interrupted operations"
+    ],
+    "followups": [
+      "How would rollback interact with a migration?",
+      "Walk through a concrete example of persistence and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-21",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Plugins",
+    "round": "Debugging",
+    "q": "What should you consider when choosing a Flutter plugin?",
+    "a": "Review native platform support and maintenance.",
+    "explanation": "Review native platform support and maintenance. Test permissions and lifecycle boundaries. Keep failures visible and recoverable.",
+    "mistake": "Assuming a pub package works equally on every platform.",
+    "rubric": [
+      "Review native platform support and maintenance",
+      "Test permissions and lifecycle boundaries",
+      "Keep failures visible and recoverable"
+    ],
+    "followups": [
+      "How would you handle a missing native implementation?",
+      "Walk through a concrete example of plugins and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-22",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Offline sync",
+    "round": "Debugging",
+    "q": "How should a Flutter app synchronize queued edits?",
+    "a": "Persist operations durably.",
+    "explanation": "Persist operations durably. Use idempotent server contracts. Resolve version conflicts explicitly.",
+    "mistake": "Replaying writes without duplicate protection.",
+    "rubric": [
+      "Persist operations durably",
+      "Use idempotent server contracts",
+      "Resolve version conflicts explicitly"
+    ],
+    "followups": [
+      "How would retries survive app restart?",
+      "Walk through a concrete example of offline sync and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-23",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Platform channels",
+    "round": "Debugging",
+    "q": "How should Dart and native code define a channel contract?",
+    "a": "Specify names payloads and error shapes.",
+    "explanation": "Specify names payloads and error shapes. Validate both sides. Manage threading and lifecycle ownership.",
+    "mistake": "Passing undocumented dynamic payloads.",
+    "rubric": [
+      "Specify names payloads and error shapes",
+      "Validate both sides",
+      "Manage threading and lifecycle ownership"
+    ],
+    "followups": [
+      "How would you evolve the contract compatibly?",
+      "Walk through a concrete example of platform channels and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-24",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Security",
+    "round": "Debugging",
+    "q": "Where should credentials live in a Flutter product?",
+    "a": "Use platform-backed secure storage where appropriate.",
+    "explanation": "Use platform-backed secure storage where appropriate. Keep server secrets outside the app. Handle storage failures explicitly.",
+    "mistake": "Embedding service-role credentials in Dart constants.",
+    "rubric": [
+      "Use platform-backed secure storage where appropriate",
+      "Keep server secrets outside the app",
+      "Handle storage failures explicitly"
+    ],
+    "followups": [
+      "How would sign-out remove local credentials?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-25",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How should Flutter teams separate views from domain behavior?",
+    "a": "Keep business rules testable independently.",
+    "explanation": "Keep business rules testable independently. Use explicit service interfaces. Make UI state transitions observable.",
+    "mistake": "Placing all application logic in widget callbacks.",
+    "rubric": [
+      "Keep business rules testable independently",
+      "Use explicit service interfaces",
+      "Make UI state transitions observable"
+    ],
+    "followups": [
+      "What belongs in a repository boundary?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-26",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Design systems",
+    "round": "Design",
+    "q": "How do you scale consistent Flutter UI across teams?",
+    "a": "Define shared tokens and interaction contracts.",
+    "explanation": "Define shared tokens and interaction contracts. Test accessibility and key visual states. Version shared components carefully.",
+    "mistake": "Sharing widgets without ownership or migration guidance.",
+    "rubric": [
+      "Define shared tokens and interaction contracts",
+      "Test accessibility and key visual states",
+      "Version shared components carefully"
+    ],
+    "followups": [
+      "How would you deprecate a component?",
+      "Walk through a concrete example of design systems and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-27",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Release strategy",
+    "round": "Design",
+    "q": "How do you validate Flutter releases for Android and iOS?",
+    "a": "Test release builds on representative devices.",
+    "explanation": "Test release builds on representative devices. Check native permissions signing and configuration. Verify upgrade and offline workflows.",
+    "mistake": "Relying solely on debug emulator runs.",
+    "rubric": [
+      "Test release builds on representative devices",
+      "Check native permissions signing and configuration",
+      "Verify upgrade and offline workflows"
+    ],
+    "followups": [
+      "Which checks must remain platform-specific?",
+      "Walk through a concrete example of release strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-28",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Upgrade strategy",
+    "round": "Design",
+    "q": "How should a Flutter SDK upgrade be rolled out?",
+    "a": "Review plugin and language compatibility.",
+    "explanation": "Review plugin and language compatibility. Test critical native integrations. Stage rollout and monitor user impact.",
+    "mistake": "Updating the SDK without checking plugins.",
+    "rubric": [
+      "Review plugin and language compatibility",
+      "Test critical native integrations",
+      "Stage rollout and monitor user impact"
+    ],
+    "followups": [
+      "How would you detect changed rendering behavior?",
+      "Walk through a concrete example of upgrade strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-29",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Performance budgets",
+    "round": "Design",
+    "q": "What should a mobile performance budget include?",
+    "a": "Measure startup frame timing and memory.",
+    "explanation": "Measure startup frame timing and memory. Use representative lower-capacity devices. Track regressions across releases.",
+    "mistake": "Measuring only on a high-end development device.",
+    "rubric": [
+      "Measure startup frame timing and memory",
+      "Use representative lower-capacity devices",
+      "Track regressions across releases"
+    ],
+    "followups": [
+      "How would you choose an acceptance threshold?",
+      "Walk through a concrete example of performance budgets and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-30",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Observability",
+    "round": "Design",
+    "q": "How should a Flutter app report failures responsibly?",
+    "a": "Include release and workflow context.",
+    "explanation": "Include release and workflow context. Redact sensitive content. Distinguish native Dart and service failures.",
+    "mistake": "Sending raw user forms to crash telemetry.",
+    "rubric": [
+      "Include release and workflow context",
+      "Redact sensitive content",
+      "Distinguish native Dart and service failures"
+    ],
+    "followups": [
+      "How would you correlate a server failure?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-31",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Platform strategy",
+    "round": "Design",
+    "q": "When should a Flutter feature use native UI or code?",
+    "a": "Platform requirements may need native capability.",
+    "explanation": "Platform requirements may need native capability. Keep integration contracts bounded. Compare maintenance and user-experience cost.",
+    "mistake": "Forcing every feature through one abstraction.",
+    "rubric": [
+      "Platform requirements may need native capability",
+      "Keep integration contracts bounded",
+      "Compare maintenance and user-experience cost"
+    ],
+    "followups": [
+      "How would you decide for a complex camera workflow?",
+      "Walk through a concrete example of platform strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-path-32",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Product resilience",
+    "round": "Design",
+    "q": "How would you keep Flutter users productive during outages?",
+    "a": "Preserve drafts and useful cached data.",
+    "explanation": "Preserve drafts and useful cached data. Show pending and stale states. Provide bounded recoverable operations.",
+    "mistake": "Discarding user input on request failure.",
+    "rubric": [
+      "Preserve drafts and useful cached data",
+      "Show pending and stale states",
+      "Provide bounded recoverable operations"
+    ],
+    "followups": [
+      "How would reconnect reconcile unsynced work?",
+      "Walk through a concrete example of product resilience and explain one trade-off."
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "flutter-performance",
+      "w3c-accessibility",
+      "dart-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

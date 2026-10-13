@@ -1,0 +1,210 @@
+[
+  {
+    "id": "behavioral-project",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Project stories",
+    "round": "Behavioral",
+    "q": "Describe a project you contributed to and your specific role.",
+    "a": "Explain the problem, your responsibility, concrete actions, result, and what you learned.",
+    "explanation": "Be clear about your contribution versus the team's. Use a truthful example and enough technical detail to make your choices understandable. State uncertainty rather than inventing metrics.",
+    "mistake": "Using only we and leaving your own decisions unclear.",
+    "rubric": [
+      "State context and responsibility",
+      "Describe concrete actions",
+      "Explain results and learning"
+    ],
+    "followups": [
+      "What would you do differently?",
+      "Which decision was yours?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-feedback",
+    "area": "HR and Behavioral",
+    "level": 1,
+    "subtopic": "Learning",
+    "round": "Behavioral",
+    "q": "Tell me about feedback that changed how you work.",
+    "a": "Choose a specific example, explain how you understood the feedback, what you changed, and the observed result.",
+    "explanation": "Show that you can evaluate feedback rather than agree automatically. Describe follow-up and whether the change solved the issue. Avoid an invented weakness with no meaningful effect.",
+    "mistake": "Offering a generic weakness without an actual learning example.",
+    "rubric": [
+      "Give specific feedback context",
+      "Describe a behavioral change",
+      "Explain follow-up evidence"
+    ],
+    "followups": [
+      "What if you disagreed initially?",
+      "How do you seek feedback now?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-failure",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Accountability",
+    "round": "Behavioral",
+    "q": "Tell me about a mistake that affected a delivery.",
+    "a": "Describe your responsibility honestly, how you limited impact, and the changes you made afterward.",
+    "explanation": "A strong answer separates individual actions from system conditions without blaming others. Explain communication, recovery, and whether the preventive change worked.",
+    "mistake": "Describing a mistake while claiming no responsibility for any part of it.",
+    "rubric": [
+      "Acknowledge your role",
+      "Explain recovery and communication",
+      "Show a concrete preventive change"
+    ],
+    "followups": [
+      "Who did you inform?",
+      "How do you know the lesson was applied?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-conflict",
+    "area": "HR and Behavioral",
+    "level": 2,
+    "subtopic": "Collaboration",
+    "round": "Behavioral",
+    "q": "Describe a disagreement with a teammate about implementation.",
+    "a": "Explain the shared goal, differing concerns, evidence you gathered, and how you reached or supported the decision.",
+    "explanation": "Discuss the person respectfully and show how you handled unresolved uncertainty. The result can include changing your mind. Avoid presenting the story as winning an argument.",
+    "mistake": "Making the colleague the villain of the story.",
+    "rubric": [
+      "Describe both viewpoints fairly",
+      "Use evidence and shared criteria",
+      "Explain collaboration after the decision"
+    ],
+    "followups": [
+      "What did you learn from their concern?",
+      "What if evidence remained inconclusive?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-ambiguity",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Ownership",
+    "round": "Behavioral",
+    "q": "Tell me about delivering useful work with ambiguous requirements.",
+    "a": "Describe how you clarified the outcome, tested assumptions, and delivered an increment that reduced uncertainty.",
+    "explanation": "Explain which decisions you owned and which required stakeholders. Include trade-offs and feedback that changed the plan. Do not equate ambiguity with permission to ignore users.",
+    "mistake": "Claiming initiative while never validating the actual need.",
+    "rubric": [
+      "Clarify desired outcomes",
+      "Test important assumptions",
+      "Adapt from feedback"
+    ],
+    "followups": [
+      "Which assumption proved wrong?",
+      "How did you control wasted effort?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-influence",
+    "area": "HR and Behavioral",
+    "level": 3,
+    "subtopic": "Cross-team leadership",
+    "round": "Behavioral",
+    "q": "Describe influencing another team without formal authority.",
+    "a": "Show how you understood their incentives, framed a shared outcome, and used evidence or a pilot to build agreement.",
+    "explanation": "Name concrete actions and the costs the other team faced. Be honest about partial adoption and lessons. Influence should be understandable without relying on personal prestige.",
+    "mistake": "Explaining success only as persuading people harder.",
+    "rubric": [
+      "Understand the other team's needs",
+      "Offer evidence and shared value",
+      "Explain adoption and remaining friction"
+    ],
+    "followups": [
+      "What did you compromise on?",
+      "How did you maintain the relationship?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-hard-choice",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "Leadership judgment",
+    "round": "Behavioral",
+    "q": "Describe a difficult decision where good options had different costs.",
+    "a": "State the context, alternatives, decision criteria, trade-offs, and result, including uncertainty and responsibility.",
+    "explanation": "Explain what information was available at the time and what would have changed your choice. Discuss follow-up honestly rather than rewriting the decision as inevitable after seeing the outcome.",
+    "mistake": "Evaluating your past decision only with information learned later.",
+    "rubric": [
+      "Compare real alternatives",
+      "Explain contemporaneous evidence",
+      "Own consequences and learning"
+    ],
+    "followups": [
+      "Who was affected by the decision?",
+      "What trigger would have caused reversal?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "behavioral-team-growth",
+    "area": "HR and Behavioral",
+    "level": 4,
+    "subtopic": "People leadership",
+    "round": "Behavioral",
+    "q": "Tell me about helping a team grow while maintaining delivery.",
+    "a": "Describe the specific capability gap, your intervention, how ownership changed, and evidence of improvement.",
+    "explanation": "Include capacity and trade-offs, such as mentoring time or adjusted scope. Explain what failed or required adjustment. Avoid using a single promotion as the only measure of team effectiveness.",
+    "mistake": "Taking credit for growth without describing the team's own actions.",
+    "rubric": [
+      "Identify a capability gap",
+      "Describe concrete support and ownership",
+      "Show delivery and learning outcomes"
+    ],
+    "followups": [
+      "How did you measure improvement?",
+      "What would you change for another team?"
+    ],
+    "sourceIds": [
+      "structured-interviews"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

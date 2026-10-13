@@ -1,0 +1,217 @@
+[
+  {
+    "id": "testing-layers",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Testing strategy",
+    "round": "Fundamentals",
+    "q": "How do unit, integration, and end-to-end tests complement each other?",
+    "a": "Unit tests isolate rules, integration tests verify real boundaries, and end-to-end tests exercise complete user workflows.",
+    "explanation": "Choose tests by failure risk and feedback cost. An isolated test cannot prove database constraints or browser behavior. A few critical workflow tests should complement fast focused checks.",
+    "mistake": "Assuming one test layer can verify the entire product.",
+    "rubric": [
+      "Map tests to risks",
+      "Identify real boundary needs",
+      "Balance feedback speed and coverage"
+    ],
+    "followups": [
+      "Which tests should use a real database?",
+      "When is a mock useful?"
+    ],
+    "sourceIds": [
+      "playwright",
+      "pytest"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-isolation",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Test reliability",
+    "round": "Debugging",
+    "q": "A test passes alone but fails after another test. What would you investigate?",
+    "a": "Look for shared state, order dependence, leaked resources, and incomplete setup or cleanup.",
+    "explanation": "Give tests independent fixtures and unique data where needed. Check global configuration, clocks, database state, and asynchronous work that outlives the test.",
+    "mistake": "Fixing the execution order instead of removing the dependency.",
+    "rubric": [
+      "Find shared state",
+      "Provide deterministic setup/cleanup",
+      "Stop leaked asynchronous work"
+    ],
+    "followups": [
+      "How should database fixtures reset?",
+      "What if tests run in parallel?"
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-flaky-ui",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "UI automation",
+    "round": "Debugging",
+    "q": "A browser test needs longer sleeps every month. How would you improve it?",
+    "a": "Use stable user-facing locators and wait for observable conditions with the framework rather than arbitrary time delays.",
+    "explanation": "Inspect traces and isolate external services when appropriate. Keep test data predictable and assert the user outcome. Longer sleeps can hide a real timing or ownership defect.",
+    "mistake": "Making tests slower until failures become rare.",
+    "rubric": [
+      "Use resilient locators",
+      "Wait for meaningful conditions",
+      "Diagnose with traces and controlled data"
+    ],
+    "followups": [
+      "When should an API be stubbed?",
+      "What if the UI never reaches readiness?"
+    ],
+    "sourceIds": [
+      "playwright"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-boundaries",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Test design",
+    "round": "Coding",
+    "q": "Design tests for a paginated endpoint with tenant permissions.",
+    "a": "Cover ordering, cursor boundaries, empty results, invalid cursors, and cross-tenant access with realistic persisted data.",
+    "explanation": "Test tied sort keys and records added between pages. Assert no missing or duplicate records under the documented semantics, and verify unauthorized reads are rejected at the real service boundary.",
+    "mistake": "Testing only a successful first page.",
+    "rubric": [
+      "Exercise cursor edge cases",
+      "Validate tenant denial",
+      "Use representative persisted ordering"
+    ],
+    "followups": [
+      "How do deletes affect pagination?",
+      "What belongs in a contract test?"
+    ],
+    "sourceIds": [
+      "owasp-testing",
+      "postgres-indexes"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-failure-tests",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Reliability testing",
+    "round": "System design",
+    "q": "How would you test a workflow that writes data and publishes an event?",
+    "a": "Inject failures before and after commits and publication, then verify durable state and safe replay.",
+    "explanation": "Use real transactional storage for atomicity checks and controlled broker failures for delivery behavior. Include duplicates and poison events. Avoid relying only on mocks that assume the transaction works.",
+    "mistake": "Calling a happy-path unit test proof of atomic delivery.",
+    "rubric": [
+      "Test crash boundaries",
+      "Verify replay and duplicates",
+      "Inspect durable business invariants"
+    ],
+    "followups": [
+      "How do you test outbox lag?",
+      "Which failures require an integration environment?"
+    ],
+    "sourceIds": [
+      "pytest",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-performance",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Performance testing",
+    "round": "Debugging",
+    "q": "A load test reports good average latency but users complain. What should be checked?",
+    "a": "Inspect tail latency, error rates, workload realism, concurrency, and whether the generator actually reaches the intended load.",
+    "explanation": "Include slow dependencies, realistic data sizes, and sustained runs. Averages hide outliers and successful-request-only reports can hide timeouts. Measure recovery after overload.",
+    "mistake": "Ignoring failed or timed-out requests in latency conclusions.",
+    "rubric": [
+      "Measure tails and failures",
+      "Validate realistic traffic",
+      "Test sustained and degraded behavior"
+    ],
+    "followups": [
+      "Can the load generator be the bottleneck?",
+      "What changes after caches warm?"
+    ],
+    "sourceIds": [
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-quality-policy",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Engineering strategy",
+    "round": "Leadership",
+    "q": "Set release quality gates for many teams without blocking every change on slow tests.",
+    "a": "Use risk-based gates, fast local feedback, targeted integration checks, and ownership of flaky or slow tests.",
+    "explanation": "Track escaped defects and test reliability, not just pass count or coverage. Define exceptions and emergency release paths with follow-up obligations. Remove checks that add cost without evidence of value.",
+    "mistake": "Treating code coverage as a complete measure of product quality.",
+    "rubric": [
+      "Align checks with release risk",
+      "Assign reliability ownership",
+      "Measure escaped defects and feedback time"
+    ],
+    "followups": [
+      "When can a gate be bypassed?",
+      "How do you quarantine a flaky test responsibly?"
+    ],
+    "sourceIds": [
+      "playwright",
+      "pytest"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-automation",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design a test automation platform for mobile, web, and APIs.",
+    "a": "Share data and reporting contracts while keeping platform-specific execution and locators behind clear boundaries.",
+    "explanation": "Provide deterministic environments, diagnostics, secret handling, parallel isolation, and ownership. Avoid one abstraction that hides important platform behavior. Measure maintenance and signal quality.",
+    "mistake": "Building a universal wrapper that makes failures impossible to diagnose.",
+    "rubric": [
+      "Define shared contracts and platform boundaries",
+      "Ensure isolated reproducible runs",
+      "Provide actionable diagnostics"
+    ],
+    "followups": [
+      "How are fixtures versioned?",
+      "What should be shared across platforms?"
+    ],
+    "sourceIds": [
+      "playwright",
+      "pytest",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

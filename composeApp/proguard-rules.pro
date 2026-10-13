@@ -1,0 +1,2 @@
+-keep class com.prepdesk.data.PrepDatabaseConstructor { *; }
+-keepattributes Signature,InnerClasses,EnclosingMethod,*Annotation*

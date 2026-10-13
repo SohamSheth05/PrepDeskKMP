@@ -1,0 +1,212 @@
+[
+  {
+    "id": "project-goal",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Delivery basics",
+    "round": "Fundamentals",
+    "q": "How do you turn a vague feature request into work a team can deliver?",
+    "a": "Clarify the user problem, outcome, scope boundaries, acceptance criteria, and unresolved assumptions.",
+    "explanation": "Break work into reviewable increments and identify dependencies. Keep implementation choice with the appropriate team members. Completion should be demonstrable rather than based only on effort spent.",
+    "mistake": "Treating a long task list as proof that the goal is understood.",
+    "rubric": [
+      "Define the user outcome",
+      "Agree on acceptance criteria",
+      "Identify uncertainties and dependencies"
+    ],
+    "followups": [
+      "What if stakeholders disagree?",
+      "How small should the first increment be?"
+    ],
+    "sourceIds": [
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-progress",
+    "area": "Project Management",
+    "level": 1,
+    "subtopic": "Progress reporting",
+    "round": "Debugging",
+    "q": "A project is reported 90% complete for several weeks. What would you change?",
+    "a": "Report completed outcomes, remaining work, blockers, and forecast uncertainty instead of a subjective percentage.",
+    "explanation": "Validate done work against agreed criteria and separate new scope from unfinished scope. Make the next verifiable milestone visible and assign owners to dependencies.",
+    "mistake": "Counting activity as delivery progress.",
+    "rubric": [
+      "Use verifiable completion",
+      "Expose remaining uncertainty",
+      "Assign actionable blockers"
+    ],
+    "followups": [
+      "How do you report discovery work?",
+      "What if testing reveals new work?"
+    ],
+    "sourceIds": [
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-scope",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Planning",
+    "round": "Leadership",
+    "q": "A stakeholder adds urgent scope midway through delivery. How do you respond?",
+    "a": "Explain impact on outcomes, capacity, timing, and risk, then agree on the trade-off and update the plan.",
+    "explanation": "Clarify whether the new request replaces work or adds to it. Protect the team from hidden commitments while retaining flexibility. Record the decision and communicate the changed forecast.",
+    "mistake": "Accepting added work while keeping every prior promise unchanged.",
+    "rubric": [
+      "Clarify urgency and outcome",
+      "Present capacity trade-offs",
+      "Update commitments transparently"
+    ],
+    "followups": [
+      "What if the date cannot move?",
+      "Who decides what is removed?"
+    ],
+    "sourceIds": [
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-dependencies",
+    "area": "Project Management",
+    "level": 2,
+    "subtopic": "Cross-team execution",
+    "round": "Debugging",
+    "q": "A team waits on another team's API and misses its milestone. How could you manage this better?",
+    "a": "Make dependency contracts, delivery evidence, and owners explicit early, and reduce coupling with agreed stubs or staged integration where useful.",
+    "explanation": "Track uncertainty and test compatibility before the final week. Escalate decisions with impact and options rather than blame. A stub is temporary evidence, not proof that integration works.",
+    "mistake": "Discovering the dependency only when the feature is almost finished.",
+    "rubric": [
+      "Define owners and contracts",
+      "Plan early integration evidence",
+      "Escalate with concrete alternatives"
+    ],
+    "followups": [
+      "When is a stub appropriate?",
+      "How do you handle an unstable contract?"
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-forecast",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Delivery forecasting",
+    "round": "Leadership",
+    "q": "How would you forecast a complex project with substantial unknowns?",
+    "a": "Use ranges and explicit assumptions, deliver discovery milestones, and update forecasts from completed evidence.",
+    "explanation": "Separate known execution from unresolved design, procurement, and integration risks. Present scenarios and confidence rather than invented precision. Make changes visible when assumptions fail.",
+    "mistake": "Giving one precise date while hiding major unresolved risks.",
+    "rubric": [
+      "State forecast assumptions",
+      "Retire uncertainty incrementally",
+      "Update ranges from evidence"
+    ],
+    "followups": [
+      "Which uncertainty should be tested first?",
+      "How do you explain a forecast change?"
+    ],
+    "sourceIds": [
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-risk",
+    "area": "Project Management",
+    "level": 3,
+    "subtopic": "Risk management",
+    "round": "System design",
+    "q": "Create a risk plan for a launch that depends on a data migration.",
+    "a": "Identify likely failure modes, impact, mitigations, rollback constraints, and accountable decision points.",
+    "explanation": "Rehearse with realistic data and monitor validation and performance. Define go/no-go evidence and what happens if migration is partial. A backup helps only if restoration is tested.",
+    "mistake": "Listing risks without owners or trigger conditions.",
+    "rubric": [
+      "Map migration failure modes",
+      "Test mitigation and recovery",
+      "Set evidence-based launch gates"
+    ],
+    "followups": [
+      "What makes rollback impossible?",
+      "Who can pause the launch?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-portfolio",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Portfolio strategy",
+    "round": "Leadership",
+    "q": "Several projects compete for the same specialists. How do you prioritize?",
+    "a": "Compare outcomes, urgency, dependencies, risk, and capacity, then make explicit sequencing decisions with accountable sponsors.",
+    "explanation": "Account for switching cost and work already in progress. Publish what is postponed and why, and revisit when assumptions change. Avoid making every project nominally highest priority.",
+    "mistake": "Allocating everyone partially to every initiative.",
+    "rubric": [
+      "Compare value and risk",
+      "Respect constrained capacity",
+      "Make sequencing and deferrals explicit"
+    ],
+    "followups": [
+      "What if sponsors disagree?",
+      "How do you protect operational capacity?"
+    ],
+    "sourceIds": [
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "project-operating-model",
+    "area": "Project Management",
+    "level": 4,
+    "subtopic": "Delivery strategy",
+    "round": "Leadership",
+    "q": "How would you improve predictability across many engineering teams?",
+    "a": "Establish clear outcomes, dependency ownership, reliable completion criteria, and feedback from delivery and operational evidence.",
+    "explanation": "Use common reporting contracts without forcing identical team routines. Track recurring delays and remove systemic causes. Predictability should improve through learning rather than inflated estimates.",
+    "mistake": "Standardizing ceremonies without examining delivery bottlenecks.",
+    "rubric": [
+      "Define comparable outcomes and evidence",
+      "Address systemic dependency delays",
+      "Measure learning and predictability"
+    ],
+    "followups": [
+      "Which metrics can be gamed?",
+      "How do you preserve team autonomy?"
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "android-senior-platform-strategy",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Architecture strategy",
+    "round": "Leadership",
+    "q": "Define a modernization strategy for a large Android product with slow releases.",
+    "a": "Identify the actual delivery and reliability constraints, then sequence architecture, tooling, and ownership improvements with measurable outcomes.",
+    "explanation": "Pilot changes in representative features and preserve client/data compatibility. Assign migration and exception owners. Replacing the UI toolkit alone does not resolve poor boundaries or unstable release practices.",
+    "mistake": "Equating modernization with changing every framework at once.",
+    "rubric": [
+      "Map concrete constraints",
+      "Sequence reversible improvements",
+      "Measure delivery and user outcomes"
+    ],
+    "followups": [
+      "When would you postpone a Compose migration?",
+      "How do you retire temporary exceptions?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture",
+      "android-performance"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-senior-module-contracts",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Modular architecture",
+    "round": "System design",
+    "q": "Design module boundaries for several Android teams sharing navigation, data, and design components.",
+    "a": "Create capability-oriented boundaries with explicit dependency direction, public contracts, and owners for cross-feature flows.",
+    "explanation": "Measure build and coordination cost. Keep shared modules focused and test consumer compatibility. Define how features request capabilities without depending on each other's implementation.",
+    "mistake": "Splitting modules while keeping circular or implicit dependencies.",
+    "rubric": [
+      "Define capability and dependency rules",
+      "Own shared contracts",
+      "Measure build and integration behavior"
+    ],
+    "followups": [
+      "Where should navigation contracts live?",
+      "How do you avoid a shared-core dumping ground?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture",
+      "android-performance"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-senior-release-compatibility",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Release engineering",
+    "round": "System design",
+    "q": "Roll out an Android persistence migration while old clients and servers remain active.",
+    "a": "Maintain compatible APIs and test local database upgrades from supported versions with phased deployment and recovery plans.",
+    "explanation": "An on-device migration can outlive a rolled-back binary. Separate destructive cleanup from expansion and verify that interrupted upgrades retain user data. Observe errors by app and schema version.",
+    "mistake": "Assuming an app rollback automatically reverses a local schema migration.",
+    "rubric": [
+      "Test supported upgrade paths",
+      "Preserve mixed-version compatibility",
+      "Define interruption and recovery behavior"
+    ],
+    "followups": [
+      "How long should old schema support last?",
+      "What evidence should pause rollout?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-room",
+      "android-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-senior-performance-budget",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Performance strategy",
+    "round": "Leadership",
+    "q": "Set Android performance standards for a product used on inexpensive devices.",
+    "a": "Define startup, frame, memory, and network budgets around key journeys and representative device tiers.",
+    "explanation": "Use comparable measurements and assign regression ownership. Track battery and lifecycle behavior where relevant. Set exception criteria and verify optimizations do not compromise accessibility or correctness.",
+    "mistake": "Approving performance based only on a flagship emulator.",
+    "rubric": [
+      "Set journey-based budgets",
+      "Cover representative devices",
+      "Govern regressions and exceptions"
+    ],
+    "followups": [
+      "Which metrics should block release?",
+      "How would you prioritize several regressions?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture",
+      "android-performance"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

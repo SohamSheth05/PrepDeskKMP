@@ -1,0 +1,12 @@
+{
+  "name": "prepdesk-content-and-server-checks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check:content": "node tools/generate-questions.mjs --check",
+    "test:server": "node --test supabase/functions/prepdesk/handler.test.mjs",
+    "test:database": "node tools/verify-database.mjs"
+  },
+  "devDependencies": { "@electric-sql/pglite": "0.5.8" },
+  "engines": { "node": ">=22" }
+}

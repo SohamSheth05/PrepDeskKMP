@@ -1,0 +1,214 @@
+[
+  {
+    "id": "ai-data-split",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "ML evaluation",
+    "round": "Fundamentals",
+    "q": "Why should test data be kept separate from model training and tuning?",
+    "a": "It provides an independent estimate of generalization. Using it to choose the model leaks information into the evaluation.",
+    "explanation": "Split according to the real prediction setting: time, entities, or groups may matter. Repeated test-set tuning can make the reported score optimistic even if model fitting never directly sees those rows.",
+    "mistake": "Treating a random row split as correct for every dataset.",
+    "rubric": [
+      "Separate training and evaluation",
+      "Match the split to deployment",
+      "Avoid test-set tuning"
+    ],
+    "followups": [
+      "What if users appear in several rows?",
+      "When should you use a time split?"
+    ],
+    "sourceIds": [
+      "sklearn"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-metrics",
+    "area": "AI and Data",
+    "level": 1,
+    "subtopic": "ML metrics",
+    "round": "Fundamentals",
+    "q": "A classifier is 99% accurate on data with 1% positive cases. Is it useful?",
+    "a": "Not necessarily. An always-negative classifier can reach that accuracy; inspect precision, recall, errors, and the decision cost.",
+    "explanation": "Choose a baseline and metrics tied to the task. Evaluate threshold behavior and minority-class performance. The best threshold depends on false-positive and false-negative consequences.",
+    "mistake": "Declaring success from accuracy alone.",
+    "rubric": [
+      "Compare a simple baseline",
+      "Inspect class-specific errors",
+      "Choose cost-aware metrics"
+    ],
+    "followups": [
+      "How do precision and recall trade off?",
+      "When is a PR curve useful?"
+    ],
+    "sourceIds": [
+      "google-ml"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-leakage",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "ML pipelines",
+    "round": "Debugging",
+    "q": "A model performs much worse after deployment than in cross-validation. How could preprocessing leak information?",
+    "a": "Preprocessing fitted on all data can expose validation information. Fit transformations only on training data within each evaluation fold.",
+    "explanation": "Use a pipeline so scaling, imputation, and feature selection respect the split. Also inspect future information and duplicate entities. Compare with a leakage-free baseline before adding complexity.",
+    "mistake": "Applying fit_transform to the whole dataset before splitting.",
+    "rubric": [
+      "Identify fitted preprocessing",
+      "Keep fitting inside training folds",
+      "Check temporal/entity leakage"
+    ],
+    "followups": [
+      "How should production transforms be reused?",
+      "Can target encoding leak labels?"
+    ],
+    "sourceIds": [
+      "sklearn"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-data-checks",
+    "area": "AI and Data",
+    "level": 2,
+    "subtopic": "Data quality",
+    "round": "Coding",
+    "q": "Design validation for an incoming analytics dataset.",
+    "a": "Check schema, key uniqueness, null/range rules, freshness, and distribution changes before making it available.",
+    "explanation": "Distinguish hard contract failures from warnings. Record input versions and rejected records so failures are traceable. Do not silently replace corrupt values with defaults that change business meaning.",
+    "mistake": "Treating a successfully parsed file as valid data.",
+    "rubric": [
+      "Validate schema and invariants",
+      "Track freshness and provenance",
+      "Define rejection and alert policy"
+    ],
+    "followups": [
+      "How do you handle late records?",
+      "Which drift should block processing?"
+    ],
+    "sourceIds": [
+      "google-ml",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-drift",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "ML operations",
+    "round": "System design",
+    "q": "Design monitoring for a deployed prediction model.",
+    "a": "Monitor data quality, feature distributions, inference failures and latency, and outcome quality when labels become available.",
+    "explanation": "Distribution changes do not always mean performance degradation. Track segments and label delays, compare meaningful baselines, and define rollback or retraining decisions with owners.",
+    "mistake": "Retraining automatically after every detected input shift.",
+    "rubric": [
+      "Monitor input and service health",
+      "Evaluate delayed outcome quality",
+      "Define response ownership"
+    ],
+    "followups": [
+      "How do you handle delayed labels?",
+      "Which segments need separate metrics?"
+    ],
+    "sourceIds": [
+      "google-ml",
+      "sklearn"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-retrieval",
+    "area": "AI and Data",
+    "level": 3,
+    "subtopic": "AI application quality",
+    "round": "System design",
+    "q": "How would you evaluate an assistant that answers questions using retrieved documents?",
+    "a": "Separate retrieval quality from answer quality and test grounding, unsupported claims, access permissions, latency, and useful refusal behavior.",
+    "explanation": "Build a representative versioned evaluation set with difficult and unanswerable cases. Trace which material was retrieved and used. More context is not proof of a better or authorized answer.",
+    "mistake": "Judging the system only by fluent wording.",
+    "rubric": [
+      "Evaluate retrieval and answers separately",
+      "Test grounding and permission boundaries",
+      "Track latency and unanswerable cases"
+    ],
+    "followups": [
+      "How do you update stale documents?",
+      "What if a retrieved document contains instructions?"
+    ],
+    "sourceIds": [
+      "google-ml",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-governance",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "AI strategy",
+    "round": "Leadership",
+    "q": "Choose which business workflow should receive an ML feature first.",
+    "a": "Compare user value, data availability, measurable baselines, failure cost, and operating requirements before committing.",
+    "explanation": "A simple rule may be sufficient. Define human oversight, evaluation ownership, and rollback. Track actual workflow outcomes and error costs rather than only a model score.",
+    "mistake": "Selecting a project because the model technology is fashionable.",
+    "rubric": [
+      "Define measurable user value",
+      "Compare simpler baselines",
+      "Account for failure and operations"
+    ],
+    "followups": [
+      "What if labels are unreliable?",
+      "When should a human review predictions?"
+    ],
+    "sourceIds": [
+      "google-ml"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "ai-data-platform",
+    "area": "AI and Data",
+    "level": 4,
+    "subtopic": "Data architecture",
+    "round": "System design",
+    "q": "Design reproducible model training for several teams.",
+    "a": "Version data, transformations, code, configuration, and evaluation artifacts, and record how a released model was produced.",
+    "explanation": "Match training and inference feature semantics and control access. Provide repeatable environments and ownership of data contracts. Reproducibility includes dependencies and input provenance, not just a random seed.",
+    "mistake": "Saving only model weights and calling the process reproducible.",
+    "rubric": [
+      "Version inputs and transformations",
+      "Align training/inference semantics",
+      "Record evaluation and lineage"
+    ],
+    "followups": [
+      "How do schema changes affect models?",
+      "How would you reproduce a prior release?"
+    ],
+    "sourceIds": [
+      "sklearn",
+      "google-ml"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

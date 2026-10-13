@@ -1,0 +1,210 @@
+[
+  {
+    "id": "rust-ownership",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Ownership",
+    "round": "Fundamentals",
+    "q": "Why can Rust reject use of a String after passing it to another function?",
+    "a": "Passing an owned String may move ownership. Borrow it when the callee only needs temporary access.",
+    "explanation": "Explain who owns the value and when it is dropped. Clone creates another owned value with a cost; it should be a deliberate choice rather than the default workaround.",
+    "mistake": "Adding clone to every ownership error.",
+    "rubric": [
+      "Explain move semantics",
+      "Choose borrowing when suitable",
+      "Describe destruction ownership"
+    ],
+    "followups": [
+      "Why do some values copy?",
+      "When should a function return ownership?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-borrow",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Borrowing",
+    "round": "Debugging",
+    "q": "Why cannot Rust keep an active immutable borrow while mutating the same value?",
+    "a": "Aliasing and mutation must obey borrowing rules so references remain safe. End the borrow or redesign access.",
+    "explanation": "The compiler tracks lifetimes of actual use, not merely every closing brace. Use a smaller borrowing scope or compute the needed owned result before mutation.",
+    "mistake": "Assuming borrowing restrictions can be safely ignored with raw pointers.",
+    "rubric": [
+      "Explain aliasing safety",
+      "Identify the overlapping borrow",
+      "Restructure the lifetime"
+    ],
+    "followups": [
+      "What does a mutable borrow guarantee?",
+      "When is interior mutability useful?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-result",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Errors",
+    "round": "Coding",
+    "q": "Design a Rust file-processing function that reports expected failures to its caller.",
+    "a": "Return Result with a useful error type and use propagation where appropriate; avoid panic for routine failure.",
+    "explanation": "Distinguish invalid input, I/O failure, and programmer defects. Include context without discarding the source error. Cleanup for owned resources follows their lifetimes.",
+    "mistake": "Using unwrap on untrusted input in a production path.",
+    "rubric": [
+      "Use explicit Result types",
+      "Preserve actionable context",
+      "Separate expected failure and panic"
+    ],
+    "followups": [
+      "When use a custom error enum?",
+      "What does the ? operator do?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-lifetime",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Lifetimes",
+    "round": "Debugging",
+    "q": "Can a lifetime annotation make a function return a reference to its local String?",
+    "a": "No. An annotation describes validity relationships; it does not extend a local value lifetime.",
+    "explanation": "Return an owned value or borrow from data owned outside the function. Explain which input owns the referenced memory instead of treating lifetime syntax as storage allocation.",
+    "mistake": "Believing a named lifetime keeps local storage alive.",
+    "rubric": [
+      "Separate lifetime and allocation",
+      "Identify the actual owner",
+      "Choose owned or externally borrowed output"
+    ],
+    "followups": [
+      "When can output borrow an input?",
+      "What does a static reference mean?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-shared-state",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "System design",
+    "q": "Share mutable state among Rust threads safely.",
+    "a": "Choose explicit shared ownership and synchronization, such as Arc with a Mutex, or use message passing.",
+    "explanation": "Arc manages shared ownership, not mutation safety by itself. Minimize lock scope and avoid inconsistent lock ordering. Discuss poison handling where relevant and test contention.",
+    "mistake": "Claiming Arc alone makes any mutable data thread-safe.",
+    "rubric": [
+      "Separate ownership and synchronization",
+      "Control lock scope",
+      "Handle contention and errors"
+    ],
+    "followups": [
+      "When is RwLock useful?",
+      "How can message passing simplify ownership?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-async-lock",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Async",
+    "round": "Debugging",
+    "q": "A Rust async task holds a lock while awaiting a remote request. What could go wrong?",
+    "a": "It can extend contention or cause deadlock depending on the lock and scheduler. Prefer extracting needed data and releasing the lock before awaiting.",
+    "explanation": "Define whether results are still valid when the lock is reacquired. An async mutex avoids some blocking but does not eliminate poor lifetime design. Account for cancellation during the request.",
+    "mistake": "Replacing the lock type without reviewing the invariant.",
+    "rubric": [
+      "Analyze lock lifetime",
+      "Avoid unnecessary await under lock",
+      "Revalidate state after suspension"
+    ],
+    "followups": [
+      "When must a lock span an operation?",
+      "How do Send requirements affect tasks?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-unsafe",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Safety architecture",
+    "round": "Leadership",
+    "q": "What policy would you set for unsafe Rust in a production library?",
+    "a": "Keep unsafe boundaries small, document safety invariants, and test and review every safe API that relies on them.",
+    "explanation": "The compiler does not prove the hidden invariants. Check aliasing, alignment, lifetimes, and thread safety, and use appropriate tools. Track why safe alternatives were insufficient.",
+    "mistake": "Treating a safe public function as proof of safe internals.",
+    "rubric": [
+      "Document safety preconditions",
+      "Minimize and review unsafe boundaries",
+      "Validate edge cases with tools"
+    ],
+    "followups": [
+      "How do you audit FFI ownership?",
+      "What would justify an unsafe optimization?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-migration",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Platform evolution",
+    "round": "System design",
+    "q": "Replace a critical native module with Rust while preserving existing clients.",
+    "a": "Define a compatible interface, explicit ownership and errors, and an incremental rollout with parity tests.",
+    "explanation": "Keep panic behavior from crossing incompatible boundaries. Validate layout and allocator assumptions, profile real workloads, and retain a rollback strategy. Safety gains must be backed by boundary correctness.",
+    "mistake": "Assuming Rust removes defects in foreign callers automatically.",
+    "rubric": [
+      "Specify interface and ownership",
+      "Test behavioral and ABI parity",
+      "Plan rollout and recovery"
+    ],
+    "followups": [
+      "Who releases cross-language buffers?",
+      "How do you compare performance fairly?"
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

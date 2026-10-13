@@ -1,0 +1,214 @@
+[
+  {
+    "id": "python-defaults",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Language basics",
+    "round": "Debugging",
+    "q": "A function with items=[] remembers values from earlier calls. Explain and repair it.",
+    "a": "Default arguments are evaluated when the function is defined. Use None and allocate a list per call.",
+    "explanation": "A caller-supplied list still has its own mutation semantics. Decide whether to mutate it or copy it, then test repeated calls and explicit empty-list input.",
+    "mistake": "Using truthiness to replace every empty caller-owned list.",
+    "rubric": [
+      "Explain definition-time evaluation",
+      "Create a fresh default collection",
+      "Clarify mutation ownership"
+    ],
+    "followups": [
+      "How does a shallow copy behave?",
+      "Can immutable defaults be shared?"
+    ],
+    "sourceIds": [
+      "python-tutorial"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-generators",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Iteration",
+    "round": "Fundamentals",
+    "q": "Why use a generator to read a large log file, and what limitation must callers know?",
+    "a": "Yield records lazily to bound memory. A generator is consumed as it is iterated and is not automatically reusable.",
+    "explanation": "Keep the file open for the duration of iteration and close it reliably. Avoid list(...) in the caller if streaming is required. Repeated traversal needs a new iterator or stored results.",
+    "mistake": "Calling a generator lazy while immediately materializing everything.",
+    "rubric": [
+      "Describe lazy evaluation",
+      "Explain one-pass consumption",
+      "Manage file lifetime"
+    ],
+    "followups": [
+      "What happens on early exit?",
+      "When is materialization useful?"
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-async-block",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Asyncio",
+    "round": "Debugging",
+    "q": "An async endpoint freezes other requests while calling a synchronous client. Why?",
+    "a": "Blocking work still blocks the event-loop thread inside async def. Use an async client or offload suitable blocking I/O.",
+    "explanation": "Use asyncio.to_thread for appropriate blocking I/O and bound concurrency. CPU-heavy Python often needs processes or native code, depending on the interpreter and workload. Preserve timeouts and cancellation.",
+    "mistake": "Assuming async def makes synchronous calls nonblocking.",
+    "rubric": [
+      "Identify the blocking call",
+      "Choose appropriate execution",
+      "Bound concurrency and timeouts"
+    ],
+    "followups": [
+      "Does cancellation stop a worker thread?",
+      "How would you test event-loop latency?"
+    ],
+    "sourceIds": [
+      "python-asyncio"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-batch",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Data processing",
+    "round": "Coding",
+    "q": "Process a huge iterable in fixed-size batches without loading it all.",
+    "a": "Consume at most a batch at a time using iterator operations; explicitly handle the final partial batch.",
+    "explanation": "Keep memory proportional to batch size, validate a positive size, and test empty input and exact boundaries. Choose batch size using throughput, downstream limits, and retry cost.",
+    "mistake": "Slicing a prebuilt list and calling the result streaming.",
+    "rubric": [
+      "Use bounded iterator consumption",
+      "Handle the final batch",
+      "Test boundary cases"
+    ],
+    "followups": [
+      "What if processing one batch fails?",
+      "Can ordering be preserved?"
+    ],
+    "sourceIds": [
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-taskgroup",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Asyncio",
+    "round": "System design",
+    "q": "Several independent remote lookups feed one Python response. How do you manage their lifetime?",
+    "a": "Use a bounded task group and a request deadline. Specify whether one failure cancels the group or produces a partial response.",
+    "explanation": "TaskGroup is available in Python 3.11+. Clean up in finally and normally propagate cancellation. Avoid orphan tasks, unbounded fan-out, and hiding all failures in empty results.",
+    "mistake": "Swallowing cancellation and leaving background work running.",
+    "rubric": [
+      "Define partial-failure policy",
+      "Bound fan-out and deadlines",
+      "Clean up cancelled work"
+    ],
+    "followups": [
+      "When is gather preferable?",
+      "How are multiple failures surfaced?"
+    ],
+    "sourceIds": [
+      "python-asyncio"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-memory",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "A Python ingestion worker has steadily increasing memory. How would you diagnose it?",
+    "a": "Measure retained objects and allocation trends; check queues, caches, references, and whether streaming code materializes data.",
+    "explanation": "Reproduce with a bounded input and compare snapshots. Distinguish expected cache growth from unbounded retention. Add queue limits and verify steady-state memory over a sustained run.",
+    "mistake": "Calling garbage collection repeatedly without finding retained references.",
+    "rubric": [
+      "Measure retained allocations",
+      "Inspect unbounded collections",
+      "Verify sustained memory stability"
+    ],
+    "followups": [
+      "What if RSS stays high after objects disappear?",
+      "How does batch size affect throughput?"
+    ],
+    "sourceIds": [
+      "python-iterators",
+      "python-tutorial"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-compatibility",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Platform evolution",
+    "round": "Leadership",
+    "q": "How would you standardize Python runtimes across dozens of services?",
+    "a": "Publish supported versions and dependency policies, run representative compatibility tests, and roll out by risk tier.",
+    "explanation": "Include native extensions, lockfiles, build images, and observability agents. Plan a rollback path and ownership for exceptions. Compare production latency and error rates before retiring old runtimes.",
+    "mistake": "Assuming passing unit tests proves deployment compatibility.",
+    "rubric": [
+      "Inventory runtime-sensitive dependencies",
+      "Use staged rollouts",
+      "Assign upgrade and exception owners"
+    ],
+    "followups": [
+      "How do you handle abandoned packages?",
+      "What indicates a rollback is necessary?"
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-pipeline",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design a resumable Python ETL job that may crash after writing a batch.",
+    "a": "Use durable checkpoints and idempotent or transactionally coordinated writes so replay cannot duplicate results.",
+    "explanation": "Checkpoint progress only after output is durable, or commit both together when possible. Track input versions, rejected records, and schema changes. Test a crash on both sides of each commit.",
+    "mistake": "Saving the checkpoint before the output is committed.",
+    "rubric": [
+      "Coordinate checkpoints and writes",
+      "Define replay identity",
+      "Test crash boundaries"
+    ],
+    "followups": [
+      "How do late records enter the pipeline?",
+      "When should a batch be quarantined?"
+    ],
+    "sourceIds": [
+      "python-iterators",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

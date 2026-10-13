@@ -1,0 +1,930 @@
+[
+  {
+    "id": "dotnet-path-01",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Values",
+    "round": "Fundamentals",
+    "q": "How do value types and reference types differ in C#?",
+    "a": "Value assignment copies the value.",
+    "explanation": "Value assignment copies the value. Reference assignment copies a reference. Nested references can still be shared.",
+    "mistake": "Assuming a struct can never refer to mutable objects.",
+    "rubric": [
+      "Value assignment copies the value",
+      "Reference assignment copies a reference",
+      "Nested references can still be shared"
+    ],
+    "followups": [
+      "When does boxing occur?",
+      "Walk through a concrete example of values and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-02",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Nullability",
+    "round": "Fundamentals",
+    "q": "Does nullable reference analysis prevent every null at runtime?",
+    "a": "It provides compiler analysis.",
+    "explanation": "It provides compiler analysis. External values still need validation. Use explicit boundary checks.",
+    "mistake": "Treating annotations as runtime input validation.",
+    "rubric": [
+      "It provides compiler analysis",
+      "External values still need validation",
+      "Use explicit boundary checks"
+    ],
+    "followups": [
+      "How should an uncertain API result be handled?",
+      "Walk through a concrete example of nullability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-03",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Equality",
+    "round": "Fundamentals",
+    "q": "Why must equality and hashing remain consistent?",
+    "a": "Hash collections rely on both.",
+    "explanation": "Hash collections rely on both. Equal objects need equal hash codes. Avoid mutating key identity fields.",
+    "mistake": "Changing a dictionary key's equality after insertion.",
+    "rubric": [
+      "Hash collections rely on both",
+      "Equal objects need equal hash codes",
+      "Avoid mutating key identity fields"
+    ],
+    "followups": [
+      "How do records affect equality behavior?",
+      "Walk through a concrete example of equality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-04",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Fundamentals",
+    "q": "How do IEnumerable and a materialized list differ?",
+    "a": "Enumerable sequences can defer execution.",
+    "explanation": "Enumerable sequences can defer execution. Lists retain concrete results. Repeated enumeration can repeat work.",
+    "mistake": "Assuming an enumerable always caches its results.",
+    "rubric": [
+      "Enumerable sequences can defer execution",
+      "Lists retain concrete results",
+      "Repeated enumeration can repeat work"
+    ],
+    "followups": [
+      "When should you call ToList deliberately?",
+      "Walk through a concrete example of collections and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-05",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Resources",
+    "round": "Fundamentals",
+    "q": "What does using guarantee for a disposable resource?",
+    "a": "It scopes disposal to ownership.",
+    "explanation": "It scopes disposal to ownership. Disposal runs on ordinary exceptional exit. Use async disposal when required.",
+    "mistake": "Relying on garbage collection to close connections.",
+    "rubric": [
+      "It scopes disposal to ownership",
+      "Disposal runs on ordinary exceptional exit",
+      "Use async disposal when required"
+    ],
+    "followups": [
+      "How would await using differ?",
+      "Walk through a concrete example of resources and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-06",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Exceptions",
+    "round": "Fundamentals",
+    "q": "How do you preserve an exception when rethrowing?",
+    "a": "Use a preserving rethrow in the catch.",
+    "explanation": "Use a preserving rethrow in the catch. Add context without discarding the cause. Handle only recoverable failures.",
+    "mistake": "Replacing all failures with null.",
+    "rubric": [
+      "Use a preserving rethrow in the catch",
+      "Add context without discarding the cause",
+      "Handle only recoverable failures"
+    ],
+    "followups": [
+      "How would you expose a domain failure?",
+      "Walk through a concrete example of exceptions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-07",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Tasks",
+    "round": "Fundamentals",
+    "q": "Why is async void usually unsuitable for service methods?",
+    "a": "Callers cannot await completion.",
+    "explanation": "Callers cannot await completion. Failure handling is different. Return Task for composable async work.",
+    "mistake": "Using async void for background service operations.",
+    "rubric": [
+      "Callers cannot await completion",
+      "Failure handling is different",
+      "Return Task for composable async work"
+    ],
+    "followups": [
+      "When is async void appropriate for event handlers?",
+      "Walk through a concrete example of tasks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-08",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Injection",
+    "round": "Fundamentals",
+    "q": "Why should required dependencies be constructor parameters?",
+    "a": "Required contracts are visible.",
+    "explanation": "Required contracts are visible. Valid initialization becomes easier. Tests can provide controlled implementations.",
+    "mistake": "Resolving every service from a global locator.",
+    "rubric": [
+      "Required contracts are visible",
+      "Valid initialization becomes easier",
+      "Tests can provide controlled implementations"
+    ],
+    "followups": [
+      "How would you inject a clock?",
+      "Walk through a concrete example of injection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-09",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Async execution",
+    "round": "Scenario",
+    "q": "Why does async not imply a new thread?",
+    "a": "Await coordinates eventual completion.",
+    "explanation": "Await coordinates eventual completion. I/O can release execution while pending. CPU work still requires an execution strategy.",
+    "mistake": "Wrapping every I/O call in Task.Run.",
+    "rubric": [
+      "Await coordinates eventual completion",
+      "I/O can release execution while pending",
+      "CPU work still requires an execution strategy"
+    ],
+    "followups": [
+      "When would Task.Run be appropriate?",
+      "Walk through a concrete example of async execution and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-10",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Cancellation",
+    "round": "Scenario",
+    "q": "How should cancellation tokens flow through a .NET API?",
+    "a": "Accept tokens at ownership boundaries.",
+    "explanation": "Accept tokens at ownership boundaries. Pass them to supporting operations. Release resources on cancellation.",
+    "mistake": "Ignoring the caller's cancellation token.",
+    "rubric": [
+      "Accept tokens at ownership boundaries",
+      "Pass them to supporting operations",
+      "Release resources on cancellation"
+    ],
+    "followups": [
+      "How would cancellation affect a database query?",
+      "Walk through a concrete example of cancellation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-11",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "EF queries",
+    "round": "Scenario",
+    "q": "Why can IQueryable defer a database operation?",
+    "a": "It represents query composition.",
+    "explanation": "It represents query composition. Terminal enumeration executes the query. Keep evaluation and projection intentional.",
+    "mistake": "Enumerating the same query repeatedly without realizing it.",
+    "rubric": [
+      "It represents query composition",
+      "Terminal enumeration executes the query",
+      "Keep evaluation and projection intentional"
+    ],
+    "followups": [
+      "How would you inspect generated SQL?",
+      "Walk through a concrete example of ef queries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-12",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Tracking",
+    "round": "Scenario",
+    "q": "When should EF queries use no tracking?",
+    "a": "Read-only operations often need no change tracking.",
+    "explanation": "Read-only operations often need no change tracking. Tracking supports later entity updates. Choose based on ownership and behavior.",
+    "mistake": "Disabling tracking then expecting automatic updates.",
+    "rubric": [
+      "Read-only operations often need no change tracking",
+      "Tracking supports later entity updates",
+      "Choose based on ownership and behavior"
+    ],
+    "followups": [
+      "How would identity resolution affect repeated entities?",
+      "Walk through a concrete example of tracking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-13",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Dependency lifetimes",
+    "round": "Scenario",
+    "q": "What risk comes from injecting a scoped service into a singleton?",
+    "a": "The singleton outlives the scoped dependency.",
+    "explanation": "The singleton outlives the scoped dependency. Captured request state can leak or fail. Use an explicit scope when justified.",
+    "mistake": "Keeping a DbContext in a global singleton.",
+    "rubric": [
+      "The singleton outlives the scoped dependency",
+      "Captured request state can leak or fail",
+      "Use an explicit scope when justified"
+    ],
+    "followups": [
+      "How would a background worker create a scope?",
+      "Walk through a concrete example of dependency lifetimes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-14",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Validation",
+    "round": "Scenario",
+    "q": "How should an ASP.NET endpoint reject invalid input?",
+    "a": "Validate boundary shape and domain constraints.",
+    "explanation": "Validate boundary shape and domain constraints. Return consistent client errors. Keep authorization separate.",
+    "mistake": "Treating malformed input as a generic server failure.",
+    "rubric": [
+      "Validate boundary shape and domain constraints",
+      "Return consistent client errors",
+      "Keep authorization separate"
+    ],
+    "followups": [
+      "How would nested validation be handled?",
+      "Walk through a concrete example of validation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-15",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What should an API integration test verify?",
+    "a": "Exercise routing serialization and contracts.",
+    "explanation": "Exercise routing serialization and contracts. Use controlled dependency behavior. Test actual persistence where query semantics matter.",
+    "mistake": "Assuming mocked DbSet proves database behavior.",
+    "rubric": [
+      "Exercise routing serialization and contracts",
+      "Use controlled dependency behavior",
+      "Test actual persistence where query semantics matter"
+    ],
+    "followups": [
+      "When would a real test database be needed?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-16",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Configuration",
+    "round": "Scenario",
+    "q": "How should production .NET configuration be validated?",
+    "a": "Require necessary values at startup.",
+    "explanation": "Require necessary values at startup. Use environment-appropriate secret management. Reject unsafe endpoints or defaults.",
+    "mistake": "Shipping development credentials in appsettings.",
+    "rubric": [
+      "Require necessary values at startup",
+      "Use environment-appropriate secret management",
+      "Reject unsafe endpoints or defaults"
+    ],
+    "followups": [
+      "How would deployment detect missing settings?",
+      "Walk through a concrete example of configuration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-17",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "How should shared state in a singleton be protected?",
+    "a": "Define synchronization for compound invariants.",
+    "explanation": "Define synchronization for compound invariants. Prefer immutable or isolated data where possible. Measure contention under load.",
+    "mistake": "Assuming singleton scope provides thread safety.",
+    "rubric": [
+      "Define synchronization for compound invariants",
+      "Prefer immutable or isolated data where possible",
+      "Measure contention under load"
+    ],
+    "followups": [
+      "When would concurrent collections be insufficient?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-18",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Thread pool",
+    "round": "Debugging",
+    "q": "How can blocking on Task results hurt a service?",
+    "a": "It ties up execution resources.",
+    "explanation": "It ties up execution resources. It can contribute to starvation or deadlock. Prefer asynchronous composition end to end.",
+    "mistake": "Calling Result in request handlers.",
+    "rubric": [
+      "It ties up execution resources",
+      "It can contribute to starvation or deadlock",
+      "Prefer asynchronous composition end to end"
+    ],
+    "followups": [
+      "How would you detect thread-pool starvation?",
+      "Walk through a concrete example of thread pool and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-19",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "How would you investigate .NET memory pressure?",
+    "a": "Measure allocation and retained objects.",
+    "explanation": "Measure allocation and retained objects. Inspect collection and pause behavior. Separate managed from native memory.",
+    "mistake": "Calling GC.Collect to hide an unexplained leak.",
+    "rubric": [
+      "Measure allocation and retained objects",
+      "Inspect collection and pause behavior",
+      "Separate managed from native memory"
+    ],
+    "followups": [
+      "Which evidence identifies retained roots?",
+      "Walk through a concrete example of memory and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-20",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Transactions",
+    "round": "Debugging",
+    "q": "Why avoid remote calls inside a database transaction?",
+    "a": "Remote latency extends locks and ownership.",
+    "explanation": "Remote latency extends locks and ownership. Failures create cross-system ambiguity. Use explicit workflows and durable intent.",
+    "mistake": "Holding a transaction open during third-party requests.",
+    "rubric": [
+      "Remote latency extends locks and ownership",
+      "Failures create cross-system ambiguity",
+      "Use explicit workflows and durable intent"
+    ],
+    "followups": [
+      "How would an outbox change the design?",
+      "Walk through a concrete example of transactions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-21",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Resilience",
+    "round": "Debugging",
+    "q": "How should an HTTP client handle transient failures?",
+    "a": "Use explicit deadlines and bounded retries.",
+    "explanation": "Use explicit deadlines and bounded retries. Respect idempotency and cancellation. Avoid amplifying overloaded services.",
+    "mistake": "Retrying every failed write without a safety contract.",
+    "rubric": [
+      "Use explicit deadlines and bounded retries",
+      "Respect idempotency and cancellation",
+      "Avoid amplifying overloaded services"
+    ],
+    "followups": [
+      "How would a circuit breaker help?",
+      "Walk through a concrete example of resilience and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-22",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Security",
+    "round": "Debugging",
+    "q": "How should an API enforce resource authorization?",
+    "a": "Validate trusted identity and policy.",
+    "explanation": "Validate trusted identity and policy. Check access to each requested object. Test cross-user and tenant boundaries.",
+    "mistake": "Checking only whether a user is logged in.",
+    "rubric": [
+      "Validate trusted identity and policy",
+      "Check access to each requested object",
+      "Test cross-user and tenant boundaries"
+    ],
+    "followups": [
+      "How would batch operations enforce ownership?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-23",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Pooling",
+    "round": "Debugging",
+    "q": "Why use managed HTTP client construction and handler reuse?",
+    "a": "Connection resources should be reused deliberately.",
+    "explanation": "Connection resources should be reused deliberately. Handler lifecycle affects DNS and connections. Configure deadlines and limits explicitly.",
+    "mistake": "Creating unrestricted clients per request.",
+    "rubric": [
+      "Connection resources should be reused deliberately",
+      "Handler lifecycle affects DNS and connections",
+      "Configure deadlines and limits explicitly"
+    ],
+    "followups": [
+      "How would you handle changing DNS destinations?",
+      "Walk through a concrete example of pooling and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-24",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Observability",
+    "round": "Debugging",
+    "q": "What helps diagnose a slow .NET request?",
+    "a": "Correlate request traces logs and metrics.",
+    "explanation": "Correlate request traces logs and metrics. Measure pool queue and dependency time. Include route and release context.",
+    "mistake": "Recording only aggregate CPU usage.",
+    "rubric": [
+      "Correlate request traces logs and metrics",
+      "Measure pool queue and dependency time",
+      "Include route and release context"
+    ],
+    "followups": [
+      "How would you identify database waiting?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-25",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How would you keep domain code independent of ASP.NET?",
+    "a": "Define domain inputs and outputs.",
+    "explanation": "Define domain inputs and outputs. Inject service and persistence contracts. Translate HTTP details at the boundary.",
+    "mistake": "Passing HttpContext into all business rules.",
+    "rubric": [
+      "Define domain inputs and outputs",
+      "Inject service and persistence contracts",
+      "Translate HTTP details at the boundary"
+    ],
+    "followups": [
+      "How would you test a rule without a server?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-26",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Schema evolution",
+    "round": "Design",
+    "q": "How should EF migrations support rolling releases?",
+    "a": "Expand schema compatibly first.",
+    "explanation": "Expand schema compatibly first. Migrate data before removing old fields. Test old and new application versions.",
+    "mistake": "Deploying destructive changes before old instances stop.",
+    "rubric": [
+      "Expand schema compatibly first",
+      "Migrate data before removing old fields",
+      "Test old and new application versions"
+    ],
+    "followups": [
+      "How would a rollback work?",
+      "Walk through a concrete example of schema evolution and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-27",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Upgrade policy",
+    "round": "Design",
+    "q": "How would you plan a .NET runtime upgrade?",
+    "a": "Verify supported framework and library combinations.",
+    "explanation": "Verify supported framework and library combinations. Test production-like behavior. Stage releases with observable recovery.",
+    "mistake": "Assuming compile success proves runtime compatibility.",
+    "rubric": [
+      "Verify supported framework and library combinations",
+      "Test production-like behavior",
+      "Stage releases with observable recovery"
+    ],
+    "followups": [
+      "Which native dependencies need checks?",
+      "Walk through a concrete example of upgrade policy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-28",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Supply chain",
+    "round": "Design",
+    "q": "How should a team respond to a NuGet vulnerability?",
+    "a": "Locate affected packaged paths.",
+    "explanation": "Locate affected packaged paths. Apply validated fixes or mitigations. Track deployed versions and residual risk.",
+    "mistake": "Auditing only direct dependencies.",
+    "rubric": [
+      "Locate affected packaged paths",
+      "Apply validated fixes or mitigations",
+      "Track deployed versions and residual risk"
+    ],
+    "followups": [
+      "How would CI report transitive exposure?",
+      "Walk through a concrete example of supply chain and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-29",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Multi-tenancy",
+    "round": "Design",
+    "q": "How do you isolate tenant data in a shared service?",
+    "a": "Derive tenant context from trusted authentication.",
+    "explanation": "Derive tenant context from trusted authentication. Scope queries caches and jobs. Test administrative and background paths.",
+    "mistake": "Trusting a user-supplied tenant identifier.",
+    "rubric": [
+      "Derive tenant context from trusted authentication",
+      "Scope queries caches and jobs",
+      "Test administrative and background paths"
+    ],
+    "followups": [
+      "How should tenant-aware cache keys be designed?",
+      "Walk through a concrete example of multi-tenancy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-30",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Capacity",
+    "round": "Design",
+    "q": "How would you scale a .NET service responsibly?",
+    "a": "Load-test representative workloads.",
+    "explanation": "Load-test representative workloads. Find saturated shared resources. Budget concurrency and connections across replicas.",
+    "mistake": "Increasing replicas without database capacity analysis.",
+    "rubric": [
+      "Load-test representative workloads",
+      "Find saturated shared resources",
+      "Budget concurrency and connections across replicas"
+    ],
+    "followups": [
+      "How would you define overload behavior?",
+      "Walk through a concrete example of capacity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-31",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Library governance",
+    "round": "Design",
+    "q": "How should shared .NET packages evolve across teams?",
+    "a": "Publish focused stable contracts.",
+    "explanation": "Publish focused stable contracts. Version breaking behavior deliberately. Provide deprecation and migration guidance.",
+    "mistake": "Changing defaults without considering downstream behavior.",
+    "rubric": [
+      "Publish focused stable contracts",
+      "Version breaking behavior deliberately",
+      "Provide deprecation and migration guidance"
+    ],
+    "followups": [
+      "How would consumer contract tests help?",
+      "Walk through a concrete example of library governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-path-32",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Operational readiness",
+    "round": "Design",
+    "q": "What should a production .NET service prove before launch?",
+    "a": "Critical workflows and recovery paths work.",
+    "explanation": "Critical workflows and recovery paths work. Telemetry and ownership are defined. Configuration security and rollout checks pass.",
+    "mistake": "Treating a successful build as launch readiness.",
+    "rubric": [
+      "Critical workflows and recovery paths work",
+      "Telemetry and ownership are defined",
+      "Configuration security and rollout checks pass"
+    ],
+    "followups": [
+      "How would you rehearse dependency failure?",
+      "Walk through a concrete example of operational readiness and explain one trade-off."
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying",
+      "postgres-isolation",
+      "csharp-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

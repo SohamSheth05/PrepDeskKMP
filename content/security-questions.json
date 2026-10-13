@@ -1,0 +1,214 @@
+[
+  {
+    "id": "security-auth",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Access control",
+    "round": "Fundamentals",
+    "q": "Explain authentication versus authorization with a document API.",
+    "a": "Authentication establishes who the caller is; authorization decides which document actions that caller may perform.",
+    "explanation": "Check permissions for every relevant object and action. A valid token is not proof of document ownership, and frontend visibility is not an access control.",
+    "mistake": "Checking only whether a caller is logged in.",
+    "rubric": [
+      "Distinguish identity and permissions",
+      "Apply object/action checks",
+      "Test unauthorized access"
+    ],
+    "followups": [
+      "What changes for shared documents?",
+      "How should administrators be restricted?"
+    ],
+    "sourceIds": [
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-injection",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Input boundaries",
+    "round": "Debugging",
+    "q": "Why is concatenating user input into SQL dangerous?",
+    "a": "Input can become executable SQL syntax. Use parameterized queries and keep identifiers or query structure under deliberate control.",
+    "explanation": "Parameters bind values, not arbitrary table names or sort expressions. Allowlist structural choices and restrict database permissions. Escaping manually is fragile and database-specific.",
+    "mistake": "Assuming value parameters can safely replace any SQL fragment.",
+    "rubric": [
+      "Separate code and data",
+      "Bind values safely",
+      "Allowlist structural choices"
+    ],
+    "followups": [
+      "How do you handle user-selected sorting?",
+      "Does an ORM eliminate every injection risk?"
+    ],
+    "sourceIds": [
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-object-access",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "API security",
+    "round": "Coding",
+    "q": "Design a secure endpoint for changing a user profile.",
+    "a": "Authenticate the caller, authorize the target profile, and allow only fields that caller may change.",
+    "explanation": "Validate field types and ranges and avoid binding all JSON into internal models. Test changing roles, tenant IDs, and hidden properties. Log decisions without storing sensitive tokens.",
+    "mistake": "Allowing mass assignment of all submitted fields.",
+    "rubric": [
+      "Enforce object permissions",
+      "Allowlist editable fields",
+      "Test privilege-changing input"
+    ],
+    "followups": [
+      "How should an admin endpoint differ?",
+      "What should an audit record contain?"
+    ],
+    "sourceIds": [
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-secrets",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "Secret management",
+    "round": "Debugging",
+    "q": "An API key appears in a mobile binary or frontend bundle. Can obfuscation protect it?",
+    "a": "A distributed client cannot reliably keep an embedded shared secret confidential. Move privileged operations behind an authorized server boundary.",
+    "explanation": "Classify whether the key is a public identifier or a privileged credential. Rotate exposed credentials, restrict permissions, and review access logs. Obfuscation does not create a trusted boundary.",
+    "mistake": "Treating an encoded key as confidential.",
+    "rubric": [
+      "Identify the trust boundary",
+      "Remove privileged client credentials",
+      "Rotate and limit exposed secrets"
+    ],
+    "followups": [
+      "What if a vendor requires a public key?",
+      "How do short-lived user tokens differ?"
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-threat-model",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Threat modeling",
+    "round": "System design",
+    "q": "Threat-model a file upload service.",
+    "a": "Map actors, trust boundaries, storage and processing paths, then address authorization, resource abuse, unsafe content handling, and data exposure.",
+    "explanation": "Enforce size and processing limits, isolate parsers, and avoid serving active content from a trusted application origin. Validate download permissions and lifecycle deletion too.",
+    "mistake": "Checking only a filename extension and declaring uploads safe.",
+    "rubric": [
+      "Map boundaries and abuse cases",
+      "Bound and isolate processing",
+      "Protect storage and download access"
+    ],
+    "followups": [
+      "How do you handle decompression bombs?",
+      "What if content is scanned asynchronously?"
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-abuse",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Resource protection",
+    "round": "Debugging",
+    "q": "An authenticated API is overwhelmed by expensive legitimate-looking requests. What controls help?",
+    "a": "Apply per-identity and workload-aware limits, bound resource usage, and detect abusive patterns with meaningful telemetry.",
+    "explanation": "Authentication alone does not limit cost. Cap query complexity, result size, concurrency, and downstream fan-out. Choose denial behavior that protects availability without leaking sensitive internals.",
+    "mistake": "Using only an IP request counter for every kind of workload.",
+    "rubric": [
+      "Measure per-request cost",
+      "Bound expensive operations",
+      "Use identity-aware abuse controls"
+    ],
+    "followups": [
+      "How do shared IPs affect limits?",
+      "What if attackers create many accounts?"
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-program",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Security strategy",
+    "round": "Leadership",
+    "q": "Create a security improvement program for a fast-growing engineering organization.",
+    "a": "Prioritize demonstrated risks, assign remediation owners, and integrate review and automated checks into normal delivery.",
+    "explanation": "Provide secure defaults and practical guidance. Track repeated defect classes, remediation time, and exception expiry. Security checklists need evidence from the actual system and its threats.",
+    "mistake": "Measuring success only by the number of scanner findings.",
+    "rubric": [
+      "Prioritize business and technical risks",
+      "Assign accountable owners",
+      "Measure prevention and remediation"
+    ],
+    "followups": [
+      "How do you handle accepted risk?",
+      "Which controls should become platform defaults?"
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-tenant-boundary",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design tenant isolation for a SaaS platform with administrative access.",
+    "a": "Define identity, tenant context, object permissions, and controlled administrative paths with auditability.",
+    "explanation": "Carry trusted tenant context through APIs, jobs, caches, and exports. Test negative cases at each boundary and constrain break-glass access. Separate tenant isolation from mere record identifiers.",
+    "mistake": "Securing HTTP endpoints while background jobs bypass tenant checks.",
+    "rubric": [
+      "Propagate trusted tenant context",
+      "Enforce every data boundary",
+      "Audit privileged exceptions"
+    ],
+    "followups": [
+      "How do you test cross-tenant caching?",
+      "What is the emergency access policy?"
+    ],
+    "sourceIds": [
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

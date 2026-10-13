@@ -1,0 +1,930 @@
+[
+  {
+    "id": "backend-path-01",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "HTTP methods",
+    "round": "Fundamentals",
+    "q": "What distinguishes safe and idempotent HTTP methods?",
+    "a": "Safe methods do not request state changes.",
+    "explanation": "Safe methods do not request state changes. Idempotency concerns repeated intended effects. Honor actual API semantics.",
+    "mistake": "Assuming idempotent means identical response bodies.",
+    "rubric": [
+      "Safe methods do not request state changes",
+      "Idempotency concerns repeated intended effects",
+      "Honor actual API semantics"
+    ],
+    "followups": [
+      "Why can repeated DELETE return different statuses?",
+      "Walk through a concrete example of http methods and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-02",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "Status codes",
+    "round": "Fundamentals",
+    "q": "How should APIs choose meaningful error statuses?",
+    "a": "Separate invalid input authentication and server failures.",
+    "explanation": "Separate invalid input authentication and server failures. Keep a consistent response contract. Expose safe actionable detail.",
+    "mistake": "Returning success status for every failure.",
+    "rubric": [
+      "Separate invalid input authentication and server failures",
+      "Keep a consistent response contract",
+      "Expose safe actionable detail"
+    ],
+    "followups": [
+      "When would a conflict status fit?",
+      "Walk through a concrete example of status codes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-03",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "Validation",
+    "round": "Fundamentals",
+    "q": "Where should request validation occur?",
+    "a": "Validate untrusted values at boundaries.",
+    "explanation": "Validate untrusted values at boundaries. Enforce domain invariants in business logic. Persist critical constraints defensively.",
+    "mistake": "Trusting browser validation alone.",
+    "rubric": [
+      "Validate untrusted values at boundaries",
+      "Enforce domain invariants in business logic",
+      "Persist critical constraints defensively"
+    ],
+    "followups": [
+      "How would you handle unknown fields?",
+      "Walk through a concrete example of validation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-04",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "Authentication",
+    "round": "Fundamentals",
+    "q": "How do authentication and authorization differ?",
+    "a": "Authentication establishes identity.",
+    "explanation": "Authentication establishes identity. Authorization permits a specific action. Apply resource ownership checks.",
+    "mistake": "Treating any logged-in user as fully authorized.",
+    "rubric": [
+      "Authentication establishes identity",
+      "Authorization permits a specific action",
+      "Apply resource ownership checks"
+    ],
+    "followups": [
+      "How would an object identifier be checked?",
+      "Walk through a concrete example of authentication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-05",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "Pagination",
+    "round": "Fundamentals",
+    "q": "What should a paginated API guarantee?",
+    "a": "Define deterministic ordering and bounds.",
+    "explanation": "Define deterministic ordering and bounds. Use explicit continuation contracts. Account for concurrent data changes.",
+    "mistake": "Returning unlimited collections.",
+    "rubric": [
+      "Define deterministic ordering and bounds",
+      "Use explicit continuation contracts",
+      "Account for concurrent data changes"
+    ],
+    "followups": [
+      "How would cursor expiry be handled?",
+      "Walk through a concrete example of pagination and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-06",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "Configuration",
+    "round": "Fundamentals",
+    "q": "What makes service configuration safe to deploy?",
+    "a": "Required values are validated early.",
+    "explanation": "Required values are validated early. Secrets stay in managed server storage. Unsafe defaults are rejected.",
+    "mistake": "Silently using development endpoints in production.",
+    "rubric": [
+      "Required values are validated early",
+      "Secrets stay in managed server storage",
+      "Unsafe defaults are rejected"
+    ],
+    "followups": [
+      "How would CI verify configuration names?",
+      "Walk through a concrete example of configuration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-07",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "Logging",
+    "round": "Fundamentals",
+    "q": "What makes an operational log useful?",
+    "a": "Record operation and request context.",
+    "explanation": "Record operation and request context. Use searchable structured fields. Redact secrets and sensitive content.",
+    "mistake": "Dumping full authentication headers.",
+    "rubric": [
+      "Record operation and request context",
+      "Use searchable structured fields",
+      "Redact secrets and sensitive content"
+    ],
+    "followups": [
+      "How would you correlate an error across services?",
+      "Walk through a concrete example of logging and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-08",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "Testing",
+    "round": "Fundamentals",
+    "q": "What should an API contract test protect?",
+    "a": "Request response and failure semantics.",
+    "explanation": "Request response and failure semantics. Compatibility across consumers. Meaningful boundary behavior.",
+    "mistake": "Testing only internal helper calls.",
+    "rubric": [
+      "Request response and failure semantics",
+      "Compatibility across consumers",
+      "Meaningful boundary behavior"
+    ],
+    "followups": [
+      "How would you detect a changed response field?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-09",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Idempotency",
+    "round": "Scenario",
+    "q": "How should a payment-like endpoint handle duplicate requests?",
+    "a": "Associate requests with durable idempotency identity.",
+    "explanation": "Associate requests with durable idempotency identity. Persist the authoritative outcome. Reject incompatible reuse of the same key.",
+    "mistake": "Deduplicating only in process memory.",
+    "rubric": [
+      "Associate requests with durable idempotency identity",
+      "Persist the authoritative outcome",
+      "Reject incompatible reuse of the same key"
+    ],
+    "followups": [
+      "How would simultaneous duplicates be handled?",
+      "Walk through a concrete example of idempotency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-10",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Caching",
+    "round": "Scenario",
+    "q": "How should a service invalidate cached data?",
+    "a": "Define freshness and consistency expectations.",
+    "explanation": "Define freshness and consistency expectations. Invalidate or version after authoritative changes. Bound cache size and lifetime.",
+    "mistake": "Treating cache hits as proof of current truth.",
+    "rubric": [
+      "Define freshness and consistency expectations",
+      "Invalidate or version after authoritative changes",
+      "Bound cache size and lifetime"
+    ],
+    "followups": [
+      "How would multi-instance invalidation work?",
+      "Walk through a concrete example of caching and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-11",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Timeouts",
+    "round": "Scenario",
+    "q": "Why should downstream calls share a request deadline?",
+    "a": "Work must fit the user's total budget.",
+    "explanation": "Work must fit the user's total budget. Nested calls consume remaining time. Retries must remain bounded.",
+    "mistake": "Giving every retry a fresh unlimited timeout.",
+    "rubric": [
+      "Work must fit the user's total budget",
+      "Nested calls consume remaining time",
+      "Retries must remain bounded"
+    ],
+    "followups": [
+      "How would cancellation propagate?",
+      "Walk through a concrete example of timeouts and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-12",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Queues",
+    "round": "Scenario",
+    "q": "When should an endpoint enqueue work instead of waiting?",
+    "a": "Durable long work can outlive requests.",
+    "explanation": "Durable long work can outlive requests. Acceptance needs a reliable contract. Expose status and failure recovery.",
+    "mistake": "Returning completed success for merely queued work.",
+    "rubric": [
+      "Durable long work can outlive requests",
+      "Acceptance needs a reliable contract",
+      "Expose status and failure recovery"
+    ],
+    "followups": [
+      "How would a client poll job status?",
+      "Walk through a concrete example of queues and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-13",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Transactions",
+    "round": "Scenario",
+    "q": "How do you avoid inconsistent database and event writes?",
+    "a": "Persist state and event intent atomically.",
+    "explanation": "Persist state and event intent atomically. Publish with retry after commit. Deduplicate downstream processing.",
+    "mistake": "Sending an event before durable state commits.",
+    "rubric": [
+      "Persist state and event intent atomically",
+      "Publish with retry after commit",
+      "Deduplicate downstream processing"
+    ],
+    "followups": [
+      "How would an outbox recover after a crash?",
+      "Walk through a concrete example of transactions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-14",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Rate limiting",
+    "round": "Scenario",
+    "q": "What should a rate-limit policy define?",
+    "a": "Choose trusted identity and scope.",
+    "explanation": "Choose trusted identity and scope. Update shared counters atomically. Communicate retry behavior.",
+    "mistake": "Using spoofable headers as unquestioned identity.",
+    "rubric": [
+      "Choose trusted identity and scope",
+      "Update shared counters atomically",
+      "Communicate retry behavior"
+    ],
+    "followups": [
+      "How would anonymous and paid limits differ?",
+      "Walk through a concrete example of rate limiting and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-15",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "File handling",
+    "round": "Scenario",
+    "q": "How should upload endpoints bound resource use?",
+    "a": "Limit bytes and accepted formats.",
+    "explanation": "Limit bytes and accepted formats. Validate ownership and storage destinations. Process risky content under isolation.",
+    "mistake": "Trusting client file extensions alone.",
+    "rubric": [
+      "Limit bytes and accepted formats",
+      "Validate ownership and storage destinations",
+      "Process risky content under isolation"
+    ],
+    "followups": [
+      "How would decompression bombs be addressed?",
+      "Walk through a concrete example of file handling and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-16",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Errors",
+    "round": "Scenario",
+    "q": "How should APIs expose partial downstream failure?",
+    "a": "Preserve useful successful data where justified.",
+    "explanation": "Preserve useful successful data where justified. Make incomplete outcomes explicit. Avoid leaking internal diagnostics.",
+    "mistake": "Pretending partial failure is complete success.",
+    "rubric": [
+      "Preserve useful successful data where justified",
+      "Make incomplete outcomes explicit",
+      "Avoid leaking internal diagnostics"
+    ],
+    "followups": [
+      "When should the whole operation fail?",
+      "Walk through a concrete example of errors and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-17",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Load shedding",
+    "round": "Debugging",
+    "q": "How does rejecting work improve reliability during overload?",
+    "a": "Admission control bounds retained work.",
+    "explanation": "Admission control bounds retained work. Important requests can preserve capacity. Expose predictable retryable outcomes.",
+    "mistake": "Allowing queues to grow without limit.",
+    "rubric": [
+      "Admission control bounds retained work",
+      "Important requests can preserve capacity",
+      "Expose predictable retryable outcomes"
+    ],
+    "followups": [
+      "Which requests should be prioritized?",
+      "Walk through a concrete example of load shedding and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-18",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Circuit breakers",
+    "round": "Debugging",
+    "q": "What problem does a circuit breaker address?",
+    "a": "It reduces repeated calls to failing dependencies.",
+    "explanation": "It reduces repeated calls to failing dependencies. Probe recovery under controlled conditions. Combine it with deadlines and limits.",
+    "mistake": "Using a breaker as a replacement for timeouts.",
+    "rubric": [
+      "It reduces repeated calls to failing dependencies",
+      "Probe recovery under controlled conditions",
+      "Combine it with deadlines and limits"
+    ],
+    "followups": [
+      "What prevents synchronized recovery bursts?",
+      "Walk through a concrete example of circuit breakers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-19",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "How do you prevent lost updates to shared records?",
+    "a": "Use atomic conditional updates or locks.",
+    "explanation": "Use atomic conditional updates or locks. Define expected versions and conflicts. Retry only safe operations.",
+    "mistake": "Reading then writing without concurrency protection.",
+    "rubric": [
+      "Use atomic conditional updates or locks",
+      "Define expected versions and conflicts",
+      "Retry only safe operations"
+    ],
+    "followups": [
+      "How would you reproduce a race?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-20",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Observability",
+    "round": "Debugging",
+    "q": "How do traces differ from metrics and logs?",
+    "a": "Traces connect work across boundaries.",
+    "explanation": "Traces connect work across boundaries. Metrics summarize changing quantities. Logs preserve contextual events.",
+    "mistake": "Expecting one telemetry type to answer every question.",
+    "rubric": [
+      "Traces connect work across boundaries",
+      "Metrics summarize changing quantities",
+      "Logs preserve contextual events"
+    ],
+    "followups": [
+      "How would you correlate all three?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-21",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "API evolution",
+    "round": "Debugging",
+    "q": "How should a service add a new response field?",
+    "a": "Check real consumer compatibility.",
+    "explanation": "Check real consumer compatibility. Use documented versioning conventions. Test generated and strict clients.",
+    "mistake": "Assuming additive fields are always harmless.",
+    "rubric": [
+      "Check real consumer compatibility",
+      "Use documented versioning conventions",
+      "Test generated and strict clients"
+    ],
+    "followups": [
+      "How would an unknown enum variant be handled?",
+      "Walk through a concrete example of api evolution and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-22",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Security",
+    "round": "Debugging",
+    "q": "How do you defend server-side URL fetching?",
+    "a": "Restrict schemes destinations and redirects.",
+    "explanation": "Restrict schemes destinations and redirects. Validate network resolution behavior. Bound response size and duration.",
+    "mistake": "Checking only the initial URL string.",
+    "rubric": [
+      "Restrict schemes destinations and redirects",
+      "Validate network resolution behavior",
+      "Bound response size and duration"
+    ],
+    "followups": [
+      "How would internal metadata endpoints be protected?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-23",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Worker reliability",
+    "round": "Debugging",
+    "q": "How should a worker process redelivered messages?",
+    "a": "Use durable duplicate detection.",
+    "explanation": "Use durable duplicate detection. Commit before acknowledging. Bound retries and surface poison messages.",
+    "mistake": "Assuming the queue guarantees exactly-once business effects.",
+    "rubric": [
+      "Use durable duplicate detection",
+      "Commit before acknowledging",
+      "Bound retries and surface poison messages"
+    ],
+    "followups": [
+      "How would deduplication expire safely?",
+      "Walk through a concrete example of worker reliability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-24",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Testing failures",
+    "round": "Debugging",
+    "q": "How do you verify service behavior under dependency failure?",
+    "a": "Inject latency errors and unavailable responses.",
+    "explanation": "Inject latency errors and unavailable responses. Assert bounded work and recovery. Test resource cleanup.",
+    "mistake": "Testing only the success path.",
+    "rubric": [
+      "Inject latency errors and unavailable responses",
+      "Assert bounded work and recovery",
+      "Test resource cleanup"
+    ],
+    "followups": [
+      "How would you simulate a timeout storm?",
+      "Walk through a concrete example of testing failures and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-25",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "When is a modular monolith preferable to microservices?",
+    "a": "It can simplify coordinated changes.",
+    "explanation": "It can simplify coordinated changes. Boundaries still support ownership. Compare deployment needs and operational cost.",
+    "mistake": "Splitting services solely by database table.",
+    "rubric": [
+      "It can simplify coordinated changes",
+      "Boundaries still support ownership",
+      "Compare deployment needs and operational cost"
+    ],
+    "followups": [
+      "What evidence justifies a service extraction?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-26",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Migration",
+    "round": "Design",
+    "q": "How should backend schema and API changes be coordinated?",
+    "a": "Use compatible expansion and staged adoption.",
+    "explanation": "Use compatible expansion and staged adoption. Support mixed versions temporarily. Monitor and remove deprecated paths deliberately.",
+    "mistake": "Deploying clients and servers with incompatible assumptions.",
+    "rubric": [
+      "Use compatible expansion and staged adoption",
+      "Support mixed versions temporarily",
+      "Monitor and remove deprecated paths deliberately"
+    ],
+    "followups": [
+      "How would rollback preserve data compatibility?",
+      "Walk through a concrete example of migration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-27",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Multi-region",
+    "round": "Design",
+    "q": "What decisions precede a multi-region backend design?",
+    "a": "Define latency availability and consistency goals.",
+    "explanation": "Define latency availability and consistency goals. Choose data ownership and failover rules. Test regional failure recovery.",
+    "mistake": "Assuming replication automatically solves all regional outages.",
+    "rubric": [
+      "Define latency availability and consistency goals",
+      "Choose data ownership and failover rules",
+      "Test regional failure recovery"
+    ],
+    "followups": [
+      "How would conflicting writes be handled?",
+      "Walk through a concrete example of multi-region and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-28",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Cost",
+    "round": "Design",
+    "q": "How should service cost be optimized without degrading reliability?",
+    "a": "Measure cost per useful operation.",
+    "explanation": "Measure cost per useful operation. Remove wasteful queries and work. Protect performance and recovery requirements.",
+    "mistake": "Cutting capacity below predictable peak demand.",
+    "rubric": [
+      "Measure cost per useful operation",
+      "Remove wasteful queries and work",
+      "Protect performance and recovery requirements"
+    ],
+    "followups": [
+      "Which workload drives disproportionate spend?",
+      "Walk through a concrete example of cost and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-29",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Governance",
+    "round": "Design",
+    "q": "How should shared backend standards be introduced?",
+    "a": "Provide tested defaults and clear contracts.",
+    "explanation": "Provide tested defaults and clear contracts. Automate essential checks. Document justified exceptions.",
+    "mistake": "Mandating complexity without a measured benefit.",
+    "rubric": [
+      "Provide tested defaults and clear contracts",
+      "Automate essential checks",
+      "Document justified exceptions"
+    ],
+    "followups": [
+      "How would standards evolve across teams?",
+      "Walk through a concrete example of governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-30",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Incident management",
+    "round": "Design",
+    "q": "How should a team respond to a backend outage?",
+    "a": "Mitigate customer impact first.",
+    "explanation": "Mitigate customer impact first. Assign clear coordination and ownership. Preserve evidence and communicate recovery.",
+    "mistake": "Deploying speculative changes without a recovery hypothesis.",
+    "rubric": [
+      "Mitigate customer impact first",
+      "Assign clear coordination and ownership",
+      "Preserve evidence and communicate recovery"
+    ],
+    "followups": [
+      "When would rollback be preferable?",
+      "Walk through a concrete example of incident management and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-31",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Data deletion",
+    "round": "Design",
+    "q": "How should user deletion cover backend data flows?",
+    "a": "Remove owned primary and derived records.",
+    "explanation": "Remove owned primary and derived records. Respect documented retention requirements. Track asynchronous completion and failures.",
+    "mistake": "Deleting the account but leaving unbounded copied content.",
+    "rubric": [
+      "Remove owned primary and derived records",
+      "Respect documented retention requirements",
+      "Track asynchronous completion and failures"
+    ],
+    "followups": [
+      "How would backups fit the retention policy?",
+      "Walk through a concrete example of data deletion and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-path-32",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Capacity planning",
+    "round": "Design",
+    "q": "How do you plan capacity for a public launch?",
+    "a": "Load-test realistic usage and payloads.",
+    "explanation": "Load-test realistic usage and payloads. Find shared resource bottlenecks. Set headroom and overload policies.",
+    "mistake": "Scaling solely from a requests-per-second guess.",
+    "rubric": [
+      "Load-test realistic usage and payloads",
+      "Find shared resource bottlenecks",
+      "Set headroom and overload policies"
+    ],
+    "followups": [
+      "How would you validate the busiest workflow?",
+      "Walk through a concrete example of capacity planning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation",
+      "sre-overload",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

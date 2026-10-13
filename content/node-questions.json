@@ -1,0 +1,215 @@
+[
+  {
+    "id": "node-runtime",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Runtime",
+    "round": "Fundamentals",
+    "q": "If Node.js uses an event loop, how can it serve many requests at once?",
+    "a": "It can overlap asynchronous I/O while executing JavaScript callbacks on the event-loop thread; concurrency differs from CPU parallelism.",
+    "explanation": "Some work uses the runtime worker pool or OS facilities. A long JavaScript callback still delays other requests. Explain the particular operation rather than saying everything is single-threaded.",
+    "mistake": "Assuming one event-loop thread means only one outstanding request.",
+    "rubric": [
+      "Distinguish I/O overlap and parallelism",
+      "Explain callback execution",
+      "Identify blocking work"
+    ],
+    "followups": [
+      "What uses the worker pool?",
+      "When do worker threads help?"
+    ],
+    "sourceIds": [
+      "node-event-loop"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-errors",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Async errors",
+    "round": "Debugging",
+    "q": "Why does a try/catch around starting a promise fail to catch its later rejection?",
+    "a": "The rejection occurs after the synchronous call returns. Await the promise inside try/catch or attach rejection handling.",
+    "explanation": "Return promises from service functions and avoid unobserved background work. Route errors through the framework response path and test both synchronous throws and asynchronous failures.",
+    "mistake": "Catching only promise creation and ignoring completion.",
+    "rubric": [
+      "Explain asynchronous rejection",
+      "Await or attach a catch",
+      "Test failure propagation"
+    ],
+    "followups": [
+      "What if a callback throws?",
+      "How should a background job report failure?"
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "node-event-loop"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-stream",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Streams",
+    "round": "Coding",
+    "q": "A download endpoint buffers a multi-gigabyte file. How would you redesign it?",
+    "a": "Stream the data with backpressure and coordinated error/cleanup handling rather than buffering the entire file.",
+    "explanation": "Use a pipeline where appropriate. Handle client disconnects, stream errors, and headers already sent. Limit memory with bounded buffers and measure behavior for a slow client.",
+    "mistake": "Assuming piping alone covers every HTTP error case.",
+    "rubric": [
+      "Use incremental transfer",
+      "Respect backpressure",
+      "Handle errors and disconnects"
+    ],
+    "followups": [
+      "What if the source fails mid-download?",
+      "When can you send an error status?"
+    ],
+    "sourceIds": [
+      "node-streams"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-cpu",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "One Node.js report endpoint makes all endpoints slow. What do you inspect?",
+    "a": "Measure event-loop delay and synchronous CPU work; move expensive computation to workers or a separate bounded job service.",
+    "explanation": "Changing a function to async does not move its computation. Include serialization, regular expressions, and large JSON operations in the profile. Keep worker creation and queue growth bounded.",
+    "mistake": "Adding await to a CPU loop as the only fix.",
+    "rubric": [
+      "Measure event-loop delay",
+      "Identify synchronous work",
+      "Bound offloaded jobs"
+    ],
+    "followups": [
+      "How are worker errors handled?",
+      "When is a process pool preferable?"
+    ],
+    "sourceIds": [
+      "node-event-loop"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-shutdown",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Operations",
+    "round": "System design",
+    "q": "How should a Node.js server shut down without dropping accepted work?",
+    "a": "Stop accepting new work, drain in-flight requests within a deadline, close resources, then terminate.",
+    "explanation": "Coordinate HTTP connections, queue consumers, and database pools. Long-lived connections need an explicit policy. Ensure deployment grace periods align with the application shutdown deadline.",
+    "mistake": "Exiting immediately on a termination signal.",
+    "rubric": [
+      "Stop admission before cleanup",
+      "Bound drain time",
+      "Coordinate all resources"
+    ],
+    "followups": [
+      "What if a request never finishes?",
+      "How do WebSockets change draining?"
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "kubernetes"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-fanout",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Async services",
+    "round": "System design",
+    "q": "An endpoint launches one remote lookup per item. How do you prevent overload?",
+    "a": "Bound concurrency, enforce a shared deadline, and specify partial-failure and retry behavior.",
+    "explanation": "A single Promise.all over thousands of items can overwhelm sockets and downstream services. Track outstanding requests, avoid retry amplification, and expose queue and timeout metrics.",
+    "mistake": "Treating unlimited fan-out as a throughput optimization.",
+    "rubric": [
+      "Bound requests and queues",
+      "Define deadline semantics",
+      "Measure downstream pressure"
+    ],
+    "followups": [
+      "How would you cancel outstanding calls?",
+      "Can results be streamed incrementally?"
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-runtime-policy",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Platform evolution",
+    "round": "Leadership",
+    "q": "Set a Node.js runtime and dependency policy for a company with many services.",
+    "a": "Define supported runtimes, tested deployment images, dependency review, upgrade owners, and a staged retirement policy.",
+    "explanation": "Include native modules and framework compatibility. Use representative load tests and canaries, and publish exception expiry dates. Monitor reliability and developer upgrade effort.",
+    "mistake": "Declaring support without testing native dependencies.",
+    "rubric": [
+      "Define tested support boundaries",
+      "Assign upgrades and exceptions",
+      "Validate performance during rollout"
+    ],
+    "followups": [
+      "How are urgent fixes rolled out?",
+      "How do you retire an old runtime?"
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "docker-build"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-job-service",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design a Node.js document-conversion service for unpredictable workloads.",
+    "a": "Use durable jobs, isolated bounded workers, idempotent completion, and resource limits per job.",
+    "explanation": "Keep request handling independent of heavy computation. Define cancellation, poisoned-job handling, output retention, and fair scheduling. A retry must not publish conflicting outputs.",
+    "mistake": "Doing every conversion on the HTTP event loop.",
+    "rubric": [
+      "Separate admission and execution",
+      "Bound resource use",
+      "Define replay and output identity"
+    ],
+    "followups": [
+      "How do you prevent tenant starvation?",
+      "What happens after a worker crash?"
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

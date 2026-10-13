@@ -1,0 +1,898 @@
+[
+  {
+    "id": "swift-path-01",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Optionals",
+    "round": "Fundamentals",
+    "q": "How do optional binding and force unwrapping differ?",
+    "a": "Binding handles absence explicitly.",
+    "explanation": "Binding handles absence explicitly. Force unwrapping traps for nil. Choose failure behavior deliberately.",
+    "mistake": "Force unwrapping uncertain network values.",
+    "rubric": [
+      "Binding handles absence explicitly",
+      "Force unwrapping traps for nil",
+      "Choose failure behavior deliberately"
+    ],
+    "followups": [
+      "When would guard let simplify control flow?",
+      "Walk through a concrete example of optionals and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-02",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Value types",
+    "round": "Fundamentals",
+    "q": "How do Swift structs and classes differ in ownership?",
+    "a": "Structs have value semantics.",
+    "explanation": "Structs have value semantics. Classes have reference identity. Contained reference values still share ownership.",
+    "mistake": "Assuming struct fields can never share referenced objects.",
+    "rubric": [
+      "Structs have value semantics",
+      "Classes have reference identity",
+      "Contained reference values still share ownership"
+    ],
+    "followups": [
+      "When would identity matter for a model?",
+      "Walk through a concrete example of value types and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-03",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Properties",
+    "round": "Fundamentals",
+    "q": "What distinguishes a stored property from a computed property?",
+    "a": "Stored properties retain values.",
+    "explanation": "Stored properties retain values. Computed properties execute accessors. Keep expensive accessor behavior explicit.",
+    "mistake": "Assuming every property read is constant cost.",
+    "rubric": [
+      "Stored properties retain values",
+      "Computed properties execute accessors",
+      "Keep expensive accessor behavior explicit"
+    ],
+    "followups": [
+      "When would a lazy stored property help?",
+      "Walk through a concrete example of properties and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-04",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Protocols",
+    "round": "Fundamentals",
+    "q": "How can protocols support testable iOS code?",
+    "a": "They describe required behavior.",
+    "explanation": "They describe required behavior. Dependencies can have alternate implementations. Keep contracts focused on consumer needs.",
+    "mistake": "Depending directly on global service singletons.",
+    "rubric": [
+      "They describe required behavior",
+      "Dependencies can have alternate implementations",
+      "Keep contracts focused on consumer needs"
+    ],
+    "followups": [
+      "How would you substitute a network client?",
+      "Walk through a concrete example of protocols and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-05",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Closures",
+    "round": "Fundamentals",
+    "q": "How can a closure capture create a retain cycle?",
+    "a": "Owners may retain escaping closures.",
+    "explanation": "Owners may retain escaping closures. Closures may retain those owners. Break cycles with deliberate capture ownership.",
+    "mistake": "Using weak captures without examining lifetime requirements.",
+    "rubric": [
+      "Owners may retain escaping closures",
+      "Closures may retain those owners",
+      "Break cycles with deliberate capture ownership"
+    ],
+    "followups": [
+      "When would unowned be unsafe?",
+      "Walk through a concrete example of closures and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-06",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Fundamentals",
+    "q": "Why can collection indexes become invalid after mutation?",
+    "a": "Indexes reflect collection structure.",
+    "explanation": "Indexes reflect collection structure. Mutations may change valid positions. Use stable entity identifiers for identity.",
+    "mistake": "Treating an index as a permanent item identifier.",
+    "rubric": [
+      "Indexes reflect collection structure",
+      "Mutations may change valid positions",
+      "Use stable entity identifiers for identity"
+    ],
+    "followups": [
+      "How would removal affect a selected row?",
+      "Walk through a concrete example of collections and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-07",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "SwiftUI state",
+    "round": "Fundamentals",
+    "q": "When should state be owned by a SwiftUI view?",
+    "a": "Own state at its appropriate lifetime.",
+    "explanation": "Own state at its appropriate lifetime. Pass bindings for controlled edits. Avoid duplicating a shared source of truth.",
+    "mistake": "Initializing independent copies of shared state.",
+    "rubric": [
+      "Own state at its appropriate lifetime",
+      "Pass bindings for controlled edits",
+      "Avoid duplicating a shared source of truth"
+    ],
+    "followups": [
+      "Where should a parent-child form value live?",
+      "Walk through a concrete example of swiftui state and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-08",
+    "area": "iOS and Swift",
+    "level": 1,
+    "subtopic": "Lifecycle",
+    "round": "Fundamentals",
+    "q": "What should an app do when moving to the background?",
+    "a": "Persist important user state.",
+    "explanation": "Persist important user state. Stop unowned transient work. Respect platform execution limits.",
+    "mistake": "Assuming foreground tasks run indefinitely.",
+    "rubric": [
+      "Persist important user state",
+      "Stop unowned transient work",
+      "Respect platform execution limits"
+    ],
+    "followups": [
+      "How would you handle a pending draft?",
+      "Walk through a concrete example of lifecycle and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-09",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Networking",
+    "round": "Scenario",
+    "q": "How should a URLSession response be validated?",
+    "a": "Check transport and HTTP outcomes.",
+    "explanation": "Check transport and HTTP outcomes. Decode under an explicit schema. Expose recoverable failure states.",
+    "mistake": "Treating any response body as success.",
+    "rubric": [
+      "Check transport and HTTP outcomes",
+      "Decode under an explicit schema",
+      "Expose recoverable failure states"
+    ],
+    "followups": [
+      "How would you distinguish authentication failure?",
+      "Walk through a concrete example of networking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-10",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Navigation",
+    "round": "Scenario",
+    "q": "How would you handle an authenticated deep link?",
+    "a": "Validate destination and parameters.",
+    "explanation": "Validate destination and parameters. Authenticate before protected access. Resume safely without duplicate navigation.",
+    "mistake": "Trusting a link as authorization.",
+    "rubric": [
+      "Validate destination and parameters",
+      "Authenticate before protected access",
+      "Resume safely without duplicate navigation"
+    ],
+    "followups": [
+      "How does cold launch affect routing?",
+      "Walk through a concrete example of navigation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-11",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Persistence",
+    "round": "Scenario",
+    "q": "How should local data survive an app schema change?",
+    "a": "Use explicit migration behavior.",
+    "explanation": "Use explicit migration behavior. Preserve user-owned progress. Test upgrades from supported versions.",
+    "mistake": "Deleting storage whenever decoding fails.",
+    "rubric": [
+      "Use explicit migration behavior",
+      "Preserve user-owned progress",
+      "Test upgrades from supported versions"
+    ],
+    "followups": [
+      "How would you recover a partially migrated record?",
+      "Walk through a concrete example of persistence and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-12",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Accessibility",
+    "round": "Scenario",
+    "q": "How do you make a custom iOS control accessible?",
+    "a": "Provide meaningful labels and traits.",
+    "explanation": "Provide meaningful labels and traits. Support large text and focus navigation. Test with assistive technologies.",
+    "mistake": "Using color alone to convey correctness.",
+    "rubric": [
+      "Provide meaningful labels and traits",
+      "Support large text and focus navigation",
+      "Test with assistive technologies"
+    ],
+    "followups": [
+      "How should a progress control announce its value?",
+      "Walk through a concrete example of accessibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-13",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Cancellation",
+    "round": "Scenario",
+    "q": "How should a Swift task react to cancellation?",
+    "a": "Check cancellation at appropriate boundaries.",
+    "explanation": "Check cancellation at appropriate boundaries. Propagate cancellation to supported work. Release owned resources.",
+    "mistake": "Assuming cancellation forcibly stops arbitrary code.",
+    "rubric": [
+      "Check cancellation at appropriate boundaries",
+      "Propagate cancellation to supported work",
+      "Release owned resources"
+    ],
+    "followups": [
+      "How would you cancel a stale search task?",
+      "Walk through a concrete example of cancellation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-14",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Actors",
+    "round": "Scenario",
+    "q": "What does actor isolation protect?",
+    "a": "It serializes access to isolated state.",
+    "explanation": "It serializes access to isolated state. Awaited calls can allow reentrancy. Revalidate invariants after suspension.",
+    "mistake": "Assuming an actor method is atomic across await.",
+    "rubric": [
+      "It serializes access to isolated state",
+      "Awaited calls can allow reentrancy",
+      "Revalidate invariants after suspension"
+    ],
+    "followups": [
+      "How would a balance change while awaiting?",
+      "Walk through a concrete example of actors and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-15",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Main actor",
+    "round": "Scenario",
+    "q": "Why should UI-bound state use main-actor isolation?",
+    "a": "It defines UI state ownership.",
+    "explanation": "It defines UI state ownership. Compiler checks help enforce boundaries. Expensive computation still needs suitable execution.",
+    "mistake": "Performing heavy CPU work on the main actor.",
+    "rubric": [
+      "It defines UI state ownership",
+      "Compiler checks help enforce boundaries",
+      "Expensive computation still needs suitable execution"
+    ],
+    "followups": [
+      "How would you deliver a background result safely?",
+      "Walk through a concrete example of main actor and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-16",
+    "area": "iOS and Swift",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "How would you test an iOS feature without live services?",
+    "a": "Inject persistence clock and network contracts.",
+    "explanation": "Inject persistence clock and network contracts. Test success failure and cancellation. Keep separate platform integration tests.",
+    "mistake": "Using live production credentials in tests.",
+    "rubric": [
+      "Inject persistence clock and network contracts",
+      "Test success failure and cancellation",
+      "Keep separate platform integration tests"
+    ],
+    "followups": [
+      "How would you test a timeout deterministically?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-17",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Concurrency safety",
+    "round": "Debugging",
+    "q": "What does Sendable help express?",
+    "a": "Values can cross concurrency boundaries safely.",
+    "explanation": "Values can cross concurrency boundaries safely. Mutable reference state needs protection. Review compiler warnings as ownership evidence.",
+    "mistake": "Marking every type unchecked Sendable.",
+    "rubric": [
+      "Values can cross concurrency boundaries safely",
+      "Mutable reference state needs protection",
+      "Review compiler warnings as ownership evidence"
+    ],
+    "followups": [
+      "How would immutable value models help?",
+      "Walk through a concrete example of concurrency safety and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-18",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "How do you investigate an iOS retain cycle?",
+    "a": "Use memory graph and allocation tools.",
+    "explanation": "Use memory graph and allocation tools. Inspect strong ownership paths. Verify deallocation after feature dismissal.",
+    "mistake": "Replacing every strong reference with weak indiscriminately.",
+    "rubric": [
+      "Use memory graph and allocation tools",
+      "Inspect strong ownership paths",
+      "Verify deallocation after feature dismissal"
+    ],
+    "followups": [
+      "How would a subscription retain its owner?",
+      "Walk through a concrete example of memory and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-19",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "How would you diagnose dropped iOS animation frames?",
+    "a": "Profile frame and main-thread work.",
+    "explanation": "Profile frame and main-thread work. Inspect layout rendering and allocation costs. Fix measured bottlenecks.",
+    "mistake": "Assuming every animation problem is GPU related.",
+    "rubric": [
+      "Profile frame and main-thread work",
+      "Inspect layout rendering and allocation costs",
+      "Fix measured bottlenecks"
+    ],
+    "followups": [
+      "How would you reproduce a scrolling regression?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-20",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "SwiftUI identity",
+    "round": "Debugging",
+    "q": "Why can changing view identity reset local state?",
+    "a": "State is tied to view identity.",
+    "explanation": "State is tied to view identity. Changed identifiers create different lifetimes. Use stable identity for persistent entities.",
+    "mistake": "Generating random identifiers during rendering.",
+    "rubric": [
+      "State is tied to view identity",
+      "Changed identifiers create different lifetimes",
+      "Use stable identity for persistent entities"
+    ],
+    "followups": [
+      "How would list reordering affect text edits?",
+      "Walk through a concrete example of swiftui identity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-21",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Offline behavior",
+    "round": "Debugging",
+    "q": "How should an iOS app reconcile offline edits?",
+    "a": "Persist durable pending intent.",
+    "explanation": "Persist durable pending intent. Resolve conflicts against server versions. Communicate unsynced and failed states.",
+    "mistake": "Overwriting newer server data without conflict handling.",
+    "rubric": [
+      "Persist durable pending intent",
+      "Resolve conflicts against server versions",
+      "Communicate unsynced and failed states"
+    ],
+    "followups": [
+      "How would two devices edit the same item?",
+      "Walk through a concrete example of offline behavior and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-22",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Secure storage",
+    "round": "Debugging",
+    "q": "What should an app store in Keychain instead of preferences?",
+    "a": "Store credentials under explicit access rules.",
+    "explanation": "Store credentials under explicit access rules. Keep non-secret settings in ordinary storage. Handle locked and unavailable storage states.",
+    "mistake": "Treating UserDefaults as secure credential storage.",
+    "rubric": [
+      "Store credentials under explicit access rules",
+      "Keep non-secret settings in ordinary storage",
+      "Handle locked and unavailable storage states"
+    ],
+    "followups": [
+      "Which accessibility policy fits background access?",
+      "Walk through a concrete example of secure storage and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-23",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Background work",
+    "round": "Debugging",
+    "q": "How should iOS schedule deferrable synchronization?",
+    "a": "Use platform-supported scheduling contracts.",
+    "explanation": "Use platform-supported scheduling contracts. Keep work bounded and resumable. Expect scheduling to be opportunistic.",
+    "mistake": "Guaranteeing exact background execution times.",
+    "rubric": [
+      "Use platform-supported scheduling contracts",
+      "Keep work bounded and resumable",
+      "Expect scheduling to be opportunistic"
+    ],
+    "followups": [
+      "How would task expiration affect a batch?",
+      "Walk through a concrete example of background work and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-24",
+    "area": "iOS and Swift",
+    "level": 3,
+    "subtopic": "Release diagnostics",
+    "round": "Debugging",
+    "q": "What context helps diagnose an iOS production crash?",
+    "a": "Preserve symbol files and release identity.",
+    "explanation": "Preserve symbol files and release identity. Inspect device and OS patterns. Correlate recent code or data changes.",
+    "mistake": "Shipping builds without usable symbols.",
+    "rubric": [
+      "Preserve symbol files and release identity",
+      "Inspect device and OS patterns",
+      "Correlate recent code or data changes"
+    ],
+    "followups": [
+      "How would you identify an affected release cohort?",
+      "Walk through a concrete example of release diagnostics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-25",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How should an iOS team separate domain rules from views?",
+    "a": "Keep domain contracts platform-independent where useful.",
+    "explanation": "Keep domain contracts platform-independent where useful. Inject service boundaries. Make UI state transitions explicit.",
+    "mistake": "Putting persistence and networking inside every view.",
+    "rubric": [
+      "Keep domain contracts platform-independent where useful",
+      "Inject service boundaries",
+      "Make UI state transitions explicit"
+    ],
+    "followups": [
+      "Which rules can be tested without UIKit or SwiftUI?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-26",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Modularity",
+    "round": "Design",
+    "q": "How do you decide iOS module boundaries?",
+    "a": "Group cohesive capabilities.",
+    "explanation": "Group cohesive capabilities. Control dependency direction and public interfaces. Measure build and ownership benefits.",
+    "mistake": "Creating modules solely to increase their count.",
+    "rubric": [
+      "Group cohesive capabilities",
+      "Control dependency direction and public interfaces",
+      "Measure build and ownership benefits"
+    ],
+    "followups": [
+      "How would you avoid cyclic dependencies?",
+      "Walk through a concrete example of modularity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-27",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Migration",
+    "round": "Design",
+    "q": "How would you adopt stricter Swift concurrency checking?",
+    "a": "Inventory unsafe shared ownership.",
+    "explanation": "Inventory unsafe shared ownership. Fix boundaries incrementally. Verify dependency compatibility and behavior.",
+    "mistake": "Suppressing every diagnostic with unchecked annotations.",
+    "rubric": [
+      "Inventory unsafe shared ownership",
+      "Fix boundaries incrementally",
+      "Verify dependency compatibility and behavior"
+    ],
+    "followups": [
+      "Which shared service would you migrate first?",
+      "Walk through a concrete example of migration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-28",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Privacy",
+    "round": "Design",
+    "q": "How should an iOS product minimize collected user data?",
+    "a": "Collect only necessary fields.",
+    "explanation": "Collect only necessary fields. Document retention and deletion. Review actual SDK behavior and disclosures.",
+    "mistake": "Copying privacy declarations without checking data flows.",
+    "rubric": [
+      "Collect only necessary fields",
+      "Document retention and deletion",
+      "Review actual SDK behavior and disclosures"
+    ],
+    "followups": [
+      "How would you audit a telemetry SDK?",
+      "Walk through a concrete example of privacy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-29",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Rollout",
+    "round": "Design",
+    "q": "How would you release a risky iOS feature safely?",
+    "a": "Use compatible feature and data contracts.",
+    "explanation": "Use compatible feature and data contracts. Stage exposure and observe user impact. Keep a viable recovery path.",
+    "mistake": "Assuming a binary rollback is instantly available.",
+    "rubric": [
+      "Use compatible feature and data contracts",
+      "Stage exposure and observe user impact",
+      "Keep a viable recovery path"
+    ],
+    "followups": [
+      "How would a remote feature switch help?",
+      "Walk through a concrete example of rollout and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-30",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Multi-platform strategy",
+    "round": "Design",
+    "q": "How do you decide between shared and native mobile code?",
+    "a": "Evaluate domain reuse and platform needs.",
+    "explanation": "Evaluate domain reuse and platform needs. Compare team expertise and maintenance cost. Measure critical native integrations.",
+    "mistake": "Choosing only by percentage of shared code.",
+    "rubric": [
+      "Evaluate domain reuse and platform needs",
+      "Compare team expertise and maintenance cost",
+      "Measure critical native integrations"
+    ],
+    "followups": [
+      "Which interaction requires platform-specific behavior?",
+      "Walk through a concrete example of multi-platform strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-31",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Dependency governance",
+    "round": "Design",
+    "q": "How should an iOS team evaluate third-party SDKs?",
+    "a": "Review privacy security and license.",
+    "explanation": "Review privacy security and license. Assess maintenance and binary impact. Keep integration replaceable.",
+    "mistake": "Adding SDKs without reviewing collected data.",
+    "rubric": [
+      "Review privacy security and license",
+      "Assess maintenance and binary impact",
+      "Keep integration replaceable"
+    ],
+    "followups": [
+      "How would you handle an abandoned SDK?",
+      "Walk through a concrete example of dependency governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "swift-path-32",
+    "area": "iOS and Swift",
+    "level": 4,
+    "subtopic": "Reliability",
+    "round": "Design",
+    "q": "How would you prevent data loss during app upgrades?",
+    "a": "Preserve compatible durable formats.",
+    "explanation": "Preserve compatible durable formats. Test interruption and migration recovery. Verify important user workflows before rollout.",
+    "mistake": "Assuming clean-install tests cover upgrades.",
+    "rubric": [
+      "Preserve compatible durable formats",
+      "Test interruption and migration recovery",
+      "Verify important user workflows before rollout"
+    ],
+    "followups": [
+      "Which historical app versions need upgrade testing?",
+      "Walk through a concrete example of reliability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "swift-language",
+      "swift-concurrency",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

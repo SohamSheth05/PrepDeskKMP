@@ -1,0 +1,866 @@
+[
+  {
+    "id": "javascript-path-01",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Bindings",
+    "round": "Fundamentals",
+    "q": "How do let const and var differ in scope?",
+    "a": "Let and const have block scope.",
+    "explanation": "Let and const have block scope. Var has function scope. Const prevents rebinding rather than object mutation.",
+    "mistake": "Assuming const deeply freezes an object.",
+    "rubric": [
+      "Let and const have block scope",
+      "Var has function scope",
+      "Const prevents rebinding rather than object mutation"
+    ],
+    "followups": [
+      "What happens before a let declaration executes?",
+      "Walk through a concrete example of bindings and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-02",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Equality",
+    "round": "Fundamentals",
+    "q": "Why prefer strict equality for most application comparisons?",
+    "a": "Strict equality avoids coercive conversion.",
+    "explanation": "Strict equality avoids coercive conversion. Coercion can surprise API boundary checks. Normalize inputs deliberately before comparison.",
+    "mistake": "Relying on truthiness for valid zero values.",
+    "rubric": [
+      "Strict equality avoids coercive conversion",
+      "Coercion can surprise API boundary checks",
+      "Normalize inputs deliberately before comparison"
+    ],
+    "followups": [
+      "How should you distinguish null from undefined?",
+      "Walk through a concrete example of equality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-03",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Closures",
+    "round": "Fundamentals",
+    "q": "How can a closure keep data alive unexpectedly?",
+    "a": "A function retains referenced lexical bindings.",
+    "explanation": "A function retains referenced lexical bindings. Long-lived callbacks can retain objects. Remove subscriptions when ownership ends.",
+    "mistake": "Assuming local variables disappear after return.",
+    "rubric": [
+      "A function retains referenced lexical bindings",
+      "Long-lived callbacks can retain objects",
+      "Remove subscriptions when ownership ends"
+    ],
+    "followups": [
+      "How would you diagnose a listener memory leak?",
+      "Walk through a concrete example of closures and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-04",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Objects",
+    "round": "Fundamentals",
+    "q": "What happens when you spread an object containing nested objects?",
+    "a": "Spread copies enumerable own properties.",
+    "explanation": "Spread copies enumerable own properties. Nested object references remain shared. Clone only the depth required by ownership.",
+    "mistake": "Treating object spread as a deep clone.",
+    "rubric": [
+      "Spread copies enumerable own properties",
+      "Nested object references remain shared",
+      "Clone only the depth required by ownership"
+    ],
+    "followups": [
+      "What happens to prototype methods after spread?",
+      "Walk through a concrete example of objects and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-05",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Arrays",
+    "round": "Fundamentals",
+    "q": "When should you use map rather than forEach?",
+    "a": "Map produces transformed results.",
+    "explanation": "Map produces transformed results. ForEach is suited to side effects. Return values determine the new mapped array.",
+    "mistake": "Using map and discarding its result.",
+    "rubric": [
+      "Map produces transformed results",
+      "ForEach is suited to side effects",
+      "Return values determine the new mapped array"
+    ],
+    "followups": [
+      "How would you transform and filter a collection?",
+      "Walk through a concrete example of arrays and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-06",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Promises",
+    "round": "Fundamentals",
+    "q": "What is the difference between a returned promise and an unreturned one?",
+    "a": "Returning connects asynchronous completion.",
+    "explanation": "Returning connects asynchronous completion. A missing return breaks the chain. Propagate failures to the caller.",
+    "mistake": "Starting a promise without handling its rejection.",
+    "rubric": [
+      "Returning connects asynchronous completion",
+      "A missing return breaks the chain",
+      "Propagate failures to the caller"
+    ],
+    "followups": [
+      "How would you test chained failure propagation?",
+      "Walk through a concrete example of promises and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-07",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Type checking",
+    "round": "Fundamentals",
+    "q": "Does a TypeScript interface validate JSON at runtime?",
+    "a": "Interfaces are erased during compilation.",
+    "explanation": "Interfaces are erased during compilation. External input still needs runtime validation. Narrow validated data before use.",
+    "mistake": "Casting network JSON and assuming it is safe.",
+    "rubric": [
+      "Interfaces are erased during compilation",
+      "External input still needs runtime validation",
+      "Narrow validated data before use"
+    ],
+    "followups": [
+      "Where should schema validation occur?",
+      "Walk through a concrete example of type checking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-08",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Union types",
+    "round": "Fundamentals",
+    "q": "How can a discriminated union replace optional fields?",
+    "a": "A tag identifies the active variant.",
+    "explanation": "A tag identifies the active variant. Each variant owns valid fields. Exhaustive checks catch missing cases.",
+    "mistake": "Allowing impossible combinations of optional properties.",
+    "rubric": [
+      "A tag identifies the active variant",
+      "Each variant owns valid fields",
+      "Exhaustive checks catch missing cases"
+    ],
+    "followups": [
+      "How would you model a payment result?",
+      "Walk through a concrete example of union types and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-09",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Event loop",
+    "round": "Scenario",
+    "q": "Why can a long promise callback still freeze a UI?",
+    "a": "Callbacks run on the executing thread.",
+    "explanation": "Callbacks run on the executing thread. Microtasks can delay later work. Break up or offload expensive computation.",
+    "mistake": "Assuming promise code is automatically parallel.",
+    "rubric": [
+      "Callbacks run on the executing thread",
+      "Microtasks can delay later work",
+      "Break up or offload expensive computation"
+    ],
+    "followups": [
+      "When would a worker help?",
+      "Walk through a concrete example of event loop and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-10",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Async collections",
+    "round": "Scenario",
+    "q": "Why does await inside forEach not wait for every callback?",
+    "a": "ForEach ignores returned promises.",
+    "explanation": "ForEach ignores returned promises. Use sequential iteration for ordering. Use Promise.all for bounded independent work.",
+    "mistake": "Expecting forEach to await asynchronous callbacks.",
+    "rubric": [
+      "ForEach ignores returned promises",
+      "Use sequential iteration for ordering",
+      "Use Promise.all for bounded independent work"
+    ],
+    "followups": [
+      "How would you cap parallel requests?",
+      "Walk through a concrete example of async collections and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-11",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Errors",
+    "round": "Scenario",
+    "q": "How should an asynchronous API preserve useful error context?",
+    "a": "Keep the original cause.",
+    "explanation": "Keep the original cause. Add operation context at boundaries. Avoid swallowing rejections silently.",
+    "mistake": "Replacing every error with a generic string.",
+    "rubric": [
+      "Keep the original cause",
+      "Add operation context at boundaries",
+      "Avoid swallowing rejections silently"
+    ],
+    "followups": [
+      "Which details must be redacted from logs?",
+      "Walk through a concrete example of errors and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-12",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Narrowing",
+    "round": "Scenario",
+    "q": "Why can an unchecked type assertion hide a real bug?",
+    "a": "Assertions only influence the compiler.",
+    "explanation": "Assertions only influence the compiler. They do not transform runtime values. Prefer guards for uncertain inputs.",
+    "mistake": "Using assertions to silence all compiler errors.",
+    "rubric": [
+      "Assertions only influence the compiler",
+      "They do not transform runtime values",
+      "Prefer guards for uncertain inputs"
+    ],
+    "followups": [
+      "How would you implement an unknown-value guard?",
+      "Walk through a concrete example of narrowing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-13",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Modules",
+    "round": "Scenario",
+    "q": "How can a circular module dependency fail at initialization?",
+    "a": "Modules may observe uninitialized bindings.",
+    "explanation": "Modules may observe uninitialized bindings. Side effects depend on evaluation order. Move shared contracts into a separate module.",
+    "mistake": "Assuming import order always solves a cycle.",
+    "rubric": [
+      "Modules may observe uninitialized bindings",
+      "Side effects depend on evaluation order",
+      "Move shared contracts into a separate module"
+    ],
+    "followups": [
+      "How would you remove the cycle structurally?",
+      "Walk through a concrete example of modules and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-14",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Numbers",
+    "round": "Scenario",
+    "q": "Why can JavaScript lose precision for a large database identifier?",
+    "a": "Numbers use floating-point representation.",
+    "explanation": "Numbers use floating-point representation. Large integers may exceed safe precision. Use strings or BigInt under an explicit contract.",
+    "mistake": "Parsing every identifier as Number.",
+    "rubric": [
+      "Numbers use floating-point representation",
+      "Large integers may exceed safe precision",
+      "Use strings or BigInt under an explicit contract"
+    ],
+    "followups": [
+      "How does BigInt affect JSON serialization?",
+      "Walk through a concrete example of numbers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-15",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Cancellation",
+    "round": "Scenario",
+    "q": "How would you cancel a stale browser request?",
+    "a": "Pass an AbortSignal to supported APIs.",
+    "explanation": "Pass an AbortSignal to supported APIs. Abort when the request loses ownership. Also guard stale result application.",
+    "mistake": "Assuming cancellation alone prevents every stale update.",
+    "rubric": [
+      "Pass an AbortSignal to supported APIs",
+      "Abort when the request loses ownership",
+      "Also guard stale result application"
+    ],
+    "followups": [
+      "How should the UI handle AbortError?",
+      "Walk through a concrete example of cancellation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-16",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "How should you test code that depends on time and randomness?",
+    "a": "Inject clocks and random sources.",
+    "explanation": "Inject clocks and random sources. Use controlled fake timers where appropriate. Assert behavior rather than implementation order.",
+    "mistake": "Using real sleeps to test debouncing.",
+    "rubric": [
+      "Inject clocks and random sources",
+      "Use controlled fake timers where appropriate",
+      "Assert behavior rather than implementation order"
+    ],
+    "followups": [
+      "What happens when promises and timers interact?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-17",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Generics",
+    "round": "Debugging",
+    "q": "When is a generic more useful than an any parameter?",
+    "a": "Generics preserve relationships between types.",
+    "explanation": "Generics preserve relationships between types. Any disables useful checking. Use constraints for required capabilities.",
+    "mistake": "Adding generics with no meaningful type relationship.",
+    "rubric": [
+      "Generics preserve relationships between types",
+      "Any disables useful checking",
+      "Use constraints for required capabilities"
+    ],
+    "followups": [
+      "How would you type a keyed lookup?",
+      "Walk through a concrete example of generics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-18",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Readonly types",
+    "round": "Debugging",
+    "q": "What protection does readonly provide across an API boundary?",
+    "a": "It restricts mutation through typed references.",
+    "explanation": "It restricts mutation through typed references. It does not freeze runtime objects. Choose copies when shared ownership requires isolation.",
+    "mistake": "Treating readonly as a runtime security boundary.",
+    "rubric": [
+      "It restricts mutation through typed references",
+      "It does not freeze runtime objects",
+      "Choose copies when shared ownership requires isolation"
+    ],
+    "followups": [
+      "How would you prevent nested mutations?",
+      "Walk through a concrete example of readonly types and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-19",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "How would you diagnose a slow JavaScript interaction?",
+    "a": "Capture a performance trace.",
+    "explanation": "Capture a performance trace. Separate computation layout and network costs. Fix the dominant bottleneck.",
+    "mistake": "Assuming bundle size explains every slow interaction.",
+    "rubric": [
+      "Capture a performance trace",
+      "Separate computation layout and network costs",
+      "Fix the dominant bottleneck"
+    ],
+    "followups": [
+      "Which measurement confirms your improvement?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-20",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "How can caches cause memory growth in a long-running JavaScript app?",
+    "a": "Strong references retain cache entries.",
+    "explanation": "Strong references retain cache entries. Bound size or expire entries. Observe retained objects over repeated workloads.",
+    "mistake": "Creating unbounded global maps.",
+    "rubric": [
+      "Strong references retain cache entries",
+      "Bound size or expire entries",
+      "Observe retained objects over repeated workloads"
+    ],
+    "followups": [
+      "When is WeakMap a suitable alternative?",
+      "Walk through a concrete example of memory and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-21",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Contracts",
+    "round": "Debugging",
+    "q": "How would you version a TypeScript SDK used by multiple services?",
+    "a": "Publish explicit compatible contracts.",
+    "explanation": "Publish explicit compatible contracts. Test runtime payloads against schemas. Treat breaking types and behavior as versioned changes.",
+    "mistake": "Assuming compilation guarantees cross-service compatibility.",
+    "rubric": [
+      "Publish explicit compatible contracts",
+      "Test runtime payloads against schemas",
+      "Treat breaking types and behavior as versioned changes"
+    ],
+    "followups": [
+      "How would you deprecate a response field?",
+      "Walk through a concrete example of contracts and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-22",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Security",
+    "round": "Debugging",
+    "q": "How should code render user-provided text safely?",
+    "a": "Prefer text rendering over HTML injection.",
+    "explanation": "Prefer text rendering over HTML injection. Validate and sanitize intentional rich markup. Keep security checks at trusted boundaries.",
+    "mistake": "Concatenating untrusted strings into HTML.",
+    "rubric": [
+      "Prefer text rendering over HTML injection",
+      "Validate and sanitize intentional rich markup",
+      "Keep security checks at trusted boundaries"
+    ],
+    "followups": [
+      "How would a content security policy help?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-23",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Backpressure",
+    "round": "Debugging",
+    "q": "How would you process a very large asynchronous input stream?",
+    "a": "Read incrementally with bounded buffers.",
+    "explanation": "Read incrementally with bounded buffers. Limit outstanding tasks. Propagate cancellation and downstream failures.",
+    "mistake": "Loading the entire input before processing.",
+    "rubric": [
+      "Read incrementally with bounded buffers",
+      "Limit outstanding tasks",
+      "Propagate cancellation and downstream failures"
+    ],
+    "followups": [
+      "What should happen when consumers slow down?",
+      "Walk through a concrete example of backpressure and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-24",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Build output",
+    "round": "Debugging",
+    "q": "Why can different module formats break an otherwise typed package?",
+    "a": "Runtime loaders expect compatible formats.",
+    "explanation": "Runtime loaders expect compatible formats. Export maps control supported entry points. Test actual consumer environments.",
+    "mistake": "Publishing types without testing runtime imports.",
+    "rubric": [
+      "Runtime loaders expect compatible formats",
+      "Export maps control supported entry points",
+      "Test actual consumer environments"
+    ],
+    "followups": [
+      "How would you support ESM and legacy consumers?",
+      "Walk through a concrete example of build output and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-25",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Dependency strategy",
+    "round": "Design",
+    "q": "How would you assess a new JavaScript dependency for production?",
+    "a": "Review maintenance security and license.",
+    "explanation": "Review maintenance security and license. Measure runtime and bundle impact. Prefer a bounded replaceable integration.",
+    "mistake": "Choosing solely by download count.",
+    "rubric": [
+      "Review maintenance security and license",
+      "Measure runtime and bundle impact",
+      "Prefer a bounded replaceable integration"
+    ],
+    "followups": [
+      "How would you respond to a transitive vulnerability?",
+      "Walk through a concrete example of dependency strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-26",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Migration",
+    "round": "Design",
+    "q": "How would you migrate a large JavaScript codebase to TypeScript?",
+    "a": "Introduce checks in incremental boundaries.",
+    "explanation": "Introduce checks in incremental boundaries. Prioritize shared contracts and risky inputs. Reduce escape hatches over time.",
+    "mistake": "Replacing every type error with any.",
+    "rubric": [
+      "Introduce checks in incremental boundaries",
+      "Prioritize shared contracts and risky inputs",
+      "Reduce escape hatches over time"
+    ],
+    "followups": [
+      "Which module would you migrate first?",
+      "Walk through a concrete example of migration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-27",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "API stability",
+    "round": "Design",
+    "q": "How should you evolve an exported discriminated union?",
+    "a": "Recognize exhaustive consumers may break.",
+    "explanation": "Recognize exhaustive consumers may break. Version new variants deliberately. Provide clear migration guidance.",
+    "mistake": "Calling every additive union change harmless.",
+    "rubric": [
+      "Recognize exhaustive consumers may break",
+      "Version new variants deliberately",
+      "Provide clear migration guidance"
+    ],
+    "followups": [
+      "How would you support unknown future variants?",
+      "Walk through a concrete example of api stability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-28",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Worker architecture",
+    "round": "Design",
+    "q": "How would you divide work between the main thread and workers?",
+    "a": "Keep interaction on the main thread.",
+    "explanation": "Keep interaction on the main thread. Offload CPU-heavy independent work. Measure messaging and transfer costs.",
+    "mistake": "Moving trivial work despite transfer overhead.",
+    "rubric": [
+      "Keep interaction on the main thread",
+      "Offload CPU-heavy independent work",
+      "Measure messaging and transfer costs"
+    ],
+    "followups": [
+      "When would transferable buffers be useful?",
+      "Walk through a concrete example of worker architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-29",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Validation policy",
+    "round": "Design",
+    "q": "How should a team keep compile-time and runtime schemas aligned?",
+    "a": "Choose an authoritative schema source.",
+    "explanation": "Choose an authoritative schema source. Generate or infer compatible types. Test boundary examples and invalid payloads.",
+    "mistake": "Maintaining unrelated duplicate schema definitions.",
+    "rubric": [
+      "Choose an authoritative schema source",
+      "Generate or infer compatible types",
+      "Test boundary examples and invalid payloads"
+    ],
+    "followups": [
+      "How would schema changes reach clients?",
+      "Walk through a concrete example of validation policy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-30",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Reliability",
+    "round": "Design",
+    "q": "How would you keep a JavaScript client usable during partial outages?",
+    "a": "Set request deadlines and retry limits.",
+    "explanation": "Set request deadlines and retry limits. Preserve meaningful cached state. Expose recoverable failure states.",
+    "mistake": "Hiding every failure behind an endless spinner.",
+    "rubric": [
+      "Set request deadlines and retry limits",
+      "Preserve meaningful cached state",
+      "Expose recoverable failure states"
+    ],
+    "followups": [
+      "Which operations must never be retried blindly?",
+      "Walk through a concrete example of reliability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-31",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Instrumentation",
+    "round": "Design",
+    "q": "How do you add telemetry without exposing user secrets?",
+    "a": "Collect bounded event metadata.",
+    "explanation": "Collect bounded event metadata. Redact sensitive values before export. Define retention and consent requirements.",
+    "mistake": "Logging full request bodies by default.",
+    "rubric": [
+      "Collect bounded event metadata",
+      "Redact sensitive values before export",
+      "Define retention and consent requirements"
+    ],
+    "followups": [
+      "How would you test redaction behavior?",
+      "Walk through a concrete example of instrumentation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-path-32",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Code quality",
+    "round": "Design",
+    "q": "How would you enforce safe JavaScript and TypeScript conventions at scale?",
+    "a": "Automate linting type checks and focused tests.",
+    "explanation": "Automate linting type checks and focused tests. Document justified exceptions. Review outcomes beyond style metrics.",
+    "mistake": "Using lint scores as a measure of correctness.",
+    "rubric": [
+      "Automate linting type checks and focused tests",
+      "Document justified exceptions",
+      "Review outcomes beyond style metrics"
+    ],
+    "followups": [
+      "How would you handle legacy violations incrementally?",
+      "Walk through a concrete example of code quality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

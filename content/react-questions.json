@@ -1,0 +1,212 @@
+[
+  {
+    "id": "react-state",
+    "area": "React",
+    "level": 1,
+    "subtopic": "State",
+    "round": "Fundamentals",
+    "q": "Why can a React handler read the old count just after calling its setter?",
+    "a": "State belongs to a render snapshot. Setting state schedules a later render rather than mutating the current handler snapshot.",
+    "explanation": "Use an updater when the next value depends on previous state. Avoid assuming the setter returns a completion promise. Explain which render created the handler.",
+    "mistake": "Expecting the local count variable to change immediately.",
+    "rubric": [
+      "Explain render snapshots",
+      "Use a functional updater",
+      "Avoid relying on synchronous mutation"
+    ],
+    "followups": [
+      "Why can repeated count+1 updates collapse?",
+      "When would a ref be useful?"
+    ],
+    "sourceIds": [
+      "react"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-keys",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Lists",
+    "round": "Debugging",
+    "q": "After reordering a list, input text appears in the wrong row. What should you check?",
+    "a": "Use stable item identity for keys. Position-based keys can associate existing component state with another item.",
+    "explanation": "Keys only need uniqueness among siblings. Define identity in the data model and test insertions, deletions, and reorder operations with stateful rows.",
+    "mistake": "Generating a fresh random key on every render.",
+    "rubric": [
+      "Explain identity during reconciliation",
+      "Choose stable data keys",
+      "Test stateful reorder cases"
+    ],
+    "followups": [
+      "When is an index acceptable?",
+      "What does changing a key intentionally do?"
+    ],
+    "sourceIds": [
+      "react"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-effects",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Effects",
+    "round": "Debugging",
+    "q": "An effect opens two subscriptions during development. How should it be written?",
+    "a": "An effect should have cleanup that reverses setup. Development checks can exercise setup, cleanup, and setup to reveal leaks.",
+    "explanation": "Use correct dependencies and unsubscribe from the exact resource created by the effect. Do not hide a leak with a run-once flag. Confirm production and development behavior separately.",
+    "mistake": "Disabling development checks to conceal missing cleanup.",
+    "rubric": [
+      "Pair setup with cleanup",
+      "Use correct dependencies",
+      "Verify repeated mount behavior"
+    ],
+    "followups": [
+      "When does cleanup run?",
+      "Should derived state use an effect?"
+    ],
+    "sourceIds": [
+      "react-effects"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-search",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Async UI",
+    "round": "Coding",
+    "q": "A slow old search response replaces newer results. How would you prevent this?",
+    "a": "Cancel obsolete requests when possible and ensure only the current request can update visible results.",
+    "explanation": "Use request identity or an ignore flag tied to effect cleanup, plus loading and error states. Debouncing reduces traffic but does not by itself prevent out-of-order results.",
+    "mistake": "Assuming a debounce guarantees correct response ordering.",
+    "rubric": [
+      "Guard response identity",
+      "Clean up obsolete work",
+      "Test reversed response order"
+    ],
+    "followups": [
+      "How should empty search behave?",
+      "What if cancellation is unavailable?"
+    ],
+    "sourceIds": [
+      "react-effects"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-state-ownership",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "An editor has local selection, server documents, and shared undo history. Where should state live?",
+    "a": "Keep each state at the smallest appropriate owner, separate server cache from editable drafts, and define who owns undo history.",
+    "explanation": "Avoid duplicating derived values and copying remote data into several stores. Define save conflicts, invalidation, and reset behavior before choosing a state library.",
+    "mistake": "Choosing a global store before defining ownership.",
+    "rubric": [
+      "Separate state lifetimes",
+      "Define a source of truth",
+      "Handle save and reset conflicts"
+    ],
+    "followups": [
+      "What survives navigation?",
+      "How would offline edits merge?"
+    ],
+    "sourceIds": [
+      "react"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-performance",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "A dashboard rerenders often. Should every component be memoized?",
+    "a": "Profile the interaction first, then reduce expensive work and unstable inputs where measurements justify it.",
+    "explanation": "A rerender is not automatically a slow interaction. Move state closer to its users, avoid unnecessary effects, and evaluate list virtualization. Memoization has comparison and maintenance costs.",
+    "mistake": "Using memoization without a measured bottleneck.",
+    "rubric": [
+      "Profile user-visible latency",
+      "Inspect state and prop stability",
+      "Validate the change"
+    ],
+    "followups": [
+      "When can a memo still rerender?",
+      "How do you benchmark a long list?"
+    ],
+    "sourceIds": [
+      "react"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-design-system",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Leadership",
+    "q": "How would you govern a React design system used by many teams?",
+    "a": "Define accessible component contracts, versioning, ownership, and a contribution process with consumer validation.",
+    "explanation": "Test keyboard and screen-reader behavior alongside visuals. Support migration paths, avoid leaking implementation details into contracts, and track adoption and repeated product defects.",
+    "mistake": "Treating visual consistency as sufficient accessibility.",
+    "rubric": [
+      "Define stable accessible contracts",
+      "Validate real consumers",
+      "Plan versioning and migration"
+    ],
+    "followups": [
+      "Who approves a breaking change?",
+      "How do teams request an exception?"
+    ],
+    "sourceIds": [
+      "react",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-render-strategy",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Choose client rendering versus server-assisted rendering for a React storefront.",
+    "a": "Compare first-load behavior, indexing needs, personalization, cacheability, infrastructure cost, and interactive complexity.",
+    "explanation": "Map which data can be public or user-specific. Plan loading boundaries, failure states, and consistent initial UI. Validate on slow devices and networks instead of choosing by trend.",
+    "mistake": "Caching personalized responses as though they were public pages.",
+    "rubric": [
+      "Map rendering requirements",
+      "Separate public and private data",
+      "Measure end-user performance"
+    ],
+    "followups": [
+      "What causes hydration mismatches?",
+      "How do you handle stale prices?"
+    ],
+    "sourceIds": [
+      "react",
+      "http-caching"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

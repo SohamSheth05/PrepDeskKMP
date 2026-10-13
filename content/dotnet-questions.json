@@ -1,0 +1,213 @@
+[
+  {
+    "id": "dotnet-async",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Async",
+    "round": "Fundamentals",
+    "q": "Does async in C# always create a new thread?",
+    "a": "No. Async enables awaiting completion without blocking the caller; execution depends on the operation and scheduling context.",
+    "explanation": "I/O can complete asynchronously without dedicating a thread per wait. CPU work still needs execution capacity. Use Task.Run selectively for suitable CPU work rather than wrapping all server I/O.",
+    "mistake": "Equating every Task with a dedicated thread.",
+    "rubric": [
+      "Distinguish awaiting and parallel execution",
+      "Explain I/O versus CPU work",
+      "Choose execution deliberately"
+    ],
+    "followups": [
+      "When does an async method run synchronously?",
+      "What if a task is already complete?"
+    ],
+    "sourceIds": [
+      "dotnet-async"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-blocking",
+    "area": "C# and .NET",
+    "level": 1,
+    "subtopic": "Async",
+    "round": "Debugging",
+    "q": "Why can calling .Result on an async operation cause problems?",
+    "a": "It blocks a thread and can deadlock in some synchronization contexts or exhaust capacity under load.",
+    "explanation": "Await through the call chain. A classic UI deadlock occurs when completion needs the blocked context. On servers, thread-pool starvation can still be a problem even without that UI context.",
+    "mistake": "Claiming every .Result call causes exactly the same deadlock.",
+    "rubric": [
+      "Explain blocking",
+      "Describe context-dependent deadlock",
+      "Propagate async through callers"
+    ],
+    "followups": [
+      "Does ConfigureAwait solve every problem?",
+      "How does server starvation differ?"
+    ],
+    "sourceIds": [
+      "dotnet-async"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-queries",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "EF Core",
+    "round": "Debugging",
+    "q": "An EF Core page makes one database query per row. How do you investigate it?",
+    "a": "Inspect generated SQL and query counts, then use deliberate projection or related-data loading to avoid an N+1 pattern.",
+    "explanation": "Fetch only required fields and bound the result size. Compare joins and split queries for the data shape; either can have costs. Verify performance with production-like cardinality.",
+    "mistake": "Loading every navigation property to avoid thinking about query shape.",
+    "rubric": [
+      "Measure actual query count",
+      "Choose projection/loading strategy",
+      "Bound and benchmark results"
+    ],
+    "followups": [
+      "When do split queries help?",
+      "What is tracking overhead?"
+    ],
+    "sourceIds": [
+      "ef-querying"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-cancellation",
+    "area": "C# and .NET",
+    "level": 2,
+    "subtopic": "Async",
+    "round": "Coding",
+    "q": "Implement a cancellable endpoint that calls several downstream operations.",
+    "a": "Pass the CancellationToken through supported APIs, await owned tasks, and define whether failure cancels sibling work.",
+    "explanation": "Dispose cancellation sources you own and handle cancellation separately from ordinary failure. Cancellation is cooperative, so blocking libraries may not stop immediately.",
+    "mistake": "Creating a token and never passing it to downstream work.",
+    "rubric": [
+      "Propagate cancellation",
+      "Define task ownership",
+      "Distinguish cancellation and failure"
+    ],
+    "followups": [
+      "When should tokens be linked?",
+      "How do you enforce an overall timeout?"
+    ],
+    "sourceIds": [
+      "dotnet-async"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-pagination",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "EF Core",
+    "round": "System design",
+    "q": "Design an EF Core query for a large scrolling feed.",
+    "a": "Project a bounded page in a stable order and use keyset pagination where sequential navigation is sufficient.",
+    "explanation": "Match indexes to filtering and cursor keys. Include a unique tie-breaker and inspect generated SQL. Avoid pulling all rows into memory before applying filters.",
+    "mistake": "Calling ToList before pagination and then filtering in memory.",
+    "rubric": [
+      "Keep filtering on the server",
+      "Define stable cursors",
+      "Verify generated SQL and indexes"
+    ],
+    "followups": [
+      "How do you support backwards navigation?",
+      "When is offset pagination acceptable?"
+    ],
+    "sourceIds": [
+      "ef-querying"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-throughput",
+    "area": "C# and .NET",
+    "level": 3,
+    "subtopic": "Async services",
+    "round": "Debugging",
+    "q": "A .NET API uses async everywhere but still degrades under load. What do you measure?",
+    "a": "Measure thread-pool pressure, blocking paths, outstanding requests, database pools, and downstream latency.",
+    "explanation": "Async does not create unlimited capacity. Bound concurrency and queue growth, remove sync-over-async calls, and compare throughput and tail latency under degraded dependencies.",
+    "mistake": "Assuming async keywords prove the system cannot block.",
+    "rubric": [
+      "Measure bottleneck resources",
+      "Find hidden blocking",
+      "Bound concurrency and verify recovery"
+    ],
+    "followups": [
+      "When does extra concurrency reduce throughput?",
+      "How would you identify pool starvation?"
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-upgrades",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Platform evolution",
+    "round": "Leadership",
+    "q": "Plan a major .NET upgrade for a regulated production platform.",
+    "a": "Inventory compatibility risks, preserve behavior through contract tests, and use staged deployment with auditable recovery.",
+    "explanation": "Include serializers, EF migrations, native integrations, and runtime images. Assign owners and exception expiry dates. Validate operational behavior as well as compilation.",
+    "mistake": "Treating a successful build as complete upgrade evidence.",
+    "rubric": [
+      "Map compatibility risks",
+      "Validate representative contracts",
+      "Plan rollout and recovery ownership"
+    ],
+    "followups": [
+      "What if a serializer changes defaults?",
+      "How do you maintain mixed versions?"
+    ],
+    "sourceIds": [
+      "dotnet-async",
+      "ef-querying"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "dotnet-data-boundary",
+    "area": "C# and .NET",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Several services share EF entities directly. What risks would you address?",
+    "a": "Separate internal persistence models from public contracts and define ownership of schema and writes.",
+    "explanation": "Shared entities can spread schema coupling and tracking assumptions across services. Introduce explicit DTOs and compatibility tests incrementally; do not migrate everything in one release.",
+    "mistake": "Exposing the complete database model as an API contract.",
+    "rubric": [
+      "Define data ownership",
+      "Separate persistence and API models",
+      "Plan compatible migration"
+    ],
+    "followups": [
+      "How do consumers request new fields?",
+      "When can sharing a model be reasonable?"
+    ],
+    "sourceIds": [
+      "ef-querying",
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

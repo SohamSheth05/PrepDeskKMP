@@ -1,0 +1,805 @@
+[
+  {
+    "id": "android-process-death",
+    "area": "Android",
+    "subtopic": "Lifecycle",
+    "level": 2,
+    "round": "Debugging",
+    "q": "A checkout screen loses its form after Android kills the background process. How would you preserve the right state?",
+    "a": "A ViewModel survives configuration changes, but not process death. Save small restorable UI state with SavedStateHandle or rememberSaveable; persist durable business data in a database.",
+    "explanation": "First distinguish rotation from process death. Restore identifiers and small form fields through saved state, then reload business data from the repository. A ViewModel is recreated in a new process. Avoid putting a large order object or secrets into a Bundle. For work that must finish independently of the UI, use an appropriate persistent work mechanism.",
+    "mistake": "Assuming a ViewModel or remember alone survives process death.",
+    "rubric": [
+      "Distinguishes configuration changes from process death",
+      "Uses saved state for small UI values",
+      "Persists durable data outside the ViewModel",
+      "Explains rebuilding the screen from an ID"
+    ],
+    "followups": [
+      "What would you save for a paginated list?",
+      "How would you test recreation separately from process death?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-lifecycle"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-activity-lifecycle",
+    "area": "Android",
+    "subtopic": "Lifecycle",
+    "level": 1,
+    "round": "Fundamentals",
+    "q": "Your Activity becomes partly covered by another window. Which lifecycle states matter for resource ownership?",
+    "a": "An Activity can be visible while not resumed. Pair resource acquisition and release with the lifecycle state the resource needs, rather than relying on onDestroy for cleanup.",
+    "explanation": "onCreate initializes, onStart makes the Activity visible, and onResume makes it interactive. onPause and onStop reverse those states. Choose STARTED for visibility-based observation and RESUMED for exclusive interaction where appropriate. Process termination may occur without onDestroy, so persist important data earlier.",
+    "mistake": "Treating onDestroy as a guaranteed final callback.",
+    "rubric": [
+      "Explains visible versus resumed states",
+      "Pairs resource ownership with lifecycle callbacks",
+      "Does not rely on onDestroy for persistence"
+    ],
+    "followups": [
+      "When should a location listener run?",
+      "What changes when two windows are visible?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-lifecycle"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-fragment-view",
+    "area": "Android",
+    "subtopic": "Lifecycle",
+    "level": 2,
+    "round": "Debugging",
+    "q": "A Fragment crashes when a delayed callback updates its old view binding. What lifetime should own that work?",
+    "a": "The Fragment view has a shorter lifecycle than its Fragment. Bind UI collection to viewLifecycleOwner and clear binding in onDestroyView.",
+    "explanation": "A Fragment can remain on the back stack after its view is destroyed. Work scoped to the Fragment may therefore outlive the view. Observe UI data through the view lifecycle and make callbacks cancellation-aware. Keep business work in a ViewModel and render into the current view only.",
+    "mistake": "Collecting UI data for the entire Fragment lifetime while retaining an old binding.",
+    "rubric": [
+      "Separates Fragment and view lifetimes",
+      "Uses viewLifecycleOwner for UI observation",
+      "Clears references when the view is destroyed"
+    ],
+    "followups": [
+      "What happens when navigating back?",
+      "Where should a network request be owned?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-lifecycle"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-context-leak",
+    "area": "Android",
+    "subtopic": "Memory",
+    "level": 2,
+    "round": "Debugging",
+    "q": "A singleton keeps a screen Context and memory grows after every rotation. Diagnose and fix the ownership problem.",
+    "a": "A long-lived object retaining an Activity can keep the entire screen alive. Use applicationContext for application-level work and avoid storing screen-owned objects in singletons.",
+    "explanation": "Trace the strong reference path with a heap analysis tool. Context selection depends on the operation: inflating themed UI needs a screen context, while a database usually needs an application context. Passing applicationContext everywhere is not a substitute for defining ownership and removing listeners.",
+    "mistake": "Replacing all contexts indiscriminately without considering themes or screen ownership.",
+    "rubric": [
+      "Identifies the reference from a singleton to an Activity",
+      "Chooses context according to lifetime and purpose",
+      "Uses heap evidence to verify cleanup"
+    ],
+    "followups": [
+      "Could a listener leak without directly storing Context?",
+      "Which UI operations need a themed context?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-performance"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-anr",
+    "area": "Android",
+    "subtopic": "Performance",
+    "level": 2,
+    "round": "Debugging",
+    "q": "Users report that tapping Save freezes the app. How would you investigate an ANR?",
+    "a": "Inspect ANR traces and reproduce the workload. Look for main-thread disk or network work, blocking locks, heavy computation, or slow component callbacks; fix the measured cause.",
+    "explanation": "Coroutines do not automatically make work safe for the main thread. Move blocking I/O to an appropriate dispatcher and CPU-heavy work to a computation dispatcher. Trace actual execution and keep transactions short. Verify responsiveness under slow storage and network conditions rather than only on a fast development device.",
+    "mistake": "Assuming any suspend function automatically executes on a background thread.",
+    "rubric": [
+      "Uses traces rather than guessing",
+      "Identifies blocking or contention on the main thread",
+      "Chooses a dispatcher based on workload",
+      "Verifies the fix under adverse conditions"
+    ],
+    "followups": [
+      "What if the main thread is waiting for a lock?",
+      "How would you detect accidental disk access during development?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-performance"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-startup",
+    "area": "Android",
+    "subtopic": "Performance",
+    "level": 3,
+    "round": "Debugging",
+    "q": "An app initializes every SDK in Application.onCreate and cold start is slow. How would you improve startup?",
+    "a": "Measure time to initial display and full display, inspect startup traces, and defer nonessential initialization. Optimize the critical path before adding Baseline Profiles.",
+    "explanation": "Build a dependency map of startup work. Keep only work needed for the first usable screen on the critical path. Lazy initialization moves cost to first use, so measure that interaction too. Profiles can improve execution, but they do not remove unnecessary I/O or dependencies. Compare release-like builds on representative devices.",
+    "mistake": "Moving all initialization into parallel jobs without respecting dependencies or measuring contention.",
+    "rubric": [
+      "Measures cold start with a release-like build",
+      "Defers work not required for initial UI",
+      "Considers initialization dependencies",
+      "Measures first-use costs after deferring work"
+    ],
+    "followups": [
+      "Which work cannot safely be lazy?",
+      "How would you prove a Baseline Profile helped?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-performance"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-suspend",
+    "area": "Android",
+    "subtopic": "Coroutines",
+    "level": 1,
+    "round": "Fundamentals",
+    "q": "A suspend function calls a blocking database API. Does the suspend keyword make that call non-blocking?",
+    "a": "No. suspend permits suspension; it neither changes the dispatcher nor converts a blocking API into a suspending one. Use the API contract and an appropriate dispatcher.",
+    "explanation": "A suspending function can suspend without blocking its thread when the operation supports it. A blocking function still occupies the current thread. Encapsulate blocking I/O in withContext(Dispatchers.IO) where appropriate, so callers can invoke the repository safely. Do not switch dispatchers unnecessarily around an API that already manages its own execution.",
+    "mistake": "Equating suspend with background execution.",
+    "rubric": [
+      "Separates suspension from blocking",
+      "Explains that suspend does not choose a thread",
+      "Makes a blocking repository operation main-safe"
+    ],
+    "followups": [
+      "How is delay different from Thread.sleep?",
+      "Who should choose the dispatcher for a repository method?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "kotlin-coroutines"
+    ],
+    "code": "suspend fun readFile(): String = withContext(Dispatchers.IO) {\n    blockingReadFile()\n}",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-structured",
+    "area": "Android",
+    "subtopic": "Coroutines",
+    "level": 2,
+    "round": "Fundamentals",
+    "q": "A screen launches several child requests. How should cancellation and ownership work when the screen leaves?",
+    "a": "Use a scope with an explicit owner. Structured concurrency ties child work to its parent, propagates cancellation, and waits for children rather than letting work escape into GlobalScope.",
+    "explanation": "A ViewModel scope is suitable for screen business work that should survive rotation. Work bound strictly to visibility should use lifecycle-aware ownership. Durable work may need WorkManager instead. The correct owner follows the product requirement; simply cancelling everything at navigation may be wrong for a user-requested upload.",
+    "mistake": "Using GlobalScope to avoid choosing a lifetime.",
+    "rubric": [
+      "Defines the lifetime of the operation",
+      "Describes parent-child cancellation",
+      "Distinguishes screen work from durable work"
+    ],
+    "followups": [
+      "Should an upload stop when leaving the screen?",
+      "How does supervision change child failure behavior?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "kotlin-coroutines"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-supervision",
+    "area": "Android",
+    "subtopic": "Coroutines",
+    "level": 3,
+    "round": "Debugging",
+    "q": "Two optional dashboard panels load concurrently. One fails, but the other should still appear. How would you structure this?",
+    "a": "Use supervisorScope for independent children and handle errors for each result. With async, exceptions are surfaced by await; supervision alone does not turn failures into values.",
+    "explanation": "coroutineScope normally cancels siblings when a child fails. supervisorScope allows independent child failure, but each task still needs an explicit error policy. Return loading, success, or failure states for each panel. Rethrow cancellation rather than converting it into an ordinary network error.",
+    "mistake": "Assuming supervisorScope swallows exceptions or forgetting to await and handle each result.",
+    "rubric": [
+      "Explains normal child failure propagation",
+      "Chooses supervision for independent tasks",
+      "Handles each await result explicitly",
+      "Preserves cancellation"
+    ],
+    "followups": [
+      "Would you still supervise two dependent requests?",
+      "What happens if the parent itself fails?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "kotlin-coroutines"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-cancellation",
+    "area": "Android",
+    "subtopic": "Coroutines",
+    "level": 2,
+    "round": "Debugging",
+    "q": "A cancelled coroutine continues processing a large list. Why, and how would you make it stop promptly?",
+    "a": "Cancellation is cooperative. A CPU loop needs cancellation checks such as ensureActive or a suitable suspending checkpoint; blocking APIs need their own cancellation support.",
+    "explanation": "Suspending cancellable operations usually observe cancellation automatically. A tight loop with no suspension does not. Check cancellation at sensible boundaries and avoid overwhelming the scheduler. Cleanup belongs in finally. If an exception handler catches CancellationException, rethrow it instead of treating navigation as a failure.",
+    "mistake": "Catching every Exception and swallowing cancellation.",
+    "rubric": [
+      "Describes cooperative cancellation",
+      "Adds checkpoints to CPU work",
+      "Preserves CancellationException",
+      "Explains cleanup in finally"
+    ],
+    "followups": [
+      "Does switching to Dispatchers.IO cancel a blocking API?",
+      "When would NonCancellable be appropriate?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "kotlin-coroutines"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-flow-state",
+    "area": "Android",
+    "subtopic": "Flow",
+    "level": 2,
+    "round": "Fundamentals",
+    "q": "Choose a stream for current screen state and another for broadcast updates. How do StateFlow and SharedFlow differ?",
+    "a": "StateFlow always has a current value and replays it to new collectors, suppressing equal updates. SharedFlow provides configurable replay and buffering for broadcasts.",
+    "explanation": "Use StateFlow for an observable state snapshot and expose it read-only. SharedFlow can broadcast emissions to multiple collectors, but a replay-zero emission without a subscriber may be lost. For important UI outcomes, model the outcome as state or define delivery and consumption explicitly. Neither abstraction alone guarantees exactly-once event handling.",
+    "mistake": "Calling SharedFlow an exactly-once event queue.",
+    "rubric": [
+      "Explains StateFlow current value and equality conflation",
+      "Explains SharedFlow replay and buffering",
+      "Considers absence of collectors",
+      "Defines delivery requirements explicitly"
+    ],
+    "followups": [
+      "What happens to an event during rotation?",
+      "How could you model a pending navigation outcome as state?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "kotlin-coroutines"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-search-flow",
+    "area": "Android",
+    "subtopic": "Flow",
+    "level": 2,
+    "round": "Coding",
+    "q": "Implement search where an older request must not overwrite the result of a newer query.",
+    "a": "Debounce text input, ignore duplicate queries, and use flatMapLatest for a cancellable request flow. Emit a screen state that represents loading, success, and failure.",
+    "explanation": "Cancellation of the previous inner flow prevents it from continuing to emit through flatMapLatest. The network or blocking API must still cooperate with cancellation. Place error handling inside each request flow if future queries should continue after one failure. Define behavior for blank input and test out-of-order completion.",
+    "mistake": "Putting catch only outside the whole search stream and accidentally ending future searches.",
+    "rubric": [
+      "Debounces and removes duplicate input",
+      "Cancels or discards stale requests",
+      "Handles errors per query",
+      "Tests out-of-order responses"
+    ],
+    "followups": [
+      "What if the request API ignores cancellation?",
+      "How would you test debounce without waiting in real time?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "kotlin-coroutines"
+    ],
+    "code": "queries.debounce(300).distinctUntilChanged()\n    .flatMapLatest { query -> repository.searchFlow(query) }",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-flow-lifecycle",
+    "area": "Android",
+    "subtopic": "Flow",
+    "level": 2,
+    "round": "Debugging",
+    "q": "A Flow keeps updating a stopped screen. How would you collect it safely in Compose and in a Fragment?",
+    "a": "Use collectAsStateWithLifecycle for Android Compose state. In a Fragment, collect in viewLifecycleOwner.lifecycleScope inside repeatOnLifecycle with the required active state.",
+    "explanation": "Lifecycle-aware collection stops and restarts collection according to the owner state. Cold upstream work may restart when collection restarts; a shared upstream has its own lifetime policy. Use stateIn or shareIn when sharing is required, and choose the scope and started policy deliberately.",
+    "mistake": "Launching one forever-running UI collector in onCreate.",
+    "rubric": [
+      "Uses lifecycle-aware collection",
+      "Uses the Fragment view lifecycle",
+      "Explains upstream lifetime separately from collection"
+    ],
+    "followups": [
+      "What does WhileSubscribed change?",
+      "Could restarting collection repeat a network request?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-compose-state",
+    "area": "Android",
+    "subtopic": "Compose",
+    "level": 1,
+    "round": "Fundamentals",
+    "q": "Why does changing an ordinary mutable list not reliably refresh a Compose screen?",
+    "a": "Compose reacts to reads of observable state. Use a state holder with immutable list updates or a snapshot state collection; mutating a normal list does not notify Compose.",
+    "explanation": "Hoist state to the lowest common owner that needs to read and change it. Pass values down and events up. remember retains an object during its composition lifetime; rememberSaveable can restore supported UI values after recreation. Neither replaces durable storage.",
+    "mistake": "Wrapping a mutable object in remember and expecting all internal mutations to be observed.",
+    "rubric": [
+      "Identifies observable state reads",
+      "Uses immutable updates or snapshot state collections",
+      "Explains state hoisting",
+      "Separates remember from persistence"
+    ],
+    "followups": [
+      "Where should server-backed state be owned?",
+      "When would rememberSaveable be useful?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "compose-state"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-compose-effects",
+    "area": "Android",
+    "subtopic": "Compose",
+    "level": 2,
+    "round": "Debugging",
+    "q": "A composable starts a request during rendering and requests multiply. Where should this work live?",
+    "a": "Keep rendering free of uncontrolled side effects. Own business requests in the ViewModel, or use a keyed LaunchedEffect for work explicitly tied to composition.",
+    "explanation": "Composables may run repeatedly and recomposition may be skipped or cancelled. LaunchedEffect launches a coroutine when entering composition and restarts it when its keys change. DisposableEffect pairs registration with cleanup. rememberUpdatedState lets a long-lived effect access a changing value without restarting solely for that value.",
+    "mistake": "Using an unstable effect key or launching work directly in the composable body.",
+    "rubric": [
+      "Keeps side effects outside rendering",
+      "Chooses a meaningful effect key",
+      "Explains effect cancellation and cleanup"
+    ],
+    "followups": [
+      "How would you register and remove a listener?",
+      "How do you use the latest callback without restarting an effect?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "compose-state"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-compose-list",
+    "area": "Android",
+    "subtopic": "Compose",
+    "level": 2,
+    "round": "Debugging",
+    "q": "A reordered lazy list moves remembered checkbox state to the wrong row. What would you inspect?",
+    "a": "Give each item a stable unique key and keep user selection identified by the item ID. Position-based identity can associate remembered state with a different item after reordering.",
+    "explanation": "Stable keys help Compose preserve item identity across inserts and moves. Keep business selection outside each row when it must survive scrolling, filtering, or screen recreation. Also ensure the list publishes observable immutable updates. Keys are not a replacement for correct state ownership.",
+    "mistake": "Using the row index as identity for a reorderable list.",
+    "rubric": [
+      "Uses stable item IDs as keys",
+      "Owns selection by item identity",
+      "Separates remembered row state from durable state"
+    ],
+    "followups": [
+      "What if two rows have the same key?",
+      "How should selection behave when a filter hides a row?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "compose-state"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-architecture",
+    "area": "Android",
+    "subtopic": "Architecture",
+    "level": 2,
+    "round": "System design",
+    "q": "Design the data flow for a screen that reads cached items and refreshes them from an API.",
+    "a": "The UI observes ViewModel state, the ViewModel calls a repository, and the repository coordinates remote and local data. Use the local database as the source read by the screen.",
+    "explanation": "Persist a successful refresh transactionally and let database observation update the screen. Represent refresh errors separately so cached items remain usable. Keep framework-specific networking and persistence details behind data-layer interfaces. Introduce additional domain abstractions when they clarify reusable business rules.",
+    "mistake": "Letting the UI alternate between unrelated network and database lists.",
+    "rubric": [
+      "Defines UI, state holder, and repository responsibilities",
+      "Uses a single observable local data source",
+      "Preserves cached data on refresh failure",
+      "Discusses transaction boundaries"
+    ],
+    "followups": [
+      "How would you show stale data?",
+      "When is a separate use-case layer useful?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-offline-sync",
+    "area": "Android",
+    "subtopic": "Architecture",
+    "level": 3,
+    "round": "System design",
+    "q": "Users edit the same offline note on two devices. How would you design synchronization?",
+    "a": "Persist edits locally and queue identified operations for retry. Use server versions to detect conflicts and choose an explicit merge or conflict-resolution policy.",
+    "explanation": "Separate local edit success from remote synchronization success. Give retries idempotent operation IDs. Handle deletions with tombstones and retain a server cursor for incremental updates. Last-write-wins is simple but may lose edits; choose the policy according to the data and show unresolved conflicts when needed.",
+    "mistake": "Retrying writes without idempotency or silently overwriting conflicts.",
+    "rubric": [
+      "Persists changes before syncing",
+      "Uses idempotent retries",
+      "Detects conflicts with versions",
+      "Explains deletion and conflict policy"
+    ],
+    "followups": [
+      "How would you handle a deleted note edited offline?",
+      "Why can device clock timestamps be unreliable?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-room-migration",
+    "area": "Android",
+    "subtopic": "Database",
+    "level": 2,
+    "round": "Debugging",
+    "q": "You add a non-null column to a Room table used by existing installs. How do you ship it without losing progress?",
+    "a": "Increase the schema version, supply a migration with a valid value for existing rows, and test it from the exported old schema. Avoid destructive fallback for user data.",
+    "explanation": "A default value must match the expected schema, not just a Kotlin constructor default. Verify preserved rows, indexes, and constraints after migration. Exercise direct upgrades across supported versions and backups or recovery paths. Database transactions prevent partial changes from being treated as successful.",
+    "mistake": "Using fallbackToDestructiveMigration to make development errors disappear in production.",
+    "rubric": [
+      "Versions and exports the schema",
+      "Migrates existing rows with a valid default",
+      "Tests data preservation and schema validation",
+      "Avoids destructive recovery"
+    ],
+    "followups": [
+      "How would you rename a column?",
+      "What if a user skips several app versions?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-room"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-room-transactions",
+    "area": "Android",
+    "subtopic": "Database",
+    "level": 2,
+    "round": "Fundamentals",
+    "q": "A feed refresh replaces items and their related tags. How would you prevent readers seeing half the update?",
+    "a": "Write the related changes in one database transaction and expose an observable query. Use stable IDs and proper constraints so repeated refreshes do not duplicate records.",
+    "explanation": "Define the aggregate whose consistency matters. Download and validate data before opening the transaction; do not hold a database transaction across a slow network call. Prefer upsert semantics when row identity must remain stable. Index actual query predicates and inspect the query plan when the dataset grows.",
+    "mistake": "Performing network work inside a transaction or deleting user progress during a content refresh.",
+    "rubric": [
+      "Defines the consistency boundary",
+      "Writes related changes atomically",
+      "Keeps network work outside transactions",
+      "Uses stable IDs and relevant indexes"
+    ],
+    "followups": [
+      "When is replacing all rows unsafe?",
+      "How would you detect a missing index?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-room"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-workmanager",
+    "area": "Android",
+    "subtopic": "Background work",
+    "level": 2,
+    "round": "Fundamentals",
+    "q": "A user queues an upload that should survive leaving the app. Would you use a ViewModel coroutine or WorkManager?",
+    "a": "Use WorkManager for deferrable persistent work, with suitable constraints, retry behavior, and unique work where needed. A ViewModel coroutine does not survive process death.",
+    "explanation": "Persist the upload input in durable storage and enqueue an operation referencing it. Workers can be stopped and retried, so make side effects idempotent. WorkManager does not guarantee execution at an exact wall-clock time. Requirements for immediate user-visible or long-running work need additional platform-aware design.",
+    "mistake": "Expecting a Worker to run at an exact second or execute only once.",
+    "rubric": [
+      "Selects persistent work for the required lifetime",
+      "Uses constraints and retries",
+      "Makes uploads idempotent",
+      "Distinguishes eventual scheduling from exact timing"
+    ],
+    "followups": [
+      "How would you avoid duplicate uploads?",
+      "What would you do if authentication expires during a retry?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-work"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-dependency-injection",
+    "area": "Android",
+    "subtopic": "Architecture",
+    "level": 1,
+    "round": "Fundamentals",
+    "q": "How would constructor injection help you test a ViewModel that loads interview questions?",
+    "a": "Pass repository and dispatcher dependencies through the constructor. Tests can supply fakes and control scheduling without starting the real network or database.",
+    "explanation": "Dependency injection separates object construction from behavior. A container such as Hilt can wire the graph, but testability also depends on clear interfaces and appropriate scopes. A singleton scope describes shared lifetime; it does not automatically make an object thread-safe.",
+    "mistake": "Treating an injection framework as a substitute for clear dependencies and ownership.",
+    "rubric": [
+      "Makes dependencies explicit",
+      "Uses a fake repository in tests",
+      "Chooses scopes by lifetime",
+      "Does not confuse singleton with thread safety"
+    ],
+    "followups": [
+      "When should a dependency be application-scoped?",
+      "What would you do if a dependency needs an Activity?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-coroutine-test",
+    "area": "Android",
+    "subtopic": "Testing",
+    "level": 2,
+    "round": "Coding",
+    "q": "A ViewModel debounces search for 300 ms. How would you test it deterministically?",
+    "a": "Use runTest with injected test dispatchers sharing one scheduler, advance virtual time, and use a controllable fake repository. Assert observable states and stale-request behavior.",
+    "explanation": "A test scheduler controls delays only for coroutines using its test dispatchers. Replace or inject Main when the state holder uses it, and restore it after the test. Avoid real sleeps. Include cancellation, blank input, one request failing, and out-of-order responses as distinct behavior cases.",
+    "mistake": "Using Thread.sleep and depending on real network timing.",
+    "rubric": [
+      "Controls dispatchers with a shared scheduler",
+      "Advances virtual time instead of sleeping",
+      "Uses a controllable fake",
+      "Tests cancellation and failure behavior"
+    ],
+    "followups": [
+      "Why might a delay escape virtual time?",
+      "How would you test that a failed query does not stop later searches?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-testing"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-testing-layers",
+    "area": "Android",
+    "subtopic": "Testing",
+    "level": 1,
+    "round": "Fundamentals",
+    "q": "Which tests would you write for a bookmark feature backed by Room?",
+    "a": "Test bookmark rules as local logic, test persistence and constraints against a real test database, and use a small UI test for the bookmark interaction.",
+    "explanation": "Use fakes to isolate ViewModel behavior, but do not use a fake database to prove an actual schema migration. Verify persistence after reopening the database, duplicate behavior, and the relationship to stable question IDs. Reserve device tests for behavior that depends on Android integration.",
+    "mistake": "Testing only the visible icon and assuming storage is correct.",
+    "rubric": [
+      "Separates logic, persistence, and UI tests",
+      "Tests database behavior using a database",
+      "Checks persistence and stable IDs"
+    ],
+    "followups": [
+      "How would you test an upgrade from an old schema?",
+      "Which failure cases should the UI show?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-testing"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-api-security",
+    "area": "Android",
+    "subtopic": "Security",
+    "level": 2,
+    "round": "Debugging",
+    "q": "An API credential is hard-coded in the APK. Does obfuscation or moving it to native code make it secret?",
+    "a": "No. A distributed app cannot reliably hide a shared server secret. Keep privileged credentials on the server and give the app scoped, revocable authentication.",
+    "explanation": "Obfuscation raises extraction effort but does not establish a security boundary. Android Keystore protects device-held key material for appropriate uses, not a universal secret embedded in every install. Use HTTPS, minimize token exposure, and authorize every protected operation on the server.",
+    "mistake": "Claiming encrypted resources or native code makes a shipped shared secret safe.",
+    "rubric": [
+      "Recognizes the APK as an untrusted client",
+      "Keeps privileged secrets server-side",
+      "Uses scoped revocable credentials",
+      "Distinguishes Keystore from embedded secrets"
+    ],
+    "followups": [
+      "Where would you store a refresh token?",
+      "Why must the server verify authorization even if the UI hides a button?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-security"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-pagination",
+    "area": "Android",
+    "subtopic": "Architecture",
+    "level": 3,
+    "round": "System design",
+    "q": "Design a paginated feed that remains usable offline and refreshes without duplicate items.",
+    "a": "Observe the local database, coordinate remote pages with persistent pagination keys, and update keys and items in one transaction. Define refresh and ordering semantics explicitly.",
+    "explanation": "Cursor-based pagination can be more stable than offsets for changing feeds. Stable item IDs prevent duplicates, but ordering and deleted items still need a policy. Surface loading and refresh errors without clearing useful cached content. Decide what to retain after refresh and test boundary cases such as an empty page.",
+    "mistake": "Appending pages without stable IDs or updating pagination keys separately from items.",
+    "rubric": [
+      "Uses local observation for offline access",
+      "Stores pagination state consistently",
+      "Defines stable identity and ordering",
+      "Handles refresh and empty-page boundaries"
+    ],
+    "followups": [
+      "How do you handle an item inserted at the top?",
+      "What is the cache retention policy?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-image-cache",
+    "area": "Android",
+    "subtopic": "Architecture",
+    "level": 3,
+    "round": "System design",
+    "q": "Sketch an image-loading pipeline for a scrolling feed with limited memory and unreliable networking.",
+    "a": "Use bounded memory and disk caches, deduplicate in-flight loads, decode to the target size, cancel obsolete UI work, and define cache keys and eviction policies.",
+    "explanation": "Budget for decoded pixels rather than compressed download size. Keep I/O and decoding off the main thread and prevent older requests from updating a reused item. Include URL transformations and image size in cache identity as needed. Discuss existing image libraries before choosing to build a custom pipeline.",
+    "mistake": "Caching full-resolution bitmaps without a memory budget.",
+    "rubric": [
+      "Budgets decoded image memory",
+      "Defines keys and bounded eviction",
+      "Deduplicates and cancels requests",
+      "Prevents stale updates to reused rows"
+    ],
+    "followups": [
+      "How would you measure cache effectiveness?",
+      "When would you prefer an existing library?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-performance"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  },
+  {
+    "id": "android-machine-coding",
+    "area": "Android",
+    "subtopic": "Machine coding",
+    "level": 2,
+    "round": "Machine coding",
+    "q": "Build an interview question browser with search, bookmarks, offline storage, and loading/error states in 45 minutes. How would you prioritize?",
+    "a": "Clarify acceptance criteria, implement one vertical slice, then add search and persistent bookmarks. Separate UI state from storage and demonstrate failure behavior before polishing.",
+    "explanation": "Agree on sample data, pagination expectations, and whether search is local or remote. Start with a working list and repository boundary. Add stable IDs, a state holder, a basic database, and a small meaningful test. Explain remaining scope and trade-offs openly. This is a practice brief; PrepDesk does not run or judge submitted app code.",
+    "mistake": "Spending most of the round on abstractions or visual polish before a working flow exists.",
+    "rubric": [
+      "Clarifies requirements and acceptance criteria",
+      "Builds a working vertical slice",
+      "Handles loading, empty, and error states",
+      "Explains trade-offs and verifies one key behavior"
+    ],
+    "followups": [
+      "Which part would you cut if only 15 minutes remained?",
+      "How would you demonstrate offline behavior?"
+    ],
+    "sourceIds": [
+      "amit-android",
+      "android-architecture"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; Amit Shekhar topic reference"
+  }
+]

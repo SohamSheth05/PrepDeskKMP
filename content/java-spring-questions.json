@@ -1,0 +1,214 @@
+[
+  {
+    "id": "java-spring-map-key",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Fundamentals",
+    "q": "A HashMap entry disappears after a key field changes. What happened?",
+    "a": "A mutable field used by equals/hashCode changed after insertion. Use an immutable key with a consistent equality contract.",
+    "explanation": "Insertion selects a bucket using the original hash. A later lookup may compute another hash. Demonstrate with a key containing an account ID and keep equality fields immutable.",
+    "mistake": "Assuming HashMap tracks changes to key objects.",
+    "rubric": [
+      "Explain hash bucket lookup",
+      "Describe equals/hashCode consistency",
+      "Propose an immutable key"
+    ],
+    "followups": [
+      "What if two keys share a hash?",
+      "When would a TreeMap help?"
+    ],
+    "sourceIds": [
+      "java-collections"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-spring-visibility",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Concurrency",
+    "round": "Fundamentals",
+    "q": "A worker never sees a stop flag set by another thread. How would you fix it?",
+    "a": "Use volatile for a simple visibility flag, or synchronization for compound state changes.",
+    "explanation": "Visibility and atomicity are separate. A volatile read/write can publish a stop request, but count++ still combines several operations. Join the worker and release resources on shutdown.",
+    "mistake": "Claiming volatile makes every operation atomic.",
+    "rubric": [
+      "Explain visibility",
+      "Distinguish increment atomicity",
+      "Describe orderly shutdown"
+    ],
+    "followups": [
+      "When use AtomicInteger?",
+      "What does thread interruption mean?"
+    ],
+    "sourceIds": [
+      "java-concurrency"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-spring-self-invocation",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Spring transactions",
+    "round": "Debugging",
+    "q": "A Spring service calls its own @Transactional method, but updates do not roll back. Why?",
+    "a": "In default proxy mode, self-invocation bypasses the transaction interceptor. Put the transaction boundary on an externally invoked service method.",
+    "explanation": "Confirm proxy mode, invocation path, and exception type. Default rollback rules normally include unchecked exceptions; configure checked exceptions when required. Test persisted rows after a forced failure.",
+    "mistake": "Treating the annotation as effective on every method call.",
+    "rubric": [
+      "Identify proxy bypass",
+      "Check rollback rules",
+      "Test the transaction boundary"
+    ],
+    "followups": [
+      "How does AspectJ mode differ?",
+      "What if the exception is swallowed?"
+    ],
+    "sourceIds": [
+      "spring-transactions"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-spring-atomic-map",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Concurrency",
+    "round": "Coding",
+    "q": "Implement a thread-safe per-user request counter. Why is get then put insufficient?",
+    "a": "Use ConcurrentHashMap with an atomic update operation or a suitable concurrent counter; get plus put can lose increments.",
+    "explanation": "Choose exact counts versus approximate high-throughput aggregation. Specify when counters expire and avoid a global lock. A parallel test should verify the chosen consistency requirement.",
+    "mistake": "Assuming a thread-safe collection makes compound operations atomic.",
+    "rubric": [
+      "Show the lost-update race",
+      "Choose an atomic update",
+      "Bound key growth"
+    ],
+    "followups": [
+      "How do you reset a counter safely?",
+      "What changes across several servers?"
+    ],
+    "sourceIds": [
+      "java-concurrency"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-spring-pool",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "A Java API becomes slower as its executor queue grows. What would you investigate?",
+    "a": "Measure queue time, task duration, downstream capacity, and rejection behavior. Bound work and apply backpressure.",
+    "explanation": "An unbounded queue hides overload until latency and memory rise. Tune concurrency against CPU, blocking time, and database connections; do not just add threads. Verify recovery after load drops.",
+    "mistake": "Increasing threads without measuring the bottleneck.",
+    "rubric": [
+      "Separate queue and execution time",
+      "Bound outstanding work",
+      "Align downstream capacity"
+    ],
+    "followups": [
+      "When do virtual threads help?",
+      "How should rejected work be reported?"
+    ],
+    "sourceIds": [
+      "java-concurrency",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-spring-transfer",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Spring transactions",
+    "round": "System design",
+    "q": "Design a bank-account transfer service that remains correct under concurrent requests.",
+    "a": "Keep debit and credit in one database transaction, enforce balance rules, and use concurrency control and an idempotency key.",
+    "explanation": "Use ordered row locking or a carefully tested optimistic retry strategy. Store transfer identity with the result. External notifications belong after commit or in a transactional outbox.",
+    "mistake": "Assuming @Transactional prevents every concurrent anomaly.",
+    "rubric": [
+      "Make updates atomic",
+      "Prevent duplicate transfers",
+      "Control conflicting writes"
+    ],
+    "followups": [
+      "How do you handle deadlocks?",
+      "What happens if the response is lost?"
+    ],
+    "sourceIds": [
+      "spring-transactions",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-spring-migration",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Platform evolution",
+    "round": "System design",
+    "q": "How would you migrate a large Spring platform while keeping client contracts stable?",
+    "a": "Inventory contracts, establish compatibility tests, migrate in small reversible increments, and measure production impact.",
+    "explanation": "Separate runtime changes from API and schema changes. Assign owners, canary representative traffic, and keep rollback compatible with stored data. Success includes operability and reduced maintenance burden.",
+    "mistake": "Replacing every component in one release.",
+    "rubric": [
+      "Map dependency and contract risks",
+      "Plan incremental rollout",
+      "Define success and rollback"
+    ],
+    "followups": [
+      "How do you handle unsupported libraries?",
+      "Which metrics justify completing rollout?"
+    ],
+    "sourceIds": [
+      "spring-transactions",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-spring-transaction-policy",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Leadership",
+    "q": "Teams use inconsistent transaction boundaries. How would you establish a shared policy?",
+    "a": "Define ownership of writes, atomicity requirements, exception rules, and allowed cross-service patterns, backed by examples and tests.",
+    "explanation": "Use short local transactions, explicit isolation choices, and documented retries. Review high-risk workflows first and publish exception criteria instead of one universal isolation level.",
+    "mistake": "Mandating a single isolation level for every workload.",
+    "rubric": [
+      "State business invariants",
+      "Define review and exception criteria",
+      "Validate failures with integration tests"
+    ],
+    "followups": [
+      "How do you measure adoption?",
+      "When is a saga appropriate?"
+    ],
+    "sourceIds": [
+      "spring-transactions",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

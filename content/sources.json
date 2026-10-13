@@ -1,0 +1,786 @@
+[
+  {
+    "id": "amit-android",
+    "name": "Android Interview Questions",
+    "author": "Amit Shekhar",
+    "url": "https://github.com/amitshekhariitbhu/android-interview-questions",
+    "license": "Apache-2.0 (repository only)",
+    "kind": "Topic reference"
+  },
+  {
+    "id": "kotlin-coroutines",
+    "name": "Coroutines guide",
+    "author": "JetBrains",
+    "url": "https://kotlinlang.org/docs/coroutines-guide.html",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "kotlin-language",
+    "name": "Kotlin language documentation",
+    "author": "JetBrains",
+    "url": "https://kotlinlang.org/docs/home.html",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-architecture",
+    "name": "Guide to app architecture",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/topic/architecture",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "compose-state",
+    "name": "State in Compose",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/develop/ui/compose/state",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-lifecycle",
+    "name": "Activity lifecycle",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/guide/components/activities/activity-lifecycle",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-testing",
+    "name": "Testing on Android",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/training/testing",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-performance",
+    "name": "App performance",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/topic/performance/overview",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-room",
+    "name": "Room database",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/training/data-storage/room",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-work",
+    "name": "Persistent work",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/topic/libraries/architecture/workmanager",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-security",
+    "name": "Security best practices",
+    "author": "Android Developers",
+    "url": "https://developer.android.com/privacy-and-security/security-best-practices",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "react-effects",
+    "name": "Synchronizing with Effects",
+    "author": "React contributors",
+    "url": "https://react.dev/learn/synchronizing-with-effects",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "node-streams",
+    "name": "Node.js streams",
+    "author": "Node.js contributors",
+    "url": "https://nodejs.org/api/stream.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "http-caching",
+    "name": "HTTP caching",
+    "author": "MDN contributors",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Caching",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "java-collections",
+    "name": "HashMap and collection contracts",
+    "author": "Oracle",
+    "url": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/HashMap.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "java-concurrency",
+    "name": "Java concurrency utilities",
+    "author": "Oracle",
+    "url": "https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/package-summary.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "spring-transactions",
+    "name": "Declarative transaction management",
+    "author": "Spring",
+    "url": "https://docs.spring.io/spring-framework/reference/data-access/transaction/declarative/annotations.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "python-tutorial",
+    "name": "Python tutorial",
+    "author": "Python Software Foundation",
+    "url": "https://docs.python.org/3/tutorial/index.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "python-asyncio",
+    "name": "Coroutines and tasks",
+    "author": "Python Software Foundation",
+    "url": "https://docs.python.org/3/library/asyncio-task.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "python-iterators",
+    "name": "Iterator building blocks",
+    "author": "Python Software Foundation",
+    "url": "https://docs.python.org/3/library/itertools.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "mdn-javascript",
+    "name": "JavaScript guide",
+    "author": "MDN contributors",
+    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "typescript",
+    "name": "TypeScript narrowing",
+    "author": "Microsoft",
+    "url": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "react",
+    "name": "React learning guide",
+    "author": "React contributors",
+    "url": "https://react.dev/learn",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "node-event-loop",
+    "name": "Event loop and worker pool",
+    "author": "Node.js contributors",
+    "url": "https://nodejs.org/en/learn/asynchronous-work/dont-block-the-event-loop",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "go-language",
+    "name": "Effective Go",
+    "author": "Go team",
+    "url": "https://go.dev/doc/effective_go",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "go-races",
+    "name": "Go race detector",
+    "author": "Go team",
+    "url": "https://go.dev/doc/articles/race_detector",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "dotnet-async",
+    "name": "Asynchronous programming in C#",
+    "author": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/dotnet/csharp/asynchronous-programming/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "ef-querying",
+    "name": "Efficient querying in EF Core",
+    "author": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/ef/core/performance/efficient-querying",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "cpp-guidelines",
+    "name": "C++ Core Guidelines",
+    "author": "Bjarne Stroustrup, Herb Sutter and contributors",
+    "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "rust-book",
+    "name": "The Rust Programming Language",
+    "author": "Rust project",
+    "url": "https://doc.rust-lang.org/book/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "swift-language",
+    "name": "The Swift Programming Language",
+    "author": "Swift project",
+    "url": "https://docs.swift.org/swift-book/documentation/the-swift-programming-language/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "swift-concurrency",
+    "name": "Swift concurrency",
+    "author": "Swift project",
+    "url": "https://docs.swift.org/swift-book/LanguageGuide/Concurrency.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "swiftui-data",
+    "name": "Managing model data in SwiftUI",
+    "author": "Apple",
+    "url": "https://developer.apple.com/documentation/swiftui/managing-model-data-in-your-app",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "flutter-architecture",
+    "name": "Flutter app architecture",
+    "author": "Flutter team",
+    "url": "https://docs.flutter.dev/app-architecture",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "flutter-performance",
+    "name": "Flutter performance practices",
+    "author": "Flutter team",
+    "url": "https://docs.flutter.dev/perf/best-practices",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "kubernetes",
+    "name": "Pod lifecycle and probes",
+    "author": "Kubernetes contributors",
+    "url": "https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "docker-build",
+    "name": "Docker build practices",
+    "author": "Docker",
+    "url": "https://docs.docker.com/build/building/best-practices/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "terraform-state",
+    "name": "Terraform state",
+    "author": "HashiCorp",
+    "url": "https://developer.hashicorp.com/terraform/language/state",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "postgres-isolation",
+    "name": "PostgreSQL transaction isolation",
+    "author": "PostgreSQL Global Development Group",
+    "url": "https://www.postgresql.org/docs/current/transaction-iso.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "postgres-indexes",
+    "name": "PostgreSQL indexes",
+    "author": "PostgreSQL Global Development Group",
+    "url": "https://www.postgresql.org/docs/current/indexes.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "postgres-schema",
+    "name": "PostgreSQL data definition",
+    "author": "PostgreSQL Global Development Group",
+    "url": "https://www.postgresql.org/docs/current/ddl.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "postgres-explain",
+    "name": "Using EXPLAIN",
+    "author": "PostgreSQL Global Development Group",
+    "url": "https://www.postgresql.org/docs/current/using-explain.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "http-semantics",
+    "name": "HTTP semantics, RFC 9110",
+    "author": "IETF",
+    "url": "https://www.rfc-editor.org/rfc/rfc9110.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "sre-book",
+    "name": "Site Reliability Engineering",
+    "author": "Google",
+    "url": "https://sre.google/sre-book/table-of-contents/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "sre-overload",
+    "name": "Handling overload",
+    "author": "Google",
+    "url": "https://sre.google/sre-book/handling-overload/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "owasp-api",
+    "name": "API Security Top 10, 2023 edition",
+    "author": "OWASP",
+    "url": "https://api-security.owasp.org/editions/2023/en/0x11-t10/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "owasp-testing",
+    "name": "Web Security Testing Guide",
+    "author": "OWASP",
+    "url": "https://owasp.org/www-project-web-security-testing-guide/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "playwright",
+    "name": "Playwright testing practices",
+    "author": "Microsoft",
+    "url": "https://playwright.dev/docs/best-practices",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "pytest",
+    "name": "pytest fixtures",
+    "author": "pytest contributors",
+    "url": "https://docs.pytest.org/en/stable/how-to/fixtures.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "w3c-accessibility",
+    "name": "Web accessibility tutorials",
+    "author": "W3C WAI",
+    "url": "https://www.w3.org/WAI/tutorials/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "mit-algorithms",
+    "name": "Introduction to Algorithms, 6.006",
+    "author": "MIT OpenCourseWare",
+    "url": "https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "sklearn",
+    "name": "Common machine learning pitfalls",
+    "author": "scikit-learn contributors",
+    "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "google-ml",
+    "name": "Machine Learning Crash Course",
+    "author": "Google",
+    "url": "https://developers.google.com/machine-learning/crash-course",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "scrum-guide",
+    "name": "The Scrum Guide",
+    "author": "Ken Schwaber and Jeff Sutherland",
+    "url": "https://scrumguides.org/scrum-guide.html",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "structured-interviews",
+    "name": "Structured interviewing guide",
+    "author": "Google re:Work",
+    "url": "https://rework.withgoogle.com/intl/en/guides/a-guide-to-structured-interviewing-for-better-hiring-practices",
+    "license": "External reference; not reproduced",
+    "kind": "Learning reference"
+  },
+  {
+    "id": "android-midlevel-blog",
+    "name": "Android Interview Questions for Mid-Level Developers (3–6 Years)",
+    "author": "Anand Gaur",
+    "url": "https://medium.com/@anandgaur2207/android-interview-questions-for-mid-level-developers-3-6-years-d915266ef936",
+    "license": "External reference; not reproduced",
+    "kind": "Interview article"
+  },
+  {
+    "id": "android-modern-blog",
+    "name": "Modern Android Interview Questions",
+    "author": "Mansi Shah",
+    "url": "https://proandroiddev.com/modern-android-interview-questions-f2b9889102ee",
+    "license": "External reference; not reproduced",
+    "kind": "Interview article"
+  },
+  {
+    "id": "android-lifecycle-blog",
+    "name": "Senior Android Developer Interview Questions and Answers: Lifecycle",
+    "author": "Sandeep Kella",
+    "url": "https://medium.com/@sandeepkella23/senior-android-developer-interview-questions-and-answers-lifecycle-9dce4f47aace",
+    "license": "External reference; not reproduced",
+    "kind": "Interview article"
+  },
+  {
+    "id": "kotlin-interview-blog",
+    "name": "Android Developer Interview Questions & Answers Part-I (Kotlin)",
+    "author": "Neeraja Gandla",
+    "url": "https://blog.devgenius.io/android-developer-interview-questions-answers-part-i-kotlin-f86b18295100",
+    "license": "External reference; not reproduced",
+    "kind": "Interview article"
+  },
+  {
+    "id": "android-experienced-blog",
+    "name": "Interview Question for 8–10 Years Experience Developers (Android)",
+    "author": "samsetdev",
+    "url": "https://samsetdev.medium.com/interview-question-for-8-10-yrs-experience-developers-android-77d3cfc155c0",
+    "license": "External reference; not reproduced",
+    "kind": "Interview article"
+  },
+  {
+    "id": "frontend-handbook",
+    "name": "Front End Interview Handbook",
+    "author": "Yangshun Tay and contributors",
+    "url": "https://github.com/yangshun/front-end-interview-handbook",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "react-interviews",
+    "name": "React Interview Questions",
+    "author": "Sudheer Jonna and contributors",
+    "url": "https://github.com/sudheerj/reactjs-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "javascript-interviews",
+    "name": "JavaScript Interview Questions",
+    "author": "Sudheer Jonna and contributors",
+    "url": "https://github.com/sudheerj/javascript-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "design-primer",
+    "name": "System Design Primer",
+    "author": "Donne Martin and contributors",
+    "url": "https://github.com/donnemartin/system-design-primer",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "devops-exercises",
+    "name": "DevOps Exercises",
+    "author": "Arie Bregman and contributors",
+    "url": "https://github.com/bregman-arie/devops-exercises",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "interview-handbook",
+    "name": "Tech Interview Handbook",
+    "author": "Yangshun Tay and contributors",
+    "url": "https://github.com/yangshun/tech-interview-handbook",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "python-interviews",
+    "name": "Python Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/python-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "node-interviews",
+    "name": "Node.js Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/node-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "java-interviews",
+    "name": "Java Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/java-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "golang-interviews",
+    "name": "Go Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/golang-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "flutter-interviews",
+    "name": "Flutter Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/flutter-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "swift-interviews",
+    "name": "Swift Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/swift-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "c-sharp-interviews",
+    "name": "C# Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/c-sharp-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "rust-interviews",
+    "name": "Rust Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/rust-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "kotlin-interviews",
+    "name": "Kotlin Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/kotlin-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "sql-interviews",
+    "name": "SQL Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/sql-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "cpp-interviews",
+    "name": "C++ Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/cpp-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "android-preparation-series",
+    "name": "Android interview preparation",
+    "author": "Anand Gaur",
+    "url": "https://medium.com/@anandgaur2207/list/android-interview-preparation-c6f79413e9fc",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "android-basics-2024",
+    "name": "Android Interview Series 2024 — Part 1 (Android basics)",
+    "author": "Anitaa Murthy",
+    "url": "https://proandroiddev.com/android-interview-series-2024-part-1-android-basics-23a713f4a648",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "android-sde-roadmap",
+    "name": "The Ultimate Android Interview Prep Guide (SDE-1 to SDE-3)",
+    "author": "praveen sharma",
+    "url": "https://medium.com/@sharmapraveen91/the-ultimate-android-interview-prep-guide-sde-1-to-sde-3-c61f8053b703",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "spring-interviews",
+    "name": "Spring Interview Guide",
+    "author": "in28minutes",
+    "url": "https://github.com/in28minutes/spring-interview-guide",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "typescript-interviews",
+    "name": "TypeScript Interview Questions",
+    "author": "Devinterview.io",
+    "url": "https://github.com/Devinterview-io/typescript-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "qa-capco",
+    "name": "QA and Test Automation Interview Questions",
+    "author": "Capco Digital",
+    "url": "https://github.com/capcodigital/interview-questions/blob/main/qa-automation.md",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "backend-capco",
+    "name": "Backend Interview Questions",
+    "author": "Capco Digital",
+    "url": "https://github.com/capcodigital/interview-questions/blob/main/backend.md",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "data-capco",
+    "name": "Data Engineering Interview Questions",
+    "author": "Capco Digital",
+    "url": "https://github.com/capcodigital/interview-questions/blob/main/data-engineering.md",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "ios-capco",
+    "name": "iOS Interview Questions",
+    "author": "Capco Digital",
+    "url": "https://github.com/capcodigital/interview-questions/blob/main/iOS.md",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "devops-capco",
+    "name": "DevOps Interview Questions",
+    "author": "Capco Digital",
+    "url": "https://github.com/capcodigital/interview-questions/blob/main/devops.md",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "frontend-capco",
+    "name": "Frontend Interview Questions",
+    "author": "Capco Digital",
+    "url": "https://github.com/capcodigital/interview-questions/blob/main/frontend.md",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "delivery-capco",
+    "name": "Technical Delivery Interview Questions",
+    "author": "Capco Digital",
+    "url": "https://github.com/capcodigital/interview-questions/blob/main/technical-delivery.md",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "ml-interviews-book",
+    "name": "Introduction to Machine Learning Interviews",
+    "author": "Chip Huyen",
+    "url": "https://huyenchip.com/ml-interviews-book/",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "security-interviews",
+    "name": "Security Interview Questions",
+    "author": "jassics and contributors",
+    "url": "https://github.com/jassics/security-interview-questions",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "leadership-interviews",
+    "name": "Engineering Leadership Interview Questions",
+    "author": "kaushikb9 and contributors",
+    "url": "https://github.com/kaushikb9/em-interviews",
+    "license": "External reference; not reproduced",
+    "kind": "Interview collection"
+  },
+  {
+    "id": "scrum-assessments",
+    "name": "Scrum Open Assessments",
+    "author": "Scrum.org",
+    "url": "https://www.scrum.org/open-assessments",
+    "license": "External reference; not reproduced",
+    "kind": "Practice assessment"
+  },
+  {
+    "id": "java-language",
+    "name": "Java Language Basics",
+    "author": "Oracle",
+    "url": "https://dev.java/learn/language-basics/",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "csharp-language",
+    "name": "C# language reference",
+    "author": "Microsoft",
+    "url": "https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "dart-language",
+    "name": "Dart language documentation",
+    "author": "Dart team",
+    "url": "https://dart.dev/language",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "owasp-llm",
+    "name": "OWASP GenAI Security Project",
+    "author": "OWASP",
+    "url": "https://genai.owasp.org/",
+    "license": "External reference; not reproduced",
+    "kind": "Technical reference"
+  },
+  {
+    "id": "android-company-experiences",
+    "name": "50 Android Interview Questions From Real Company Experiences",
+    "author": "InterviewGo",
+    "url": "https://www.linkedin.com/pulse/50-android-interview-questions-from-real-company-experiences-3006e/",
+    "license": "External reference; not reproduced",
+    "kind": "Interview article"
+  }
+]

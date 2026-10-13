@@ -1,0 +1,898 @@
+[
+  {
+    "id": "node-path-01",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Runtime",
+    "round": "Fundamentals",
+    "q": "How does Node.js execute JavaScript and asynchronous work?",
+    "a": "JavaScript runs on an event loop.",
+    "explanation": "JavaScript runs on an event loop. Some work uses operating-system or worker facilities. Async completion schedules callbacks.",
+    "mistake": "Assuming every operation runs on a separate JavaScript thread.",
+    "rubric": [
+      "JavaScript runs on an event loop",
+      "Some work uses operating-system or worker facilities",
+      "Async completion schedules callbacks"
+    ],
+    "followups": [
+      "Which operations can block the event loop?",
+      "Walk through a concrete example of runtime and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-02",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Modules",
+    "round": "Fundamentals",
+    "q": "How do module exports define a Node package contract?",
+    "a": "Exports expose supported entry points.",
+    "explanation": "Exports expose supported entry points. Module format determines loader behavior. Keep private implementation paths private.",
+    "mistake": "Depending on undocumented package internals.",
+    "rubric": [
+      "Exports expose supported entry points",
+      "Module format determines loader behavior",
+      "Keep private implementation paths private"
+    ],
+    "followups": [
+      "How would you test ESM consumption?",
+      "Walk through a concrete example of modules and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-03",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Environment",
+    "round": "Fundamentals",
+    "q": "How should configuration enter a Node service?",
+    "a": "Read explicit environment or configuration inputs.",
+    "explanation": "Read explicit environment or configuration inputs. Validate required values early. Keep secrets outside source control.",
+    "mistake": "Starting with silently missing credentials.",
+    "rubric": [
+      "Read explicit environment or configuration inputs",
+      "Validate required values early",
+      "Keep secrets outside source control"
+    ],
+    "followups": [
+      "How would you parse a numeric port safely?",
+      "Walk through a concrete example of environment and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-04",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Errors",
+    "round": "Fundamentals",
+    "q": "Why must async request failures reach an error boundary?",
+    "a": "Rejected promises need handling.",
+    "explanation": "Rejected promises need handling. Return a consistent failure response. Log useful redacted context.",
+    "mistake": "Leaving rejected request promises unobserved.",
+    "rubric": [
+      "Rejected promises need handling",
+      "Return a consistent failure response",
+      "Log useful redacted context"
+    ],
+    "followups": [
+      "How should a validation error differ from a server error?",
+      "Walk through a concrete example of errors and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-05",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Buffers",
+    "round": "Fundamentals",
+    "q": "When do you need a Buffer instead of a string?",
+    "a": "Buffers represent binary bytes.",
+    "explanation": "Buffers represent binary bytes. Strings require an encoding. Avoid corrupting non-text payloads.",
+    "mistake": "Converting arbitrary binary data through UTF-8.",
+    "rubric": [
+      "Buffers represent binary bytes",
+      "Strings require an encoding",
+      "Avoid corrupting non-text payloads"
+    ],
+    "followups": [
+      "How would you check a byte-size limit?",
+      "Walk through a concrete example of buffers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-06",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Streams",
+    "round": "Fundamentals",
+    "q": "Why stream a large download instead of buffering it?",
+    "a": "Streaming bounds retained data.",
+    "explanation": "Streaming bounds retained data. Consumers receive incremental chunks. Handle errors and cancellation throughout.",
+    "mistake": "Reading the whole file before sending any bytes.",
+    "rubric": [
+      "Streaming bounds retained data",
+      "Consumers receive incremental chunks",
+      "Handle errors and cancellation throughout"
+    ],
+    "followups": [
+      "How does a slow client affect production?",
+      "Walk through a concrete example of streams and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-07",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "Packages",
+    "round": "Fundamentals",
+    "q": "Why should production installs use a lockfile?",
+    "a": "It records resolved dependency versions.",
+    "explanation": "It records resolved dependency versions. Reproducible installs reduce drift. Audit the actual dependency graph.",
+    "mistake": "Assuming a manifest range fixes exact versions.",
+    "rubric": [
+      "It records resolved dependency versions",
+      "Reproducible installs reduce drift",
+      "Audit the actual dependency graph"
+    ],
+    "followups": [
+      "How would CI detect lockfile drift?",
+      "Walk through a concrete example of packages and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-08",
+    "area": "Node.js",
+    "level": 1,
+    "subtopic": "HTTP",
+    "round": "Fundamentals",
+    "q": "What does a request body size limit protect?",
+    "a": "It bounds memory and processing work.",
+    "explanation": "It bounds memory and processing work. Reject oversized inputs early. Consider decompressed size as well.",
+    "mistake": "Checking size only after parsing everything.",
+    "rubric": [
+      "It bounds memory and processing work",
+      "Reject oversized inputs early",
+      "Consider decompressed size as well"
+    ],
+    "followups": [
+      "Which status would communicate an oversized request?",
+      "Walk through a concrete example of http and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-09",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Middleware",
+    "round": "Scenario",
+    "q": "Why does middleware ordering matter?",
+    "a": "Earlier middleware can modify or reject requests.",
+    "explanation": "Earlier middleware can modify or reject requests. Authentication must precede protected work. Errors need a deliberate handling path.",
+    "mistake": "Placing body parsing and limits in an unsafe order.",
+    "rubric": [
+      "Earlier middleware can modify or reject requests",
+      "Authentication must precede protected work",
+      "Errors need a deliberate handling path"
+    ],
+    "followups": [
+      "Where should request identifiers be created?",
+      "Walk through a concrete example of middleware and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-10",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Shutdown",
+    "round": "Scenario",
+    "q": "How should a Node HTTP server shut down gracefully?",
+    "a": "Stop accepting new requests.",
+    "explanation": "Stop accepting new requests. Drain active work within a deadline. Close owned resources.",
+    "mistake": "Calling process exit immediately after a signal.",
+    "rubric": [
+      "Stop accepting new requests",
+      "Drain active work within a deadline",
+      "Close owned resources"
+    ],
+    "followups": [
+      "What if a request never finishes?",
+      "Walk through a concrete example of shutdown and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-11",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Concurrency",
+    "round": "Scenario",
+    "q": "How should an endpoint perform many independent lookups?",
+    "a": "Bound concurrent operations.",
+    "explanation": "Bound concurrent operations. Use a shared request deadline. Handle partial failures deliberately.",
+    "mistake": "Launching thousands of promises at once.",
+    "rubric": [
+      "Bound concurrent operations",
+      "Use a shared request deadline",
+      "Handle partial failures deliberately"
+    ],
+    "followups": [
+      "How would you preserve result order?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-12",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Validation",
+    "round": "Scenario",
+    "q": "Why is runtime validation essential despite TypeScript types?",
+    "a": "Network values are untrusted at runtime.",
+    "explanation": "Network values are untrusted at runtime. Types do not validate payloads. Reject malformed fields at boundaries.",
+    "mistake": "Casting request bodies to trusted types.",
+    "rubric": [
+      "Network values are untrusted at runtime",
+      "Types do not validate payloads",
+      "Reject malformed fields at boundaries"
+    ],
+    "followups": [
+      "How would you validate unknown JSON?",
+      "Walk through a concrete example of validation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-13",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Cancellation",
+    "round": "Scenario",
+    "q": "How should a disconnected client affect downstream work?",
+    "a": "Propagate cancellation where supported.",
+    "explanation": "Propagate cancellation where supported. Release resources and stop useless work. Keep durable jobs under separate ownership.",
+    "mistake": "Continuing every operation after the client disconnects.",
+    "rubric": [
+      "Propagate cancellation where supported",
+      "Release resources and stop useless work",
+      "Keep durable jobs under separate ownership"
+    ],
+    "followups": [
+      "Which work should continue independently?",
+      "Walk through a concrete example of cancellation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-14",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Timers",
+    "round": "Scenario",
+    "q": "Why can a timer fire later than its requested delay?",
+    "a": "Delay is a scheduling threshold.",
+    "explanation": "Delay is a scheduling threshold. Event-loop work can postpone callbacks. Use deadlines for elapsed-time requirements.",
+    "mistake": "Treating timers as precise real-time guarantees.",
+    "rubric": [
+      "Delay is a scheduling threshold",
+      "Event-loop work can postpone callbacks",
+      "Use deadlines for elapsed-time requirements"
+    ],
+    "followups": [
+      "How would you measure event-loop delay?",
+      "Walk through a concrete example of timers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-15",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Security",
+    "round": "Scenario",
+    "q": "How do you prevent filesystem traversal in an upload handler?",
+    "a": "Avoid trusting supplied paths.",
+    "explanation": "Avoid trusting supplied paths. Resolve against an allowed storage boundary. Validate names permissions and size.",
+    "mistake": "Joining user paths without containment checks.",
+    "rubric": [
+      "Avoid trusting supplied paths",
+      "Resolve against an allowed storage boundary",
+      "Validate names permissions and size"
+    ],
+    "followups": [
+      "How would encoded path separators be handled?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-16",
+    "area": "Node.js",
+    "level": 2,
+    "subtopic": "Tests",
+    "round": "Scenario",
+    "q": "How would you test a Node API without real external services?",
+    "a": "Inject service boundaries.",
+    "explanation": "Inject service boundaries. Simulate response and failure contracts. Keep separate integration coverage.",
+    "mistake": "Mocking every internal function instead of behavior.",
+    "rubric": [
+      "Inject service boundaries",
+      "Simulate response and failure contracts",
+      "Keep separate integration coverage"
+    ],
+    "followups": [
+      "How would you test a request timeout?",
+      "Walk through a concrete example of tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-17",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Workers",
+    "round": "Debugging",
+    "q": "When should worker threads handle Node application work?",
+    "a": "They suit CPU-heavy JavaScript work.",
+    "explanation": "They suit CPU-heavy JavaScript work. Messaging has overhead. Use bounded worker ownership.",
+    "mistake": "Moving small I/O requests into workers blindly.",
+    "rubric": [
+      "They suit CPU-heavy JavaScript work",
+      "Messaging has overhead",
+      "Use bounded worker ownership"
+    ],
+    "followups": [
+      "How would you handle a worker crash?",
+      "Walk through a concrete example of workers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-18",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Connection pools",
+    "round": "Debugging",
+    "q": "Why can a large pool make a database-backed service slower?",
+    "a": "Connections consume database resources.",
+    "explanation": "Connections consume database resources. More concurrency can increase contention. Measure queueing and execution time.",
+    "mistake": "Increasing pool size to hide every timeout.",
+    "rubric": [
+      "Connections consume database resources",
+      "More concurrency can increase contention",
+      "Measure queueing and execution time"
+    ],
+    "followups": [
+      "How would you budget connections across replicas?",
+      "Walk through a concrete example of connection pools and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-19",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Queues",
+    "round": "Debugging",
+    "q": "How would you make a Node job handler restart-safe?",
+    "a": "Persist job identity and outcome.",
+    "explanation": "Persist job identity and outcome. Acknowledge after durable processing. Handle duplicates idempotently.",
+    "mistake": "Assuming delivery occurs exactly once.",
+    "rubric": [
+      "Persist job identity and outcome",
+      "Acknowledge after durable processing",
+      "Handle duplicates idempotently"
+    ],
+    "followups": [
+      "What belongs in a dead-letter queue?",
+      "Walk through a concrete example of queues and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-20",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Rate limits",
+    "round": "Debugging",
+    "q": "What makes a distributed rate limit harder than a local one?",
+    "a": "Requests span multiple instances.",
+    "explanation": "Requests span multiple instances. Shared counters need atomic updates. Define identity windows and failure behavior.",
+    "mistake": "Using independent in-memory counters for a global limit.",
+    "rubric": [
+      "Requests span multiple instances",
+      "Shared counters need atomic updates",
+      "Define identity windows and failure behavior"
+    ],
+    "followups": [
+      "How would proxy headers affect client identity?",
+      "Walk through a concrete example of rate limits and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-21",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "How would you diagnose increasing Node heap usage?",
+    "a": "Capture profiles under repeated workloads.",
+    "explanation": "Capture profiles under repeated workloads. Inspect retained objects and unbounded caches. Separate heap from native memory.",
+    "mistake": "Assuming garbage collection will clear referenced caches.",
+    "rubric": [
+      "Capture profiles under repeated workloads",
+      "Inspect retained objects and unbounded caches",
+      "Separate heap from native memory"
+    ],
+    "followups": [
+      "How would you compare two heap snapshots?",
+      "Walk through a concrete example of memory and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-22",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Backpressure",
+    "round": "Debugging",
+    "q": "What should a producer do when stream writes return false?",
+    "a": "Pause producing more data.",
+    "explanation": "Pause producing more data. Resume on the drain signal. Handle errors and closed consumers.",
+    "mistake": "Ignoring write return values.",
+    "rubric": [
+      "Pause producing more data",
+      "Resume on the drain signal",
+      "Handle errors and closed consumers"
+    ],
+    "followups": [
+      "How would pipeline simplify cleanup?",
+      "Walk through a concrete example of backpressure and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-23",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Authentication",
+    "round": "Debugging",
+    "q": "How should a Node API validate an access token?",
+    "a": "Verify issuer audience and signature.",
+    "explanation": "Verify issuer audience and signature. Enforce expiration and authorization. Keep verification keys managed securely.",
+    "mistake": "Only decoding token claims without verification.",
+    "rubric": [
+      "Verify issuer audience and signature",
+      "Enforce expiration and authorization",
+      "Keep verification keys managed securely"
+    ],
+    "followups": [
+      "How would key rotation work?",
+      "Walk through a concrete example of authentication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-24",
+    "area": "Node.js",
+    "level": 3,
+    "subtopic": "Observability",
+    "round": "Debugging",
+    "q": "Which metrics reveal event-loop saturation?",
+    "a": "Track loop delay and request latency.",
+    "explanation": "Track loop delay and request latency. Measure CPU and queue growth. Correlate dependency timing with traffic.",
+    "mistake": "Using CPU alone as the health signal.",
+    "rubric": [
+      "Track loop delay and request latency",
+      "Measure CPU and queue growth",
+      "Correlate dependency timing with traffic"
+    ],
+    "followups": [
+      "How would you distinguish blocking work from slow I/O?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-25",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Service boundaries",
+    "round": "Design",
+    "q": "How should Node services choose synchronous versus queued work?",
+    "a": "User deadlines favor bounded synchronous work.",
+    "explanation": "User deadlines favor bounded synchronous work. Durable long jobs need explicit queues. Communicate accepted versus completed outcomes.",
+    "mistake": "Returning success before durable job acceptance.",
+    "rubric": [
+      "User deadlines favor bounded synchronous work",
+      "Durable long jobs need explicit queues",
+      "Communicate accepted versus completed outcomes"
+    ],
+    "followups": [
+      "How would clients learn job completion?",
+      "Walk through a concrete example of service boundaries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-26",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Dependency safety",
+    "round": "Design",
+    "q": "How would you reduce Node package supply-chain risk?",
+    "a": "Review provenance and maintenance.",
+    "explanation": "Review provenance and maintenance. Pin reproducible artifacts and audit dependencies. Limit installation and runtime privileges.",
+    "mistake": "Trusting a package solely because it is popular.",
+    "rubric": [
+      "Review provenance and maintenance",
+      "Pin reproducible artifacts and audit dependencies",
+      "Limit installation and runtime privileges"
+    ],
+    "followups": [
+      "How would you respond to a compromised dependency?",
+      "Walk through a concrete example of dependency safety and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-27",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Release strategy",
+    "round": "Design",
+    "q": "How should a Node runtime upgrade reach production?",
+    "a": "Check native module and framework compatibility.",
+    "explanation": "Check native module and framework compatibility. Test workload behavior and memory. Stage rollout with rollback options.",
+    "mistake": "Upgrading runtime without rebuilding native modules.",
+    "rubric": [
+      "Check native module and framework compatibility",
+      "Test workload behavior and memory",
+      "Stage rollout with rollback options"
+    ],
+    "followups": [
+      "How would you detect performance regression?",
+      "Walk through a concrete example of release strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-28",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Multi-tenancy",
+    "round": "Design",
+    "q": "How do you prevent tenant leakage in shared Node services?",
+    "a": "Derive tenant identity from trusted auth.",
+    "explanation": "Derive tenant identity from trusted auth. Scope database cache and job boundaries. Test cross-tenant access paths.",
+    "mistake": "Using a client-provided tenant header as authority.",
+    "rubric": [
+      "Derive tenant identity from trusted auth",
+      "Scope database cache and job boundaries",
+      "Test cross-tenant access paths"
+    ],
+    "followups": [
+      "How should cache keys include tenant ownership?",
+      "Walk through a concrete example of multi-tenancy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-29",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Capacity",
+    "round": "Design",
+    "q": "How do you prepare a Node service for a traffic spike?",
+    "a": "Load-test realistic routes and payloads.",
+    "explanation": "Load-test realistic routes and payloads. Bound expensive work and queues. Scale identified bottlenecks with headroom.",
+    "mistake": "Adding replicas while ignoring database saturation.",
+    "rubric": [
+      "Load-test realistic routes and payloads",
+      "Bound expensive work and queues",
+      "Scale identified bottlenecks with headroom"
+    ],
+    "followups": [
+      "Which requests should be shed first?",
+      "Walk through a concrete example of capacity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-30",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Data consistency",
+    "round": "Design",
+    "q": "How should Node services coordinate writes and emitted events?",
+    "a": "Persist business state and event intent together.",
+    "explanation": "Persist business state and event intent together. Publish asynchronously with retry. Deduplicate downstream effects.",
+    "mistake": "Publishing an event before the database commit.",
+    "rubric": [
+      "Persist business state and event intent together",
+      "Publish asynchronously with retry",
+      "Deduplicate downstream effects"
+    ],
+    "followups": [
+      "What if the publisher crashes after sending?",
+      "Walk through a concrete example of data consistency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-31",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Platform conventions",
+    "round": "Design",
+    "q": "What belongs in a shared Node service template?",
+    "a": "Validated configuration and safe shutdown.",
+    "explanation": "Validated configuration and safe shutdown. Consistent telemetry and boundary errors. Supported dependency and security defaults.",
+    "mistake": "Hiding all business behavior behind a generic framework.",
+    "rubric": [
+      "Validated configuration and safe shutdown",
+      "Consistent telemetry and boundary errors",
+      "Supported dependency and security defaults"
+    ],
+    "followups": [
+      "How would teams request justified exceptions?",
+      "Walk through a concrete example of platform conventions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "node-path-32",
+    "area": "Node.js",
+    "level": 4,
+    "subtopic": "Incident recovery",
+    "round": "Design",
+    "q": "How would you recover from a Node release causing request hangs?",
+    "a": "Stop or rollback the rollout.",
+    "explanation": "Stop or rollback the rollout. Compare traces loop delay and resource saturation. Verify recovery on affected workloads.",
+    "mistake": "Restarting endlessly without preserving diagnostic evidence.",
+    "rubric": [
+      "Stop or rollback the rollout",
+      "Compare traces loop delay and resource saturation",
+      "Verify recovery on affected workloads"
+    ],
+    "followups": [
+      "Which evidence identifies the regression?",
+      "Walk through a concrete example of incident recovery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "node-event-loop",
+      "node-streams",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

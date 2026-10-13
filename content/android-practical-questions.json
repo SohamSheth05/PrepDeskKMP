@@ -1,0 +1,233 @@
+[
+  {
+    "id": "android-practical-lifecycle-order",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Lifecycle",
+    "round": "Practical",
+    "q": "Predict the lifecycle log when activity A starts an opaque activity B and the user then presses Back.",
+    "a": "A onPause; B onCreate, onStart, onResume; A onStop. On Back: B onPause; A onRestart, onStart, onResume; B onStop, onDestroy.",
+    "explanation": "The outgoing activity pauses first, but stops only after the new one is visible so the transition never shows an empty window. B is finished on Back, so it is destroyed, while A restarts instead of being recreated. If B were translucent or a dialog theme, A would only pause because it stays partly visible.",
+    "mistake": "Saying A is stopped before B is created, or that A is recreated when it returns.",
+    "rubric": [
+      "A pauses before B is created",
+      "A stops only after B resumes",
+      "A uses onRestart rather than onCreate on return",
+      "B is stopped and destroyed after A resumes",
+      "Mentions how a translucent B changes the result"
+    ],
+    "followups": [
+      "What changes if B uses a dialog theme?",
+      "Where does onSaveInstanceState run, and why does it matter?"
+    ],
+    "sourceIds": [
+      "android-lifecycle"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Predict output",
+      "language": "Kotlin",
+      "task": "Predict the lifecycle log when activity A starts an opaque activity B and the user then presses Back.",
+      "starter": "// Both activities log every lifecycle callback, for example:\n//     override fun onStop() { super.onStop(); Log.d(\"Life\", \"A onStop\") }\n// MainActivity is \"A\" and DetailActivity is \"B\". DetailActivity uses a normal, opaque theme.\n//\n// The user is looking at A and taps a button that runs:\nstartActivity(Intent(this, DetailActivity::class.java))\n// When B is visible, the user presses Back.\n//\n// Write the sequence of log lines from the tap until B is gone.",
+      "solution": "// Tap\nA onPause\nB onCreate\nB onStart\nB onResume\nA onStop          // Only after B is visible, so the transition never shows a blank screen.\n// (A onSaveInstanceState also runs around onStop on API 28+.)\n\n// Back\nB onPause\nA onRestart\nA onStart\nA onResume\nB onStop\nB onDestroy       // B is finished, so it is destroyed; A is not recreated.",
+      "hints": [
+        "Which activity must be visible before A can stop?"
+      ],
+      "tests": []
+    }
+  },
+  {
+    "id": "android-practical-flow-collection-debug",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Flow",
+    "round": "Practical",
+    "q": "Fix the fragment that crashes after returning from a detail screen and loses its scroll position when orders update.",
+    "a": "Collect with viewLifecycleOwner.lifecycleScope plus repeatOnLifecycle(STARTED), and create one ListAdapter per view and submitList updates.",
+    "explanation": "lifecycleScope belongs to the fragment, which outlives its view on the back stack. The collector keeps running after onDestroyView and reads a null binding, causing a crash. Every new view also launches another collector. repeatOnLifecycle(STARTED) on the view lifecycle stops collection in the background and restarts it on return. Replacing the adapter on every emission resets scroll position and redraws everything; a ListAdapter with DiffUtil applies minimal changes.",
+    "mistake": "Switching only to launchWhenStarted, which suspends rather than cancels collection and keeps upstream work alive.",
+    "rubric": [
+      "Uses the view lifecycle owner, not the fragment lifecycle",
+      "Uses repeatOnLifecycle(STARTED)",
+      "Explains the crash on the null binding",
+      "Reuses one adapter and calls submitList",
+      "Mentions duplicate collectors"
+    ],
+    "followups": [
+      "How would you collect the same flow in Compose?",
+      "Why is launchWhenStarted deprecated?"
+    ],
+    "sourceIds": [
+      "android-lifecycle",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Debug",
+      "language": "Kotlin",
+      "task": "Fix the fragment that crashes after returning from a detail screen and loses its scroll position when orders update.",
+      "starter": "// Users report crashes after returning from a detail screen, and the list sometimes\n// jumps back to the top when new orders arrive. Find the problems and fix them.\nclass OrdersFragment : Fragment(R.layout.fragment_orders) {\n    private val viewModel: OrdersViewModel by viewModels()\n    private var _binding: FragmentOrdersBinding? = null\n    private val binding get() = _binding!!\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n        _binding = FragmentOrdersBinding.bind(view)\n        lifecycleScope.launch {\n            viewModel.orders.collect { orders ->\n                binding.list.adapter = OrdersAdapter(orders)\n                binding.empty.isVisible = orders.isEmpty()\n            }\n        }\n    }\n\n    override fun onDestroyView() {\n        super.onDestroyView()\n        _binding = null\n    }\n}",
+      "solution": "class OrdersFragment : Fragment(R.layout.fragment_orders) {\n    private val viewModel: OrdersViewModel by viewModels()\n    private var _binding: FragmentOrdersBinding? = null\n    private val binding get() = _binding!!\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n        _binding = FragmentOrdersBinding.bind(view)\n        // One adapter per view; ListAdapter diffs updates and keeps the scroll position.\n        val adapter = OrdersAdapter()\n        binding.list.adapter = adapter\n        // Scope collection to the VIEW lifecycle, and only while it is at least STARTED.\n        viewLifecycleOwner.lifecycleScope.launch {\n            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {\n                viewModel.orders.collect { orders ->\n                    adapter.submitList(orders)\n                    binding.empty.isVisible = orders.isEmpty()\n                }\n            }\n        }\n    }\n\n    override fun onDestroyView() {\n        super.onDestroyView()\n        _binding = null\n    }\n}\n\n// OrdersAdapter extends ListAdapter<Order, OrderViewHolder>(DIFF) with a DiffUtil.ItemCallback\n// that compares stable order IDs in areItemsTheSame and content in areContentsTheSame.",
+      "hints": [
+        "Which lifecycle ends in onDestroyView?",
+        "What happens to scroll position when you set a new adapter?"
+      ],
+      "tests": []
+    }
+  },
+  {
+    "id": "android-practical-debounced-search",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Flow",
+    "round": "Practical",
+    "q": "Write a SearchViewModel that debounces typing, cancels outdated searches, handles errors, and survives process death.",
+    "a": "Store the query in SavedStateHandle, then debounce, trim, distinctUntilChanged, flatMapLatest to the repository with catch inside, and expose the result with stateIn.",
+    "explanation": "debounce waits for typing to pause, distinctUntilChanged skips repeated queries, and flatMapLatest cancels the previous search when a new query arrives. Put catch inside flatMapLatest: outside it, one failure would end the whole stream. SavedStateHandle.getStateFlow restores the query after process death. Combine the raw query with results so the text field updates immediately while the search itself is debounced. stateIn with WhileSubscribed(5_000) keeps the search alive during rotation.",
+    "mistake": "Calling catch on the outer flow, so the first network error permanently stops search.",
+    "rubric": [
+      "Debounces and removes duplicate queries",
+      "Cancels outdated searches with flatMapLatest",
+      "Handles a blank query without calling the repository",
+      "Catches errors per search without ending the stream",
+      "Restores the query with SavedStateHandle",
+      "Exposes a StateFlow with stateIn"
+    ],
+    "followups": [
+      "How would you unit test the 300 ms debounce?",
+      "How would you keep the previous results visible while loading?"
+    ],
+    "sourceIds": [
+      "kotlin-coroutines",
+      "android-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Write code",
+      "language": "Kotlin",
+      "task": "Write a SearchViewModel that debounces typing, cancels outdated searches, handles errors, and survives process death.",
+      "starter": "// Build the ViewModel for a search screen: a text field and a results list.\n// Requirements:\n// 1. Search 300 ms after the user stops typing, and ignore a repeated identical query.\n// 2. A blank query shows no results and does not call the repository.\n// 3. A new query cancels the search that is still running.\n// 4. A failed search shows an error message, and later queries still work.\n// 5. The typed query survives rotation and process death.\n// You may change the constructor.\ninterface SearchRepository {\n    suspend fun search(query: String): List<String>\n}\n\ndata class SearchUiState(\n    val query: String = \"\",\n    val results: List<String> = emptyList(),\n    val loading: Boolean = false,\n    val error: String? = null\n)\n\nclass SearchViewModel(private val repository: SearchRepository) : ViewModel() {\n    val state: StateFlow<SearchUiState> = TODO()\n\n    fun onQueryChange(query: String) {\n        TODO()\n    }\n}",
+      "solution": "@OptIn(FlowPreview::class, ExperimentalCoroutinesApi::class)\nclass SearchViewModel(\n    private val repository: SearchRepository,\n    private val savedState: SavedStateHandle\n) : ViewModel() {\n    // SavedStateHandle restores the query after rotation and process death.\n    private val query: StateFlow<String> = savedState.getStateFlow(\"query\", \"\")\n\n    private val results: Flow<SearchUiState> = query\n        .debounce(300)\n        .map { it.trim() }\n        .distinctUntilChanged()\n        .flatMapLatest { text -> // Cancels the previous search when a new query arrives.\n            if (text.isEmpty()) flowOf(SearchUiState())\n            else flow {\n                emit(SearchUiState(loading = true))\n                emit(SearchUiState(results = repository.search(text)))\n            }.catch { e -> emit(SearchUiState(error = e.message ?: \"Search failed\")) }\n            // catch is inside flatMapLatest so one failure does not end the outer flow.\n        }\n\n    // The text field shows the latest typed text immediately, not the debounced value.\n    val state: StateFlow<SearchUiState> = combine(query, results.onStart { emit(SearchUiState()) }) { text, result ->\n        result.copy(query = text)\n    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SearchUiState())\n\n    fun onQueryChange(text: String) {\n        savedState[\"query\"] = text\n    }\n}",
+      "hints": [
+        "Which operator cancels the previous inner flow?",
+        "Where must catch go so the stream survives an error?"
+      ],
+      "tests": []
+    }
+  },
+  {
+    "id": "android-practical-feed-reducer",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Architecture",
+    "round": "Practical",
+    "q": "Write the reduce(state, event) function for a feed screen's ViewModel that keeps visible content during refresh failures.",
+    "a": "Use an exhaustive when over sealed events: Refresh marks Content as refreshing, Loaded replaces state, Failed keeps Content with a one-off message or becomes Error, and MessageShown clears the message.",
+    "explanation": "A pure reducer keeps screen rules in one testable function with no Android dependencies. The key decision is to keep content the user can already see when a refresh fails, showing a snackbar message instead of a full-screen error. Clearing the message after it is shown prevents the snackbar from reappearing after rotation. Sealed types with an exhaustive when make the compiler flag a missing case when a new event is added.",
+    "mistake": "Replacing visible content with a full-screen error on a failed refresh.",
+    "rubric": [
+      "Writes a pure function with an exhaustive when",
+      "Keeps content and stops refreshing on failure",
+      "Shows a one-off message and clears it",
+      "Returns to Loading from Error on refresh",
+      "Explains how this is tested without Android"
+    ],
+    "followups": [
+      "How would you connect this reducer to a StateFlow in the ViewModel?",
+      "How would you handle pagination events?"
+    ],
+    "sourceIds": [
+      "android-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Write code",
+      "language": "Kotlin",
+      "task": "Write the reduce(state, event) function for a feed screen's ViewModel that keeps visible content during refresh failures.",
+      "starter": "sealed class FeedState {\n    object Loading : FeedState()\n    data class Content(val items: List<String>, val refreshing: Boolean = false, val message: String? = null) : FeedState()\n    data class Error(val message: String) : FeedState()\n}\n\nsealed class FeedEvent {\n    object Refresh : FeedEvent()\n    data class Loaded(val items: List<String>) : FeedEvent()\n    data class Failed(val message: String) : FeedEvent()\n    object MessageShown : FeedEvent()\n}\n\n// Rules for the feed screen's ViewModel:\n// Refresh:      Content keeps its items and sets refreshing = true; any other state becomes Loading.\n// Loaded:       always Content(items) with refreshing = false and no message.\n// Failed:       Content keeps its items, stops refreshing, and shows the message once (a snackbar);\n//               any other state becomes Error(message).\n// MessageShown: clears Content.message; other states are unchanged.\nfun reduce(state: FeedState, event: FeedEvent): FeedState {\n    TODO(\"Implement reduce\")\n}",
+      "solution": "sealed class FeedState {\n    object Loading : FeedState()\n    data class Content(val items: List<String>, val refreshing: Boolean = false, val message: String? = null) : FeedState()\n    data class Error(val message: String) : FeedState()\n}\n\nsealed class FeedEvent {\n    object Refresh : FeedEvent()\n    data class Loaded(val items: List<String>) : FeedEvent()\n    data class Failed(val message: String) : FeedEvent()\n    object MessageShown : FeedEvent()\n}\n\nfun reduce(state: FeedState, event: FeedEvent): FeedState = when (event) {\n    FeedEvent.Refresh -> if (state is FeedState.Content) state.copy(refreshing = true) else FeedState.Loading\n    is FeedEvent.Loaded -> FeedState.Content(event.items)\n    // Keep content the user can already see; a full-screen error would hide it.\n    is FeedEvent.Failed -> if (state is FeedState.Content) state.copy(refreshing = false, message = event.message) else FeedState.Error(event.message)\n    FeedEvent.MessageShown -> if (state is FeedState.Content) state.copy(message = null) else state\n}",
+      "hints": [
+        "Check whether the current state is Content first.",
+        "data class copy() changes only the fields you name."
+      ],
+      "tests": [
+        {
+          "input": "Content [a, b] + Refresh",
+          "expected": "Content [a, b], refreshing"
+        },
+        {
+          "input": "Error + Refresh",
+          "expected": "Loading"
+        },
+        {
+          "input": "refreshing Content with message + Loaded [c]",
+          "expected": "Content [c]"
+        },
+        {
+          "input": "refreshing Content [a, b] + Failed(offline)",
+          "expected": "Content [a, b], message offline"
+        },
+        {
+          "input": "Loading + Failed(offline)",
+          "expected": "Error(offline)"
+        },
+        {
+          "input": "Content with message + MessageShown",
+          "expected": "Content without message"
+        }
+      ],
+      "harness": "fun practicalCheck(n: Int, expected: Any?, actual: () -> Any?) {\n    val result = try { actual() } catch (e: Throwable) { \"threw ${e.javaClass.simpleName}\" }\n    println(if (result == expected) \"PASS $n\" else \"FAIL $n: expected $expected but was $result\")\n}\n\nfun main() {\n    val content = FeedState.Content(listOf(\"a\", \"b\"))\n    practicalCheck(1, FeedState.Content(listOf(\"a\", \"b\"), refreshing = true)) { reduce(content, FeedEvent.Refresh) }\n    practicalCheck(2, FeedState.Loading) { reduce(FeedState.Error(\"offline\"), FeedEvent.Refresh) }\n    practicalCheck(3, FeedState.Content(listOf(\"c\"))) { reduce(FeedState.Content(listOf(\"a\"), refreshing = true, message = \"old\"), FeedEvent.Loaded(listOf(\"c\"))) }\n    practicalCheck(4, FeedState.Content(listOf(\"a\", \"b\"), message = \"offline\")) { reduce(content.copy(refreshing = true), FeedEvent.Failed(\"offline\")) }\n    practicalCheck(5, FeedState.Error(\"offline\")) { reduce(FeedState.Loading, FeedEvent.Failed(\"offline\")) }\n    practicalCheck(6, content) { reduce(content.copy(message = \"offline\"), FeedEvent.MessageShown) }\n}"
+    }
+  },
+  {
+    "id": "android-practical-offline-sync",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Background work",
+    "round": "Practical",
+    "q": "Write the WorkManager setup and worker that sync offline note edits safely, without duplicates or lost edits.",
+    "a": "A CoroutineWorker drains dirty notes in batches with idempotent upserts and revision-checked markSynced, retries transient errors, and is scheduled as unique KEEP work with constraints plus a unique periodic job.",
+    "explanation": "Unique work with KEEP collapses many edit triggers into one sync. Because a running worker ignores new KEEP requests, the worker loops until no dirty notes remain. markSynced clears dirty only when the local revision is unchanged, so an edit made during the upload is not lost. Device-generated IDs make the upload idempotent, and the base version lets the server detect conflicts. Transient failures return Result.retry() with exponential backoff, while 4xx validation errors are recorded for the user and excluded from the loop. A unique periodic request covers missed triggers.",
+    "mistake": "Marking a note synced unconditionally, which loses an edit made while it was uploading.",
+    "rubric": [
+      "Uses unique work so syncs do not overlap",
+      "Sets network and battery constraints",
+      "Uses idempotent uploads with device IDs",
+      "Prevents losing edits made during the upload",
+      "Separates retryable errors from permanent ones",
+      "Schedules a unique periodic sync"
+    ],
+    "followups": [
+      "How would you resolve a conflict when the server version moved ahead?",
+      "How would you show sync status in the UI?",
+      "What changes if a sync must run immediately and the user is waiting?"
+    ],
+    "sourceIds": [
+      "android-work",
+      "android-room"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Hands-on task",
+      "language": "Kotlin",
+      "task": "Write the WorkManager setup and worker that sync offline note edits safely, without duplicates or lost edits.",
+      "starter": "// Notes are edited offline and saved in Room. Write the code that syncs them to the server.\n// Requirements:\n// - Sync only with a network connection and when the battery is not low.\n// - Run one sync at a time, even if the user edits 20 notes quickly.\n// - Edits made while a sync is running must not be lost or wait hours for the next sync.\n// - Retry network and 5xx errors with exponential backoff; do not retry 4xx validation errors.\n// - Also sync roughly every 6 hours in the background.\n// - Uploads must be safe to repeat: a retry after a timeout must not create duplicates.\n@Entity\ndata class NoteEntity(\n    @PrimaryKey val id: String,          // Generated on the device\n    val body: String,\n    val serverVersion: Long,             // Last version acknowledged by the server\n    val localRevision: Long,             // Incremented on every local edit\n    val dirty: Boolean,\n    val failedCode: Int? = null\n)\n\ninterface NotesApi {\n    // Returns the new server version. Throws HttpException or IOException.\n    suspend fun upsert(id: String, body: String, baseVersion: Long): Long\n}",
+      "solution": "@Dao\ninterface NoteDao {\n    @Query(\"SELECT * FROM NoteEntity WHERE dirty = 1 AND failedCode IS NULL LIMIT 50\")\n    suspend fun dirtyBatch(): List<NoteEntity>\n\n    // Clears dirty only if the note was not edited again while it was uploading.\n    @Query(\"UPDATE NoteEntity SET dirty = (localRevision != :revision), serverVersion = :version WHERE id = :id\")\n    suspend fun markSynced(id: String, revision: Long, version: Long)\n\n    @Query(\"UPDATE NoteEntity SET failedCode = :code WHERE id = :id\")\n    suspend fun markFailed(id: String, code: Int)\n}\n\n// Constructor dependencies need a WorkerFactory (for example @HiltWorker with @AssistedInject).\nclass SyncNotesWorker(\n    context: Context,\n    params: WorkerParameters,\n    private val dao: NoteDao,\n    private val api: NotesApi\n) : CoroutineWorker(context, params) {\n    override suspend fun doWork(): Result {\n        // Keep draining so edits made during this run are uploaded before it finishes.\n        while (true) {\n            val batch = dao.dirtyBatch()\n            if (batch.isEmpty()) return Result.success()\n            for (note in batch) {\n                try {\n                    // The device-generated ID makes the upsert idempotent; baseVersion detects conflicts.\n                    val version = api.upsert(note.id, note.body, note.serverVersion)\n                    dao.markSynced(note.id, note.localRevision, version)\n                } catch (e: HttpException) {\n                    val retryable = e.code() >= 500 || e.code() == 408 || e.code() == 429\n                    if (retryable) return Result.retry()\n                    dao.markFailed(note.id, e.code()) // Show it to the user; retrying cannot fix it.\n                } catch (e: IOException) {\n                    return Result.retry()\n                }\n            }\n        }\n    }\n}\n\nobject NotesSync {\n    private val constraints = Constraints.Builder()\n        .setRequiredNetworkType(NetworkType.CONNECTED)\n        .setRequiresBatteryNotLow(true)\n        .build()\n\n    // Call after every local edit. KEEP ignores requests while a sync is queued or running;\n    // the running worker drains new edits because it re-reads dirty notes until none remain.\n    fun requestSync(context: Context) {\n        val request = OneTimeWorkRequestBuilder<SyncNotesWorker>()\n            .setConstraints(constraints)\n            .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 30, TimeUnit.SECONDS)\n            .build()\n        WorkManager.getInstance(context).enqueueUniqueWork(\"notes-sync\", ExistingWorkPolicy.KEEP, request)\n    }\n\n    // Call once at app start.\n    fun schedulePeriodic(context: Context) {\n        val request = PeriodicWorkRequestBuilder<SyncNotesWorker>(6, TimeUnit.HOURS)\n            .setConstraints(constraints)\n            .build()\n        WorkManager.getInstance(context)\n            .enqueueUniquePeriodicWork(\"notes-sync-periodic\", ExistingPeriodicWorkPolicy.KEEP, request)\n    }\n}",
+      "hints": [
+        "What does ExistingWorkPolicy.KEEP do when a sync is already running?",
+        "How can markSynced detect an edit made during the upload?"
+      ],
+      "tests": []
+    }
+  }
+]

@@ -1,0 +1,303 @@
+[
+  {
+    "id": "kotlin-practical-balanced-brackets",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Practical",
+    "q": "Write isBalanced(text) that returns true when every (), [] and {} in the text is closed in the correct order.",
+    "a": "Scan once with a stack of open brackets; on a closer, the top must be its matching opener; the stack must be empty at the end.",
+    "explanation": "Each closing bracket must match the most recent unmatched opening bracket, which is exactly last-in-first-out, so a stack gives an O(n) single pass. Map closers to openers so the check is one lookup. Return false immediately on a closer with an empty stack, and remember that leftover openers also mean the text is unbalanced.",
+    "mistake": "Counting brackets of each type instead of tracking order, which accepts \"([)]\".",
+    "rubric": [
+      "Uses a stack and explains why order matters",
+      "Handles a closer with an empty stack",
+      "Rejects leftover openers at the end",
+      "States O(n) time and O(n) space"
+    ],
+    "followups": [
+      "How would you report the position of the first error?",
+      "How would you ignore brackets inside string literals?"
+    ],
+    "sourceIds": [
+      "kotlin-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Write code",
+      "language": "Kotlin",
+      "task": "Write isBalanced(text) that returns true when every (), [] and {} in the text is closed in the correct order.",
+      "starter": "// Return true when every (), [] and {} is closed in the correct order.\n// Other characters are ignored.\nfun isBalanced(text: String): Boolean {\n    TODO(\"Implement isBalanced\")\n}",
+      "solution": "fun isBalanced(text: String): Boolean {\n    val pairs = mapOf(')' to '(', ']' to '[', '}' to '{')\n    val open = mutableListOf<Char>()\n    for (c in text) {\n        when (c) {\n            '(', '[', '{' -> open.add(c)\n            ')', ']', '}' -> if (open.isEmpty() || open.removeAt(open.lastIndex) != pairs[c]) return false\n        }\n    }\n    return open.isEmpty()\n}",
+      "hints": [
+        "Which bracket must a ')' match?",
+        "A MutableList can act as a stack with add and removeAt(lastIndex)."
+      ],
+      "tests": [
+        {
+          "input": "\"([]{})\"",
+          "expected": "true"
+        },
+        {
+          "input": "\"([)]\"",
+          "expected": "false"
+        },
+        {
+          "input": "\"\"",
+          "expected": "true"
+        },
+        {
+          "input": "\"((\"",
+          "expected": "false"
+        },
+        {
+          "input": "\"}\"",
+          "expected": "false"
+        },
+        {
+          "input": "Kotlin source with nested brackets",
+          "expected": "true"
+        }
+      ],
+      "harness": "fun practicalCheck(n: Int, expected: Any?, actual: () -> Any?) {\n    val result = try { actual() } catch (e: Throwable) { \"threw ${e.javaClass.simpleName}\" }\n    println(if (result == expected) \"PASS $n\" else \"FAIL $n: expected $expected but was $result\")\n}\n\nfun main() {\n    practicalCheck(1, true) { isBalanced(\"([]{})\") }\n    practicalCheck(2, false) { isBalanced(\"([)]\") }\n    practicalCheck(3, true) { isBalanced(\"\") }\n    practicalCheck(4, false) { isBalanced(\"((\") }\n    practicalCheck(5, false) { isBalanced(\"}\") }\n    practicalCheck(6, true) { isBalanced(\"fun f(a: List<Int>) { println(a[0]) }\") }\n}"
+    }
+  },
+  {
+    "id": "kotlin-practical-top-words",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Collections",
+    "round": "Practical",
+    "q": "Write topWords(text, top) that returns the most frequent lowercase words with their counts, highest first, ties alphabetical.",
+    "a": "Extract words with a regex, count with groupingBy().eachCount(), sort by count descending then word, and take(top).",
+    "explanation": "This tests fluent use of the collections API and precise ordering. groupingBy { }.eachCount() counts without a manual map. A comparator built with compareByDescending { count }.thenBy { word } makes ties deterministic, which matters for tests and for users. Validate a negative limit instead of letting take() throw an unclear error.",
+    "mistake": "Sorting only by count, which makes the order of tied words unpredictable.",
+    "rubric": [
+      "Extracts words with a clear definition of a word",
+      "Counts with groupingBy/eachCount or an equivalent map",
+      "Sorts by count then alphabetically",
+      "Validates the limit argument"
+    ],
+    "followups": [
+      "How would you handle a 10 GB input file?",
+      "When would you prefer a Sequence over a List here?"
+    ],
+    "sourceIds": [
+      "kotlin-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Write code",
+      "language": "Kotlin",
+      "task": "Write topWords(text, top) that returns the most frequent lowercase words with their counts, highest first, ties alphabetical.",
+      "starter": "// Words are runs of lowercase letters a-z; everything else separates words.\n// Return the `top` most frequent words with their counts, highest count first.\n// Break ties alphabetically. Return fewer pairs when there are fewer distinct words.\nfun topWords(text: String, top: Int): List<Pair<String, Int>> {\n    TODO(\"Implement topWords\")\n}",
+      "solution": "fun topWords(text: String, top: Int): List<Pair<String, Int>> {\n    require(top >= 0) { \"top must not be negative\" }\n    return Regex(\"[a-z]+\").findAll(text)\n        .groupingBy { it.value }\n        .eachCount()\n        .toList()\n        .sortedWith(compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first })\n        .take(top)\n}",
+      "hints": [
+        "Regex(\"[a-z]+\").findAll(text) returns every word.",
+        "Use compareByDescending<Pair<String, Int>> { it.second }.thenBy { it.first }."
+      ],
+      "tests": [
+        {
+          "input": "\"to be, or not to be\", top 2",
+          "expected": "[(be, 2), (to, 2)]"
+        },
+        {
+          "input": "\"c b a b\", top 5",
+          "expected": "[(b, 2), (a, 1), (c, 1)]"
+        },
+        {
+          "input": "\"123 !!\", top 3",
+          "expected": "[]"
+        },
+        {
+          "input": "\"kotlin-kotlin_kotlin java\", top 1",
+          "expected": "[(kotlin, 3)]"
+        },
+        {
+          "input": "top = -1",
+          "expected": "IllegalArgumentException"
+        }
+      ],
+      "harness": "fun practicalCheck(n: Int, expected: Any?, actual: () -> Any?) {\n    val result = try { actual() } catch (e: Throwable) { \"threw ${e.javaClass.simpleName}\" }\n    println(if (result == expected) \"PASS $n\" else \"FAIL $n: expected $expected but was $result\")\n}\n\nfun main() {\n    practicalCheck(1, listOf(\"be\" to 2, \"to\" to 2)) { topWords(\"to be, or not to be\", 2) }\n    practicalCheck(2, listOf(\"b\" to 2, \"a\" to 1, \"c\" to 1)) { topWords(\"c b a b\", 5) }\n    practicalCheck(3, emptyList<Pair<String, Int>>()) { topWords(\"123 !!\", 3) }\n    practicalCheck(4, listOf(\"kotlin\" to 3)) { topWords(\"kotlin-kotlin_kotlin java\", 1) }\n    practicalCheck(5, \"threw IllegalArgumentException\") { topWords(\"a\", -1) }\n}"
+    }
+  },
+  {
+    "id": "kotlin-practical-lru-debug",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Collections",
+    "round": "Practical",
+    "q": "Fix the LruCache class so it evicts the least recently used entry and treats get() as a use.",
+    "a": "Use LinkedHashMap with accessOrder = true and override removeEldestEntry to return size > capacity.",
+    "explanation": "The buggy version keeps insertion order, so get() never refreshes recency, and it evicts entries.keys.last(), the newest entry, instead of the oldest. It also evicts when overwriting an existing key. LinkedHashMap(initialCapacity, loadFactor, accessOrder = true) moves an entry to the end on every read or write, and removeEldestEntry evicts the head only when the map actually grows beyond capacity.",
+    "mistake": "Evicting before checking whether the key already exists, which drops an entry on an update.",
+    "rubric": [
+      "Identifies that get() does not refresh recency",
+      "Identifies that the newest entry is evicted",
+      "Uses access order and removeEldestEntry correctly",
+      "Mentions thread safety as a separate concern"
+    ],
+    "followups": [
+      "How would you make this cache thread-safe?",
+      "How would you add time-based expiry?"
+    ],
+    "sourceIds": [
+      "kotlin-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Debug",
+      "language": "Kotlin",
+      "task": "Fix the LruCache class so it evicts the least recently used entry and treats get() as a use.",
+      "starter": "// This cache should evict the least recently USED entry when it is full.\n// Reading a key with get() counts as a use. It has bugs in both reading and eviction. Find and fix them.\nclass LruCache<K, V>(private val capacity: Int) {\n    private val entries = LinkedHashMap<K, V>()\n\n    fun get(key: K): V? = entries[key]\n\n    fun put(key: K, value: V) {\n        if (entries.size >= capacity) {\n            entries.remove(entries.keys.last())\n        }\n        entries[key] = value\n    }\n\n    fun keys(): List<K> = entries.keys.toList()\n}",
+      "solution": "class LruCache<K, V>(private val capacity: Int) {\n    init { require(capacity > 0) { \"capacity must be positive\" } }\n\n    // accessOrder = true moves an entry to the end whenever it is read or written.\n    private val entries = object : LinkedHashMap<K, V>(16, 0.75f, true) {\n        override fun removeEldestEntry(eldest: MutableMap.MutableEntry<K, V>?): Boolean = size > capacity\n    }\n\n    fun get(key: K): V? = entries[key]\n\n    fun put(key: K, value: V) { entries[key] = value }\n\n    // Least recently used first.\n    fun keys(): List<K> = entries.keys.toList()\n}",
+      "hints": [
+        "Which end of a LinkedHashMap holds the least recently used key?",
+        "Look at the third LinkedHashMap constructor parameter."
+      ],
+      "tests": [
+        {
+          "input": "capacity 2; put a, b, c",
+          "expected": "keys [b, c]"
+        },
+        {
+          "input": "capacity 2; put a, b; get a; put c",
+          "expected": "keys [a, c]"
+        },
+        {
+          "input": "capacity 2; put a, b; put a again",
+          "expected": "keys [b, a]"
+        },
+        {
+          "input": "capacity 2; put a=1, b; put a=10; get a",
+          "expected": "10"
+        }
+      ],
+      "harness": "fun practicalCheck(n: Int, expected: Any?, actual: () -> Any?) {\n    val result = try { actual() } catch (e: Throwable) { \"threw ${e.javaClass.simpleName}\" }\n    println(if (result == expected) \"PASS $n\" else \"FAIL $n: expected $expected but was $result\")\n}\n\nfun main() {\n    practicalCheck(1, listOf(\"b\", \"c\")) {\n        val cache = LruCache<String, Int>(2)\n        cache.put(\"a\", 1); cache.put(\"b\", 2); cache.put(\"c\", 3)\n        cache.keys()\n    }\n    practicalCheck(2, listOf(\"a\", \"c\")) {\n        val cache = LruCache<String, Int>(2)\n        cache.put(\"a\", 1); cache.put(\"b\", 2); cache.get(\"a\"); cache.put(\"c\", 3)\n        cache.keys()\n    }\n    practicalCheck(3, listOf(\"b\", \"a\")) {\n        val cache = LruCache<String, Int>(2)\n        cache.put(\"a\", 1); cache.put(\"b\", 2); cache.put(\"a\", 10)\n        cache.keys()\n    }\n    practicalCheck(4, 10) {\n        val cache = LruCache<String, Int>(2)\n        cache.put(\"a\", 1); cache.put(\"b\", 2); cache.put(\"a\", 10)\n        cache.get(\"a\")\n    }\n}"
+    }
+  },
+  {
+    "id": "kotlin-practical-retry-backoff",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Reliability",
+    "round": "Practical",
+    "q": "Write retry(times, initialDelayMs, maxDelayMs, sleep, block) with capped exponential backoff and an injectable sleep function.",
+    "a": "Loop attempts 1 until times, returning on success and sleeping with a doubling capped delay on failure; run the final attempt outside the try so its exception propagates.",
+    "explanation": "Injecting sleep keeps the function deterministic and testable, the same reason production code injects a clock or dispatcher. Doubling the delay with a cap prevents retry storms. Do not sleep after the last attempt, and rethrow the final error rather than wrapping or swallowing it. In coroutine code, use delay and never catch CancellationException, or cancellation stops working.",
+    "mistake": "Sleeping after the final failed attempt, or swallowing the last exception and returning null.",
+    "rubric": [
+      "Validates arguments",
+      "Doubles the delay with a cap",
+      "Does not sleep after the final attempt",
+      "Propagates the final exception",
+      "Explains testability from the injected sleep"
+    ],
+    "followups": [
+      "How would you add jitter, and why?",
+      "How would this change as a suspend function that must stay cancellable?",
+      "Which errors should never be retried?"
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Write code",
+      "language": "Kotlin",
+      "task": "Write retry(times, initialDelayMs, maxDelayMs, sleep, block) with capped exponential backoff and an injectable sleep function.",
+      "starter": "// Call block(attempt) with attempt = 1, 2, ... up to `times` attempts.\n// Return the first successful result. After a failure, call sleep(delay) before the next attempt:\n// the first delay is initialDelayMs and each later delay doubles, capped at maxDelayMs.\n// Do not sleep after the final attempt; rethrow its exception instead.\n// Reject times < 1, initialDelayMs < 0, or maxDelayMs < initialDelayMs with IllegalArgumentException.\nfun <T> retry(\n    times: Int,\n    initialDelayMs: Long,\n    maxDelayMs: Long,\n    sleep: (Long) -> Unit,\n    block: (attempt: Int) -> T\n): T {\n    TODO(\"Implement retry\")\n}",
+      "solution": "fun <T> retry(\n    times: Int,\n    initialDelayMs: Long,\n    maxDelayMs: Long,\n    sleep: (Long) -> Unit,\n    block: (attempt: Int) -> T\n): T {\n    require(times >= 1) { \"times must be at least 1\" }\n    require(initialDelayMs >= 0 && maxDelayMs >= initialDelayMs) { \"invalid delays\" }\n    var delay = initialDelayMs\n    for (attempt in 1 until times) {\n        try {\n            return block(attempt)\n        } catch (e: Exception) {\n            sleep(delay)\n            delay = minOf(delay * 2, maxDelayMs)\n        }\n    }\n    return block(times) // The final failure propagates to the caller.\n}",
+      "hints": [
+        "The last attempt does not need a try/catch.",
+        "delay = minOf(delay * 2, maxDelayMs)"
+      ],
+      "tests": [
+        {
+          "input": "5 attempts; succeeds on attempt 3",
+          "expected": "\"ok on 3\" after sleeping [100, 200]"
+        },
+        {
+          "input": "4 attempts, max 250; always fails",
+          "expected": "throws after sleeping [100, 200, 250]"
+        },
+        {
+          "input": "succeeds immediately",
+          "expected": "no sleeps"
+        },
+        {
+          "input": "times = 0",
+          "expected": "IllegalArgumentException"
+        }
+      ],
+      "harness": "fun practicalCheck(n: Int, expected: Any?, actual: () -> Any?) {\n    val result = try { actual() } catch (e: Throwable) { \"threw ${e.javaClass.simpleName}\" }\n    println(if (result == expected) \"PASS $n\" else \"FAIL $n: expected $expected but was $result\")\n}\n\nfun main() {\n    practicalCheck(1, \"ok on 3 after [100, 200]\") {\n        val slept = mutableListOf<Long>()\n        val value = retry(5, 100, 1_000, { slept += it }) { attempt -> if (attempt < 3) error(\"down\") else \"ok on $attempt\" }\n        \"$value after $slept\"\n    }\n    practicalCheck(2, \"IllegalStateException after [100, 200, 250]\") {\n        val slept = mutableListOf<Long>()\n        val failure = try { retry(4, 100, 250, { slept += it }) { error(\"down\") }; \"no failure\" } catch (e: Exception) { e.javaClass.simpleName }\n        \"$failure after $slept\"\n    }\n    practicalCheck(3, \"first after []\") {\n        val slept = mutableListOf<Long>()\n        val value = retry(3, 50, 500, { slept += it }) { \"first\" }\n        \"$value after $slept\"\n    }\n    practicalCheck(4, \"threw IllegalArgumentException\") { retry(0, 10, 10, {}) { \"never\" } }\n}"
+    }
+  },
+  {
+    "id": "kotlin-practical-token-bucket",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "API design",
+    "round": "Practical",
+    "q": "Implement a TokenBucket rate limiter with a capacity, a refill rate per second, and an injected clock.",
+    "a": "Store fractional tokens and the last update time; on each call refill by elapsed time times rate, cap at capacity, then take one token if at least one is available.",
+    "explanation": "Token buckets allow short bursts up to capacity while enforcing an average rate. Refill lazily on each call instead of using a timer thread. Keep fractional tokens so slow rates work, cap at capacity so idle time cannot build an unlimited burst, and guard against a clock moving backwards. Injecting the clock makes the behaviour testable without sleeping. Shared limiters need synchronization or an atomic compare-and-set.",
+    "mistake": "Refilling without capping at capacity, or using a background timer instead of computing tokens from elapsed time.",
+    "rubric": [
+      "Refills lazily from elapsed time",
+      "Caps tokens at capacity",
+      "Handles fractional refill rates",
+      "Handles a clock moving backwards",
+      "Addresses thread safety"
+    ],
+    "followups": [
+      "How would you share one limit across several servers?",
+      "How does a token bucket differ from a fixed window counter?"
+    ],
+    "sourceIds": [
+      "kotlin-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original practical exercise; linked documentation is learning material, not a claim of an actual company interview",
+    "practical": {
+      "kind": "Write code",
+      "language": "Kotlin",
+      "task": "Implement a TokenBucket rate limiter with a capacity, a refill rate per second, and an injected clock.",
+      "starter": "// A rate limiter that allows short bursts up to `capacity` requests and then\n// `refillPerSecond` requests per second on average. The bucket starts full.\n// `now` returns the current time in milliseconds; tests pass a fake clock.\n// tryAcquire() takes one token and returns true, or returns false without waiting.\nclass TokenBucket(\n    private val capacity: Int,\n    private val refillPerSecond: Double,\n    private val now: () -> Long\n) {\n    fun tryAcquire(): Boolean {\n        TODO(\"Implement tryAcquire\")\n    }\n}",
+      "solution": "class TokenBucket(\n    private val capacity: Int,\n    private val refillPerSecond: Double,\n    private val now: () -> Long\n) {\n    init { require(capacity > 0 && refillPerSecond > 0) { \"capacity and refill rate must be positive\" } }\n\n    private var tokens = capacity.toDouble()\n    private var updatedAt = now()\n\n    @Synchronized\n    fun tryAcquire(): Boolean {\n        val time = now()\n        // Ignore a clock that moves backwards rather than removing tokens.\n        val elapsed = (time - updatedAt).coerceAtLeast(0)\n        tokens = minOf(capacity.toDouble(), tokens + elapsed * refillPerSecond / 1000.0)\n        updatedAt = maxOf(updatedAt, time)\n        if (tokens < 1.0) return false\n        tokens -= 1.0\n        return true\n    }\n}",
+      "hints": [
+        "tokens = min(capacity, tokens + elapsedMs * ratePerSecond / 1000)",
+        "Store tokens as a Double."
+      ],
+      "tests": [
+        {
+          "input": "capacity 3, clock fixed; 4 calls",
+          "expected": "[true, true, true, false]"
+        },
+        {
+          "input": "capacity 1, 2/s; calls at 0, 0, 250, 500 ms",
+          "expected": "[true, false, false, true]"
+        },
+        {
+          "input": "capacity 2; empty, then 60 s idle; 5 calls",
+          "expected": "2 succeed"
+        },
+        {
+          "input": "clock moves backwards with an empty bucket",
+          "expected": "false"
+        }
+      ],
+      "harness": "fun practicalCheck(n: Int, expected: Any?, actual: () -> Any?) {\n    val result = try { actual() } catch (e: Throwable) { \"threw ${e.javaClass.simpleName}\" }\n    println(if (result == expected) \"PASS $n\" else \"FAIL $n: expected $expected but was $result\")\n}\n\nfun main() {\n    practicalCheck(1, listOf(true, true, true, false)) {\n        val bucket = TokenBucket(3, 1.0) { 0L }\n        List(4) { bucket.tryAcquire() }\n    }\n    practicalCheck(2, listOf(true, false, false, true)) {\n        var clock = 0L\n        val bucket = TokenBucket(1, 2.0) { clock }\n        val results = mutableListOf(bucket.tryAcquire(), bucket.tryAcquire())\n        clock = 250; results += bucket.tryAcquire()\n        clock = 500; results += bucket.tryAcquire()\n        results\n    }\n    practicalCheck(3, 2) {\n        var clock = 0L\n        val bucket = TokenBucket(2, 1.0) { clock }\n        bucket.tryAcquire(); bucket.tryAcquire()\n        clock = 60_000 // A long idle period refills only up to capacity.\n        List(5) { bucket.tryAcquire() }.count { it }\n    }\n    practicalCheck(4, false) {\n        var clock = 10_000L\n        val bucket = TokenBucket(1, 1.0) { clock }\n        bucket.tryAcquire()\n        clock = 5_000 // Clock moved backwards.\n        bucket.tryAcquire()\n    }\n}"
+    }
+  }
+]

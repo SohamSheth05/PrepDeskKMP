@@ -1,0 +1,930 @@
+[
+  {
+    "id": "java-path-01",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Equality",
+    "round": "Fundamentals",
+    "q": "Why should equal Java objects have equal hash codes?",
+    "a": "Hash collections use both operations.",
+    "explanation": "Hash collections use both operations. Consistent equality preserves lookups. Exclude changing identity fields.",
+    "mistake": "Overriding equals without compatible hashCode.",
+    "rubric": [
+      "Hash collections use both operations",
+      "Consistent equality preserves lookups",
+      "Exclude changing identity fields"
+    ],
+    "followups": [
+      "What happens when a key mutates?",
+      "Walk through a concrete example of equality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-02",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Strings",
+    "round": "Fundamentals",
+    "q": "Why is String immutability useful?",
+    "a": "Values can be shared safely.",
+    "explanation": "Values can be shared safely. Stable contents support hashing. Repeated concatenation may allocate intermediates.",
+    "mistake": "Assuming immutable strings eliminate all allocations.",
+    "rubric": [
+      "Values can be shared safely",
+      "Stable contents support hashing",
+      "Repeated concatenation may allocate intermediates"
+    ],
+    "followups": [
+      "When would StringBuilder help?",
+      "Walk through a concrete example of strings and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-03",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Fundamentals",
+    "q": "When should you choose ArrayList over LinkedList?",
+    "a": "ArrayList supports indexed access.",
+    "explanation": "ArrayList supports indexed access. Storage locality often helps iteration. Measure actual insertion patterns.",
+    "mistake": "Choosing LinkedList for every insertion-heavy workload.",
+    "rubric": [
+      "ArrayList supports indexed access",
+      "Storage locality often helps iteration",
+      "Measure actual insertion patterns"
+    ],
+    "followups": [
+      "How costly is finding an insertion position?",
+      "Walk through a concrete example of collections and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-04",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Exceptions",
+    "round": "Fundamentals",
+    "q": "How do checked and unchecked exceptions differ?",
+    "a": "Checked exceptions require declaration or handling.",
+    "explanation": "Checked exceptions require declaration or handling. Unchecked exceptions do not. Choose contracts that support meaningful recovery.",
+    "mistake": "Catching every exception and returning null.",
+    "rubric": [
+      "Checked exceptions require declaration or handling",
+      "Unchecked exceptions do not",
+      "Choose contracts that support meaningful recovery"
+    ],
+    "followups": [
+      "How would you preserve an exception cause?",
+      "Walk through a concrete example of exceptions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-05",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Resources",
+    "round": "Fundamentals",
+    "q": "How does try-with-resources simplify cleanup?",
+    "a": "It closes AutoCloseable resources.",
+    "explanation": "It closes AutoCloseable resources. Closure occurs on scope exit. Suppressed exceptions preserve additional failures.",
+    "mistake": "Ignoring failures from resource cleanup.",
+    "rubric": [
+      "It closes AutoCloseable resources",
+      "Closure occurs on scope exit",
+      "Suppressed exceptions preserve additional failures"
+    ],
+    "followups": [
+      "What happens if body and close both fail?",
+      "Walk through a concrete example of resources and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-06",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Injection",
+    "round": "Fundamentals",
+    "q": "Why favor constructor injection for required dependencies?",
+    "a": "Dependencies become explicit.",
+    "explanation": "Dependencies become explicit. Objects can establish valid invariants. Tests can supply controlled implementations.",
+    "mistake": "Hiding required dependencies in mutable fields.",
+    "rubric": [
+      "Dependencies become explicit",
+      "Objects can establish valid invariants",
+      "Tests can supply controlled implementations"
+    ],
+    "followups": [
+      "How would you resolve a dependency cycle?",
+      "Walk through a concrete example of injection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-07",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "Spring scopes",
+    "round": "Fundamentals",
+    "q": "What does singleton scope mean for a Spring bean?",
+    "a": "One instance exists per container scope.",
+    "explanation": "One instance exists per container scope. Shared mutable fields need care. Request state belongs to request ownership.",
+    "mistake": "Assuming singleton beans are automatically thread-safe.",
+    "rubric": [
+      "One instance exists per container scope",
+      "Shared mutable fields need care",
+      "Request state belongs to request ownership"
+    ],
+    "followups": [
+      "How would you hold per-request metadata?",
+      "Walk through a concrete example of spring scopes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-08",
+    "area": "Java and Spring",
+    "level": 1,
+    "subtopic": "HTTP mapping",
+    "round": "Fundamentals",
+    "q": "How should a Spring controller handle invalid input?",
+    "a": "Validate boundary values.",
+    "explanation": "Validate boundary values. Return a consistent client error contract. Keep domain rules explicit.",
+    "mistake": "Letting validation failures become generic server errors.",
+    "rubric": [
+      "Validate boundary values",
+      "Return a consistent client error contract",
+      "Keep domain rules explicit"
+    ],
+    "followups": [
+      "How would you validate nested input?",
+      "Walk through a concrete example of http mapping and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-09",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Generics",
+    "round": "Scenario",
+    "q": "Why are Java generic collections usually invariant?",
+    "a": "Mutation requires safe element types.",
+    "explanation": "Mutation requires safe element types. Wildcards describe producer or consumer roles. Use bounded contracts deliberately.",
+    "mistake": "Treating List of subtype as mutable List of base.",
+    "rubric": [
+      "Mutation requires safe element types",
+      "Wildcards describe producer or consumer roles",
+      "Use bounded contracts deliberately"
+    ],
+    "followups": [
+      "When would an extends wildcard help?",
+      "Walk through a concrete example of generics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-10",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Streams",
+    "round": "Scenario",
+    "q": "When should a stream pipeline remain sequential?",
+    "a": "Parallelism has coordination overhead.",
+    "explanation": "Parallelism has coordination overhead. Ordering and side effects complicate behavior. Measure representative workloads.",
+    "mistake": "Using parallelStream for blocking request work blindly.",
+    "rubric": [
+      "Parallelism has coordination overhead",
+      "Ordering and side effects complicate behavior",
+      "Measure representative workloads"
+    ],
+    "followups": [
+      "How would you bound external I/O concurrency?",
+      "Walk through a concrete example of streams and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-11",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Transactions",
+    "round": "Scenario",
+    "q": "How can proxy-based transactions miss self-invocation?",
+    "a": "Internal calls may bypass the proxy.",
+    "explanation": "Internal calls may bypass the proxy. Transaction advice then does not run. Place boundaries on externally invoked operations.",
+    "mistake": "Assuming every annotated method always starts a transaction.",
+    "rubric": [
+      "Internal calls may bypass the proxy",
+      "Transaction advice then does not run",
+      "Place boundaries on externally invoked operations"
+    ],
+    "followups": [
+      "How would you verify the actual transaction boundary?",
+      "Walk through a concrete example of transactions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-12",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Persistence",
+    "round": "Scenario",
+    "q": "Why can lazy relationship access fail outside a persistence session?",
+    "a": "Related data may not be loaded.",
+    "explanation": "Related data may not be loaded. Loading needs an active context. Fetch required data at an explicit boundary.",
+    "mistake": "Serializing entities with arbitrary lazy traversal.",
+    "rubric": [
+      "Related data may not be loaded",
+      "Loading needs an active context",
+      "Fetch required data at an explicit boundary"
+    ],
+    "followups": [
+      "How would a DTO projection help?",
+      "Walk through a concrete example of persistence and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-13",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Concurrency",
+    "round": "Scenario",
+    "q": "Does volatile make a compound update atomic?",
+    "a": "Volatile provides visibility guarantees.",
+    "explanation": "Volatile provides visibility guarantees. Read-modify-write remains compound. Use atomic operations or locking.",
+    "mistake": "Implementing increment with only a volatile field.",
+    "rubric": [
+      "Volatile provides visibility guarantees",
+      "Read-modify-write remains compound",
+      "Use atomic operations or locking"
+    ],
+    "followups": [
+      "When would a lock protect multiple fields?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-14",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What belongs in a controller slice test?",
+    "a": "Verify mapping validation and response shape.",
+    "explanation": "Verify mapping validation and response shape. Replace unrelated dependencies deliberately. Keep database behavior in appropriate tests.",
+    "mistake": "Expecting mocked persistence to prove query correctness.",
+    "rubric": [
+      "Verify mapping validation and response shape",
+      "Replace unrelated dependencies deliberately",
+      "Keep database behavior in appropriate tests"
+    ],
+    "followups": [
+      "When is a full integration test needed?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-15",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Configuration",
+    "round": "Scenario",
+    "q": "How should an application load environment-specific settings?",
+    "a": "Use explicit external configuration.",
+    "explanation": "Use explicit external configuration. Validate required values at startup. Keep secrets outside packaged artifacts.",
+    "mistake": "Committing credentials into properties files.",
+    "rubric": [
+      "Use explicit external configuration",
+      "Validate required values at startup",
+      "Keep secrets outside packaged artifacts"
+    ],
+    "followups": [
+      "How would you reject an unsafe production endpoint?",
+      "Walk through a concrete example of configuration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-16",
+    "area": "Java and Spring",
+    "level": 2,
+    "subtopic": "Caching",
+    "round": "Scenario",
+    "q": "What should happen when a cached entity is updated?",
+    "a": "Define invalidation or update policy.",
+    "explanation": "Define invalidation or update policy. Keep consistency expectations explicit. Monitor hit rate and staleness.",
+    "mistake": "Assuming cache entries refresh automatically.",
+    "rubric": [
+      "Define invalidation or update policy",
+      "Keep consistency expectations explicit",
+      "Monitor hit rate and staleness"
+    ],
+    "followups": [
+      "How would concurrent writers affect invalidation?",
+      "Walk through a concrete example of caching and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-17",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Thread pools",
+    "round": "Debugging",
+    "q": "How would you size and protect a Java executor?",
+    "a": "Match concurrency to workload capacity.",
+    "explanation": "Match concurrency to workload capacity. Bound queued work. Define rejection and shutdown behavior.",
+    "mistake": "Using an unbounded queue under overload.",
+    "rubric": [
+      "Match concurrency to workload capacity",
+      "Bound queued work",
+      "Define rejection and shutdown behavior"
+    ],
+    "followups": [
+      "How would you detect queue saturation?",
+      "Walk through a concrete example of thread pools and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-18",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Virtual threads",
+    "round": "Debugging",
+    "q": "What changes when using virtual threads for blocking I/O?",
+    "a": "They can reduce thread-per-request overhead.",
+    "explanation": "They can reduce thread-per-request overhead. Downstream resources still need limits. Profile blocking and runtime-specific behavior.",
+    "mistake": "Assuming unlimited threads mean unlimited database capacity.",
+    "rubric": [
+      "They can reduce thread-per-request overhead",
+      "Downstream resources still need limits",
+      "Profile blocking and runtime-specific behavior"
+    ],
+    "followups": [
+      "How would you protect a connection pool?",
+      "Walk through a concrete example of virtual threads and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-19",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Deadlocks",
+    "round": "Debugging",
+    "q": "How do you investigate a Java deadlock?",
+    "a": "Capture thread diagnostics.",
+    "explanation": "Capture thread diagnostics. Find cyclic lock dependencies. Use consistent lock ordering or redesign ownership.",
+    "mistake": "Adding more locks without examining order.",
+    "rubric": [
+      "Capture thread diagnostics",
+      "Find cyclic lock dependencies",
+      "Use consistent lock ordering or redesign ownership"
+    ],
+    "followups": [
+      "How would you prevent recurrence?",
+      "Walk through a concrete example of deadlocks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-20",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Garbage collection",
+    "round": "Debugging",
+    "q": "How do you distinguish a memory leak from allocation pressure?",
+    "a": "Inspect retained objects and heap trends.",
+    "explanation": "Inspect retained objects and heap trends. Measure allocation rate and pauses. Compare behavior after collections.",
+    "mistake": "Treating every GC pause as a memory leak.",
+    "rubric": [
+      "Inspect retained objects and heap trends",
+      "Measure allocation rate and pauses",
+      "Compare behavior after collections"
+    ],
+    "followups": [
+      "Which evidence justifies changing collector settings?",
+      "Walk through a concrete example of garbage collection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-21",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Resilience",
+    "round": "Debugging",
+    "q": "How should an HTTP client handle downstream failure?",
+    "a": "Set connect and request deadlines.",
+    "explanation": "Set connect and request deadlines. Retry eligible operations with limits. Isolate overloaded dependencies.",
+    "mistake": "Retrying non-idempotent writes without a safety contract.",
+    "rubric": [
+      "Set connect and request deadlines",
+      "Retry eligible operations with limits",
+      "Isolate overloaded dependencies"
+    ],
+    "followups": [
+      "How should retries share an overall deadline?",
+      "Walk through a concrete example of resilience and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-22",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Database boundaries",
+    "round": "Debugging",
+    "q": "How do you avoid holding transactions during remote calls?",
+    "a": "Keep local transactions short.",
+    "explanation": "Keep local transactions short. Persist durable intent when needed. Coordinate side effects through explicit workflows.",
+    "mistake": "Holding database locks while waiting for network responses.",
+    "rubric": [
+      "Keep local transactions short",
+      "Persist durable intent when needed",
+      "Coordinate side effects through explicit workflows"
+    ],
+    "followups": [
+      "How would an outbox help?",
+      "Walk through a concrete example of database boundaries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-23",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Security",
+    "round": "Debugging",
+    "q": "Where should object authorization occur in a Spring API?",
+    "a": "Authorize access to the requested object.",
+    "explanation": "Authorize access to the requested object. Use trusted identity and policy. Test cross-user and role boundaries.",
+    "mistake": "Checking login without checking resource ownership.",
+    "rubric": [
+      "Authorize access to the requested object",
+      "Use trusted identity and policy",
+      "Test cross-user and role boundaries"
+    ],
+    "followups": [
+      "How would batch endpoints apply authorization?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-24",
+    "area": "Java and Spring",
+    "level": 3,
+    "subtopic": "Observability",
+    "round": "Debugging",
+    "q": "What helps diagnose a slow Spring request?",
+    "a": "Correlate traces logs and metrics.",
+    "explanation": "Correlate traces logs and metrics. Break down database and dependency latency. Include release and route context.",
+    "mistake": "Logging full sensitive request payloads.",
+    "rubric": [
+      "Correlate traces logs and metrics",
+      "Break down database and dependency latency",
+      "Include release and route context"
+    ],
+    "followups": [
+      "How would you identify connection-pool waiting?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-25",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How would you modularize a growing Spring application?",
+    "a": "Separate business capabilities and contracts.",
+    "explanation": "Separate business capabilities and contracts. Control dependency direction. Keep deployment complexity proportional to need.",
+    "mistake": "Splitting every package into a microservice.",
+    "rubric": [
+      "Separate business capabilities and contracts",
+      "Control dependency direction",
+      "Keep deployment complexity proportional to need"
+    ],
+    "followups": [
+      "How would you enforce module boundaries?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-26",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Schema rollout",
+    "round": "Design",
+    "q": "How should an application deploy with a changing database schema?",
+    "a": "Use backward-compatible expansion first.",
+    "explanation": "Use backward-compatible expansion first. Migrate data before removing old fields. Support mixed application versions.",
+    "mistake": "Renaming columns before old instances are gone.",
+    "rubric": [
+      "Use backward-compatible expansion first",
+      "Migrate data before removing old fields",
+      "Support mixed application versions"
+    ],
+    "followups": [
+      "How would you rollback a failed deployment?",
+      "Walk through a concrete example of schema rollout and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-27",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "SLOs",
+    "round": "Design",
+    "q": "How should a Java service use an error budget?",
+    "a": "Define user-facing reliability objectives.",
+    "explanation": "Define user-facing reliability objectives. Measure meaningful failures. Use remaining budget to guide release risk.",
+    "mistake": "Treating all internal exceptions as equal user impact.",
+    "rubric": [
+      "Define user-facing reliability objectives",
+      "Measure meaningful failures",
+      "Use remaining budget to guide release risk"
+    ],
+    "followups": [
+      "When would you pause feature rollout?",
+      "Walk through a concrete example of slos and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-28",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Supply chain",
+    "round": "Design",
+    "q": "How would you handle an urgent JVM dependency vulnerability?",
+    "a": "Identify affected runtime paths.",
+    "explanation": "Identify affected runtime paths. Apply validated upgrades or mitigations. Track deployment and residual exposure.",
+    "mistake": "Assuming an unused direct API means no transitive risk.",
+    "rubric": [
+      "Identify affected runtime paths",
+      "Apply validated upgrades or mitigations",
+      "Track deployment and residual exposure"
+    ],
+    "followups": [
+      "How would you verify packaged dependency versions?",
+      "Walk through a concrete example of supply chain and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-29",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Platform upgrades",
+    "round": "Design",
+    "q": "How do you plan a Java and Spring major upgrade?",
+    "a": "Check supported runtime combinations.",
+    "explanation": "Check supported runtime combinations. Test integrations and operational behavior. Stage rollout with recovery options.",
+    "mistake": "Changing runtime and framework without compatibility checks.",
+    "rubric": [
+      "Check supported runtime combinations",
+      "Test integrations and operational behavior",
+      "Stage rollout with recovery options"
+    ],
+    "followups": [
+      "Which production-like tests matter most?",
+      "Walk through a concrete example of platform upgrades and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-30",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Multi-tenancy",
+    "round": "Design",
+    "q": "How would you prevent cross-tenant data access?",
+    "a": "Bind tenant identity to trusted authentication.",
+    "explanation": "Bind tenant identity to trusted authentication. Apply scoping at data boundaries. Test caches jobs and administrative paths.",
+    "mistake": "Trusting a tenant identifier supplied in a request.",
+    "rubric": [
+      "Bind tenant identity to trusted authentication",
+      "Apply scoping at data boundaries",
+      "Test caches jobs and administrative paths"
+    ],
+    "followups": [
+      "How should background tasks carry tenant context?",
+      "Walk through a concrete example of multi-tenancy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-31",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Capacity",
+    "round": "Design",
+    "q": "How would you estimate service capacity before a launch?",
+    "a": "Load-test representative traffic and data.",
+    "explanation": "Load-test representative traffic and data. Find resource saturation points. Reserve headroom and overload controls.",
+    "mistake": "Extrapolating from one successful request.",
+    "rubric": [
+      "Load-test representative traffic and data",
+      "Find resource saturation points",
+      "Reserve headroom and overload controls"
+    ],
+    "followups": [
+      "Which bottleneck would you scale first?",
+      "Walk through a concrete example of capacity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "java-path-32",
+    "area": "Java and Spring",
+    "level": 4,
+    "subtopic": "Engineering policy",
+    "round": "Design",
+    "q": "How would you standardize production service conventions?",
+    "a": "Provide reusable defaults and templates.",
+    "explanation": "Provide reusable defaults and templates. Document supported exceptions. Verify behavior with automated checks.",
+    "mistake": "Mandating abstractions without operational evidence.",
+    "rubric": [
+      "Provide reusable defaults and templates",
+      "Document supported exceptions",
+      "Verify behavior with automated checks"
+    ],
+    "followups": [
+      "How would you measure adoption outcomes?",
+      "Walk through a concrete example of engineering policy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "java-collections",
+      "java-concurrency",
+      "spring-transactions",
+      "java-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

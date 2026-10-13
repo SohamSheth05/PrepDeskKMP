@@ -1,0 +1,930 @@
+[
+  {
+    "id": "testing-path-01",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Test levels",
+    "round": "Fundamentals",
+    "q": "How do unit integration and end-to-end tests differ?",
+    "a": "They cover different boundaries.",
+    "explanation": "They cover different boundaries. Broader tests have more dependencies. Choose meaningful evidence for each risk.",
+    "mistake": "Expecting one test level to prove everything.",
+    "rubric": [
+      "They cover different boundaries",
+      "Broader tests have more dependencies",
+      "Choose meaningful evidence for each risk"
+    ],
+    "followups": [
+      "Which boundary requires a real database?",
+      "Walk through a concrete example of test levels and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-02",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Assertions",
+    "round": "Fundamentals",
+    "q": "What makes a test assertion useful?",
+    "a": "It checks a meaningful observable outcome.",
+    "explanation": "It checks a meaningful observable outcome. Failure should identify the problem. Avoid mirroring implementation steps.",
+    "mistake": "Asserting only that no exception occurred.",
+    "rubric": [
+      "It checks a meaningful observable outcome",
+      "Failure should identify the problem",
+      "Avoid mirroring implementation steps"
+    ],
+    "followups": [
+      "How would you assert an error contract?",
+      "Walk through a concrete example of assertions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-03",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Fixtures",
+    "round": "Fundamentals",
+    "q": "How should test data be isolated?",
+    "a": "Create known independent starting state.",
+    "explanation": "Create known independent starting state. Avoid hidden order dependence. Clean up owned resources.",
+    "mistake": "Sharing mutable global fixtures across unrelated tests.",
+    "rubric": [
+      "Create known independent starting state",
+      "Avoid hidden order dependence",
+      "Clean up owned resources"
+    ],
+    "followups": [
+      "How would parallel runs affect data?",
+      "Walk through a concrete example of fixtures and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-04",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Boundaries",
+    "round": "Fundamentals",
+    "q": "Why test boundary values explicitly?",
+    "a": "Many bugs occur at limit transitions.",
+    "explanation": "Many bugs occur at limit transitions. Include just-below at and just-above values. Check empty and absent inputs.",
+    "mistake": "Testing only comfortable middle-range values.",
+    "rubric": [
+      "Many bugs occur at limit transitions",
+      "Include just-below at and just-above values",
+      "Check empty and absent inputs"
+    ],
+    "followups": [
+      "How would a byte limit differ from character count?",
+      "Walk through a concrete example of boundaries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-05",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Exploratory testing",
+    "round": "Fundamentals",
+    "q": "What makes exploratory testing structured?",
+    "a": "Use a focused risk-based charter.",
+    "explanation": "Use a focused risk-based charter. Observe behavior and record evidence. Turn repeatable findings into regression checks.",
+    "mistake": "Calling random clicking complete coverage.",
+    "rubric": [
+      "Use a focused risk-based charter",
+      "Observe behavior and record evidence",
+      "Turn repeatable findings into regression checks"
+    ],
+    "followups": [
+      "Which user journey deserves exploration first?",
+      "Walk through a concrete example of exploratory testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-06",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Bug reports",
+    "round": "Fundamentals",
+    "q": "What should a useful defect report include?",
+    "a": "Reproduction steps and expected behavior.",
+    "explanation": "Reproduction steps and expected behavior. Actual behavior and environment. Evidence and user impact.",
+    "mistake": "Reporting only that something is broken.",
+    "rubric": [
+      "Reproduction steps and expected behavior",
+      "Actual behavior and environment",
+      "Evidence and user impact"
+    ],
+    "followups": [
+      "How would you describe an intermittent failure?",
+      "Walk through a concrete example of bug reports and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-07",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Mocks",
+    "round": "Fundamentals",
+    "q": "When should a dependency be mocked?",
+    "a": "Use it to control an external contract.",
+    "explanation": "Use it to control an external contract. Keep real behavior at important integration boundaries. Avoid mocking private implementation details.",
+    "mistake": "Mocking every function in the codebase.",
+    "rubric": [
+      "Use it to control an external contract",
+      "Keep real behavior at important integration boundaries",
+      "Avoid mocking private implementation details"
+    ],
+    "followups": [
+      "What does a mocked database fail to prove?",
+      "Walk through a concrete example of mocks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-08",
+    "area": "Testing and QA",
+    "level": 1,
+    "subtopic": "Regression testing",
+    "round": "Fundamentals",
+    "q": "How do you choose regression checks?",
+    "a": "Cover prior failures and high-impact behavior.",
+    "explanation": "Cover prior failures and high-impact behavior. Keep checks reliable and maintainable. Remove redundant low-value duplication.",
+    "mistake": "Adding a test for every internal line change.",
+    "rubric": [
+      "Cover prior failures and high-impact behavior",
+      "Keep checks reliable and maintainable",
+      "Remove redundant low-value duplication"
+    ],
+    "followups": [
+      "How would you prioritize a limited release window?",
+      "Walk through a concrete example of regression testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-09",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Async tests",
+    "round": "Scenario",
+    "q": "How do you avoid fixed sleeps in browser tests?",
+    "a": "Wait for meaningful observable conditions.",
+    "explanation": "Wait for meaningful observable conditions. Use framework-supported waiting. Bound timeouts with useful diagnostics.",
+    "mistake": "Sleeping an arbitrary long duration.",
+    "rubric": [
+      "Wait for meaningful observable conditions",
+      "Use framework-supported waiting",
+      "Bound timeouts with useful diagnostics"
+    ],
+    "followups": [
+      "How would you test a delayed validation result?",
+      "Walk through a concrete example of async tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-10",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "API testing",
+    "round": "Scenario",
+    "q": "What should an API test cover besides success?",
+    "a": "Invalid input authorization and missing resources.",
+    "explanation": "Invalid input authorization and missing resources. Contract shape and error behavior. Relevant limits and idempotency.",
+    "mistake": "Checking only a success status code.",
+    "rubric": [
+      "Invalid input authorization and missing resources",
+      "Contract shape and error behavior",
+      "Relevant limits and idempotency"
+    ],
+    "followups": [
+      "How would duplicate writes be tested?",
+      "Walk through a concrete example of api testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-11",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Data-driven tests",
+    "round": "Scenario",
+    "q": "When does parameterization improve a suite?",
+    "a": "Cases share meaningful test structure.",
+    "explanation": "Cases share meaningful test structure. Name differences clearly. Keep expected outcomes explicit.",
+    "mistake": "Generating many indistinguishable passing cases.",
+    "rubric": [
+      "Cases share meaningful test structure",
+      "Name differences clearly",
+      "Keep expected outcomes explicit"
+    ],
+    "followups": [
+      "When should a case become a separate test?",
+      "Walk through a concrete example of data-driven tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-12",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Flaky tests",
+    "round": "Scenario",
+    "q": "How should a team investigate flakiness?",
+    "a": "Capture timing environment and failure evidence.",
+    "explanation": "Capture timing environment and failure evidence. Identify shared-state or synchronization causes. Fix or quarantine with ownership.",
+    "mistake": "Repeatedly rerunning until green without investigation.",
+    "rubric": [
+      "Capture timing environment and failure evidence",
+      "Identify shared-state or synchronization causes",
+      "Fix or quarantine with ownership"
+    ],
+    "followups": [
+      "How would you distinguish product intermittency?",
+      "Walk through a concrete example of flaky tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-13",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Accessibility testing",
+    "round": "Scenario",
+    "q": "What does automated accessibility testing miss?",
+    "a": "Tools detect selected rule violations.",
+    "explanation": "Tools detect selected rule violations. Human navigation and comprehension still matter. Combine automation with assistive-technology checks.",
+    "mistake": "Treating a clean scan as complete accessibility.",
+    "rubric": [
+      "Tools detect selected rule violations",
+      "Human navigation and comprehension still matter",
+      "Combine automation with assistive-technology checks"
+    ],
+    "followups": [
+      "How would you test keyboard focus order?",
+      "Walk through a concrete example of accessibility testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-14",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Performance testing",
+    "round": "Scenario",
+    "q": "What makes a load test representative?",
+    "a": "Use realistic routes payloads and data.",
+    "explanation": "Use realistic routes payloads and data. Model concurrency and arrival patterns. Measure saturation and user-facing latency.",
+    "mistake": "Sending only the cheapest endpoint repeatedly.",
+    "rubric": [
+      "Use realistic routes payloads and data",
+      "Model concurrency and arrival patterns",
+      "Measure saturation and user-facing latency"
+    ],
+    "followups": [
+      "How would you model a traffic burst?",
+      "Walk through a concrete example of performance testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-15",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Test environments",
+    "round": "Scenario",
+    "q": "What should a test environment reproduce?",
+    "a": "Relevant configuration and dependency behavior.",
+    "explanation": "Relevant configuration and dependency behavior. Data shape and compatibility boundaries. Safe isolated credentials and resources.",
+    "mistake": "Pointing tests at production user data.",
+    "rubric": [
+      "Relevant configuration and dependency behavior",
+      "Data shape and compatibility boundaries",
+      "Safe isolated credentials and resources"
+    ],
+    "followups": [
+      "Which differences must be documented?",
+      "Walk through a concrete example of test environments and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-16",
+    "area": "Testing and QA",
+    "level": 2,
+    "subtopic": "Release checks",
+    "round": "Scenario",
+    "q": "How do you select release acceptance tests?",
+    "a": "Prioritize critical user journeys and changed risks.",
+    "explanation": "Prioritize critical user journeys and changed risks. Verify failure and upgrade paths. Record actual results and limitations.",
+    "mistake": "Equating a large test count with readiness.",
+    "rubric": [
+      "Prioritize critical user journeys and changed risks",
+      "Verify failure and upgrade paths",
+      "Record actual results and limitations"
+    ],
+    "followups": [
+      "Which failure should block release?",
+      "Walk through a concrete example of release checks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-17",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Contract testing",
+    "round": "Debugging",
+    "q": "How do consumer contracts reduce integration surprises?",
+    "a": "They encode expected provider behavior.",
+    "explanation": "They encode expected provider behavior. Verify compatibility before deployment. Keep ownership and examples explicit.",
+    "mistake": "Assuming schemas cover every behavioral expectation.",
+    "rubric": [
+      "They encode expected provider behavior",
+      "Verify compatibility before deployment",
+      "Keep ownership and examples explicit"
+    ],
+    "followups": [
+      "How would a new enum value affect consumers?",
+      "Walk through a concrete example of contract testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-18",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Property tests",
+    "round": "Debugging",
+    "q": "When are property-based tests valuable?",
+    "a": "They explore broad input combinations.",
+    "explanation": "They explore broad input combinations. Express meaningful invariants. Use shrinking to isolate failures.",
+    "mistake": "Generating random values without a useful property.",
+    "rubric": [
+      "They explore broad input combinations",
+      "Express meaningful invariants",
+      "Use shrinking to isolate failures"
+    ],
+    "followups": [
+      "Which property fits sorting?",
+      "Walk through a concrete example of property tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-19",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Fuzzing",
+    "round": "Debugging",
+    "q": "What does fuzz testing seek to reveal?",
+    "a": "Malformed inputs stress parsing boundaries.",
+    "explanation": "Malformed inputs stress parsing boundaries. Observe crashes hangs and invariant violations. Retain minimized reproducible failures.",
+    "mistake": "Running a fuzzer without resource limits or assertions.",
+    "rubric": [
+      "Malformed inputs stress parsing boundaries",
+      "Observe crashes hangs and invariant violations",
+      "Retain minimized reproducible failures"
+    ],
+    "followups": [
+      "How would you seed a binary parser corpus?",
+      "Walk through a concrete example of fuzzing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-20",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Reliability tests",
+    "round": "Debugging",
+    "q": "How should failure injection be designed?",
+    "a": "Choose a clear failure hypothesis.",
+    "explanation": "Choose a clear failure hypothesis. Bound blast radius and cleanup. Assert recovery and resource behavior.",
+    "mistake": "Breaking dependencies without a stated expected result.",
+    "rubric": [
+      "Choose a clear failure hypothesis",
+      "Bound blast radius and cleanup",
+      "Assert recovery and resource behavior"
+    ],
+    "followups": [
+      "How would you test connection loss during a save?",
+      "Walk through a concrete example of reliability tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-21",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Concurrency tests",
+    "round": "Debugging",
+    "q": "How would you test a lost-update bug?",
+    "a": "Control competing read and write interleavings.",
+    "explanation": "Control competing read and write interleavings. Assert preserved invariants or explicit conflicts. Repeat only when randomness adds value.",
+    "mistake": "Assuming sequential tests cover race behavior.",
+    "rubric": [
+      "Control competing read and write interleavings",
+      "Assert preserved invariants or explicit conflicts",
+      "Repeat only when randomness adds value"
+    ],
+    "followups": [
+      "How could barriers make the race deterministic?",
+      "Walk through a concrete example of concurrency tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-22",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Database tests",
+    "round": "Debugging",
+    "q": "Why use an actual database for important query behavior?",
+    "a": "Engines enforce real isolation and constraints.",
+    "explanation": "Engines enforce real isolation and constraints. Mocked calls cannot prove SQL semantics. Use isolated realistic test data.",
+    "mistake": "Using an in-memory substitute without checking semantic differences.",
+    "rubric": [
+      "Engines enforce real isolation and constraints",
+      "Mocked calls cannot prove SQL semantics",
+      "Use isolated realistic test data"
+    ],
+    "followups": [
+      "How would a uniqueness race be tested?",
+      "Walk through a concrete example of database tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-23",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Security tests",
+    "round": "Debugging",
+    "q": "What should authorization tests include?",
+    "a": "Exercise cross-user tenant and role boundaries.",
+    "explanation": "Exercise cross-user tenant and role boundaries. Test each resource and batch path. Check denied outcomes without data leakage.",
+    "mistake": "Testing only login success.",
+    "rubric": [
+      "Exercise cross-user tenant and role boundaries",
+      "Test each resource and batch path",
+      "Check denied outcomes without data leakage"
+    ],
+    "followups": [
+      "How would you validate object-level authorization?",
+      "Walk through a concrete example of security tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-24",
+    "area": "Testing and QA",
+    "level": 3,
+    "subtopic": "Observability tests",
+    "round": "Debugging",
+    "q": "How do you test operational diagnostics?",
+    "a": "Trigger known failure paths.",
+    "explanation": "Trigger known failure paths. Verify useful context and redaction. Check actionable metrics and signals.",
+    "mistake": "Checking only that a log line exists.",
+    "rubric": [
+      "Trigger known failure paths",
+      "Verify useful context and redaction",
+      "Check actionable metrics and signals"
+    ],
+    "followups": [
+      "How would you detect leaked tokens?",
+      "Walk through a concrete example of observability tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-25",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Test strategy",
+    "round": "Design",
+    "q": "How do you build a risk-based test strategy?",
+    "a": "Map user impact and likely failures.",
+    "explanation": "Map user impact and likely failures. Select appropriate test boundaries. Assign maintenance and acceptance ownership.",
+    "mistake": "Maximizing tests without linking them to risks.",
+    "rubric": [
+      "Map user impact and likely failures",
+      "Select appropriate test boundaries",
+      "Assign maintenance and acceptance ownership"
+    ],
+    "followups": [
+      "Which risk deserves manual testing?",
+      "Walk through a concrete example of test strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-26",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Quality metrics",
+    "round": "Design",
+    "q": "Which metrics help evaluate testing effectiveness?",
+    "a": "Escaped defects and critical workflow confidence.",
+    "explanation": "Escaped defects and critical workflow confidence. Flakiness runtime and maintenance cost. Interpret metrics with product context.",
+    "mistake": "Using code coverage as the only quality score.",
+    "rubric": [
+      "Escaped defects and critical workflow confidence",
+      "Flakiness runtime and maintenance cost",
+      "Interpret metrics with product context"
+    ],
+    "followups": [
+      "How would you identify low-value test growth?",
+      "Walk through a concrete example of quality metrics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-27",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Migration testing",
+    "round": "Design",
+    "q": "How do you verify data migrations safely?",
+    "a": "Test supported prior schemas with real data shapes.",
+    "explanation": "Test supported prior schemas with real data shapes. Check preservation and interruption recovery. Validate mixed application-version behavior.",
+    "mistake": "Testing only an empty new schema.",
+    "rubric": [
+      "Test supported prior schemas with real data shapes",
+      "Check preservation and interruption recovery",
+      "Validate mixed application-version behavior"
+    ],
+    "followups": [
+      "How would a backfill resume after failure?",
+      "Walk through a concrete example of migration testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-28",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Device matrix",
+    "round": "Design",
+    "q": "How should mobile test devices be selected?",
+    "a": "Cover supported OS and relevant hardware cohorts.",
+    "explanation": "Cover supported OS and relevant hardware cohorts. Include constrained and accessibility configurations. Use production evidence to refine coverage.",
+    "mistake": "Testing only the newest flagship device.",
+    "rubric": [
+      "Cover supported OS and relevant hardware cohorts",
+      "Include constrained and accessibility configurations",
+      "Use production evidence to refine coverage"
+    ],
+    "followups": [
+      "Which device-specific failure warrants a new cohort?",
+      "Walk through a concrete example of device matrix and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-29",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Governance",
+    "round": "Design",
+    "q": "How should teams manage flaky-test quarantine?",
+    "a": "Assign owner reason and expiry.",
+    "explanation": "Assign owner reason and expiry. Keep coverage risk visible. Require a repair or removal decision.",
+    "mistake": "Silently skipping tests forever.",
+    "rubric": [
+      "Assign owner reason and expiry",
+      "Keep coverage risk visible",
+      "Require a repair or removal decision"
+    ],
+    "followups": [
+      "How would you track lost release confidence?",
+      "Walk through a concrete example of governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-30",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Automation economics",
+    "round": "Design",
+    "q": "When should a manual check be automated?",
+    "a": "Repetition stability and impact justify maintenance.",
+    "explanation": "Repetition stability and impact justify maintenance. Choose a reliable test boundary. Compare cost and diagnostic value.",
+    "mistake": "Automating an unstable workflow solely for test counts.",
+    "rubric": [
+      "Repetition stability and impact justify maintenance",
+      "Choose a reliable test boundary",
+      "Compare cost and diagnostic value"
+    ],
+    "followups": [
+      "What should remain exploratory?",
+      "Walk through a concrete example of automation economics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-31",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Production validation",
+    "round": "Design",
+    "q": "How can production monitoring complement tests?",
+    "a": "It reveals actual user and environment behavior.",
+    "explanation": "It reveals actual user and environment behavior. Use safe privacy-aware signals. Connect regressions to release decisions.",
+    "mistake": "Using monitoring as a replacement for pre-release verification.",
+    "rubric": [
+      "It reveals actual user and environment behavior",
+      "Use safe privacy-aware signals",
+      "Connect regressions to release decisions"
+    ],
+    "followups": [
+      "Which signal would trigger rollback?",
+      "Walk through a concrete example of production validation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "testing-path-32",
+    "area": "Testing and QA",
+    "level": 4,
+    "subtopic": "Leadership",
+    "round": "Design",
+    "q": "How should quality ownership be shared across a team?",
+    "a": "Developers and testers own product outcomes together.",
+    "explanation": "Developers and testers own product outcomes together. Make acceptance and evidence explicit. Review recurring failure patterns.",
+    "mistake": "Treating quality as a final handoff to QA.",
+    "rubric": [
+      "Developers and testers own product outcomes together",
+      "Make acceptance and evidence explicit",
+      "Review recurring failure patterns"
+    ],
+    "followups": [
+      "How would you improve an unreliable release process?",
+      "Walk through a concrete example of leadership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "pytest",
+      "playwright",
+      "android-testing",
+      "owasp-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

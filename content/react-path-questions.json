@@ -1,0 +1,898 @@
+[
+  {
+    "id": "react-path-01",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Components",
+    "round": "Fundamentals",
+    "q": "What makes a component reusable?",
+    "a": "Explicit inputs define behavior.",
+    "explanation": "Explicit inputs define behavior. Composition supports variation. Keep unrelated state outside.",
+    "mistake": "Adding every feature as a boolean flag.",
+    "rubric": [
+      "Explicit inputs define behavior",
+      "Composition supports variation",
+      "Keep unrelated state outside"
+    ],
+    "followups": [
+      "When would children be useful?",
+      "Walk through a concrete example of components and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-02",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Props",
+    "round": "Fundamentals",
+    "q": "Why should components avoid mutating props?",
+    "a": "Parents own supplied values.",
+    "explanation": "Parents own supplied values. Mutation breaks predictable rendering. Request changes through callbacks.",
+    "mistake": "Editing a parent's object directly.",
+    "rubric": [
+      "Parents own supplied values",
+      "Mutation breaks predictable rendering",
+      "Request changes through callbacks"
+    ],
+    "followups": [
+      "How would you update a nested field?",
+      "Walk through a concrete example of props and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-03",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Lists",
+    "round": "Fundamentals",
+    "q": "Why can array indexes be unsafe list keys?",
+    "a": "Keys identify persistent items.",
+    "explanation": "Keys identify persistent items. Reordering changes index identity. Use stable domain identifiers.",
+    "mistake": "Generating new random keys each render.",
+    "rubric": [
+      "Keys identify persistent items",
+      "Reordering changes index identity",
+      "Use stable domain identifiers"
+    ],
+    "followups": [
+      "What happens to an edited row after sorting?",
+      "Walk through a concrete example of lists and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-04",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Forms",
+    "round": "Fundamentals",
+    "q": "What distinguishes controlled and uncontrolled inputs?",
+    "a": "Controlled values come from state.",
+    "explanation": "Controlled values come from state. Uncontrolled inputs maintain DOM state. Choose consistent ownership.",
+    "mistake": "Switching ownership during input lifetime.",
+    "rubric": [
+      "Controlled values come from state",
+      "Uncontrolled inputs maintain DOM state",
+      "Choose consistent ownership"
+    ],
+    "followups": [
+      "How would you reset a form?",
+      "Walk through a concrete example of forms and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-05",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Events",
+    "round": "Fundamentals",
+    "q": "Why pass a handler instead of calling it in JSX?",
+    "a": "Handlers run on interaction.",
+    "explanation": "Handlers run on interaction. Calling executes during render. Use closures to supply arguments.",
+    "mistake": "Triggering side effects during render.",
+    "rubric": [
+      "Handlers run on interaction",
+      "Calling executes during render",
+      "Use closures to supply arguments"
+    ],
+    "followups": [
+      "How would you pass a row identifier?",
+      "Walk through a concrete example of events and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-06",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Conditional UI",
+    "round": "Fundamentals",
+    "q": "Why can rendering count with logical AND show zero?",
+    "a": "Zero is a renderable value.",
+    "explanation": "Zero is a renderable value. Logical AND returns an operand. Use an explicit boolean condition.",
+    "mistake": "Assuming every falsy value disappears.",
+    "rubric": [
+      "Zero is a renderable value",
+      "Logical AND returns an operand",
+      "Use an explicit boolean condition"
+    ],
+    "followups": [
+      "How would you render an empty collection?",
+      "Walk through a concrete example of conditional ui and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-07",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Derived state",
+    "round": "Fundamentals",
+    "q": "When should a value be calculated during render?",
+    "a": "Derive values from existing inputs.",
+    "explanation": "Derive values from existing inputs. Avoid redundant synchronized state. Memoize only expensive calculations.",
+    "mistake": "Storing every filtered result in state.",
+    "rubric": [
+      "Derive values from existing inputs",
+      "Avoid redundant synchronized state",
+      "Memoize only expensive calculations"
+    ],
+    "followups": [
+      "What happens when the source list changes?",
+      "Walk through a concrete example of derived state and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-08",
+    "area": "React",
+    "level": 1,
+    "subtopic": "Hooks",
+    "round": "Fundamentals",
+    "q": "Why must hook calls keep a consistent order?",
+    "a": "React associates hooks by call position.",
+    "explanation": "React associates hooks by call position. Conditions can change that order. Put conditions inside supported hook logic.",
+    "mistake": "Calling hooks after a conditional return.",
+    "rubric": [
+      "React associates hooks by call position",
+      "Conditions can change that order",
+      "Put conditions inside supported hook logic"
+    ],
+    "followups": [
+      "How would you share stateful logic?",
+      "Walk through a concrete example of hooks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-09",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Effects",
+    "round": "Scenario",
+    "q": "When is an effect unnecessary?",
+    "a": "Render calculations need no effect.",
+    "explanation": "Render calculations need no effect. Interaction logic belongs in handlers. Effects synchronize external systems.",
+    "mistake": "Using effects to copy one state into another.",
+    "rubric": [
+      "Render calculations need no effect",
+      "Interaction logic belongs in handlers",
+      "Effects synchronize external systems"
+    ],
+    "followups": [
+      "Where should purchase submission occur?",
+      "Walk through a concrete example of effects and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-10",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Cleanup",
+    "round": "Scenario",
+    "q": "How should an effect manage an event subscription?",
+    "a": "Register the listener on setup.",
+    "explanation": "Register the listener on setup. Remove the same listener on cleanup. Include reactive dependencies.",
+    "mistake": "Adding listeners without removing them.",
+    "rubric": [
+      "Register the listener on setup",
+      "Remove the same listener on cleanup",
+      "Include reactive dependencies"
+    ],
+    "followups": [
+      "How would dependency changes affect the subscription?",
+      "Walk through a concrete example of cleanup and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-11",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Context",
+    "round": "Scenario",
+    "q": "When does context make state access easier?",
+    "a": "It avoids repeated prop forwarding.",
+    "explanation": "It avoids repeated prop forwarding. Consumers subscribe to provided values. Scope providers to relevant ownership.",
+    "mistake": "Putting all application state in one context.",
+    "rubric": [
+      "It avoids repeated prop forwarding",
+      "Consumers subscribe to provided values",
+      "Scope providers to relevant ownership"
+    ],
+    "followups": [
+      "How would you reduce unrelated consumer updates?",
+      "Walk through a concrete example of context and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-12",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Reducers",
+    "round": "Scenario",
+    "q": "When would a reducer clarify state updates?",
+    "a": "Related transitions share a model.",
+    "explanation": "Related transitions share a model. Actions describe user intent. Keep reduction pure and testable.",
+    "mistake": "Performing network calls inside a reducer.",
+    "rubric": [
+      "Related transitions share a model",
+      "Actions describe user intent",
+      "Keep reduction pure and testable"
+    ],
+    "followups": [
+      "How would you model an undo action?",
+      "Walk through a concrete example of reducers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-13",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Refs",
+    "round": "Scenario",
+    "q": "What should go in a ref rather than state?",
+    "a": "Refs retain mutable non-render data.",
+    "explanation": "Refs retain mutable non-render data. Ref changes do not trigger rendering. Use state for visible values.",
+    "mistake": "Expecting ref mutation to update the screen.",
+    "rubric": [
+      "Refs retain mutable non-render data",
+      "Ref changes do not trigger rendering",
+      "Use state for visible values"
+    ],
+    "followups": [
+      "How would you store a timer handle?",
+      "Walk through a concrete example of refs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-14",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Memoization",
+    "round": "Scenario",
+    "q": "Why can memoized components still render?",
+    "a": "Local state can change.",
+    "explanation": "Local state can change. Context can change. Props may have new references.",
+    "mistake": "Expecting memo to stop all renders.",
+    "rubric": [
+      "Local state can change",
+      "Context can change",
+      "Props may have new references"
+    ],
+    "followups": [
+      "How would you verify a useful optimization?",
+      "Walk through a concrete example of memoization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-15",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Routing",
+    "round": "Scenario",
+    "q": "How should a route handle missing or invalid parameters?",
+    "a": "Validate route inputs.",
+    "explanation": "Validate route inputs. Show a recoverable missing-data state. Enforce authorization on the server.",
+    "mistake": "Trusting route parameters as valid entities.",
+    "rubric": [
+      "Validate route inputs",
+      "Show a recoverable missing-data state",
+      "Enforce authorization on the server"
+    ],
+    "followups": [
+      "How would direct navigation differ from in-app navigation?",
+      "Walk through a concrete example of routing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-16",
+    "area": "React",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What should a component interaction test assert?",
+    "a": "Exercise visible user behavior.",
+    "explanation": "Exercise visible user behavior. Query accessible names and roles. Assert resulting UI or boundaries.",
+    "mistake": "Testing private hook implementation details.",
+    "rubric": [
+      "Exercise visible user behavior",
+      "Query accessible names and roles",
+      "Assert resulting UI or boundaries"
+    ],
+    "followups": [
+      "How would you test keyboard-only submission?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-17",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "Why should render logic tolerate being restarted?",
+    "a": "Rendering may be interrupted or repeated.",
+    "explanation": "Rendering may be interrupted or repeated. Pure calculations remain safe. Commit effects only through supported mechanisms.",
+    "mistake": "Mutating external state during render.",
+    "rubric": [
+      "Rendering may be interrupted or repeated",
+      "Pure calculations remain safe",
+      "Commit effects only through supported mechanisms"
+    ],
+    "followups": [
+      "Where should analytics for a click run?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-18",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Transitions",
+    "round": "Debugging",
+    "q": "When does a transition improve perceived responsiveness?",
+    "a": "Keep urgent input updates immediate.",
+    "explanation": "Keep urgent input updates immediate. Mark expensive non-urgent updates separately. Measure interaction before and after.",
+    "mistake": "Deferring the controlled input value itself.",
+    "rubric": [
+      "Keep urgent input updates immediate",
+      "Mark expensive non-urgent updates separately",
+      "Measure interaction before and after"
+    ],
+    "followups": [
+      "What would you show while results update?",
+      "Walk through a concrete example of transitions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-19",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Suspense",
+    "round": "Debugging",
+    "q": "What should a loading boundary communicate?",
+    "a": "Provide a meaningful temporary state.",
+    "explanation": "Provide a meaningful temporary state. Place boundaries around useful sections. Preserve accessible navigation while waiting.",
+    "mistake": "Blanking the entire page for small requests.",
+    "rubric": [
+      "Provide a meaningful temporary state",
+      "Place boundaries around useful sections",
+      "Preserve accessible navigation while waiting"
+    ],
+    "followups": [
+      "Where would you place a nested boundary?",
+      "Walk through a concrete example of suspense and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-20",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Hydration",
+    "round": "Debugging",
+    "q": "Why can server and client markup mismatch?",
+    "a": "Initial data or environment differs.",
+    "explanation": "Initial data or environment differs. Randomness can alter generated content. Keep initial rendering deterministic.",
+    "mistake": "Reading browser-only values during server rendering.",
+    "rubric": [
+      "Initial data or environment differs",
+      "Randomness can alter generated content",
+      "Keep initial rendering deterministic"
+    ],
+    "followups": [
+      "How would you render timezone-dependent content?",
+      "Walk through a concrete example of hydration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-21",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Error boundaries",
+    "round": "Debugging",
+    "q": "Which failures need handling outside error boundaries?",
+    "a": "Boundaries handle descendant rendering failures.",
+    "explanation": "Boundaries handle descendant rendering failures. Event and asynchronous failures need explicit handling. Provide recovery without losing useful context.",
+    "mistake": "Expecting boundaries to catch every rejection.",
+    "rubric": [
+      "Boundaries handle descendant rendering failures",
+      "Event and asynchronous failures need explicit handling",
+      "Provide recovery without losing useful context"
+    ],
+    "followups": [
+      "How would you report a failed save?",
+      "Walk through a concrete example of error boundaries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-22",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Server state",
+    "round": "Debugging",
+    "q": "Why distinguish remote cached data from local interaction state?",
+    "a": "Remote data has freshness and ownership rules.",
+    "explanation": "Remote data has freshness and ownership rules. Local state reflects current interaction. Define invalidation after mutations.",
+    "mistake": "Treating cached remote data as permanently authoritative.",
+    "rubric": [
+      "Remote data has freshness and ownership rules",
+      "Local state reflects current interaction",
+      "Define invalidation after mutations"
+    ],
+    "followups": [
+      "How would you resolve a background refresh conflict?",
+      "Walk through a concrete example of server state and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-23",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Optimistic updates",
+    "round": "Debugging",
+    "q": "How should an optimistic UI recover from rejection?",
+    "a": "Apply a reversible predicted change.",
+    "explanation": "Apply a reversible predicted change. Reconcile with authoritative response. Expose failure and recovery clearly.",
+    "mistake": "Leaving rejected changes visible indefinitely.",
+    "rubric": [
+      "Apply a reversible predicted change",
+      "Reconcile with authoritative response",
+      "Expose failure and recovery clearly"
+    ],
+    "followups": [
+      "How would you handle two overlapping mutations?",
+      "Walk through a concrete example of optimistic updates and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-24",
+    "area": "React",
+    "level": 3,
+    "subtopic": "Accessibility",
+    "round": "Debugging",
+    "q": "How would you implement an accessible modal?",
+    "a": "Move focus into the dialog.",
+    "explanation": "Move focus into the dialog. Keep focus within active content. Restore focus when closing.",
+    "mistake": "Only adding a dark backdrop.",
+    "rubric": [
+      "Move focus into the dialog",
+      "Keep focus within active content",
+      "Restore focus when closing"
+    ],
+    "followups": [
+      "How should Escape behave?",
+      "Walk through a concrete example of accessibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-25",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How should a growing React app separate responsibilities?",
+    "a": "Keep domain rules testable independently.",
+    "explanation": "Keep domain rules testable independently. Group features with clear boundaries. Centralize shared contracts carefully.",
+    "mistake": "Creating universal components before understanding use cases.",
+    "rubric": [
+      "Keep domain rules testable independently",
+      "Group features with clear boundaries",
+      "Centralize shared contracts carefully"
+    ],
+    "followups": [
+      "Which state belongs at a feature boundary?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-26",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Design systems",
+    "round": "Design",
+    "q": "How would you evolve shared components without breaking products?",
+    "a": "Publish explicit interaction contracts.",
+    "explanation": "Publish explicit interaction contracts. Test accessibility and visual states. Provide staged migration paths.",
+    "mistake": "Changing behavior through undocumented styling overrides.",
+    "rubric": [
+      "Publish explicit interaction contracts",
+      "Test accessibility and visual states",
+      "Provide staged migration paths"
+    ],
+    "followups": [
+      "How would you deprecate an old component?",
+      "Walk through a concrete example of design systems and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-27",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Security",
+    "round": "Design",
+    "q": "How should React applications handle intentionally rendered HTML?",
+    "a": "Treat supplied markup as untrusted.",
+    "explanation": "Treat supplied markup as untrusted. Sanitize with an appropriate policy. Review allowed links and embeds.",
+    "mistake": "Assuming framework escaping covers raw HTML APIs.",
+    "rubric": [
+      "Treat supplied markup as untrusted",
+      "Sanitize with an appropriate policy",
+      "Review allowed links and embeds"
+    ],
+    "followups": [
+      "How would you test a malicious payload?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-28",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Delivery",
+    "round": "Design",
+    "q": "How would you investigate a release that slows navigation?",
+    "a": "Compare production performance traces.",
+    "explanation": "Compare production performance traces. Inspect route chunks and data waterfalls. Rollback or isolate the dominant regression.",
+    "mistake": "Optimizing only development-mode rendering.",
+    "rubric": [
+      "Compare production performance traces",
+      "Inspect route chunks and data waterfalls",
+      "Rollback or isolate the dominant regression"
+    ],
+    "followups": [
+      "Which user metric validates recovery?",
+      "Walk through a concrete example of delivery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-29",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Microfrontends",
+    "round": "Design",
+    "q": "When are independently deployed frontend modules justified?",
+    "a": "Independent ownership can support deployment autonomy.",
+    "explanation": "Independent ownership can support deployment autonomy. Shared runtime contracts add complexity. Compare costs against a modular application.",
+    "mistake": "Choosing microfrontends solely because teams grew.",
+    "rubric": [
+      "Independent ownership can support deployment autonomy",
+      "Shared runtime contracts add complexity",
+      "Compare costs against a modular application"
+    ],
+    "followups": [
+      "Who owns shared authentication behavior?",
+      "Walk through a concrete example of microfrontends and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-30",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Observability",
+    "round": "Design",
+    "q": "What telemetry helps diagnose React UI failures?",
+    "a": "Record route and release context.",
+    "explanation": "Record route and release context. Capture errors with sensitive values redacted. Measure affected user journeys.",
+    "mistake": "Sending full component state to telemetry.",
+    "rubric": [
+      "Record route and release context",
+      "Capture errors with sensitive values redacted",
+      "Measure affected user journeys"
+    ],
+    "followups": [
+      "How would you correlate a UI failure with an API request?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-31",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Upgrade strategy",
+    "round": "Design",
+    "q": "How would you upgrade React across many applications?",
+    "a": "Check framework and dependency compatibility.",
+    "explanation": "Check framework and dependency compatibility. Run focused interaction and hydration tests. Roll out by risk and monitor results.",
+    "mistake": "Upgrading only the core package version.",
+    "rubric": [
+      "Check framework and dependency compatibility",
+      "Run focused interaction and hydration tests",
+      "Roll out by risk and monitor results"
+    ],
+    "followups": [
+      "How would you test third-party component compatibility?",
+      "Walk through a concrete example of upgrade strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "react-path-32",
+    "area": "React",
+    "level": 4,
+    "subtopic": "Product resilience",
+    "round": "Design",
+    "q": "How should a React product work under unstable connectivity?",
+    "a": "Preserve user drafts locally where appropriate.",
+    "explanation": "Preserve user drafts locally where appropriate. Show stale and pending states clearly. Retry safely within explicit limits.",
+    "mistake": "Disabling the whole interface after one failed request.",
+    "rubric": [
+      "Preserve user drafts locally where appropriate",
+      "Show stale and pending states clearly",
+      "Retry safely within explicit limits"
+    ],
+    "followups": [
+      "How would reconnect reconcile pending edits?",
+      "Walk through a concrete example of product resilience and explain one trade-off."
+    ],
+    "sourceIds": [
+      "react",
+      "react-effects",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

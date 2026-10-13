@@ -1,0 +1,213 @@
+[
+  {
+    "id": "tech-lead-review",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Collaboration",
+    "round": "Fundamentals",
+    "q": "What should a useful code review comment explain?",
+    "a": "State the observed issue, its consequence, and a concrete suggestion or question tied to the team's standards.",
+    "explanation": "Separate required fixes from preferences and review behavior, failure handling, and maintainability. Explain why a concern matters so the author can reason about a suitable solution.",
+    "mistake": "Requesting changes based only on personal style.",
+    "rubric": [
+      "Identify a concrete issue",
+      "Explain user or maintenance impact",
+      "Distinguish requirement and preference"
+    ],
+    "followups": [
+      "When should discussion move to a call?",
+      "How do you handle a disputed comment?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "tech-lead-handoff",
+    "area": "Tech Lead",
+    "level": 1,
+    "subtopic": "Team execution",
+    "round": "Debugging",
+    "q": "A task is called finished but another engineer cannot safely operate it. What was missed?",
+    "a": "Completion should include agreed behavior, relevant validation, operational ownership, and documentation needed by the next user.",
+    "explanation": "Use a clear definition of done appropriate to the work. Capture setup, known limitations, and failure recovery where necessary. Avoid paperwork that does not help maintenance or delivery.",
+    "mistake": "Equating merged code with a fully usable outcome.",
+    "rubric": [
+      "Define completion criteria",
+      "Provide required evidence",
+      "Assign operational ownership"
+    ],
+    "followups": [
+      "What belongs in a runbook?",
+      "How do you avoid excessive ceremony?"
+    ],
+    "sourceIds": [
+      "scrum-guide",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "tech-lead-mentoring",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Mentoring",
+    "round": "Leadership",
+    "q": "An engineer repeatedly struggles with a design task. How would you help without taking over?",
+    "a": "Identify the specific skill or context gap, agree on a smaller next step, and give feedback that enables independent progress.",
+    "explanation": "Ask them to explain assumptions and alternatives. Pair on one difficult boundary, then let them own the follow-through. Measure learning and confidence through behavior rather than vague praise.",
+    "mistake": "Finishing every difficult task for them.",
+    "rubric": [
+      "Diagnose the specific gap",
+      "Provide a bounded learning step",
+      "Preserve ownership and follow-up"
+    ],
+    "followups": [
+      "How do you handle a deadline?",
+      "What if the same problem recurs?"
+    ],
+    "sourceIds": [
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "tech-lead-disagreement",
+    "area": "Tech Lead",
+    "level": 2,
+    "subtopic": "Technical decisions",
+    "round": "Leadership",
+    "q": "Two senior engineers disagree about an approach. How do you resolve it?",
+    "a": "Agree on requirements and decision criteria, gather evidence for the uncertain claims, and record an accountable decision.",
+    "explanation": "Use a small experiment when it can answer the main uncertainty. Set a deadline and revisit conditions. Preserve dissenting concerns in the decision record without leaving ownership ambiguous.",
+    "mistake": "Settling the decision solely by rank or who argues longest.",
+    "rubric": [
+      "Align on shared criteria",
+      "Test the central uncertainty",
+      "Record owner and revisit triggers"
+    ],
+    "followups": [
+      "What if the decision is reversible?",
+      "How do you support the losing proposal's author?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "tech-lead-incident",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Operations",
+    "round": "Leadership",
+    "q": "Lead an incident where several services are failing and the cause is unclear.",
+    "a": "Establish coordination, stabilize user impact, assign investigation tasks, and keep a shared factual timeline.",
+    "explanation": "Separate incident command from detailed debugging when possible. Use explicit decision and communication ownership, then run a learning review with actionable follow-up. Avoid blaming individuals.",
+    "mistake": "Having every engineer change production independently.",
+    "rubric": [
+      "Coordinate roles and evidence",
+      "Prioritize stabilization",
+      "Assign corrective follow-up"
+    ],
+    "followups": [
+      "When do you roll back?",
+      "How do you handle an uncertain diagnosis?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "tech-lead-debt",
+    "area": "Tech Lead",
+    "level": 3,
+    "subtopic": "Technical planning",
+    "round": "System design",
+    "q": "How do you prioritize technical debt against requested product work?",
+    "a": "Describe the actual cost or risk, compare it with product value, and propose measurable bounded improvements.",
+    "explanation": "Tie debt to incidents, slow changes, maintenance cost, or strategic constraints. Include migration effort and opportunity cost. Fund small increments where they reduce repeated pain.",
+    "mistake": "Calling all old code debt without explaining its impact.",
+    "rubric": [
+      "Quantify recurring cost or risk",
+      "Compare options and effort",
+      "Define measurable improvement"
+    ],
+    "followups": [
+      "What debt can be accepted?",
+      "How do you prevent it returning?"
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "tech-lead-org-boundaries",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Architecture strategy",
+    "round": "Leadership",
+    "q": "Several teams block each other on shared services. What would you investigate before reorganizing?",
+    "a": "Map dependencies, ownership, decision delays, and actual workflows, then test whether clearer contracts or boundaries reduce coordination.",
+    "explanation": "An organization change alone does not resolve shared invariants or unclear APIs. Pilot the smallest useful boundary change and measure lead time, reliability, and operational accountability.",
+    "mistake": "Reorganizing teams without mapping the technical coupling.",
+    "rubric": [
+      "Map real dependency costs",
+      "Define accountable boundaries",
+      "Validate a pilot with outcomes"
+    ],
+    "followups": [
+      "When should a service be shared?",
+      "What if one workflow crosses many teams?"
+    ],
+    "sourceIds": [
+      "sre-book",
+      "scrum-guide"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "tech-lead-strategy",
+    "area": "Tech Lead",
+    "level": 4,
+    "subtopic": "Engineering strategy",
+    "round": "Leadership",
+    "q": "Present a one-year platform strategy to product and engineering leadership.",
+    "a": "Connect user and business outcomes to current constraints, prioritized investments, success measures, and sequencing.",
+    "explanation": "Make assumptions, staffing, risks, and trade-offs explicit. Include incremental milestones and stop/revisit conditions. A strategy is a choice about effort, not a list of technologies.",
+    "mistake": "Presenting a technology roadmap without measurable outcomes.",
+    "rubric": [
+      "Link investments to outcomes",
+      "State capacity and trade-offs",
+      "Define milestones and review triggers"
+    ],
+    "followups": [
+      "How do you handle budget cuts?",
+      "What would cause you to stop an initiative?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

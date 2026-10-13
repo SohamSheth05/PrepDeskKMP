@@ -1,0 +1,212 @@
+[
+  {
+    "id": "devops-images",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Containers",
+    "round": "Fundamentals",
+    "q": "How does a container image differ from a running container?",
+    "a": "An image is a filesystem and configuration template; a container is a running instance with its own writable layer and processes.",
+    "explanation": "Persist important data in managed volumes or external stores. Share reproducible images across environments and avoid baking secrets into layers. Containers use the host kernel rather than a complete guest kernel.",
+    "mistake": "Expecting container-local files to survive replacement.",
+    "rubric": [
+      "Distinguish image and instance",
+      "Choose persistent storage",
+      "Explain isolation limits"
+    ],
+    "followups": [
+      "How do layers affect builds?",
+      "Where should configuration live?"
+    ],
+    "sourceIds": [
+      "docker-build"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-probes",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Kubernetes",
+    "round": "Fundamentals",
+    "q": "Explain readiness, liveness, and startup probes using an API deployment.",
+    "a": "Readiness controls traffic eligibility, liveness may trigger a restart, and startup delays the other probes during initialization.",
+    "explanation": "A slow database should not automatically restart every API pod. Choose checks around service behavior and configure thresholds for expected startup and transient failures.",
+    "mistake": "Using the same dependency-heavy check for all probes.",
+    "rubric": [
+      "Explain traffic versus restart behavior",
+      "Handle slow startup",
+      "Avoid restart cascades"
+    ],
+    "followups": [
+      "What happens when readiness fails?",
+      "Which failure warrants a restart?"
+    ],
+    "sourceIds": [
+      "kubernetes"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-crashloop",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Kubernetes",
+    "round": "Debugging",
+    "q": "A pod enters CrashLoopBackOff after deployment. What is your investigation sequence?",
+    "a": "Inspect events, container exit details, previous logs, configuration, resource limits, and probe failures.",
+    "explanation": "Compare the last healthy revision and reproduce with the same configuration. Backoff is a symptom of repeated failure, not a root cause. Validate the fix with restarts and representative traffic.",
+    "mistake": "Deleting the pod repeatedly without collecting evidence.",
+    "rubric": [
+      "Inspect exit and event evidence",
+      "Compare deployment changes",
+      "Verify the actual failure mechanism"
+    ],
+    "followups": [
+      "How would OOMKilled change your approach?",
+      "What if only one node is affected?"
+    ],
+    "sourceIds": [
+      "kubernetes"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-state",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Infrastructure as code",
+    "round": "Debugging",
+    "q": "Two Terraform operators apply changes simultaneously. What safeguards are needed?",
+    "a": "Use shared protected state with a backend that supports locking, and serialize production applies through an audited workflow.",
+    "explanation": "State may contain sensitive data, so restrict access, encrypt storage, and retain recovery versions. Backend locking behavior varies. A reviewed plan must correspond to the state used for the apply.",
+    "mistake": "Assuming every remote backend automatically provides locking.",
+    "rubric": [
+      "Explain state purpose",
+      "Verify backend locking",
+      "Protect state and change history"
+    ],
+    "followups": [
+      "How do you recover from partial apply?",
+      "When is force-unlock appropriate?"
+    ],
+    "sourceIds": [
+      "terraform-state"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-rollout",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Delivery",
+    "round": "System design",
+    "q": "Design a deployment process that catches regressions before most users see them.",
+    "a": "Use immutable builds, automated checks, a small canary, objective health gates, and a tested rollback.",
+    "explanation": "Compare canary and baseline by latency, errors, and business outcomes. Ensure database changes work with both versions. Rollout pauses need an owner and an actionable failure signal.",
+    "mistake": "Rolling back application code while leaving an incompatible schema.",
+    "rubric": [
+      "Define release health gates",
+      "Maintain data compatibility",
+      "Test rollback and ownership"
+    ],
+    "followups": [
+      "When would blue-green help?",
+      "How do you handle low-traffic services?"
+    ],
+    "sourceIds": [
+      "docker-build",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-overload",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Reliability",
+    "round": "Debugging",
+    "q": "Autoscaling adds pods but latency keeps increasing. Why might scaling fail?",
+    "a": "The bottleneck may be a shared database, queue, quota, or overloaded downstream. More callers can worsen contention.",
+    "explanation": "Inspect saturation and end-to-end traces. Bound retries and concurrency, reject excess load, and protect critical requests. Scale the constrained resource only after checking correctness and cost.",
+    "mistake": "Treating CPU-based pod scaling as a universal fix.",
+    "rubric": [
+      "Identify the constrained dependency",
+      "Bound amplification",
+      "Verify recovery under load"
+    ],
+    "followups": [
+      "How do you distinguish a retry storm?",
+      "Which requests should be shed first?"
+    ],
+    "sourceIds": [
+      "sre-overload",
+      "kubernetes"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-slo",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Reliability strategy",
+    "round": "Leadership",
+    "q": "Teams promise 100% uptime but deploy slowly. How would you introduce SLOs?",
+    "a": "Define user-facing reliability measures and attainable targets, then use error budgets to balance change and stability.",
+    "explanation": "Choose meaningful windows and exclusions openly. Review incidents and budget exhaustion with service owners. Targets should reflect user impact and cost rather than arbitrary infrastructure availability.",
+    "mistake": "Measuring only server uptime while users cannot complete tasks.",
+    "rubric": [
+      "Choose user-focused SLIs",
+      "Define error-budget decisions",
+      "Align ownership and cost"
+    ],
+    "followups": [
+      "What changes when a budget is exhausted?",
+      "How do you handle critical dependencies?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-recovery",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Cloud architecture",
+    "round": "System design",
+    "q": "How would you prove a multi-region recovery plan actually meets business needs?",
+    "a": "Set recovery time and data-loss objectives, document failover dependencies, and run scheduled recovery drills.",
+    "explanation": "Restore backups, validate replicated data, and exercise traffic routing, credentials, capacity, and failback. Account for correlated failures and cost. A replicated service is not automatically a recoverable service.",
+    "mistake": "Claiming disaster recovery from an untested backup policy.",
+    "rubric": [
+      "Define RTO and RPO",
+      "Exercise end-to-end recovery",
+      "Validate data and failback"
+    ],
+    "followups": [
+      "Which dependencies remain single-region?",
+      "How do you test safely?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

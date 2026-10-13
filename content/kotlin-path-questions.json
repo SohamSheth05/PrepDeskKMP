@@ -1,0 +1,866 @@
+[
+  {
+    "id": "kotlin-path-01",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Null safety",
+    "round": "Fundamentals",
+    "q": "How do safe calls and the Elvis operator work together?",
+    "a": "Safe calls propagate null.",
+    "explanation": "Safe calls propagate null. Elvis supplies a fallback. Keep absence distinct from invalid data.",
+    "mistake": "Using non-null assertions everywhere.",
+    "rubric": [
+      "Safe calls propagate null",
+      "Elvis supplies a fallback",
+      "Keep absence distinct from invalid data"
+    ],
+    "followups": [
+      "When should a missing value become an error?",
+      "Walk through a concrete example of null safety and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-02",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Equality",
+    "round": "Fundamentals",
+    "q": "When do Kotlin equality and identity checks differ?",
+    "a": "Equality calls value comparison.",
+    "explanation": "Equality calls value comparison. Identity checks the same object. Arrays need content-aware comparison.",
+    "mistake": "Assuming equal values share identity.",
+    "rubric": [
+      "Equality calls value comparison",
+      "Identity checks the same object",
+      "Arrays need content-aware comparison"
+    ],
+    "followups": [
+      "How does a data class change equality?",
+      "Walk through a concrete example of equality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-03",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Fundamentals",
+    "q": "Does a List type guarantee immutable contents?",
+    "a": "List exposes read-only operations.",
+    "explanation": "List exposes read-only operations. Another reference may mutate backing storage. Copy when ownership requires a snapshot.",
+    "mistake": "Equating read-only with deeply immutable.",
+    "rubric": [
+      "List exposes read-only operations",
+      "Another reference may mutate backing storage",
+      "Copy when ownership requires a snapshot"
+    ],
+    "followups": [
+      "What happens when a list element is mutable?",
+      "Walk through a concrete example of collections and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-04",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Classes",
+    "round": "Fundamentals",
+    "q": "When would you choose an object over a class?",
+    "a": "Objects provide singleton instances.",
+    "explanation": "Objects provide singleton instances. Classes support multiple independent instances. Avoid singleton mutable state without ownership.",
+    "mistake": "Using a singleton for per-user state.",
+    "rubric": [
+      "Objects provide singleton instances",
+      "Classes support multiple independent instances",
+      "Avoid singleton mutable state without ownership"
+    ],
+    "followups": [
+      "How would you inject a clock for tests?",
+      "Walk through a concrete example of classes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-05",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Extensions",
+    "round": "Fundamentals",
+    "q": "Can an extension override a member function?",
+    "a": "Members take precedence.",
+    "explanation": "Members take precedence. Extensions resolve from the static receiver type. Extensions cannot access private members.",
+    "mistake": "Expecting virtual dispatch for extensions.",
+    "rubric": [
+      "Members take precedence",
+      "Extensions resolve from the static receiver type",
+      "Extensions cannot access private members"
+    ],
+    "followups": [
+      "What happens for a nullable extension receiver?",
+      "Walk through a concrete example of extensions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-06",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Lambdas",
+    "round": "Fundamentals",
+    "q": "What is a higher-order function useful for?",
+    "a": "It accepts or returns functions.",
+    "explanation": "It accepts or returns functions. Separate an algorithm from its policy. Keep captured state and lifetime clear.",
+    "mistake": "Hiding side effects inside reusable callbacks.",
+    "rubric": [
+      "It accepts or returns functions",
+      "Separate an algorithm from its policy",
+      "Keep captured state and lifetime clear"
+    ],
+    "followups": [
+      "How would you supply a sorting policy?",
+      "Walk through a concrete example of lambdas and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-07",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Sealed types",
+    "round": "Fundamentals",
+    "q": "How do sealed hierarchies help model request states?",
+    "a": "Enumerate a controlled set of variants.",
+    "explanation": "Enumerate a controlled set of variants. Represent variant-specific data. Use exhaustive when expressions.",
+    "mistake": "Representing every state with nullable fields.",
+    "rubric": [
+      "Enumerate a controlled set of variants",
+      "Represent variant-specific data",
+      "Use exhaustive when expressions"
+    ],
+    "followups": [
+      "How would you prevent loading and success together?",
+      "Walk through a concrete example of sealed types and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-08",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Destructuring",
+    "round": "Fundamentals",
+    "q": "What does destructuring a data class actually call?",
+    "a": "It invokes component functions.",
+    "explanation": "It invokes component functions. Component order follows constructor properties. Prefer names where position obscures meaning.",
+    "mistake": "Assuming destructuring deep-copies values.",
+    "rubric": [
+      "It invokes component functions",
+      "Component order follows constructor properties",
+      "Prefer names where position obscures meaning"
+    ],
+    "followups": [
+      "What happens when constructor property order changes?",
+      "Walk through a concrete example of destructuring and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-09",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Sequences",
+    "round": "Scenario",
+    "q": "When might a Sequence be worse than collection operations?",
+    "a": "Lazy evaluation avoids intermediate collections.",
+    "explanation": "Lazy evaluation avoids intermediate collections. Iteration adds abstraction overhead. Benchmark representative pipeline sizes.",
+    "mistake": "Assuming laziness is always faster.",
+    "rubric": [
+      "Lazy evaluation avoids intermediate collections",
+      "Iteration adds abstraction overhead",
+      "Benchmark representative pipeline sizes"
+    ],
+    "followups": [
+      "Which terminal operation triggers evaluation?",
+      "Walk through a concrete example of sequences and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-10",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Scope functions",
+    "round": "Scenario",
+    "q": "How would you choose among let apply and also?",
+    "a": "Choose by receiver and return value.",
+    "explanation": "Choose by receiver and return value. Use apply for object configuration. Avoid deeply nested implicit receivers.",
+    "mistake": "Choosing scope functions only to shorten code.",
+    "rubric": [
+      "Choose by receiver and return value",
+      "Use apply for object configuration",
+      "Avoid deeply nested implicit receivers"
+    ],
+    "followups": [
+      "How can nested receivers cause a bug?",
+      "Walk through a concrete example of scope functions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-11",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Generics",
+    "round": "Scenario",
+    "q": "What problem do in and out solve in generic APIs?",
+    "a": "Variance controls safe subtype substitution.",
+    "explanation": "Variance controls safe subtype substitution. Producers can expose out types. Consumers can accept in types.",
+    "mistake": "Using variance on incompatible operations.",
+    "rubric": [
+      "Variance controls safe subtype substitution",
+      "Producers can expose out types",
+      "Consumers can accept in types"
+    ],
+    "followups": [
+      "Why is a mutable container harder to vary?",
+      "Walk through a concrete example of generics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-12",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Coroutines",
+    "round": "Scenario",
+    "q": "Does a suspend function automatically use a background thread?",
+    "a": "Suspension can release the current thread.",
+    "explanation": "Suspension can release the current thread. Dispatcher determines execution context. Move blocking work explicitly.",
+    "mistake": "Calling blocking I/O safely just because suspend appears.",
+    "rubric": [
+      "Suspension can release the current thread",
+      "Dispatcher determines execution context",
+      "Move blocking work explicitly"
+    ],
+    "followups": [
+      "How would you isolate a blocking library call?",
+      "Walk through a concrete example of coroutines and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-13",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Flow",
+    "round": "Scenario",
+    "q": "How does a cold Flow differ from a hot stream?",
+    "a": "Cold collection starts upstream work.",
+    "explanation": "Cold collection starts upstream work. Hot streams share an active producer. Choose sharing lifetime deliberately.",
+    "mistake": "Assuming multiple collectors share cold work.",
+    "rubric": [
+      "Cold collection starts upstream work",
+      "Hot streams share an active producer",
+      "Choose sharing lifetime deliberately"
+    ],
+    "followups": [
+      "When would shareIn be appropriate?",
+      "Walk through a concrete example of flow and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-14",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Exceptions",
+    "round": "Scenario",
+    "q": "Why should cancellation usually be rethrown?",
+    "a": "Cancellation controls structured coroutine lifetime.",
+    "explanation": "Cancellation controls structured coroutine lifetime. Broad catches can swallow it. Handle expected failures without breaking cancellation.",
+    "mistake": "Treating cancellation as an ordinary retryable failure.",
+    "rubric": [
+      "Cancellation controls structured coroutine lifetime",
+      "Broad catches can swallow it",
+      "Handle expected failures without breaking cancellation"
+    ],
+    "followups": [
+      "How would you write a cancellation-safe catch block?",
+      "Walk through a concrete example of exceptions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-15",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Channels",
+    "round": "Scenario",
+    "q": "When would you use a Channel instead of StateFlow?",
+    "a": "Channels transfer events between participants.",
+    "explanation": "Channels transfer events between participants. StateFlow represents the latest state. Decide buffering and receiver ownership.",
+    "mistake": "Expecting StateFlow to preserve every event.",
+    "rubric": [
+      "Channels transfer events between participants",
+      "StateFlow represents the latest state",
+      "Decide buffering and receiver ownership"
+    ],
+    "followups": [
+      "What should happen when the buffer fills?",
+      "Walk through a concrete example of channels and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-16",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "How do you test coroutine delays without waiting in real time?",
+    "a": "Use a test scheduler.",
+    "explanation": "Use a test scheduler. Inject dispatchers for controlled execution. Advance virtual time and assert outcomes.",
+    "mistake": "Using real sleeps to synchronize tests.",
+    "rubric": [
+      "Use a test scheduler",
+      "Inject dispatchers for controlled execution",
+      "Advance virtual time and assert outcomes"
+    ],
+    "followups": [
+      "How would you test a timeout boundary?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-17",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Inline functions",
+    "round": "Debugging",
+    "q": "What trade-off comes with inlining a large higher-order function?",
+    "a": "Inlining can remove callback overhead.",
+    "explanation": "Inlining can remove callback overhead. It can increase generated code size. Measure hot paths before changing design.",
+    "mistake": "Assuming inline guarantees faster execution.",
+    "rubric": [
+      "Inlining can remove callback overhead",
+      "It can increase generated code size",
+      "Measure hot paths before changing design"
+    ],
+    "followups": [
+      "When is noinline required?",
+      "Walk through a concrete example of inline functions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-18",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Reified types",
+    "round": "Debugging",
+    "q": "What can a reified type parameter do that an ordinary one cannot?",
+    "a": "Inline reification supports runtime type checks.",
+    "explanation": "Inline reification supports runtime type checks. It avoids passing some class tokens. Nested generic arguments still need care.",
+    "mistake": "Assuming full generic structure is always preserved.",
+    "rubric": [
+      "Inline reification supports runtime type checks",
+      "It avoids passing some class tokens",
+      "Nested generic arguments still need care"
+    ],
+    "followups": [
+      "Can a type check prove every list element type?",
+      "Walk through a concrete example of reified types and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-19",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Delegation",
+    "round": "Debugging",
+    "q": "How can property delegation hide expensive work?",
+    "a": "Access invokes delegated behavior.",
+    "explanation": "Access invokes delegated behavior. Lazy initialization defers computation. Document synchronization and side effects.",
+    "mistake": "Assuming every property read is trivial.",
+    "rubric": [
+      "Access invokes delegated behavior",
+      "Lazy initialization defers computation",
+      "Document synchronization and side effects"
+    ],
+    "followups": [
+      "Which lazy mode fits single-threaded ownership?",
+      "Walk through a concrete example of delegation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-20",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Multiplatform",
+    "round": "Debugging",
+    "q": "Where should platform-specific APIs live in shared Kotlin code?",
+    "a": "Keep portable domain logic common.",
+    "explanation": "Keep portable domain logic common. Use interfaces or expect-actual boundaries. Test platform implementations separately.",
+    "mistake": "Leaking native types into shared domain APIs.",
+    "rubric": [
+      "Keep portable domain logic common",
+      "Use interfaces or expect-actual boundaries",
+      "Test platform implementations separately"
+    ],
+    "followups": [
+      "How would you abstract secure storage?",
+      "Walk through a concrete example of multiplatform and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-21",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "State ownership",
+    "round": "Debugging",
+    "q": "How would you prevent races in a shared mutable counter?",
+    "a": "Choose confinement locking or atomic updates.",
+    "explanation": "Choose confinement locking or atomic updates. Keep compound operations indivisible. Test concurrent interleavings.",
+    "mistake": "Assuming volatile makes increments atomic.",
+    "rubric": [
+      "Choose confinement locking or atomic updates",
+      "Keep compound operations indivisible",
+      "Test concurrent interleavings"
+    ],
+    "followups": [
+      "When would a Mutex be preferable?",
+      "Walk through a concrete example of state ownership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-22",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "API design",
+    "round": "Debugging",
+    "q": "Why can default parameters complicate binary compatibility?",
+    "a": "Call sites encode default invocation details.",
+    "explanation": "Call sites encode default invocation details. Changing signatures can break compiled clients. Review compatibility before publishing libraries.",
+    "mistake": "Checking source compatibility alone.",
+    "rubric": [
+      "Call sites encode default invocation details",
+      "Changing signatures can break compiled clients",
+      "Review compatibility before publishing libraries"
+    ],
+    "followups": [
+      "How would you evolve a public constructor?",
+      "Walk through a concrete example of api design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-23",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Resources",
+    "round": "Debugging",
+    "q": "How should a suspend operation clean up a held resource?",
+    "a": "Release resources in finally.",
+    "explanation": "Release resources in finally. Preserve cancellation propagation. Use bounded non-cancellable cleanup only when required.",
+    "mistake": "Launching detached cleanup with no owner.",
+    "rubric": [
+      "Release resources in finally",
+      "Preserve cancellation propagation",
+      "Use bounded non-cancellable cleanup only when required"
+    ],
+    "followups": [
+      "What if cancellation happens during cleanup?",
+      "Walk through a concrete example of resources and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-24",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Serialization",
+    "round": "Debugging",
+    "q": "How would you evolve a serialized Kotlin model safely?",
+    "a": "Use stable field names.",
+    "explanation": "Use stable field names. Provide compatible defaults for new fields. Test old payloads and unknown values.",
+    "mistake": "Renaming persisted properties without migration.",
+    "rubric": [
+      "Use stable field names",
+      "Provide compatible defaults for new fields",
+      "Test old payloads and unknown values"
+    ],
+    "followups": [
+      "How should an unknown enum value be handled?",
+      "Walk through a concrete example of serialization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-25",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Performance",
+    "round": "Design",
+    "q": "How would you investigate allocation pressure in Kotlin code?",
+    "a": "Profile representative workloads.",
+    "explanation": "Profile representative workloads. Inspect boxing and temporary collections. Change the measured allocation source.",
+    "mistake": "Optimizing every lambda without profiling.",
+    "rubric": [
+      "Profile representative workloads",
+      "Inspect boxing and temporary collections",
+      "Change the measured allocation source"
+    ],
+    "followups": [
+      "What would distinguish allocation from retained memory?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-26",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Interop",
+    "round": "Design",
+    "q": "What risks arise from Java platform types?",
+    "a": "Nullability may be uncertain at boundaries.",
+    "explanation": "Nullability may be uncertain at boundaries. Validate values entering Kotlin code. Add annotations or explicit adapters.",
+    "mistake": "Assuming Java return values are non-null.",
+    "rubric": [
+      "Nullability may be uncertain at boundaries",
+      "Validate values entering Kotlin code",
+      "Add annotations or explicit adapters"
+    ],
+    "followups": [
+      "How would you wrap a nullable Java API?",
+      "Walk through a concrete example of interop and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-27",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Library design",
+    "round": "Design",
+    "q": "How should a public coroutine API express ownership?",
+    "a": "Document who creates and cancels scopes.",
+    "explanation": "Document who creates and cancels scopes. Expose suspend work where ownership is external. Avoid hidden global jobs.",
+    "mistake": "Starting GlobalScope work inside a utility.",
+    "rubric": [
+      "Document who creates and cancels scopes",
+      "Expose suspend work where ownership is external",
+      "Avoid hidden global jobs"
+    ],
+    "followups": [
+      "How would shutdown wait for ongoing tasks?",
+      "Walk through a concrete example of library design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-28",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Modularity",
+    "round": "Design",
+    "q": "How would you separate a growing Kotlin codebase into modules?",
+    "a": "Split by responsibilities and dependencies.",
+    "explanation": "Split by responsibilities and dependencies. Keep domain contracts stable. Measure build time and coupling.",
+    "mistake": "Creating a module for every class.",
+    "rubric": [
+      "Split by responsibilities and dependencies",
+      "Keep domain contracts stable",
+      "Measure build time and coupling"
+    ],
+    "followups": [
+      "How would you detect dependency cycles?",
+      "Walk through a concrete example of modularity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-29",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Migration",
+    "round": "Design",
+    "q": "How would you introduce a new Kotlin compiler version safely?",
+    "a": "Check library and plugin compatibility.",
+    "explanation": "Check library and plugin compatibility. Compile representative targets in CI. Roll out after regression verification.",
+    "mistake": "Upgrading all tooling without a compatibility check.",
+    "rubric": [
+      "Check library and plugin compatibility",
+      "Compile representative targets in CI",
+      "Roll out after regression verification"
+    ],
+    "followups": [
+      "Which checks matter for native targets?",
+      "Walk through a concrete example of migration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-30",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Reliability",
+    "round": "Design",
+    "q": "How would you design retry behavior in a coroutine client?",
+    "a": "Retry transient failures within a deadline.",
+    "explanation": "Retry transient failures within a deadline. Use bounded backoff with jitter. Respect cancellation and idempotency.",
+    "mistake": "Retrying every exception forever.",
+    "rubric": [
+      "Retry transient failures within a deadline",
+      "Use bounded backoff with jitter",
+      "Respect cancellation and idempotency"
+    ],
+    "followups": [
+      "How should retries interact with rate limits?",
+      "Walk through a concrete example of reliability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-31",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Observability",
+    "round": "Design",
+    "q": "What context should follow a coroutine request across dispatchers?",
+    "a": "Propagate request identity explicitly.",
+    "explanation": "Propagate request identity explicitly. Preserve trace and logging context. Avoid sharing mutable request metadata.",
+    "mistake": "Using thread-local state without coroutine integration.",
+    "rubric": [
+      "Propagate request identity explicitly",
+      "Preserve trace and logging context",
+      "Avoid sharing mutable request metadata"
+    ],
+    "followups": [
+      "How would you test context after suspension?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-path-32",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How would you decide which logic belongs in a shared KMP module?",
+    "a": "Share stable business rules and contracts.",
+    "explanation": "Share stable business rules and contracts. Keep platform experience constraints explicit. Compare maintenance costs and native needs.",
+    "mistake": "Sharing UI solely to maximize code reuse.",
+    "rubric": [
+      "Share stable business rules and contracts",
+      "Keep platform experience constraints explicit",
+      "Compare maintenance costs and native needs"
+    ],
+    "followups": [
+      "Which feature would you intentionally keep platform-specific?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

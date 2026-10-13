@@ -1,0 +1,263 @@
+[
+  {
+    "id": "android-balanced-path-01",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "App components",
+    "round": "Fundamentals",
+    "q": "When should work belong in an Activity rather than a Service?",
+    "a": "Activities own interactive screen behavior.",
+    "explanation": "Activities own interactive screen behavior. Services provide explicit non-screen component roles. Background execution still follows platform limits.",
+    "mistake": "Using a Service as an unrestricted permanent worker.",
+    "rubric": [
+      "Activities own interactive screen behavior",
+      "Services provide explicit non-screen component roles",
+      "Background execution still follows platform limits"
+    ],
+    "followups": [
+      "When would scheduled work be a better fit?",
+      "Walk through a concrete example of app components and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-02",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Manifest",
+    "round": "Fundamentals",
+    "q": "What does declaring an exported component imply?",
+    "a": "Other applications may reach it under applicable rules.",
+    "explanation": "Other applications may reach it under applicable rules. Validate incoming requests and permissions. Export only intended external entry points.",
+    "mistake": "Exporting internal components unnecessarily.",
+    "rubric": [
+      "Other applications may reach it under applicable rules",
+      "Validate incoming requests and permissions",
+      "Export only intended external entry points"
+    ],
+    "followups": [
+      "How would you test hostile intent input?",
+      "Walk through a concrete example of manifest and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-03",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Startup",
+    "round": "Debugging",
+    "q": "How would you profile slow Android cold startup?",
+    "a": "Measure a release-like build on representative hardware.",
+    "explanation": "Measure a release-like build on representative hardware. Separate initialization storage and rendering costs. Defer nonessential work after useful first content.",
+    "mistake": "Measuring only a warm debug launch.",
+    "rubric": [
+      "Measure a release-like build on representative hardware",
+      "Separate initialization storage and rendering costs",
+      "Defer nonessential work after useful first content"
+    ],
+    "followups": [
+      "Which initialization can be lazy?",
+      "Walk through a concrete example of startup and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-04",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Dependency injection",
+    "round": "Debugging",
+    "q": "How would you avoid an injected object outliving its owner?",
+    "a": "Match dependency scope to lifecycle ownership.",
+    "explanation": "Match dependency scope to lifecycle ownership. Avoid storing short-lived UI references in long-lived objects. Test cleanup on screen exit.",
+    "mistake": "Injecting an Activity into a global singleton.",
+    "rubric": [
+      "Match dependency scope to lifecycle ownership",
+      "Avoid storing short-lived UI references in long-lived objects",
+      "Test cleanup on screen exit"
+    ],
+    "followups": [
+      "How should a repository access application-level services?",
+      "Walk through a concrete example of dependency injection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-05",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "How would Room writes preserve a multi-table invariant?",
+    "a": "Use a database transaction for related writes.",
+    "explanation": "Use a database transaction for related writes. Validate all required changes before commit. Test failure rollback and concurrent behavior.",
+    "mistake": "Executing related writes independently.",
+    "rubric": [
+      "Use a database transaction for related writes",
+      "Validate all required changes before commit",
+      "Test failure rollback and concurrent behavior"
+    ],
+    "followups": [
+      "How would cancellation affect a transaction?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-06",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Compatibility",
+    "round": "Design",
+    "q": "How would you support old app versions during API changes?",
+    "a": "Maintain supported backward-compatible contracts.",
+    "explanation": "Maintain supported backward-compatible contracts. Roll out capabilities and schema changes in stages. Monitor version-specific failures.",
+    "mistake": "Removing fields before installed clients migrate.",
+    "rubric": [
+      "Maintain supported backward-compatible contracts",
+      "Roll out capabilities and schema changes in stages",
+      "Monitor version-specific failures"
+    ],
+    "followups": [
+      "How would capability negotiation help?",
+      "Walk through a concrete example of compatibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-07",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Supply chain",
+    "round": "Design",
+    "q": "How would you govern Android SDK dependencies?",
+    "a": "Review security privacy license and maintenance.",
+    "explanation": "Review security privacy license and maintenance. Measure startup size and native compatibility. Track versions actually included in release artifacts.",
+    "mistake": "Adding SDKs without auditing transmitted data.",
+    "rubric": [
+      "Review security privacy license and maintenance",
+      "Measure startup size and native compatibility",
+      "Track versions actually included in release artifacts"
+    ],
+    "followups": [
+      "How would you respond to a vulnerable transitive SDK?",
+      "Walk through a concrete example of supply chain and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-08",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Architecture strategy",
+    "round": "Design",
+    "q": "How would you decide between single and multi-module Android architecture?",
+    "a": "Choose boundaries from capabilities and ownership.",
+    "explanation": "Choose boundaries from capabilities and ownership. Compare build isolation and dependency costs. Measure benefits before broad restructuring.",
+    "mistake": "Creating modules solely to maximize module count.",
+    "rubric": [
+      "Choose boundaries from capabilities and ownership",
+      "Compare build isolation and dependency costs",
+      "Measure benefits before broad restructuring"
+    ],
+    "followups": [
+      "How would you prevent feature dependency cycles?",
+      "Walk through a concrete example of architecture strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-balanced-path-09",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Reliability goals",
+    "round": "Design",
+    "q": "Which quality signals should govern an Android release?",
+    "a": "Track crashes startup and key workflow success.",
+    "explanation": "Track crashes startup and key workflow success. Include representative device and OS cohorts. Define rollout pause and recovery criteria.",
+    "mistake": "Judging quality only from successful installation.",
+    "rubric": [
+      "Track crashes startup and key workflow success",
+      "Include representative device and OS cohorts",
+      "Define rollout pause and recovery criteria"
+    ],
+    "followups": [
+      "Which regression should stop a staged rollout?",
+      "Walk through a concrete example of reliability goals and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-performance",
+      "android-security",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

@@ -1,0 +1,930 @@
+[
+  {
+    "id": "database-path-01",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Keys",
+    "round": "Fundamentals",
+    "q": "How do primary and foreign keys differ?",
+    "a": "Primary keys identify rows.",
+    "explanation": "Primary keys identify rows. Foreign keys constrain relationships. Choose deletion behavior explicitly.",
+    "mistake": "Assuming foreign keys automatically define business deletion policy.",
+    "rubric": [
+      "Primary keys identify rows",
+      "Foreign keys constrain relationships",
+      "Choose deletion behavior explicitly"
+    ],
+    "followups": [
+      "When would a composite key help?",
+      "Walk through a concrete example of keys and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-02",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Nulls",
+    "round": "Fundamentals",
+    "q": "Why does comparing a column to NULL with equality fail?",
+    "a": "Null represents unknown or absent information.",
+    "explanation": "Null represents unknown or absent information. Use IS NULL for absence checks. SQL predicates can evaluate to unknown.",
+    "mistake": "Treating null as an ordinary empty value.",
+    "rubric": [
+      "Null represents unknown or absent information",
+      "Use IS NULL for absence checks",
+      "SQL predicates can evaluate to unknown"
+    ],
+    "followups": [
+      "How does null affect COUNT of a column?",
+      "Walk through a concrete example of nulls and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-03",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Joins",
+    "round": "Fundamentals",
+    "q": "How do inner and left joins differ?",
+    "a": "Inner joins require matching rows.",
+    "explanation": "Inner joins require matching rows. Left joins preserve left-side rows. Predicates can change preservation behavior.",
+    "mistake": "Filtering right-side columns carelessly after a left join.",
+    "rubric": [
+      "Inner joins require matching rows",
+      "Left joins preserve left-side rows",
+      "Predicates can change preservation behavior"
+    ],
+    "followups": [
+      "How would you retain unmatched customers?",
+      "Walk through a concrete example of joins and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-04",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Aggregation",
+    "round": "Fundamentals",
+    "q": "How do WHERE and HAVING differ?",
+    "a": "Where filters rows before grouping.",
+    "explanation": "Where filters rows before grouping. Having filters grouped results. Choose predicates at the correct stage.",
+    "mistake": "Using aggregate conditions as ordinary row predicates.",
+    "rubric": [
+      "Where filters rows before grouping",
+      "Having filters grouped results",
+      "Choose predicates at the correct stage"
+    ],
+    "followups": [
+      "How would you find customers with multiple orders?",
+      "Walk through a concrete example of aggregation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-05",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Normalization",
+    "round": "Fundamentals",
+    "q": "Why separate repeated business entities into related tables?",
+    "a": "It reduces update anomalies.",
+    "explanation": "It reduces update anomalies. Relationships preserve consistent identity. Denormalize only with a clear trade-off.",
+    "mistake": "Duplicating mutable customer data everywhere.",
+    "rubric": [
+      "It reduces update anomalies",
+      "Relationships preserve consistent identity",
+      "Denormalize only with a clear trade-off"
+    ],
+    "followups": [
+      "When would a snapshot be intentional?",
+      "Walk through a concrete example of normalization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-06",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Indexes",
+    "round": "Fundamentals",
+    "q": "Why does an index speed some reads but slow writes?",
+    "a": "It supports selected access paths.",
+    "explanation": "It supports selected access paths. Writes must maintain index entries. Storage and selectivity affect usefulness.",
+    "mistake": "Indexing every column without workload evidence.",
+    "rubric": [
+      "It supports selected access paths",
+      "Writes must maintain index entries",
+      "Storage and selectivity affect usefulness"
+    ],
+    "followups": [
+      "Which query would not benefit from your index?",
+      "Walk through a concrete example of indexes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-07",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Transactions",
+    "round": "Fundamentals",
+    "q": "What does transaction atomicity promise?",
+    "a": "Changes commit as a unit.",
+    "explanation": "Changes commit as a unit. Failed transactions do not partially commit. External systems need separate coordination.",
+    "mistake": "Assuming a database rollback reverses sent emails.",
+    "rubric": [
+      "Changes commit as a unit",
+      "Failed transactions do not partially commit",
+      "External systems need separate coordination"
+    ],
+    "followups": [
+      "How would you coordinate a notification?",
+      "Walk through a concrete example of transactions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-08",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Constraints",
+    "round": "Fundamentals",
+    "q": "Why enforce critical invariants in the database?",
+    "a": "All writers share the same boundary.",
+    "explanation": "All writers share the same boundary. Constraints prevent invalid persisted states. Application checks still improve feedback.",
+    "mistake": "Relying only on a pre-insert existence check.",
+    "rubric": [
+      "All writers share the same boundary",
+      "Constraints prevent invalid persisted states",
+      "Application checks still improve feedback"
+    ],
+    "followups": [
+      "How would a uniqueness race occur?",
+      "Walk through a concrete example of constraints and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-09",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Pagination",
+    "round": "Scenario",
+    "q": "Why can offset pagination slow down at large offsets?",
+    "a": "Earlier rows still need processing.",
+    "explanation": "Earlier rows still need processing. Stable ordering is required. Keyset pagination can avoid deep skips.",
+    "mistake": "Paginating without a deterministic order.",
+    "rubric": [
+      "Earlier rows still need processing",
+      "Stable ordering is required",
+      "Keyset pagination can avoid deep skips"
+    ],
+    "followups": [
+      "How would you design a cursor for equal timestamps?",
+      "Walk through a concrete example of pagination and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-10",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Plans",
+    "round": "Scenario",
+    "q": "How do you read a query plan usefully?",
+    "a": "Compare estimated and actual work.",
+    "explanation": "Compare estimated and actual work. Inspect scans joins and row counts. Measure representative data distributions.",
+    "mistake": "Assuming every sequential scan is a mistake.",
+    "rubric": [
+      "Compare estimated and actual work",
+      "Inspect scans joins and row counts",
+      "Measure representative data distributions"
+    ],
+    "followups": [
+      "When might a sequential scan be optimal?",
+      "Walk through a concrete example of plans and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-11",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Composite indexes",
+    "round": "Scenario",
+    "q": "How does column order affect a multi-column index?",
+    "a": "Predicates and ordering determine usable access paths.",
+    "explanation": "Predicates and ordering determine usable access paths. Leading columns often shape efficiency. Validate with actual plans.",
+    "mistake": "Choosing index order alphabetically.",
+    "rubric": [
+      "Predicates and ordering determine usable access paths",
+      "Leading columns often shape efficiency",
+      "Validate with actual plans"
+    ],
+    "followups": [
+      "How would equality and range predicates interact?",
+      "Walk through a concrete example of composite indexes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-12",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Isolation",
+    "round": "Scenario",
+    "q": "How can a transaction observe changing data?",
+    "a": "Isolation controls allowed observations.",
+    "explanation": "Isolation controls allowed observations. Default behavior varies by database. Choose guarantees from business invariants.",
+    "mistake": "Assuming every transaction gets serializable behavior.",
+    "rubric": [
+      "Isolation controls allowed observations",
+      "Default behavior varies by database",
+      "Choose guarantees from business invariants"
+    ],
+    "followups": [
+      "How would you reproduce a non-repeatable read?",
+      "Walk through a concrete example of isolation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-13",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Locking",
+    "round": "Scenario",
+    "q": "Why can long transactions harm concurrency?",
+    "a": "They retain locks and old snapshots.",
+    "explanation": "They retain locks and old snapshots. Other work may wait. Keep transactions short and bounded.",
+    "mistake": "Waiting for user input inside a transaction.",
+    "rubric": [
+      "They retain locks and old snapshots",
+      "Other work may wait",
+      "Keep transactions short and bounded"
+    ],
+    "followups": [
+      "How would you find a blocking session?",
+      "Walk through a concrete example of locking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-14",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Injection",
+    "round": "Scenario",
+    "q": "How do parameterized queries reduce SQL injection risk?",
+    "a": "Values remain separate from SQL syntax.",
+    "explanation": "Values remain separate from SQL syntax. Use supported binding APIs. Validate dynamic identifiers separately.",
+    "mistake": "Concatenating untrusted input into SQL.",
+    "rubric": [
+      "Values remain separate from SQL syntax",
+      "Use supported binding APIs",
+      "Validate dynamic identifiers separately"
+    ],
+    "followups": [
+      "How should dynamic sort columns be handled?",
+      "Walk through a concrete example of injection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-15",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Data types",
+    "round": "Scenario",
+    "q": "Why choose exact numeric types for financial amounts?",
+    "a": "Exact decimal representation preserves intended arithmetic.",
+    "explanation": "Exact decimal representation preserves intended arithmetic. Define precision and rounding rules. Avoid floating-point monetary assumptions.",
+    "mistake": "Storing all currency values as floating-point numbers.",
+    "rubric": [
+      "Exact decimal representation preserves intended arithmetic",
+      "Define precision and rounding rules",
+      "Avoid floating-point monetary assumptions"
+    ],
+    "followups": [
+      "How would different currency scales be modeled?",
+      "Walk through a concrete example of data types and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-16",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Migrations",
+    "round": "Scenario",
+    "q": "What makes a database migration test meaningful?",
+    "a": "Run upgrades on realistic prior schemas.",
+    "explanation": "Run upgrades on realistic prior schemas. Verify preserved data and constraints. Test failure and recovery paths.",
+    "mistake": "Testing only fresh database creation.",
+    "rubric": [
+      "Run upgrades on realistic prior schemas",
+      "Verify preserved data and constraints",
+      "Test failure and recovery paths"
+    ],
+    "followups": [
+      "How would an interrupted backfill resume?",
+      "Walk through a concrete example of migrations and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-17",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "MVCC",
+    "round": "Debugging",
+    "q": "Why can old database row versions accumulate?",
+    "a": "Snapshots may still need older versions.",
+    "explanation": "Snapshots may still need older versions. Cleanup waits for eligible lifetimes. Long transactions can delay reclamation.",
+    "mistake": "Assuming deletes instantly reclaim all storage.",
+    "rubric": [
+      "Snapshots may still need older versions",
+      "Cleanup waits for eligible lifetimes",
+      "Long transactions can delay reclamation"
+    ],
+    "followups": [
+      "How would you investigate table growth?",
+      "Walk through a concrete example of mvcc and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-18",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Deadlocks",
+    "round": "Debugging",
+    "q": "How should an application handle a deadlocked transaction?",
+    "a": "The database may abort a participant.",
+    "explanation": "The database may abort a participant. Retry the entire eligible transaction. Reduce inconsistent lock ordering.",
+    "mistake": "Retrying only the last failed statement blindly.",
+    "rubric": [
+      "The database may abort a participant",
+      "Retry the entire eligible transaction",
+      "Reduce inconsistent lock ordering"
+    ],
+    "followups": [
+      "How would you limit retries?",
+      "Walk through a concrete example of deadlocks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-19",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Optimistic concurrency",
+    "round": "Debugging",
+    "q": "How does a version column prevent lost updates?",
+    "a": "Writes require the expected prior version.",
+    "explanation": "Writes require the expected prior version. A mismatch exposes a conflict. Reconcile instead of silently overwriting.",
+    "mistake": "Checking a version then writing without an atomic condition.",
+    "rubric": [
+      "Writes require the expected prior version",
+      "A mismatch exposes a conflict",
+      "Reconcile instead of silently overwriting"
+    ],
+    "followups": [
+      "How should the UI present a conflict?",
+      "Walk through a concrete example of optimistic concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-20",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Replication",
+    "round": "Debugging",
+    "q": "Why can a read replica return stale data?",
+    "a": "Replication is not always synchronous.",
+    "explanation": "Replication is not always synchronous. Lag affects recent writes. Route consistency-sensitive reads appropriately.",
+    "mistake": "Assuming every replica immediately reflects commits.",
+    "rubric": [
+      "Replication is not always synchronous",
+      "Lag affects recent writes",
+      "Route consistency-sensitive reads appropriately"
+    ],
+    "followups": [
+      "How would you support read-your-writes behavior?",
+      "Walk through a concrete example of replication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-21",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Backups",
+    "round": "Debugging",
+    "q": "What proves that database backups are useful?",
+    "a": "Successful restore tests prove recoverability.",
+    "explanation": "Successful restore tests prove recoverability. Retention must meet business objectives. Measure recovery time and data loss.",
+    "mistake": "Equating completed backup jobs with tested recovery.",
+    "rubric": [
+      "Successful restore tests prove recoverability",
+      "Retention must meet business objectives",
+      "Measure recovery time and data loss"
+    ],
+    "followups": [
+      "How would point-in-time recovery be rehearsed?",
+      "Walk through a concrete example of backups and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-22",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Partitioning",
+    "round": "Debugging",
+    "q": "When does table partitioning help?",
+    "a": "It can improve maintenance and pruning.",
+    "explanation": "It can improve maintenance and pruning. Benefits depend on access patterns. Keys and operations gain added complexity.",
+    "mistake": "Partitioning before measuring actual workload limits.",
+    "rubric": [
+      "It can improve maintenance and pruning",
+      "Benefits depend on access patterns",
+      "Keys and operations gain added complexity"
+    ],
+    "followups": [
+      "Which query would prune partitions?",
+      "Walk through a concrete example of partitioning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-23",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Connection pools",
+    "round": "Debugging",
+    "q": "How should a database connection pool be sized?",
+    "a": "Budget database concurrency capacity.",
+    "explanation": "Budget database concurrency capacity. Measure queue and execution times. Bound connections across all replicas.",
+    "mistake": "Increasing connections until timeouts disappear.",
+    "rubric": [
+      "Budget database concurrency capacity",
+      "Measure queue and execution times",
+      "Bound connections across all replicas"
+    ],
+    "followups": [
+      "How would pool saturation be observed?",
+      "Walk through a concrete example of connection pools and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-24",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Batching",
+    "round": "Debugging",
+    "q": "What should a large data backfill control?",
+    "a": "Process bounded batches.",
+    "explanation": "Process bounded batches. Monitor lock and replication impact. Persist resumable progress.",
+    "mistake": "Updating every row in one enormous transaction.",
+    "rubric": [
+      "Process bounded batches",
+      "Monitor lock and replication impact",
+      "Persist resumable progress"
+    ],
+    "followups": [
+      "How would you pause a backfill safely?",
+      "Walk through a concrete example of batching and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-25",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Schema evolution",
+    "round": "Design",
+    "q": "How do you change schemas during rolling deployment?",
+    "a": "Expand compatibly before contraction.",
+    "explanation": "Expand compatibly before contraction. Support mixed application versions. Remove old structures after migration.",
+    "mistake": "Dropping fields while old instances still use them.",
+    "rubric": [
+      "Expand compatibly before contraction",
+      "Support mixed application versions",
+      "Remove old structures after migration"
+    ],
+    "followups": [
+      "How would a failed rollout be reversed?",
+      "Walk through a concrete example of schema evolution and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-26",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Multi-tenancy",
+    "round": "Design",
+    "q": "How should tenant isolation reach database access?",
+    "a": "Bind tenant context to trusted identity.",
+    "explanation": "Bind tenant context to trusted identity. Enforce scoping across reads and writes. Test administrative and background paths.",
+    "mistake": "Trusting a request-supplied tenant filter.",
+    "rubric": [
+      "Bind tenant context to trusted identity",
+      "Enforce scoping across reads and writes",
+      "Test administrative and background paths"
+    ],
+    "followups": [
+      "When would row-level security help?",
+      "Walk through a concrete example of multi-tenancy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-27",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Capacity",
+    "round": "Design",
+    "q": "How would you decide between query tuning and adding hardware?",
+    "a": "Identify the dominant workload constraint.",
+    "explanation": "Identify the dominant workload constraint. Tune wasteful access patterns first. Scale measured bottlenecks with headroom.",
+    "mistake": "Upgrading hardware without inspecting expensive queries.",
+    "rubric": [
+      "Identify the dominant workload constraint",
+      "Tune wasteful access patterns first",
+      "Scale measured bottlenecks with headroom"
+    ],
+    "followups": [
+      "Which metric distinguishes CPU from I/O pressure?",
+      "Walk through a concrete example of capacity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-28",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Sharding",
+    "round": "Design",
+    "q": "What trade-offs arise when splitting data across shards?",
+    "a": "Routing and cross-shard operations become complex.",
+    "explanation": "Routing and cross-shard operations become complex. Hot keys can skew load. Plan rebalancing and failure behavior.",
+    "mistake": "Assuming equal key counts mean equal workload.",
+    "rubric": [
+      "Routing and cross-shard operations become complex",
+      "Hot keys can skew load",
+      "Plan rebalancing and failure behavior"
+    ],
+    "followups": [
+      "How would you move a tenant between shards?",
+      "Walk through a concrete example of sharding and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-29",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Consistency",
+    "round": "Design",
+    "q": "How should systems reconcile divergent replicated data?",
+    "a": "Define authoritative ownership and conflict policy.",
+    "explanation": "Define authoritative ownership and conflict policy. Use version or causal metadata when needed. Make repair observable.",
+    "mistake": "Choosing the last arrival without business justification.",
+    "rubric": [
+      "Define authoritative ownership and conflict policy",
+      "Use version or causal metadata when needed",
+      "Make repair observable"
+    ],
+    "followups": [
+      "Which data must never use blind last-write-wins?",
+      "Walk through a concrete example of consistency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-30",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Retention",
+    "round": "Design",
+    "q": "How should a database retention policy be implemented?",
+    "a": "Define lawful business retention requirements.",
+    "explanation": "Define lawful business retention requirements. Delete or archive through bounded workflows. Include backups and derived copies.",
+    "mistake": "Deleting only the primary table and declaring completion.",
+    "rubric": [
+      "Define lawful business retention requirements",
+      "Delete or archive through bounded workflows",
+      "Include backups and derived copies"
+    ],
+    "followups": [
+      "How would you verify deletion across replicas?",
+      "Walk through a concrete example of retention and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-31",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Observability",
+    "round": "Design",
+    "q": "Which signals support database incident diagnosis?",
+    "a": "Track latency lock waits and resource saturation.",
+    "explanation": "Track latency lock waits and resource saturation. Capture representative query statistics. Correlate release and traffic changes.",
+    "mistake": "Using average query latency alone.",
+    "rubric": [
+      "Track latency lock waits and resource saturation",
+      "Capture representative query statistics",
+      "Correlate release and traffic changes"
+    ],
+    "followups": [
+      "How would you identify a regression by query family?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-path-32",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Technology choice",
+    "round": "Design",
+    "q": "How would you choose relational versus document storage?",
+    "a": "Start from query and consistency requirements.",
+    "explanation": "Start from query and consistency requirements. Evaluate operational and schema costs. Test representative workloads.",
+    "mistake": "Choosing by fashion or data shape alone.",
+    "rubric": [
+      "Start from query and consistency requirements",
+      "Evaluate operational and schema costs",
+      "Test representative workloads"
+    ],
+    "followups": [
+      "Which relationship requires transactional integrity?",
+      "Walk through a concrete example of technology choice and explain one trade-off."
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "postgres-indexes",
+      "postgres-isolation",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

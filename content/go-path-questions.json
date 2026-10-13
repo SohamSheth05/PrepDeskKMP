@@ -1,0 +1,866 @@
+[
+  {
+    "id": "go-path-01",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Values",
+    "round": "Fundamentals",
+    "q": "How do Go zero values affect API design?",
+    "a": "Declared variables receive zero values.",
+    "explanation": "Declared variables receive zero values. Some types are useful without initialization. Validate when zero is not a valid domain value.",
+    "mistake": "Assuming a zero value always means missing data.",
+    "rubric": [
+      "Declared variables receive zero values",
+      "Some types are useful without initialization",
+      "Validate when zero is not a valid domain value"
+    ],
+    "followups": [
+      "How would you distinguish absent from false?",
+      "Walk through a concrete example of values and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-02",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Slices",
+    "round": "Fundamentals",
+    "q": "What is shared when you copy a slice value?",
+    "a": "The slice header is copied.",
+    "explanation": "The slice header is copied. Backing storage may remain shared. Copy elements to create independent ownership.",
+    "mistake": "Assuming assignment clones slice contents.",
+    "rubric": [
+      "The slice header is copied",
+      "Backing storage may remain shared",
+      "Copy elements to create independent ownership"
+    ],
+    "followups": [
+      "How can append change sharing behavior?",
+      "Walk through a concrete example of slices and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-03",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Maps",
+    "round": "Fundamentals",
+    "q": "Why must a Go map be initialized before assignment?",
+    "a": "A nil map supports reads.",
+    "explanation": "A nil map supports reads. Assignment requires allocated storage. Use make or a literal before writing.",
+    "mistake": "Writing into a nil map.",
+    "rubric": [
+      "A nil map supports reads",
+      "Assignment requires allocated storage",
+      "Use make or a literal before writing"
+    ],
+    "followups": [
+      "How do you distinguish a missing key from zero?",
+      "Walk through a concrete example of maps and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-04",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Interfaces",
+    "round": "Fundamentals",
+    "q": "How does a type satisfy a Go interface?",
+    "a": "Matching methods satisfy it implicitly.",
+    "explanation": "Matching methods satisfy it implicitly. Small interfaces express focused behavior. Pointer and value method sets differ.",
+    "mistake": "Expecting an explicit implements declaration.",
+    "rubric": [
+      "Matching methods satisfy it implicitly",
+      "Small interfaces express focused behavior",
+      "Pointer and value method sets differ"
+    ],
+    "followups": [
+      "When does only a pointer satisfy an interface?",
+      "Walk through a concrete example of interfaces and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-05",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Errors",
+    "round": "Fundamentals",
+    "q": "Why return errors as ordinary values?",
+    "a": "Callers choose handling and recovery.",
+    "explanation": "Callers choose handling and recovery. Errors can carry context. Keep success and failure contracts clear.",
+    "mistake": "Discarding returned errors.",
+    "rubric": [
+      "Callers choose handling and recovery",
+      "Errors can carry context",
+      "Keep success and failure contracts clear"
+    ],
+    "followups": [
+      "How would you preserve an underlying error?",
+      "Walk through a concrete example of errors and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-06",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Defer",
+    "round": "Fundamentals",
+    "q": "When are arguments to a deferred call evaluated?",
+    "a": "Arguments evaluate at defer registration.",
+    "explanation": "Arguments evaluate at defer registration. The call runs during function return. Looping defers can retain resources longer.",
+    "mistake": "Expecting deferred arguments to use later variable values.",
+    "rubric": [
+      "Arguments evaluate at defer registration",
+      "The call runs during function return",
+      "Looping defers can retain resources longer"
+    ],
+    "followups": [
+      "How would you close files inside a loop?",
+      "Walk through a concrete example of defer and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-07",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Goroutines",
+    "round": "Fundamentals",
+    "q": "What responsibility comes with starting a goroutine?",
+    "a": "Give it a defined owner.",
+    "explanation": "Give it a defined owner. Provide termination or cancellation. Observe failures and cleanup.",
+    "mistake": "Starting unbounded goroutines with no exit path.",
+    "rubric": [
+      "Give it a defined owner",
+      "Provide termination or cancellation",
+      "Observe failures and cleanup"
+    ],
+    "followups": [
+      "How would you test for a leaked goroutine?",
+      "Walk through a concrete example of goroutines and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-08",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Channels",
+    "round": "Fundamentals",
+    "q": "What does an unbuffered channel coordinate?",
+    "a": "Send and receive synchronize participants.",
+    "explanation": "Send and receive synchronize participants. Neither operation completes without its counterpart. Use explicit ownership for closure.",
+    "mistake": "Closing a channel from arbitrary receivers.",
+    "rubric": [
+      "Send and receive synchronize participants",
+      "Neither operation completes without its counterpart",
+      "Use explicit ownership for closure"
+    ],
+    "followups": [
+      "What happens when sending to a closed channel?",
+      "Walk through a concrete example of channels and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-09",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Context",
+    "round": "Scenario",
+    "q": "How should request cancellation flow through Go code?",
+    "a": "Accept and propagate context explicitly.",
+    "explanation": "Accept and propagate context explicitly. Observe cancellation during blocking work. Keep deadlines tied to request ownership.",
+    "mistake": "Using context as a bag for every dependency.",
+    "rubric": [
+      "Accept and propagate context explicitly",
+      "Observe cancellation during blocking work",
+      "Keep deadlines tied to request ownership"
+    ],
+    "followups": [
+      "How would a database call receive a deadline?",
+      "Walk through a concrete example of context and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-10",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Nil interfaces",
+    "round": "Scenario",
+    "q": "Why can an interface holding a nil pointer be non-nil?",
+    "a": "Interfaces carry dynamic type and value.",
+    "explanation": "Interfaces carry dynamic type and value. A typed nil retains its dynamic type. Return an actual nil interface when appropriate.",
+    "mistake": "Comparing only the stored pointer intuition.",
+    "rubric": [
+      "Interfaces carry dynamic type and value",
+      "A typed nil retains its dynamic type",
+      "Return an actual nil interface when appropriate"
+    ],
+    "followups": [
+      "How would you avoid a typed-nil error return?",
+      "Walk through a concrete example of nil interfaces and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-11",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Synchronization",
+    "round": "Scenario",
+    "q": "When should you use a mutex rather than channels?",
+    "a": "Mutexes protect shared invariants.",
+    "explanation": "Mutexes protect shared invariants. Channels coordinate communication and ownership. Choose the simpler correct model.",
+    "mistake": "Using channels for every shared variable.",
+    "rubric": [
+      "Mutexes protect shared invariants",
+      "Channels coordinate communication and ownership",
+      "Choose the simpler correct model"
+    ],
+    "followups": [
+      "How would you guard a read-modify-write sequence?",
+      "Walk through a concrete example of synchronization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-12",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What makes a table-driven test effective?",
+    "a": "Represent meaningful cases as data.",
+    "explanation": "Represent meaningful cases as data. Name edge cases clearly. Keep independent assertions and setup.",
+    "mistake": "Adding many cases that all exercise the same path.",
+    "rubric": [
+      "Represent meaningful cases as data",
+      "Name edge cases clearly",
+      "Keep independent assertions and setup"
+    ],
+    "followups": [
+      "How would you test malformed input?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-13",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "HTTP clients",
+    "round": "Scenario",
+    "q": "Why reuse a configured HTTP client?",
+    "a": "Clients reuse connection resources.",
+    "explanation": "Clients reuse connection resources. Configure deadlines explicitly. Close response bodies appropriately.",
+    "mistake": "Creating an unbounded client per request.",
+    "rubric": [
+      "Clients reuse connection resources",
+      "Configure deadlines explicitly",
+      "Close response bodies appropriately"
+    ],
+    "followups": [
+      "How would you handle a failed body read?",
+      "Walk through a concrete example of http clients and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-14",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "JSON",
+    "round": "Scenario",
+    "q": "How should Go handle uncertain external JSON fields?",
+    "a": "Validate required domain constraints.",
+    "explanation": "Validate required domain constraints. Distinguish optional fields where necessary. Avoid silently accepting incompatible shapes.",
+    "mistake": "Assuming successful decoding proves semantic validity.",
+    "rubric": [
+      "Validate required domain constraints",
+      "Distinguish optional fields where necessary",
+      "Avoid silently accepting incompatible shapes"
+    ],
+    "followups": [
+      "How would you represent an optional integer?",
+      "Walk through a concrete example of json and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-15",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Pointers",
+    "round": "Scenario",
+    "q": "When does passing a pointer help communicate intent?",
+    "a": "It can permit mutation or shared ownership.",
+    "explanation": "It can permit mutation or shared ownership. Values can provide simpler isolation. Consider escape behavior only after measurement.",
+    "mistake": "Using pointers for every small value.",
+    "rubric": [
+      "It can permit mutation or shared ownership",
+      "Values can provide simpler isolation",
+      "Consider escape behavior only after measurement"
+    ],
+    "followups": [
+      "How would you signal an optional struct?",
+      "Walk through a concrete example of pointers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-16",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Packages",
+    "round": "Scenario",
+    "q": "What makes a Go package boundary useful?",
+    "a": "It groups cohesive behavior.",
+    "explanation": "It groups cohesive behavior. Expose a small clear API. Avoid cycles and shared mutable globals.",
+    "mistake": "Creating packages solely by technical layer names.",
+    "rubric": [
+      "It groups cohesive behavior",
+      "Expose a small clear API",
+      "Avoid cycles and shared mutable globals"
+    ],
+    "followups": [
+      "How would you hide implementation details?",
+      "Walk through a concrete example of packages and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-17",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Race detection",
+    "round": "Debugging",
+    "q": "What does a successful race-detector run establish?",
+    "a": "It checks executed concurrency paths.",
+    "explanation": "It checks executed concurrency paths. It does not prove all interleavings safe. Combine it with ownership and synchronization review.",
+    "mistake": "Treating no reported race as a proof of correctness.",
+    "rubric": [
+      "It checks executed concurrency paths",
+      "It does not prove all interleavings safe",
+      "Combine it with ownership and synchronization review"
+    ],
+    "followups": [
+      "Which workload should tests exercise?",
+      "Walk through a concrete example of race detection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-18",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Pools",
+    "round": "Debugging",
+    "q": "When can sync.Pool be useful?",
+    "a": "It can reuse temporary objects.",
+    "explanation": "It can reuse temporary objects. Entries may be dropped by runtime behavior. Never depend on it for durable ownership.",
+    "mistake": "Treating it as a permanent cache.",
+    "rubric": [
+      "It can reuse temporary objects",
+      "Entries may be dropped by runtime behavior",
+      "Never depend on it for durable ownership"
+    ],
+    "followups": [
+      "How would you measure allocation savings?",
+      "Walk through a concrete example of pools and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-19",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "How would you investigate Go heap growth?",
+    "a": "Inspect heap profiles and retained references.",
+    "explanation": "Inspect heap profiles and retained references. Compare workloads and collection cycles. Separate allocation rate from live data.",
+    "mistake": "Assuming RSS directly equals live heap.",
+    "rubric": [
+      "Inspect heap profiles and retained references",
+      "Compare workloads and collection cycles",
+      "Separate allocation rate from live data"
+    ],
+    "followups": [
+      "Which profile shows retained object types?",
+      "Walk through a concrete example of memory and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-20",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Worker pools",
+    "round": "Debugging",
+    "q": "How should a Go worker pool handle overload?",
+    "a": "Bound workers and queued jobs.",
+    "explanation": "Bound workers and queued jobs. Define rejection or backpressure. Propagate cancellation and errors.",
+    "mistake": "Spawning a goroutine for every incoming item.",
+    "rubric": [
+      "Bound workers and queued jobs",
+      "Define rejection or backpressure",
+      "Propagate cancellation and errors"
+    ],
+    "followups": [
+      "How would shutdown handle pending jobs?",
+      "Walk through a concrete example of worker pools and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-21",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Generics",
+    "round": "Debugging",
+    "q": "When do type parameters improve Go code?",
+    "a": "They express reusable typed algorithms.",
+    "explanation": "They express reusable typed algorithms. Constraints define supported operations. Prefer simple concrete APIs when reuse is limited.",
+    "mistake": "Adding generics without a useful common operation.",
+    "rubric": [
+      "They express reusable typed algorithms",
+      "Constraints define supported operations",
+      "Prefer simple concrete APIs when reuse is limited"
+    ],
+    "followups": [
+      "When is an interface parameter simpler?",
+      "Walk through a concrete example of generics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-22",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Streaming",
+    "round": "Debugging",
+    "q": "How would you parse a large input without excessive memory?",
+    "a": "Read incrementally with size limits.",
+    "explanation": "Read incrementally with size limits. Process bounded units. Handle partial input and cancellation.",
+    "mistake": "Reading the entire input into memory.",
+    "rubric": [
+      "Read incrementally with size limits",
+      "Process bounded units",
+      "Handle partial input and cancellation"
+    ],
+    "followups": [
+      "How would you limit a single oversized record?",
+      "Walk through a concrete example of streaming and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-23",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Errors",
+    "round": "Debugging",
+    "q": "How should callers classify wrapped Go errors?",
+    "a": "Use errors.Is or errors.As appropriately.",
+    "explanation": "Use errors.Is or errors.As appropriately. Preserve causes while adding context. Avoid comparing message strings.",
+    "mistake": "Branching on exact human-readable error text.",
+    "rubric": [
+      "Use errors.Is or errors.As appropriately",
+      "Preserve causes while adding context",
+      "Avoid comparing message strings"
+    ],
+    "followups": [
+      "How would you represent a retryable failure?",
+      "Walk through a concrete example of errors and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-24",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Shutdown",
+    "round": "Debugging",
+    "q": "How do you stop a Go service gracefully?",
+    "a": "Stop admitting new work.",
+    "explanation": "Stop admitting new work. Cancel or drain owned goroutines. Close resources within a deadline.",
+    "mistake": "Waiting forever for stalled workers.",
+    "rubric": [
+      "Stop admitting new work",
+      "Cancel or drain owned goroutines",
+      "Close resources within a deadline"
+    ],
+    "followups": [
+      "How would you verify all goroutines exit?",
+      "Walk through a concrete example of shutdown and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-25",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Service architecture",
+    "round": "Design",
+    "q": "How should domain code depend on persistence in Go?",
+    "a": "Use focused interfaces at consumer boundaries.",
+    "explanation": "Use focused interfaces at consumer boundaries. Keep transport and database types outside domain logic. Test with controlled implementations.",
+    "mistake": "Defining giant interfaces for all repositories.",
+    "rubric": [
+      "Use focused interfaces at consumer boundaries",
+      "Keep transport and database types outside domain logic",
+      "Test with controlled implementations"
+    ],
+    "followups": [
+      "Where should interfaces be declared?",
+      "Walk through a concrete example of service architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-26",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Versioning",
+    "round": "Design",
+    "q": "How would you evolve a shared Go module?",
+    "a": "Version incompatible APIs explicitly.",
+    "explanation": "Version incompatible APIs explicitly. Keep module paths and contracts consistent. Test actual downstream consumers.",
+    "mistake": "Changing exported behavior without release notes.",
+    "rubric": [
+      "Version incompatible APIs explicitly",
+      "Keep module paths and contracts consistent",
+      "Test actual downstream consumers"
+    ],
+    "followups": [
+      "How would you deprecate an exported function?",
+      "Walk through a concrete example of versioning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-27",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Reliability",
+    "round": "Design",
+    "q": "How do you design safe retries in a Go client?",
+    "a": "Honor the overall context deadline.",
+    "explanation": "Honor the overall context deadline. Retry eligible failures with bounded backoff. Require idempotency for repeated writes.",
+    "mistake": "Retrying after the caller cancels.",
+    "rubric": [
+      "Honor the overall context deadline",
+      "Retry eligible failures with bounded backoff",
+      "Require idempotency for repeated writes"
+    ],
+    "followups": [
+      "How would retry delay observe context cancellation?",
+      "Walk through a concrete example of reliability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-28",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Observability",
+    "round": "Design",
+    "q": "What should a Go service expose for diagnosis?",
+    "a": "Request traces and latency distributions.",
+    "explanation": "Request traces and latency distributions. Queue resource and goroutine metrics. Redacted contextual logs.",
+    "mistake": "Using only process uptime as health evidence.",
+    "rubric": [
+      "Request traces and latency distributions",
+      "Queue resource and goroutine metrics",
+      "Redacted contextual logs"
+    ],
+    "followups": [
+      "How would you find a blocked dependency?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-29",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Deployment",
+    "round": "Design",
+    "q": "What should you verify for a Go release artifact?",
+    "a": "Target architecture and runtime dependencies.",
+    "explanation": "Target architecture and runtime dependencies. Reproducible build inputs and provenance. Configuration and startup checks.",
+    "mistake": "Assuming a compiled binary fits every environment.",
+    "rubric": [
+      "Target architecture and runtime dependencies",
+      "Reproducible build inputs and provenance",
+      "Configuration and startup checks"
+    ],
+    "followups": [
+      "How would cgo affect deployment requirements?",
+      "Walk through a concrete example of deployment and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-30",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Capacity",
+    "round": "Design",
+    "q": "How would you scale a Go service without overloading dependencies?",
+    "a": "Measure bottleneck capacity.",
+    "explanation": "Measure bottleneck capacity. Budget connection and concurrency limits. Add admission control before saturation.",
+    "mistake": "Multiplying replicas without adjusting shared resource limits.",
+    "rubric": [
+      "Measure bottleneck capacity",
+      "Budget connection and concurrency limits",
+      "Add admission control before saturation"
+    ],
+    "followups": [
+      "How would you allocate a global concurrency budget?",
+      "Walk through a concrete example of capacity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-31",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Security",
+    "round": "Design",
+    "q": "How should a Go service validate user-selected URLs?",
+    "a": "Define allowed schemes and destinations.",
+    "explanation": "Define allowed schemes and destinations. Prevent internal-network access where required. Validate redirects and resolution behavior.",
+    "mistake": "Trusting only the textual hostname.",
+    "rubric": [
+      "Define allowed schemes and destinations",
+      "Prevent internal-network access where required",
+      "Validate redirects and resolution behavior"
+    ],
+    "followups": [
+      "How would you address DNS rebinding?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-path-32",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Platform strategy",
+    "round": "Design",
+    "q": "How do you standardize Go services across teams?",
+    "a": "Provide small supported libraries and templates.",
+    "explanation": "Provide small supported libraries and templates. Automate essential checks. Allow documented workload-specific exceptions.",
+    "mistake": "Building a framework that hides all ownership.",
+    "rubric": [
+      "Provide small supported libraries and templates",
+      "Automate essential checks",
+      "Allow documented workload-specific exceptions"
+    ],
+    "followups": [
+      "How would you measure operational consistency?",
+      "Walk through a concrete example of platform strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "go-language",
+      "go-races"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

@@ -1,0 +1,212 @@
+[
+  {
+    "id": "javascript-equality",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "JavaScript basics",
+    "round": "Fundamentals",
+    "q": "Why does comparing two separately created objects with === return false?",
+    "a": "Objects compare by identity. Separate objects can contain equal fields while having different identities.",
+    "explanation": "Decide whether the business requirement is identity or value comparison. Compare relevant fields or use a documented deep comparison; JSON serialization is not a universal equality algorithm.",
+    "mistake": "Assuming === recursively compares object fields.",
+    "rubric": [
+      "Distinguish identity and value",
+      "Choose domain fields",
+      "Explain deep-comparison limits"
+    ],
+    "followups": [
+      "How do NaN and Object.is behave?",
+      "What about nested mutable objects?"
+    ],
+    "sourceIds": [
+      "mdn-javascript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-closure",
+    "area": "JavaScript and TypeScript",
+    "level": 1,
+    "subtopic": "Closures",
+    "round": "Debugging",
+    "q": "A delayed callback reads a variable that has since changed. How does a closure explain this?",
+    "a": "A closure captures access to its lexical environment; it does not automatically freeze a copy of every value.",
+    "explanation": "Create a separate binding or explicit immutable snapshot when each callback needs a particular value. Trace creation and execution order to avoid explaining asynchronous code only by syntax.",
+    "mistake": "Treating all captured state as a creation-time snapshot.",
+    "rubric": [
+      "Explain lexical scope",
+      "Trace callback execution",
+      "Choose binding or snapshot semantics"
+    ],
+    "followups": [
+      "Why does let help in loops?",
+      "How can a closure retain memory?"
+    ],
+    "sourceIds": [
+      "mdn-javascript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-unknown",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "TypeScript boundaries",
+    "round": "Coding",
+    "q": "An API returns unknown JSON. How do you safely convert it to a typed domain object?",
+    "a": "Validate the runtime structure and narrow unknown with checks or a schema parser before using domain fields.",
+    "explanation": "TypeScript types disappear at runtime. Validate required fields, enum values, and ranges, then produce a useful error. A type assertion only changes compiler assumptions.",
+    "mistake": "Using as User as though it validates server data.",
+    "rubric": [
+      "Separate compile-time and runtime guarantees",
+      "Validate boundary input",
+      "Handle invalid data explicitly"
+    ],
+    "followups": [
+      "How do you model partial responses?",
+      "When would a discriminated union help?"
+    ],
+    "sourceIds": [
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-promises",
+    "area": "JavaScript and TypeScript",
+    "level": 2,
+    "subtopic": "Async JavaScript",
+    "round": "Debugging",
+    "q": "Why does await inside a loop make independent network requests slow?",
+    "a": "It can serialize requests. Run independent work concurrently while bounding concurrency and defining failure handling.",
+    "explanation": "Promise.all rejects when an input rejects, but does not cancel remaining operations automatically. Use appropriate cancellation and limits rather than firing thousands of requests at once.",
+    "mistake": "Claiming Promise.all cancels all work on the first rejection.",
+    "rubric": [
+      "Identify dependency ordering",
+      "Bound concurrency",
+      "Define rejection and cancellation policy"
+    ],
+    "followups": [
+      "When use allSettled?",
+      "How do you enforce a request deadline?"
+    ],
+    "sourceIds": [
+      "mdn-javascript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-union",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Type modeling",
+    "round": "System design",
+    "q": "Model a payment workflow so impossible combinations of state fields are harder to express.",
+    "a": "Use a discriminated union with state-specific fields and exhaustive handling instead of unrelated optional fields.",
+    "explanation": "For example, success requires a receipt while failure requires an error reason. Validate transitions at runtime too; types alone cannot make external events arrive in the correct order.",
+    "mistake": "Assuming a union replaces business transition validation.",
+    "rubric": [
+      "Define state-specific data",
+      "Check exhaustive handling",
+      "Validate external transitions"
+    ],
+    "followups": [
+      "How would you evolve the union?",
+      "What should persisted old states do?"
+    ],
+    "sourceIds": [
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-event-loop",
+    "area": "JavaScript and TypeScript",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "A JavaScript page freezes despite using promises around a calculation. Why?",
+    "a": "Promise scheduling does not move CPU work off the main thread. Break up work or use a worker when suitable.",
+    "explanation": "Measure long tasks and transfer costs. Keep DOM changes on the main thread and design cancellation or stale-result handling for worker responses. Async syntax is not parallel execution.",
+    "mistake": "Wrapping expensive work in a promise and calling it nonblocking.",
+    "rubric": [
+      "Identify CPU blocking",
+      "Choose chunking or a worker",
+      "Measure responsiveness"
+    ],
+    "followups": [
+      "When is worker serialization expensive?",
+      "How do you ignore an old result?"
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "node-event-loop"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-migration",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Platform evolution",
+    "round": "Leadership",
+    "q": "How would you introduce TypeScript into a large JavaScript product?",
+    "a": "Start at high-risk boundaries, enable checks incrementally, and agree on a policy for unsafe escape hatches.",
+    "explanation": "Protect public contracts and build performance. Track unchecked modules, runtime validation gaps, and defect trends. Owners should remove temporary any usage with explicit priorities.",
+    "mistake": "Counting typed lines while ignoring unchecked data boundaries.",
+    "rubric": [
+      "Prioritize migration risk",
+      "Define escape-hatch ownership",
+      "Measure quality and build cost"
+    ],
+    "followups": [
+      "How do you handle untyped dependencies?",
+      "When should strictness increase?"
+    ],
+    "sourceIds": [
+      "typescript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "javascript-package-contract",
+    "area": "JavaScript and TypeScript",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Several teams share a TypeScript SDK. How do you prevent a release from breaking consumers?",
+    "a": "Treat runtime behavior and exported types as contracts, verify representative consumers, and release changes with compatibility evidence.",
+    "explanation": "Account for module formats, supported runtimes, and declaration changes. Use deprecation periods and migration examples; compiler success in the SDK alone does not prove consumer compatibility.",
+    "mistake": "Treating generated declarations as the entire compatibility contract.",
+    "rubric": [
+      "Test runtime and type contracts",
+      "Cover supported consumers",
+      "Plan deprecation and release recovery"
+    ],
+    "followups": [
+      "Can a type-only change be breaking?",
+      "How do you test multiple compiler versions?"
+    ],
+    "sourceIds": [
+      "typescript",
+      "mdn-javascript"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

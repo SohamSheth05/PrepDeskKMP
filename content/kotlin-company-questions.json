@@ -1,0 +1,147 @@
+[
+  {
+    "id": "kotlin-company-dispatchers",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Coroutines",
+    "round": "Fundamentals",
+    "q": "Which dispatcher would you use for a blocking database read, parsing a large JSON file, and updating the UI? How does withContext fit in?",
+    "a": "Dispatchers.IO for blocking I/O such as a file or blocking database read, Dispatchers.Default for CPU-heavy work such as parsing or sorting, and Dispatchers.Main for UI. withContext switches the current coroutine to another dispatcher for a block, suspends until it finishes and returns its result, so a suspend function can make itself safe to call from the main thread.",
+    "explanation": "IO has a larger thread pool because its threads spend most of their time waiting; Default is sized to CPU cores. Main-safe functions own their dispatcher switch, so callers do not need to know. Libraries such as Room and Retrofit already provide main-safe suspend functions, so wrapping them again is unnecessary.",
+    "mistake": "Running CPU-heavy parsing on Dispatchers.IO, or wrapping already main-safe library calls in withContext.",
+    "rubric": [
+      "Matches IO, Default and Main to the right work",
+      "Explains what withContext does and returns",
+      "Describes main-safe functions",
+      "Knows library suspend functions may already be main-safe"
+    ],
+    "followups": [
+      "Why is the IO pool larger than the Default pool?",
+      "How would you inject dispatchers so tests can control them?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "kotlin-coroutines"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "kotlin-company-val-var",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Variables",
+    "round": "Fundamentals",
+    "q": "Does declaring a property with val make the object it refers to immutable?",
+    "a": "No. val means the reference cannot be reassigned, while var can be. The object may still be mutable: a val of type MutableList can still be changed, and a val with a custom getter can return a different value on each read. Real immutability comes from read-only types holding immutable data, such as data classes with only val properties.",
+    "explanation": "Prefer val by default because it removes one source of change. Exposing a read-only List type over a mutable list still lets the owner change it underneath callers, so copy or use immutable collections when that matters.",
+    "mistake": "Assuming a val collection or object can never change.",
+    "rubric": [
+      "Distinguishes reference reassignment from object mutation",
+      "Gives a mutable-object example",
+      "Mentions custom getters",
+      "Explains how to achieve real immutability"
+    ],
+    "followups": [
+      "What is the difference between val and const val?",
+      "How would you expose a list safely from a class?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "kotlin-language"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "kotlin-company-launch-async",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Coroutines",
+    "round": "Fundamentals",
+    "q": "How do launch and async differ, including how they report failures?",
+    "a": "launch starts work that returns no result and gives you a Job; async returns a Deferred whose value you read with await(). With structured concurrency, a failure in either cancels the parent scope unless it is supervised. async also rethrows the exception from await(), and under a SupervisorJob a failed async that nobody awaits can go unnoticed.",
+    "explanation": "Use async only for concurrent results you will await, typically inside coroutineScope so all children finish or fail together. A CoroutineExceptionHandler applies to launch-based root coroutines, not to async, whose errors surface at await().",
+    "mistake": "Using async for fire-and-forget work and never calling await, which hides failures.",
+    "rubric": [
+      "Explains Job versus Deferred",
+      "Describes failure propagation to the parent",
+      "Notes that await rethrows",
+      "Uses async only when results are awaited"
+    ],
+    "followups": [
+      "How would you load two results concurrently but tolerate one failing?",
+      "Where does a CoroutineExceptionHandler take effect?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "kotlin-coroutines"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "kotlin-company-companion",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Classes",
+    "round": "Fundamentals",
+    "q": "What is a companion object, and how does it differ from Java static members?",
+    "a": "A companion object is a singleton object declared inside a class; you call its members through the class name. Unlike static members it is a real object: it can implement interfaces, be passed around, and have extensions. Use it for factory functions and constants, adding @JvmStatic or @JvmField only when Java callers need true statics.",
+    "explanation": "Because it is an object, a companion can satisfy an interface such as a factory contract. Top-level functions and properties are often simpler when nothing ties them to the class. const val is for compile-time primitives and strings.",
+    "mistake": "Moving every helper into a companion object out of Java habit when a top-level function would do.",
+    "rubric": [
+      "Defines a companion as an object inside a class",
+      "Contrasts it with Java static members",
+      "Gives appropriate uses",
+      "Mentions Java interop annotations"
+    ],
+    "followups": [
+      "When would you prefer a top-level function?",
+      "Can a companion object implement an interface? Why might that help?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "kotlin-language"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  },
+  {
+    "id": "kotlin-company-coroutines-threads",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Coroutines",
+    "round": "Fundamentals",
+    "q": "Why can a program start 100,000 coroutines but not 100,000 threads?",
+    "a": "Coroutines are lightweight: a suspended coroutine is a small object storing where to resume, not an operating-system thread with its own stack. Many coroutines share a small pool of dispatcher threads and release the thread whenever they suspend. Blocking calls still hold the underlying thread, so they must run on a suitable dispatcher.",
+    "explanation": "The compiler turns suspend functions into state machines with continuations, so waiting costs memory for that state rather than a parked thread. The benefit disappears if code blocks inside a coroutine, because then each one does occupy a thread.",
+    "mistake": "Assuming coroutines make blocking code non-blocking or run in parallel automatically.",
+    "rubric": [
+      "Explains suspension instead of blocking",
+      "Contrasts coroutine memory with thread stacks",
+      "Mentions sharing a dispatcher thread pool",
+      "Warns about blocking calls"
+    ],
+    "followups": [
+      "What is a continuation?",
+      "What happens if 1,000 coroutines call Thread.sleep on Dispatchers.Default?"
+    ],
+    "sourceIds": [
+      "android-company-experiences",
+      "kotlin-coroutines"
+    ],
+    "code": "",
+    "version": 1,
+    "reviewedAt": "2026-10-11",
+    "origin": "PrepDesk original; InterviewGo topic reference"
+  }
+]

@@ -1,0 +1,930 @@
+[
+  {
+    "id": "devops-path-01",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Containers",
+    "round": "Fundamentals",
+    "q": "How do containers differ from virtual machines?",
+    "a": "Containers share a host kernel.",
+    "explanation": "Containers share a host kernel. Virtual machines isolate guest operating systems. Security depends on configured boundaries.",
+    "mistake": "Assuming containers provide complete VM isolation.",
+    "rubric": [
+      "Containers share a host kernel",
+      "Virtual machines isolate guest operating systems",
+      "Security depends on configured boundaries"
+    ],
+    "followups": [
+      "Which workload needs stronger isolation?",
+      "Walk through a concrete example of containers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-02",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Images",
+    "round": "Fundamentals",
+    "q": "Why separate build stages in a container image?",
+    "a": "Build tools need not ship at runtime.",
+    "explanation": "Build tools need not ship at runtime. Smaller runtime images reduce surface area. Keep artifacts and dependencies explicit.",
+    "mistake": "Shipping compiler caches and credentials in runtime images.",
+    "rubric": [
+      "Build tools need not ship at runtime",
+      "Smaller runtime images reduce surface area",
+      "Keep artifacts and dependencies explicit"
+    ],
+    "followups": [
+      "How would you verify image contents?",
+      "Walk through a concrete example of images and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-03",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "CI",
+    "round": "Fundamentals",
+    "q": "What should continuous integration validate?",
+    "a": "Build reproducibility and meaningful tests.",
+    "explanation": "Build reproducibility and meaningful tests. Required quality and security checks. Clear failure reporting.",
+    "mistake": "Treating a green build as deployed correctness.",
+    "rubric": [
+      "Build reproducibility and meaningful tests",
+      "Required quality and security checks",
+      "Clear failure reporting"
+    ],
+    "followups": [
+      "Which checks should run before packaging?",
+      "Walk through a concrete example of ci and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-04",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Secrets",
+    "round": "Fundamentals",
+    "q": "How should deployments receive secrets?",
+    "a": "Use managed secret injection.",
+    "explanation": "Use managed secret injection. Limit identity and access. Rotate and avoid logging credentials.",
+    "mistake": "Committing secrets into image layers.",
+    "rubric": [
+      "Use managed secret injection",
+      "Limit identity and access",
+      "Rotate and avoid logging credentials"
+    ],
+    "followups": [
+      "How would secret rotation affect running instances?",
+      "Walk through a concrete example of secrets and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-05",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "DNS",
+    "round": "Fundamentals",
+    "q": "Why can a healthy service still be unreachable by name?",
+    "a": "Resolution caching and configuration can fail.",
+    "explanation": "Resolution caching and configuration can fail. Check network and DNS paths separately. Observe client-specific behavior.",
+    "mistake": "Assuming application health proves DNS health.",
+    "rubric": [
+      "Resolution caching and configuration can fail",
+      "Check network and DNS paths separately",
+      "Observe client-specific behavior"
+    ],
+    "followups": [
+      "How would you diagnose stale DNS resolution?",
+      "Walk through a concrete example of dns and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-06",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Infrastructure as code",
+    "round": "Fundamentals",
+    "q": "Why version infrastructure definitions?",
+    "a": "Changes become reviewable and reproducible.",
+    "explanation": "Changes become reviewable and reproducible. State still requires careful ownership. Detect drift from manual edits.",
+    "mistake": "Treating checked-in files as proof of actual infrastructure.",
+    "rubric": [
+      "Changes become reviewable and reproducible",
+      "State still requires careful ownership",
+      "Detect drift from manual edits"
+    ],
+    "followups": [
+      "How would you detect configuration drift?",
+      "Walk through a concrete example of infrastructure as code and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-07",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Health checks",
+    "round": "Fundamentals",
+    "q": "How should health checks differ by purpose?",
+    "a": "Liveness detects unrecoverable process failure.",
+    "explanation": "Liveness detects unrecoverable process failure. Readiness controls traffic eligibility. Startup checks allow initialization time.",
+    "mistake": "Restarting a pod because a dependency briefly fails.",
+    "rubric": [
+      "Liveness detects unrecoverable process failure",
+      "Readiness controls traffic eligibility",
+      "Startup checks allow initialization time"
+    ],
+    "followups": [
+      "When should readiness fail?",
+      "Walk through a concrete example of health checks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-08",
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "subtopic": "Logs",
+    "round": "Fundamentals",
+    "q": "What makes deployment logs useful?",
+    "a": "Include service release and request context.",
+    "explanation": "Include service release and request context. Use structured searchable fields. Redact sensitive values.",
+    "mistake": "Writing secrets into diagnostic output.",
+    "rubric": [
+      "Include service release and request context",
+      "Use structured searchable fields",
+      "Redact sensitive values"
+    ],
+    "followups": [
+      "How would you correlate multiple replicas?",
+      "Walk through a concrete example of logs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-09",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Kubernetes pods",
+    "round": "Scenario",
+    "q": "Why can a container restart without a new deployment?",
+    "a": "Kubelet applies configured restart behavior.",
+    "explanation": "Kubelet applies configured restart behavior. Health and resource failures can trigger restarts. Inspect events and previous logs.",
+    "mistake": "Assuming every restart means new code shipped.",
+    "rubric": [
+      "Kubelet applies configured restart behavior",
+      "Health and resource failures can trigger restarts",
+      "Inspect events and previous logs"
+    ],
+    "followups": [
+      "How would you investigate OOMKilled?",
+      "Walk through a concrete example of kubernetes pods and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-10",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Resource limits",
+    "round": "Scenario",
+    "q": "How do requests and limits serve different roles?",
+    "a": "Requests guide scheduling capacity.",
+    "explanation": "Requests guide scheduling capacity. Limits constrain selected resource use. Tune from measured workload behavior.",
+    "mistake": "Setting arbitrary equal values for every service.",
+    "rubric": [
+      "Requests guide scheduling capacity",
+      "Limits constrain selected resource use",
+      "Tune from measured workload behavior"
+    ],
+    "followups": [
+      "How would CPU throttling appear?",
+      "Walk through a concrete example of resource limits and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-11",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Deployment strategies",
+    "round": "Scenario",
+    "q": "How do rolling and blue-green releases differ?",
+    "a": "Rolling gradually replaces instances.",
+    "explanation": "Rolling gradually replaces instances. Blue-green switches between environments. Both need compatible data contracts.",
+    "mistake": "Assuming traffic switching reverses schema changes.",
+    "rubric": [
+      "Rolling gradually replaces instances",
+      "Blue-green switches between environments",
+      "Both need compatible data contracts"
+    ],
+    "followups": [
+      "How would you validate the new environment?",
+      "Walk through a concrete example of deployment strategies and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-12",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Terraform state",
+    "round": "Scenario",
+    "q": "Why must infrastructure state be protected?",
+    "a": "State maps definitions to managed resources.",
+    "explanation": "State maps definitions to managed resources. It may contain sensitive values. Use controlled storage and locking.",
+    "mistake": "Sharing unprotected local state across a team.",
+    "rubric": [
+      "State maps definitions to managed resources",
+      "It may contain sensitive values",
+      "Use controlled storage and locking"
+    ],
+    "followups": [
+      "How would concurrent applies cause trouble?",
+      "Walk through a concrete example of terraform state and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-13",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Artifacts",
+    "round": "Scenario",
+    "q": "Why deploy the same artifact tested in CI?",
+    "a": "It preserves tested build identity.",
+    "explanation": "It preserves tested build identity. Rebuilding can introduce drift. Record immutable versions and provenance.",
+    "mistake": "Rebuilding differently for each environment.",
+    "rubric": [
+      "It preserves tested build identity",
+      "Rebuilding can introduce drift",
+      "Record immutable versions and provenance"
+    ],
+    "followups": [
+      "How would you trace a running image to a commit?",
+      "Walk through a concrete example of artifacts and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-14",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Rollback",
+    "round": "Scenario",
+    "q": "What makes a deployment rollback viable?",
+    "a": "Prior artifacts remain available.",
+    "explanation": "Prior artifacts remain available. Data contracts stay compatible. Automate and rehearse the recovery path.",
+    "mistake": "Assuming code rollback reverses destructive migrations.",
+    "rubric": [
+      "Prior artifacts remain available",
+      "Data contracts stay compatible",
+      "Automate and rehearse the recovery path"
+    ],
+    "followups": [
+      "Which migration needs an expand-contract approach?",
+      "Walk through a concrete example of rollback and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-15",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Monitoring",
+    "round": "Scenario",
+    "q": "Why do latency percentiles matter?",
+    "a": "Averages hide slow user cohorts.",
+    "explanation": "Averages hide slow user cohorts. Tail behavior can reveal saturation. Measure meaningful request distributions.",
+    "mistake": "Reporting only average latency.",
+    "rubric": [
+      "Averages hide slow user cohorts",
+      "Tail behavior can reveal saturation",
+      "Measure meaningful request distributions"
+    ],
+    "followups": [
+      "How would you define an alert threshold?",
+      "Walk through a concrete example of monitoring and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-16",
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "subtopic": "Networking",
+    "round": "Scenario",
+    "q": "How would you debug failed service-to-service traffic?",
+    "a": "Verify name resolution and routing.",
+    "explanation": "Verify name resolution and routing. Inspect policy endpoints and port contracts. Check application listeners and logs.",
+    "mistake": "Changing every network policy without evidence.",
+    "rubric": [
+      "Verify name resolution and routing",
+      "Inspect policy endpoints and port contracts",
+      "Check application listeners and logs"
+    ],
+    "followups": [
+      "How would you isolate a DNS problem?",
+      "Walk through a concrete example of networking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-17",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Autoscaling",
+    "round": "Debugging",
+    "q": "Why might adding instances fail to improve performance?",
+    "a": "Shared dependencies can remain saturated.",
+    "explanation": "Shared dependencies can remain saturated. New instances need startup time. Scaling signals must reflect useful demand.",
+    "mistake": "Scaling from CPU alone for every workload.",
+    "rubric": [
+      "Shared dependencies can remain saturated",
+      "New instances need startup time",
+      "Scaling signals must reflect useful demand"
+    ],
+    "followups": [
+      "How would queue depth affect decisions?",
+      "Walk through a concrete example of autoscaling and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-18",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "SLOs",
+    "round": "Debugging",
+    "q": "How do service objectives guide operational priorities?",
+    "a": "Define user-facing success and latency.",
+    "explanation": "Define user-facing success and latency. Measure reliability over a chosen window. Use error budgets for release risk.",
+    "mistake": "Equating uptime alone with user success.",
+    "rubric": [
+      "Define user-facing success and latency",
+      "Measure reliability over a chosen window",
+      "Use error budgets for release risk"
+    ],
+    "followups": [
+      "Which failures should count against the objective?",
+      "Walk through a concrete example of slos and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-19",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Incidents",
+    "round": "Debugging",
+    "q": "What should an incident commander coordinate?",
+    "a": "Focus mitigation and clear ownership.",
+    "explanation": "Focus mitigation and clear ownership. Track decisions and communications. Preserve evidence for later learning.",
+    "mistake": "Having every responder change production independently.",
+    "rubric": [
+      "Focus mitigation and clear ownership",
+      "Track decisions and communications",
+      "Preserve evidence for later learning"
+    ],
+    "followups": [
+      "How would roles change during recovery?",
+      "Walk through a concrete example of incidents and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-20",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Disaster recovery",
+    "round": "Debugging",
+    "q": "What do recovery time and recovery point objectives mean?",
+    "a": "Recovery time bounds service restoration.",
+    "explanation": "Recovery time bounds service restoration. Recovery point bounds acceptable data loss. Validate them with rehearsals.",
+    "mistake": "Declaring objectives without restore exercises.",
+    "rubric": [
+      "Recovery time bounds service restoration",
+      "Recovery point bounds acceptable data loss",
+      "Validate them with rehearsals"
+    ],
+    "followups": [
+      "How would regional failure be simulated?",
+      "Walk through a concrete example of disaster recovery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-21",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Supply chain",
+    "round": "Debugging",
+    "q": "How do you improve software artifact trust?",
+    "a": "Use controlled reproducible build inputs.",
+    "explanation": "Use controlled reproducible build inputs. Record provenance and verified identities. Scan and limit deployment privileges.",
+    "mistake": "Trusting tags that can be overwritten.",
+    "rubric": [
+      "Use controlled reproducible build inputs",
+      "Record provenance and verified identities",
+      "Scan and limit deployment privileges"
+    ],
+    "followups": [
+      "How would signed artifacts be verified?",
+      "Walk through a concrete example of supply chain and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-22",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Costs",
+    "round": "Debugging",
+    "q": "How should cloud cost optimization start?",
+    "a": "Measure cost by useful workload.",
+    "explanation": "Measure cost by useful workload. Find idle resources and waste. Preserve reliability and peak headroom.",
+    "mistake": "Reducing capacity without usage analysis.",
+    "rubric": [
+      "Measure cost by useful workload",
+      "Find idle resources and waste",
+      "Preserve reliability and peak headroom"
+    ],
+    "followups": [
+      "Which expense is driven by data transfer?",
+      "Walk through a concrete example of costs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-23",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Access control",
+    "round": "Debugging",
+    "q": "How should production cloud access be granted?",
+    "a": "Use least-privilege roles and short-lived identity.",
+    "explanation": "Use least-privilege roles and short-lived identity. Separate duties where required. Audit administrative actions.",
+    "mistake": "Sharing permanent administrator credentials.",
+    "rubric": [
+      "Use least-privilege roles and short-lived identity",
+      "Separate duties where required",
+      "Audit administrative actions"
+    ],
+    "followups": [
+      "How would emergency access be controlled?",
+      "Walk through a concrete example of access control and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-24",
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "subtopic": "Queue capacity",
+    "round": "Debugging",
+    "q": "How should platforms handle workload bursts?",
+    "a": "Bound queues and worker concurrency.",
+    "explanation": "Bound queues and worker concurrency. Preserve priority and deadlines. Expose overload and delayed work.",
+    "mistake": "Keeping unlimited queued work indefinitely.",
+    "rubric": [
+      "Bound queues and worker concurrency",
+      "Preserve priority and deadlines",
+      "Expose overload and delayed work"
+    ],
+    "followups": [
+      "When should work be rejected?",
+      "Walk through a concrete example of queue capacity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-25",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Platform engineering",
+    "round": "Design",
+    "q": "What makes an internal deployment platform valuable?",
+    "a": "It simplifies common safe workflows.",
+    "explanation": "It simplifies common safe workflows. Teams retain clear operational ownership. Measure adoption and user outcomes.",
+    "mistake": "Building abstractions without developer needs.",
+    "rubric": [
+      "It simplifies common safe workflows",
+      "Teams retain clear operational ownership",
+      "Measure adoption and user outcomes"
+    ],
+    "followups": [
+      "Which workflow would you improve first?",
+      "Walk through a concrete example of platform engineering and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-26",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Multi-region",
+    "round": "Design",
+    "q": "What must precede a multi-region rollout?",
+    "a": "Define data ownership and failover rules.",
+    "explanation": "Define data ownership and failover rules. Understand latency consistency and costs. Test actual regional failure behavior.",
+    "mistake": "Assuming replicated compute solves data failover.",
+    "rubric": [
+      "Define data ownership and failover rules",
+      "Understand latency consistency and costs",
+      "Test actual regional failure behavior"
+    ],
+    "followups": [
+      "How would you prevent split-brain writes?",
+      "Walk through a concrete example of multi-region and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-27",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Governance",
+    "round": "Design",
+    "q": "How should infrastructure policies balance safety and autonomy?",
+    "a": "Automate essential guardrails.",
+    "explanation": "Automate essential guardrails. Provide supported defaults and exceptions. Review outcomes and friction.",
+    "mistake": "Blocking every variation without a risk model.",
+    "rubric": [
+      "Automate essential guardrails",
+      "Provide supported defaults and exceptions",
+      "Review outcomes and friction"
+    ],
+    "followups": [
+      "How would a justified exception expire?",
+      "Walk through a concrete example of governance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-28",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Observability strategy",
+    "round": "Design",
+    "q": "How should telemetry scale across many services?",
+    "a": "Standardize useful identities and signal contracts.",
+    "explanation": "Standardize useful identities and signal contracts. Control cardinality volume and retention. Tie alerts to actionable user impact.",
+    "mistake": "Collecting every metric without ownership.",
+    "rubric": [
+      "Standardize useful identities and signal contracts",
+      "Control cardinality volume and retention",
+      "Tie alerts to actionable user impact"
+    ],
+    "followups": [
+      "How would you reduce alert fatigue?",
+      "Walk through a concrete example of observability strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-29",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Migration",
+    "round": "Design",
+    "q": "How do you migrate infrastructure without losing service continuity?",
+    "a": "Inventory dependencies and state.",
+    "explanation": "Inventory dependencies and state. Move bounded workloads with validation. Keep reversible stages and recovery plans.",
+    "mistake": "Migrating everything in one untested cutover.",
+    "rubric": [
+      "Inventory dependencies and state",
+      "Move bounded workloads with validation",
+      "Keep reversible stages and recovery plans"
+    ],
+    "followups": [
+      "Which stateful component requires special care?",
+      "Walk through a concrete example of migration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-30",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Security response",
+    "round": "Design",
+    "q": "How should teams react to a critical image vulnerability?",
+    "a": "Identify deployed affected artifacts.",
+    "explanation": "Identify deployed affected artifacts. Apply validated mitigation or rebuilt updates. Track rollout and residual exposure.",
+    "mistake": "Fixing the repository without replacing running images.",
+    "rubric": [
+      "Identify deployed affected artifacts",
+      "Apply validated mitigation or rebuilt updates",
+      "Track rollout and residual exposure"
+    ],
+    "followups": [
+      "How would you verify all replicas updated?",
+      "Walk through a concrete example of security response and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-31",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Readiness",
+    "round": "Design",
+    "q": "What should a service prove before public launch?",
+    "a": "Critical workloads and failure recovery work.",
+    "explanation": "Critical workloads and failure recovery work. Ownership runbooks and telemetry exist. Security configuration and capacity checks pass.",
+    "mistake": "Treating deployment success as operational readiness.",
+    "rubric": [
+      "Critical workloads and failure recovery work",
+      "Ownership runbooks and telemetry exist",
+      "Security configuration and capacity checks pass"
+    ],
+    "followups": [
+      "How would you rehearse a dependency outage?",
+      "Walk through a concrete example of readiness and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "devops-path-32",
+    "area": "DevOps and Cloud",
+    "level": 4,
+    "subtopic": "Operational culture",
+    "round": "Design",
+    "q": "How do blameless reviews improve reliability?",
+    "a": "Examine system conditions and decisions.",
+    "explanation": "Examine system conditions and decisions. Create owned measurable improvements. Follow up on recurrence prevention.",
+    "mistake": "Replacing analysis with individual blame.",
+    "rubric": [
+      "Examine system conditions and decisions",
+      "Create owned measurable improvements",
+      "Follow up on recurrence prevention"
+    ],
+    "followups": [
+      "How would you assess action-item effectiveness?",
+      "Walk through a concrete example of operational culture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "kubernetes",
+      "docker-build",
+      "terraform-state",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

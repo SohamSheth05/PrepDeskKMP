@@ -1,0 +1,211 @@
+[
+  {
+    "id": "flutter-widgets",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Widget model",
+    "round": "Fundamentals",
+    "q": "How do widget configuration and State differ in Flutter?",
+    "a": "Widgets describe immutable configuration; a State object can retain mutable state across compatible rebuilds.",
+    "explanation": "The framework uses type and identity to decide whether state survives. Rebuilding widgets is normal; choose state ownership around user lifetimes rather than avoiding every build.",
+    "mistake": "Assuming rebuilding always destroys all associated state.",
+    "rubric": [
+      "Separate configuration and state",
+      "Explain rebuilds",
+      "Define state lifetime"
+    ],
+    "followups": [
+      "How do keys affect identity?",
+      "When is a StatelessWidget sufficient?"
+    ],
+    "sourceIds": [
+      "flutter-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-build",
+    "area": "Flutter",
+    "level": 1,
+    "subtopic": "Rendering",
+    "round": "Debugging",
+    "q": "A network request starts every time a Flutter widget builds. What is wrong?",
+    "a": "Build can run repeatedly. Own the request in a suitable lifecycle or state layer rather than starting side effects on every build.",
+    "explanation": "Cache or manage the operation for the desired lifetime and define refresh behavior. Render loading, error, and result state separately. Test parent rebuilds and navigation.",
+    "mistake": "Treating build as a one-time initialization callback.",
+    "rubric": [
+      "Keep rendering free of repeated side effects",
+      "Own request lifetime",
+      "Define refresh and failure states"
+    ],
+    "followups": [
+      "What if widget parameters change?",
+      "How should errors be retried?"
+    ],
+    "sourceIds": [
+      "flutter-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-dispose",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Lifecycle",
+    "round": "Debugging",
+    "q": "An async result calls setState after a Flutter screen closes. How do you handle it?",
+    "a": "Cancel owned work or ignore obsolete results, and check that UI state is still valid before applying it.",
+    "explanation": "Dispose controllers and subscriptions. A mounted check can avoid an invalid update but does not automatically stop wasted work or prevent stale results after parameters change.",
+    "mistake": "Using mounted as the entire cancellation strategy.",
+    "rubric": [
+      "Clean up owned resources",
+      "Guard obsolete results",
+      "Handle parameter changes"
+    ],
+    "followups": [
+      "How do you cancel a stream subscription?",
+      "What should happen to durable work?"
+    ],
+    "sourceIds": [
+      "flutter-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-list",
+    "area": "Flutter",
+    "level": 2,
+    "subtopic": "Rendering",
+    "round": "Coding",
+    "q": "Build a long Flutter feed without rendering every item up front.",
+    "a": "Use a lazy list builder with stable item identity and lightweight row builds.",
+    "explanation": "Bound image decoding and caching, paginate data, and preserve appropriate scroll state. Measure frame timing; lazy widgets alone do not fix expensive work inside every visible row.",
+    "mistake": "Loading all remote data because the widgets are lazy.",
+    "rubric": [
+      "Render rows lazily",
+      "Bound data/image work",
+      "Measure frame performance"
+    ],
+    "followups": [
+      "How would you support variable-height rows?",
+      "What should persist on navigation?"
+    ],
+    "sourceIds": [
+      "flutter-performance"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-isolate",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "A Flutter app drops frames while parsing a large payload. Would async fix it?",
+    "a": "Async does not move CPU work to another isolate. Measure parsing cost and offload suitable computation when transfer overhead is justified.",
+    "explanation": "Keep UI work on its owning isolate and send transferable data. Small jobs can cost more to offload than to run locally. Validate on representative devices and payload sizes.",
+    "mistake": "Equating a Future with CPU parallelism.",
+    "rubric": [
+      "Identify CPU frame blocking",
+      "Choose suitable isolate work",
+      "Measure transfer and scheduling cost"
+    ],
+    "followups": [
+      "How do you handle stale results?",
+      "When is chunking better?"
+    ],
+    "sourceIds": [
+      "flutter-performance"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-architecture",
+    "area": "Flutter",
+    "level": 3,
+    "subtopic": "App architecture",
+    "round": "System design",
+    "q": "Design Flutter state for an offline task manager with syncing.",
+    "a": "Separate presentation state from repositories and durable local data, with explicit sync and conflict policies.",
+    "explanation": "A state library does not determine durability. Use stable task IDs, durable pending operations, and clear error/retry states. Test app termination while saving and syncing.",
+    "mistake": "Keeping the only copy of pending edits in a UI notifier.",
+    "rubric": [
+      "Separate state ownership",
+      "Persist edits and retries",
+      "Define conflict and failure behavior"
+    ],
+    "followups": [
+      "How do you represent deletions?",
+      "Which state should survive reinstall?"
+    ],
+    "sourceIds": [
+      "flutter-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-platform",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Multiplatform strategy",
+    "round": "System design",
+    "q": "A Flutter app targets mobile and desktop. What should vary by platform?",
+    "a": "Share domain behavior where useful while adapting input, navigation, layout, accessibility, and platform services.",
+    "explanation": "Validate plugin support, lifecycle behavior, and performance on every target. Use platform boundaries for capabilities rather than scattering platform checks throughout business logic.",
+    "mistake": "Assuming a responsive layout alone produces a good desktop app.",
+    "rubric": [
+      "Define shared and platform capabilities",
+      "Adapt input and accessibility",
+      "Validate plugins and performance"
+    ],
+    "followups": [
+      "How do you handle missing platform APIs?",
+      "Which tests can be shared?"
+    ],
+    "sourceIds": [
+      "flutter-architecture",
+      "w3c-accessibility"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "flutter-governance",
+    "area": "Flutter",
+    "level": 4,
+    "subtopic": "Engineering strategy",
+    "round": "Leadership",
+    "q": "Set a performance policy for a large Flutter product.",
+    "a": "Define device-based frame, startup, memory, and network budgets, then measure representative user journeys continuously.",
+    "explanation": "Keep profiling comparable across releases and make regressions actionable for owners. Approve exceptions with evidence. Optimize measured hot paths while preserving maintainability and accessibility.",
+    "mistake": "Judging performance only on a flagship development device.",
+    "rubric": [
+      "Set user-journey budgets",
+      "Measure representative targets",
+      "Assign regression and exception owners"
+    ],
+    "followups": [
+      "How do you investigate a startup regression?",
+      "Which metrics should block a release?"
+    ],
+    "sourceIds": [
+      "flutter-performance"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

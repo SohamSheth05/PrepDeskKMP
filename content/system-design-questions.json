@@ -1,0 +1,215 @@
+[
+  {
+    "id": "system-design-requirements",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Design process",
+    "round": "Fundamentals",
+    "q": "Before designing a chat service, what requirements would you clarify?",
+    "a": "Clarify users, traffic, message durability, latency, ordering, retention, and features such as group chat and offline delivery.",
+    "explanation": "Turn vague scale into estimates and identify the critical user workflow. Design choices depend on acceptable loss, consistency, and cost; do not start by naming infrastructure products.",
+    "mistake": "Choosing a database before defining the workload and invariants.",
+    "rubric": [
+      "Define functional requirements",
+      "Estimate load and latency",
+      "State durability and ordering needs"
+    ],
+    "followups": [
+      "Is typing presence durable?",
+      "What changes for very large groups?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-design-cache",
+    "area": "System Design",
+    "level": 1,
+    "subtopic": "Caching",
+    "round": "Fundamentals",
+    "q": "A cache speeds reads. What new correctness and operational questions does it create?",
+    "a": "Define freshness, invalidation, key scope, eviction, miss handling, and fallback when the cache is unavailable.",
+    "explanation": "A cache is normally not the only durable copy. Protect against cross-user key collisions and synchronized misses. Measure hit rate together with origin load and stale-data impact.",
+    "mistake": "Discussing only hit rate and ignoring stale or private data.",
+    "rubric": [
+      "Define freshness and invalidation",
+      "Scope keys safely",
+      "Handle misses and cache failure"
+    ],
+    "followups": [
+      "How do you prevent a cache stampede?",
+      "Which data should not be shared?"
+    ],
+    "sourceIds": [
+      "http-caching",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-design-queue",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Asynchronous systems",
+    "round": "System design",
+    "q": "When should a report request become a queued job instead of a synchronous API response?",
+    "a": "Use a durable job when work exceeds request limits or needs retries and controlled capacity, while giving users observable progress.",
+    "explanation": "Define acceptance, cancellation, status, result expiry, and replay identity. Queueing shifts latency rather than eliminating work. Bound backlog and handle jobs that repeatedly fail.",
+    "mistake": "Assuming a queue automatically guarantees exactly-once processing.",
+    "rubric": [
+      "Define durable acceptance",
+      "Provide status and result contracts",
+      "Handle replay and backlog limits"
+    ],
+    "followups": [
+      "How do you prevent duplicate reports?",
+      "What if the queue grows continuously?"
+    ],
+    "sourceIds": [
+      "sre-overload",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-design-rate-limit",
+    "area": "System Design",
+    "level": 2,
+    "subtopic": "Traffic control",
+    "round": "Coding",
+    "q": "Design a per-user API rate limiter. What should happen across multiple instances?",
+    "a": "Define the rate window and burst allowance, then coordinate counts or tokens according to the required precision and failure policy.",
+    "explanation": "A process-local limiter only sees local traffic. Account for tenant identity, trusted proxies, clock behavior, and limiter-store outages. Report limits predictably and avoid exposing sensitive state.",
+    "mistake": "Claiming a local map enforces a strict global limit.",
+    "rubric": [
+      "Define window and burst semantics",
+      "Coordinate distributed state",
+      "Choose outage behavior"
+    ],
+    "followups": [
+      "When can approximate limits be acceptable?",
+      "How do you avoid limiting by a forged identity?"
+    ],
+    "sourceIds": [
+      "sre-overload",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-design-orders",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Consistency",
+    "round": "System design",
+    "q": "Design order placement with inventory and payment services.",
+    "a": "State business invariants, coordinate steps with durable workflow state, and define compensation and reconciliation.",
+    "explanation": "A local transaction cannot atomically cover every independent service. Use idempotent commands, timeouts, and explicit pending states. Decide whether stock reservation precedes payment and how failures release resources.",
+    "mistake": "Describing compensation as a guaranteed reversal of every side effect.",
+    "rubric": [
+      "Define workflow invariants",
+      "Persist transitions and retry identity",
+      "Plan compensation and reconciliation"
+    ],
+    "followups": [
+      "What if payment succeeds after timeout?",
+      "How do expired reservations behave?"
+    ],
+    "sourceIds": [
+      "postgres-isolation",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-design-hot-key",
+    "area": "System Design",
+    "level": 3,
+    "subtopic": "Scaling",
+    "round": "Debugging",
+    "q": "A distributed store has one overloaded partition even though total capacity is low. What happened?",
+    "a": "A skewed access pattern or hot key can concentrate traffic. Measure per-partition load and choose a workload-specific mitigation.",
+    "explanation": "Caching, batching, read replicas, or sharding a logical key may help, but each affects consistency and aggregation. Adding partitions does not automatically distribute one hot key.",
+    "mistake": "Using average cluster CPU as proof that no scaling problem exists.",
+    "rubric": [
+      "Measure skewed load",
+      "Identify the hot access pattern",
+      "Evaluate consistency trade-offs"
+    ],
+    "followups": [
+      "How do you handle a celebrity feed?",
+      "When can key salting help?"
+    ],
+    "sourceIds": [
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-design-multiregion",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Distributed architecture",
+    "round": "System design",
+    "q": "Choose a multi-region architecture for data that must remain correct during network partitions.",
+    "a": "Specify availability and consistency needs per operation, then decide where writes occur and how conflicts or outages are handled.",
+    "explanation": "Network partitions force trade-offs for coordinated operations. Distinguish read availability from write acceptance and define failover, data-loss objectives, and recovery verification. Avoid vague claims of universal strong consistency.",
+    "mistake": "Claiming all reads and writes remain strongly consistent and available under every partition.",
+    "rubric": [
+      "Define per-operation guarantees",
+      "Handle partition and failover behavior",
+      "Validate recovery and conflicts"
+    ],
+    "followups": [
+      "Which writes can be delayed?",
+      "How do you handle stale reads?"
+    ],
+    "sourceIds": [
+      "sre-book",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "system-design-architecture-review",
+    "area": "System Design",
+    "level": 4,
+    "subtopic": "Engineering strategy",
+    "round": "Leadership",
+    "q": "How should an architecture review compare two plausible designs?",
+    "a": "Compare requirements, failure behavior, cost, operability, migration risk, and evidence, and record the decision and revisit conditions.",
+    "explanation": "Use workload estimates and prototypes to resolve key uncertainties. Include responsible owners and incremental validation. A decision record should explain assumptions, not just list chosen technologies.",
+    "mistake": "Selecting the more fashionable design without examining user or operational needs.",
+    "rubric": [
+      "State assumptions and criteria",
+      "Test the key uncertainty",
+      "Record ownership and revisit triggers"
+    ],
+    "followups": [
+      "Which risks require a prototype?",
+      "What evidence would change the decision?"
+    ],
+    "sourceIds": [
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

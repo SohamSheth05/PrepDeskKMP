@@ -1,0 +1,226 @@
+[
+  {
+    "id": "android-path-01",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Intents",
+    "round": "Fundamentals",
+    "q": "How do explicit and implicit intents differ?",
+    "a": "Explicit intents name a component.",
+    "explanation": "Explicit intents name a component. Implicit intents describe an action. Validate incoming extras and resolved targets.",
+    "mistake": "Trusting arbitrary intent data.",
+    "rubric": [
+      "Explicit intents name a component",
+      "Implicit intents describe an action",
+      "Validate incoming extras and resolved targets"
+    ],
+    "followups": [
+      "When would you restrict an intent to a package?",
+      "Walk through a concrete example of intents and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-path-02",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Resources",
+    "round": "Fundamentals",
+    "q": "Why avoid hardcoded pixels and strings in Android layouts?",
+    "a": "Density independent units adapt to screens.",
+    "explanation": "Density independent units adapt to screens. String resources support localization. Test font scaling and longer translations.",
+    "mistake": "Assuming every device has identical density.",
+    "rubric": [
+      "Density independent units adapt to screens",
+      "String resources support localization",
+      "Test font scaling and longer translations"
+    ],
+    "followups": [
+      "How would you support right-to-left text?",
+      "Walk through a concrete example of resources and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-path-03",
+    "area": "Android",
+    "level": 1,
+    "subtopic": "Permissions",
+    "round": "Fundamentals",
+    "q": "How should an app handle a denied camera permission?",
+    "a": "Request when the feature is used.",
+    "explanation": "Request when the feature is used. Offer a useful denial state. Explain settings access when appropriate.",
+    "mistake": "Repeatedly forcing permission prompts.",
+    "rubric": [
+      "Request when the feature is used",
+      "Offer a useful denial state",
+      "Explain settings access when appropriate"
+    ],
+    "followups": [
+      "What happens when permission is revoked later?",
+      "Walk through a concrete example of permissions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-path-04",
+    "area": "Android",
+    "level": 2,
+    "subtopic": "Navigation",
+    "round": "Scenario",
+    "q": "What should happen when a deep link requires authentication?",
+    "a": "Validate the destination and parameters.",
+    "explanation": "Validate the destination and parameters. Authenticate before protected data access. Resume navigation without duplicating screens.",
+    "mistake": "Treating a deep link as proof of authorization.",
+    "rubric": [
+      "Validate the destination and parameters",
+      "Authenticate before protected data access",
+      "Resume navigation without duplicating screens"
+    ],
+    "followups": [
+      "How would you test a cold-start deep link?",
+      "Walk through a concrete example of navigation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-path-05",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Accessibility",
+    "round": "Debugging",
+    "q": "How would you make a custom Compose control accessible?",
+    "a": "Expose a label and meaningful semantics.",
+    "explanation": "Expose a label and meaningful semantics. Provide a sufficiently large touch target. Test screen readers and font scaling.",
+    "mistake": "Relying on color as the only status indicator.",
+    "rubric": [
+      "Expose a label and meaningful semantics",
+      "Provide a sufficiently large touch target",
+      "Test screen readers and font scaling"
+    ],
+    "followups": [
+      "How should a toggle announce its state?",
+      "Walk through a concrete example of accessibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-path-06",
+    "area": "Android",
+    "level": 3,
+    "subtopic": "Build variants",
+    "round": "Debugging",
+    "q": "How would you keep staging configuration out of a production build?",
+    "a": "Separate variant configuration.",
+    "explanation": "Separate variant configuration. Validate release endpoints during builds. Keep server secrets outside the APK.",
+    "mistake": "Putting secret API credentials in BuildConfig.",
+    "rubric": [
+      "Separate variant configuration",
+      "Validate release endpoints during builds",
+      "Keep server secrets outside the APK"
+    ],
+    "followups": [
+      "How would CI reject a staging release?",
+      "Walk through a concrete example of build variants and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-path-07",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Release rollout",
+    "round": "Design",
+    "q": "A release crashes only on a subset of devices. What do you do?",
+    "a": "Group crashes by device and version.",
+    "explanation": "Group crashes by device and version. Pause rollout and isolate the regression. Verify a fix against affected configurations.",
+    "mistake": "Assuming emulator success proves release safety.",
+    "rubric": [
+      "Group crashes by device and version",
+      "Pause rollout and isolate the regression",
+      "Verify a fix against affected configurations"
+    ],
+    "followups": [
+      "Which signals determine whether rollout resumes?",
+      "Walk through a concrete example of release rollout and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "android-path-08",
+    "area": "Android",
+    "level": 4,
+    "subtopic": "Data evolution",
+    "round": "Design",
+    "q": "How would you roll out a destructive local data model change safely?",
+    "a": "Prefer explicit tested migrations.",
+    "explanation": "Prefer explicit tested migrations. Preserve user progress before schema changes. Test upgrades from supported older versions.",
+    "mistake": "Deleting the database to hide migration failures.",
+    "rubric": [
+      "Prefer explicit tested migrations",
+      "Preserve user progress before schema changes",
+      "Test upgrades from supported older versions"
+    ],
+    "followups": [
+      "How would you recover from an interrupted upgrade?",
+      "Walk through a concrete example of data evolution and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "android-testing"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

@@ -1,0 +1,834 @@
+[
+  {
+    "id": "rust-path-01",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Ownership",
+    "round": "Fundamentals",
+    "q": "Why does moving a String invalidate the old binding?",
+    "a": "Owned data has a responsible owner.",
+    "explanation": "Owned data has a responsible owner. A move transfers that responsibility. Use borrowing for temporary access.",
+    "mistake": "Assuming every assignment copies heap data.",
+    "rubric": [
+      "Owned data has a responsible owner",
+      "A move transfers that responsibility",
+      "Use borrowing for temporary access"
+    ],
+    "followups": [
+      "How does a Copy type behave differently?",
+      "Walk through a concrete example of ownership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-02",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Borrowing",
+    "round": "Fundamentals",
+    "q": "What rule prevents competing mutable access?",
+    "a": "A mutable borrow requires exclusive access.",
+    "explanation": "A mutable borrow requires exclusive access. Shared borrows allow reading. Lifetimes bound overlapping usage.",
+    "mistake": "Keeping shared references while mutating the same value.",
+    "rubric": [
+      "A mutable borrow requires exclusive access",
+      "Shared borrows allow reading",
+      "Lifetimes bound overlapping usage"
+    ],
+    "followups": [
+      "How does non-lexical lifetime analysis help?",
+      "Walk through a concrete example of borrowing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-03",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Strings",
+    "round": "Fundamentals",
+    "q": "How do String and str differ?",
+    "a": "String owns growable UTF-8 data.",
+    "explanation": "String owns growable UTF-8 data. Str is a borrowed string view. Choose borrowing for read-only parameters.",
+    "mistake": "Treating string indexes as character positions.",
+    "rubric": [
+      "String owns growable UTF-8 data",
+      "Str is a borrowed string view",
+      "Choose borrowing for read-only parameters"
+    ],
+    "followups": [
+      "How would you iterate Unicode characters?",
+      "Walk through a concrete example of strings and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-04",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Enums",
+    "round": "Fundamentals",
+    "q": "How can an enum model valid application states?",
+    "a": "Variants encode alternatives.",
+    "explanation": "Variants encode alternatives. Each variant carries relevant data. Match handles cases explicitly.",
+    "mistake": "Representing alternatives with unrelated nullable fields.",
+    "rubric": [
+      "Variants encode alternatives",
+      "Each variant carries relevant data",
+      "Match handles cases explicitly"
+    ],
+    "followups": [
+      "How would you model a request outcome?",
+      "Walk through a concrete example of enums and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-05",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Options",
+    "round": "Fundamentals",
+    "q": "Why does Option make absence explicit?",
+    "a": "Some carries a value.",
+    "explanation": "Some carries a value. None represents no value. Callers must handle or propagate absence.",
+    "mistake": "Unwrapping every optional value blindly.",
+    "rubric": [
+      "Some carries a value",
+      "None represents no value",
+      "Callers must handle or propagate absence"
+    ],
+    "followups": [
+      "When should absence become an error?",
+      "Walk through a concrete example of options and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-06",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Results",
+    "round": "Fundamentals",
+    "q": "How does the question-mark operator handle errors?",
+    "a": "It propagates compatible failures.",
+    "explanation": "It propagates compatible failures. Successful values continue evaluation. Conversion must satisfy required error contracts.",
+    "mistake": "Expecting it to ignore errors.",
+    "rubric": [
+      "It propagates compatible failures",
+      "Successful values continue evaluation",
+      "Conversion must satisfy required error contracts"
+    ],
+    "followups": [
+      "How would you add useful error context?",
+      "Walk through a concrete example of results and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-07",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Traits",
+    "round": "Fundamentals",
+    "q": "What does a trait express?",
+    "a": "It defines shared behavior.",
+    "explanation": "It defines shared behavior. Implementations provide concrete operations. Bounds describe required capabilities.",
+    "mistake": "Using inheritance assumptions for trait composition.",
+    "rubric": [
+      "It defines shared behavior",
+      "Implementations provide concrete operations",
+      "Bounds describe required capabilities"
+    ],
+    "followups": [
+      "When would a default method help?",
+      "Walk through a concrete example of traits and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-08",
+    "area": "Rust",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Fundamentals",
+    "q": "Why can a vector push invalidate a reference to an element?",
+    "a": "Growth may reallocate storage.",
+    "explanation": "Growth may reallocate storage. References must remain valid. Borrow rules prevent unsafe overlapping mutation.",
+    "mistake": "Keeping element references while extending the vector.",
+    "rubric": [
+      "Growth may reallocate storage",
+      "References must remain valid",
+      "Borrow rules prevent unsafe overlapping mutation"
+    ],
+    "followups": [
+      "How would indexes differ from references?",
+      "Walk through a concrete example of collections and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-09",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Lifetimes",
+    "round": "Scenario",
+    "q": "What do explicit lifetime parameters describe?",
+    "a": "They relate reference validity.",
+    "explanation": "They relate reference validity. They do not extend object lifetime. Return references must originate from valid storage.",
+    "mistake": "Using annotations to rescue a reference to a local value.",
+    "rubric": [
+      "They relate reference validity",
+      "They do not extend object lifetime",
+      "Return references must originate from valid storage"
+    ],
+    "followups": [
+      "How would you return owned data instead?",
+      "Walk through a concrete example of lifetimes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-10",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Iterators",
+    "round": "Scenario",
+    "q": "When are iterator adapters evaluated?",
+    "a": "Adapters are generally lazy.",
+    "explanation": "Adapters are generally lazy. Consumption drives iteration. Collect materializes output into a chosen collection.",
+    "mistake": "Expecting map alone to execute side effects.",
+    "rubric": [
+      "Adapters are generally lazy",
+      "Consumption drives iteration",
+      "Collect materializes output into a chosen collection"
+    ],
+    "followups": [
+      "How would you stop at the first match?",
+      "Walk through a concrete example of iterators and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-11",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Cloning",
+    "round": "Scenario",
+    "q": "When is clone a poor response to a borrow-checker error?",
+    "a": "Cloning can copy substantial data.",
+    "explanation": "Cloning can copy substantial data. It may hide unclear ownership. Redesign lifetimes or boundaries when appropriate.",
+    "mistake": "Cloning everything until compilation succeeds.",
+    "rubric": [
+      "Cloning can copy substantial data",
+      "It may hide unclear ownership",
+      "Redesign lifetimes or boundaries when appropriate"
+    ],
+    "followups": [
+      "When would an intentional clone be correct?",
+      "Walk through a concrete example of cloning and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-12",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Pattern matching",
+    "round": "Scenario",
+    "q": "Why is exhaustive matching useful for API evolution?",
+    "a": "It exposes unhandled variants.",
+    "explanation": "It exposes unhandled variants. Variant data narrows safely. Wildcard handling may hide meaningful changes.",
+    "mistake": "Using a wildcard for every domain error.",
+    "rubric": [
+      "It exposes unhandled variants",
+      "Variant data narrows safely",
+      "Wildcard handling may hide meaningful changes"
+    ],
+    "followups": [
+      "How would a new variant affect consumers?",
+      "Walk through a concrete example of pattern matching and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-13",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Modules",
+    "round": "Scenario",
+    "q": "How should visibility guide Rust module design?",
+    "a": "Keep implementation details private.",
+    "explanation": "Keep implementation details private. Expose focused public contracts. Re-export intentional entry points.",
+    "mistake": "Making every item public for convenience.",
+    "rubric": [
+      "Keep implementation details private",
+      "Expose focused public contracts",
+      "Re-export intentional entry points"
+    ],
+    "followups": [
+      "What does crate-level visibility permit?",
+      "Walk through a concrete example of modules and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-14",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Tests",
+    "round": "Scenario",
+    "q": "How do unit and integration tests differ in Rust?",
+    "a": "Unit tests can exercise private module details.",
+    "explanation": "Unit tests can exercise private module details. Integration tests use public crate interfaces. Use both for meaningful boundaries.",
+    "mistake": "Testing only internal helper functions.",
+    "rubric": [
+      "Unit tests can exercise private module details",
+      "Integration tests use public crate interfaces",
+      "Use both for meaningful boundaries"
+    ],
+    "followups": [
+      "How would you test a public error contract?",
+      "Walk through a concrete example of tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-15",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Resources",
+    "round": "Scenario",
+    "q": "How does Drop support resource management?",
+    "a": "Destruction follows ownership lifetime.",
+    "explanation": "Destruction follows ownership lifetime. Owned wrappers can release resources. Avoid relying on panics for normal errors.",
+    "mistake": "Using process termination as routine cleanup.",
+    "rubric": [
+      "Destruction follows ownership lifetime",
+      "Owned wrappers can release resources",
+      "Avoid relying on panics for normal errors"
+    ],
+    "followups": [
+      "How would an early return affect cleanup?",
+      "Walk through a concrete example of resources and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-16",
+    "area": "Rust",
+    "level": 2,
+    "subtopic": "Error models",
+    "round": "Scenario",
+    "q": "When should a Rust library define a custom error type?",
+    "a": "Expose meaningful failure variants.",
+    "explanation": "Expose meaningful failure variants. Preserve causes for diagnosis. Keep callers able to classify failures.",
+    "mistake": "Returning only opaque strings from every API.",
+    "rubric": [
+      "Expose meaningful failure variants",
+      "Preserve causes for diagnosis",
+      "Keep callers able to classify failures"
+    ],
+    "followups": [
+      "How would a caller identify a transient error?",
+      "Walk through a concrete example of error models and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-17",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Shared ownership",
+    "round": "Debugging",
+    "q": "How do Rc and Arc differ?",
+    "a": "Rc supports single-thread shared ownership.",
+    "explanation": "Rc supports single-thread shared ownership. Arc uses atomic reference counting. Neither makes contained mutation automatically safe.",
+    "mistake": "Assuming Arc provides mutable synchronization.",
+    "rubric": [
+      "Rc supports single-thread shared ownership",
+      "Arc uses atomic reference counting",
+      "Neither makes contained mutation automatically safe"
+    ],
+    "followups": [
+      "When would Arc with Mutex be appropriate?",
+      "Walk through a concrete example of shared ownership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-18",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Interior mutability",
+    "round": "Debugging",
+    "q": "What does RefCell trade for dynamic borrow checking?",
+    "a": "It enables mutation through shared ownership.",
+    "explanation": "It enables mutation through shared ownership. Borrow conflicts are checked at runtime. It is unsuitable for cross-thread synchronization.",
+    "mistake": "Expecting borrow violations to fail at compile time.",
+    "rubric": [
+      "It enables mutation through shared ownership",
+      "Borrow conflicts are checked at runtime",
+      "It is unsuitable for cross-thread synchronization"
+    ],
+    "followups": [
+      "How would you avoid a runtime borrow panic?",
+      "Walk through a concrete example of interior mutability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-19",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Threads",
+    "round": "Debugging",
+    "q": "What do Send and Sync describe?",
+    "a": "Send permits ownership transfer across threads.",
+    "explanation": "Send permits ownership transfer across threads. Sync permits safe shared references across threads. Composed types inherit constrained capabilities.",
+    "mistake": "Implementing unsafe traits without proving invariants.",
+    "rubric": [
+      "Send permits ownership transfer across threads",
+      "Sync permits safe shared references across threads",
+      "Composed types inherit constrained capabilities"
+    ],
+    "followups": [
+      "Why might a type be Send but not Sync?",
+      "Walk through a concrete example of threads and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-20",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Locks",
+    "round": "Debugging",
+    "q": "How should Rust code handle a poisoned mutex?",
+    "a": "Poisoning signals a panic during protected work.",
+    "explanation": "Poisoning signals a panic during protected work. Assess whether invariants remain valid. Recover or fail through an explicit policy.",
+    "mistake": "Ignoring potentially corrupted shared state.",
+    "rubric": [
+      "Poisoning signals a panic during protected work",
+      "Assess whether invariants remain valid",
+      "Recover or fail through an explicit policy"
+    ],
+    "followups": [
+      "When could recovery be justified?",
+      "Walk through a concrete example of locks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-21",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Trait objects",
+    "round": "Debugging",
+    "q": "When use dynamic trait dispatch rather than generics?",
+    "a": "Trait objects support heterogeneous runtime behavior.",
+    "explanation": "Trait objects support heterogeneous runtime behavior. Generics enable static specialization. Consider object-safety and code-size trade-offs.",
+    "mistake": "Assuming dynamic dispatch is always unacceptable.",
+    "rubric": [
+      "Trait objects support heterogeneous runtime behavior",
+      "Generics enable static specialization",
+      "Consider object-safety and code-size trade-offs"
+    ],
+    "followups": [
+      "How would a plugin interface use trait objects?",
+      "Walk through a concrete example of trait objects and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-22",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "How should you investigate a slow Rust service?",
+    "a": "Profile representative workloads.",
+    "explanation": "Profile representative workloads. Inspect allocation contention and I/O. Benchmark the changed bottleneck.",
+    "mistake": "Assuming memory safety implies optimal performance.",
+    "rubric": [
+      "Profile representative workloads",
+      "Inspect allocation contention and I/O",
+      "Benchmark the changed bottleneck"
+    ],
+    "followups": [
+      "Which measurement validates the optimization?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-23",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "Unsafe code",
+    "round": "Debugging",
+    "q": "What should an unsafe block make explicit?",
+    "a": "It relies on manually upheld invariants.",
+    "explanation": "It relies on manually upheld invariants. Keep its boundary minimal. Expose a safe verified interface.",
+    "mistake": "Treating unsafe as a switch that disables all checking.",
+    "rubric": [
+      "It relies on manually upheld invariants",
+      "Keep its boundary minimal",
+      "Expose a safe verified interface"
+    ],
+    "followups": [
+      "How would you document pointer validity?",
+      "Walk through a concrete example of unsafe code and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-24",
+    "area": "Rust",
+    "level": 3,
+    "subtopic": "FFI",
+    "round": "Debugging",
+    "q": "How should Rust cross a foreign-function boundary safely?",
+    "a": "Use compatible layouts and ownership contracts.",
+    "explanation": "Use compatible layouts and ownership contracts. Validate lengths lifetimes and nullability. Prevent unwinding across unsupported boundaries.",
+    "mistake": "Passing Rust-specific layouts as a stable C ABI.",
+    "rubric": [
+      "Use compatible layouts and ownership contracts",
+      "Validate lengths lifetimes and nullability",
+      "Prevent unwinding across unsupported boundaries"
+    ],
+    "followups": [
+      "Who frees an allocated result buffer?",
+      "Walk through a concrete example of ffi and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-25",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "API design",
+    "round": "Design",
+    "q": "How should a public Rust API communicate resource ownership?",
+    "a": "Use owned and borrowed types deliberately.",
+    "explanation": "Use owned and borrowed types deliberately. Document lifetime and shutdown expectations. Prefer invalid states to be unrepresentable.",
+    "mistake": "Returning references to hidden temporary storage.",
+    "rubric": [
+      "Use owned and borrowed types deliberately",
+      "Document lifetime and shutdown expectations",
+      "Prefer invalid states to be unrepresentable"
+    ],
+    "followups": [
+      "How would a connection guard express ownership?",
+      "Walk through a concrete example of api design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-26",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Async architecture",
+    "round": "Design",
+    "q": "Why does async Rust still need a concurrency budget?",
+    "a": "Tasks retain memory and downstream resources.",
+    "explanation": "Tasks retain memory and downstream resources. Unbounded spawning creates overload. Tie tasks to cancellation and capacity limits.",
+    "mistake": "Assuming lightweight tasks have negligible total cost.",
+    "rubric": [
+      "Tasks retain memory and downstream resources",
+      "Unbounded spawning creates overload",
+      "Tie tasks to cancellation and capacity limits"
+    ],
+    "followups": [
+      "How would you bound outstanding database work?",
+      "Walk through a concrete example of async architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-27",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Dependency policy",
+    "round": "Design",
+    "q": "How do you evaluate a crate for production use?",
+    "a": "Review maintenance security and licensing.",
+    "explanation": "Review maintenance security and licensing. Inspect transitive dependencies and features. Test compatibility with supported toolchains.",
+    "mistake": "Choosing solely from download statistics.",
+    "rubric": [
+      "Review maintenance security and licensing",
+      "Inspect transitive dependencies and features",
+      "Test compatibility with supported toolchains"
+    ],
+    "followups": [
+      "How would you audit unsafe dependencies?",
+      "Walk through a concrete example of dependency policy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-28",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Compatibility",
+    "round": "Design",
+    "q": "How would you evolve a public Rust enum safely?",
+    "a": "Exhaustive consumers can break on new variants.",
+    "explanation": "Exhaustive consumers can break on new variants. Choose compatibility policy deliberately. Document migration and version changes.",
+    "mistake": "Calling every new enum variant backward compatible.",
+    "rubric": [
+      "Exhaustive consumers can break on new variants",
+      "Choose compatibility policy deliberately",
+      "Document migration and version changes"
+    ],
+    "followups": [
+      "When is non_exhaustive useful?",
+      "Walk through a concrete example of compatibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-29",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Build strategy",
+    "round": "Design",
+    "q": "How would you reduce Rust build time in a large workspace?",
+    "a": "Measure compilation bottlenecks.",
+    "explanation": "Measure compilation bottlenecks. Control feature and dependency growth. Use appropriate incremental and cache strategies.",
+    "mistake": "Splitting crates without measuring dependency effects.",
+    "rubric": [
+      "Measure compilation bottlenecks",
+      "Control feature and dependency growth",
+      "Use appropriate incremental and cache strategies"
+    ],
+    "followups": [
+      "How would generics affect code generation?",
+      "Walk through a concrete example of build strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-30",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Operational safety",
+    "round": "Design",
+    "q": "How should a service distinguish panics from expected failures?",
+    "a": "Expected failures belong in explicit error paths.",
+    "explanation": "Expected failures belong in explicit error paths. Panics indicate violated assumptions. Define isolation reporting and recovery policy.",
+    "mistake": "Using panic for invalid user input.",
+    "rubric": [
+      "Expected failures belong in explicit error paths",
+      "Panics indicate violated assumptions",
+      "Define isolation reporting and recovery policy"
+    ],
+    "followups": [
+      "How would a panic affect a worker task?",
+      "Walk through a concrete example of operational safety and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-31",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Platform ownership",
+    "round": "Design",
+    "q": "How do you introduce Rust into an existing system responsibly?",
+    "a": "Choose a bounded valuable component.",
+    "explanation": "Choose a bounded valuable component. Define language-boundary ownership clearly. Build operational and debugging expertise.",
+    "mistake": "Rewriting everything before measuring benefits.",
+    "rubric": [
+      "Choose a bounded valuable component",
+      "Define language-boundary ownership clearly",
+      "Build operational and debugging expertise"
+    ],
+    "followups": [
+      "Which metric would justify extending adoption?",
+      "Walk through a concrete example of platform ownership and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "rust-path-32",
+    "area": "Rust",
+    "level": 4,
+    "subtopic": "Security review",
+    "round": "Design",
+    "q": "What makes a memory-safe Rust service still vulnerable?",
+    "a": "Authorization and validation remain necessary.",
+    "explanation": "Authorization and validation remain necessary. Dependencies and unsafe boundaries can add risk. Test application-level abuse cases.",
+    "mistake": "Equating memory safety with complete security.",
+    "rubric": [
+      "Authorization and validation remain necessary",
+      "Dependencies and unsafe boundaries can add risk",
+      "Test application-level abuse cases"
+    ],
+    "followups": [
+      "How would you threat-model a file upload endpoint?",
+      "Walk through a concrete example of security review and explain one trade-off."
+    ],
+    "sourceIds": [
+      "rust-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

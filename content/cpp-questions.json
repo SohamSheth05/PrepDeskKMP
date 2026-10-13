@@ -1,0 +1,210 @@
+[
+  {
+    "id": "cpp-lifetime",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Memory",
+    "round": "Fundamentals",
+    "q": "Why is returning a pointer to a local variable unsafe in C or C++?",
+    "a": "The local object is destroyed when the function returns; using its pointer then accesses an object outside its lifetime.",
+    "explanation": "Return a value or define explicit caller/owner-managed storage. A pointer value can still look plausible after the object is gone. In C++, use owning abstractions where appropriate.",
+    "mistake": "Assuming a pointer is valid because the old bytes remain visible.",
+    "rubric": [
+      "Explain object lifetime",
+      "Choose valid ownership",
+      "Avoid returning dangling references"
+    ],
+    "followups": [
+      "What about a static local?",
+      "How does returning by value help?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-raii",
+    "area": "C and C++",
+    "level": 1,
+    "subtopic": "Resource management",
+    "round": "Fundamentals",
+    "q": "Explain how RAII makes C++ file or lock handling safer.",
+    "a": "Bind resource ownership to an object whose destructor releases it, including on exceptions and early returns.",
+    "explanation": "Prefer standard wrappers such as smart pointers and lock guards. C requires a separate explicit cleanup discipline; RAII is a C++ language pattern. Define move and copy semantics for owners.",
+    "mistake": "Treating RAII as only a memory-management technique.",
+    "rubric": [
+      "Bind resources to lifetime",
+      "Cover exceptional exits",
+      "Define ownership transfer"
+    ],
+    "followups": [
+      "When is shared_ptr appropriate?",
+      "How should C APIs be wrapped?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-invalidated",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Containers",
+    "round": "Debugging",
+    "q": "A pointer into a std::vector becomes invalid after push_back. Why?",
+    "a": "Growth can reallocate the vector storage, invalidating references, pointers, and iterators to elements.",
+    "explanation": "Understand operation-specific invalidation rules rather than guessing. Reserve may avoid some reallocations but does not guarantee safety for every mutation. Prefer stable identifiers when storage can move.",
+    "mistake": "Believing reserve makes all later iterator use safe.",
+    "rubric": [
+      "Explain reallocation",
+      "Check operation invalidation rules",
+      "Choose stable identity"
+    ],
+    "followups": [
+      "How does erase affect iterators?",
+      "Which container offers different guarantees?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-owner",
+    "area": "C and C++",
+    "level": 2,
+    "subtopic": "Ownership",
+    "round": "Coding",
+    "q": "Design a C++ class that owns a native resource handle.",
+    "a": "Use a destructor to release it, prevent accidental copying, and implement safe ownership transfer if moves are needed.",
+    "explanation": "Initialize to a valid empty state and handle acquisition failure. Prefer an existing tested wrapper and the rule of zero where possible. A moved-from owner must not release transferred ownership.",
+    "mistake": "Allowing implicit copying that double-releases the handle.",
+    "rubric": [
+      "Define one owner",
+      "Release on every exit",
+      "Make moves and empty states safe"
+    ],
+    "followups": [
+      "When is copying legitimate?",
+      "How would you test acquisition failure?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-race",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "A shared C++ counter produces wrong values only under load. What is the risk?",
+    "a": "Unsynchronized conflicting access can be a data race with undefined behavior. Use a mutex or suitable atomic operation.",
+    "explanation": "Atomicity of one variable does not protect a multi-variable invariant. Explain the required ordering and avoid weaker memory orders without proof. Use concurrency tools and stress tests as evidence.",
+    "mistake": "Calling an observed wrong value the full extent of undefined behavior.",
+    "rubric": [
+      "Identify conflicting access",
+      "Protect the required invariant",
+      "Choose justified synchronization"
+    ],
+    "followups": [
+      "What is false sharing?",
+      "When does an atomic counter suffice?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-exception",
+    "area": "C and C++",
+    "level": 3,
+    "subtopic": "Exception safety",
+    "round": "System design",
+    "q": "A C++ operation modifies several resources and then throws. What guarantee should it offer?",
+    "a": "Choose and document basic, strong, or no-throw behavior according to the operation, then structure updates to meet it.",
+    "explanation": "The basic guarantee preserves invariants and avoids leaks; the strong guarantee leaves no visible change on failure. Prepare changes before committing where practical and test failure injection.",
+    "mistake": "Assuming RAII automatically provides strong transactional behavior.",
+    "rubric": [
+      "Define the promised guarantee",
+      "Preserve invariants and resources",
+      "Test partial failures"
+    ],
+    "followups": [
+      "When is the strong guarantee too expensive?",
+      "What should a destructor do?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-ffi",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design a stable C boundary around a C++ library used by several languages.",
+    "a": "Expose explicit handles and simple documented data types with ownership, error, and version rules.",
+    "explanation": "Do not let C++ exceptions cross the C interface. Avoid exposing unstable implementation layouts. Provide matched allocate/free operations and test ABI behavior with real consumer toolchains.",
+    "mistake": "Passing standard-library containers directly across an unspecified ABI boundary.",
+    "rubric": [
+      "Define data and lifetime contracts",
+      "Translate errors at the boundary",
+      "Validate ABI consumers"
+    ],
+    "followups": [
+      "How do you evolve a struct safely?",
+      "Who owns returned buffers?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "cpp-modernize",
+    "area": "C and C++",
+    "level": 4,
+    "subtopic": "Engineering strategy",
+    "round": "Leadership",
+    "q": "How would you reduce memory defects in a large legacy C++ system?",
+    "a": "Prioritize risky ownership boundaries, use diagnostics and safer abstractions, and modernize with measurable incremental changes.",
+    "explanation": "Track recurring failure classes and review rules. Wrap native resources, reduce raw owning pointers, and validate performance budgets. Migration must preserve behavior across supported compilers and platforms.",
+    "mistake": "Rewriting every pointer without understanding ownership.",
+    "rubric": [
+      "Map risky lifetimes",
+      "Use diagnostics and ownership rules",
+      "Validate behavior and performance"
+    ],
+    "followups": [
+      "Which modules would you migrate first?",
+      "How do you justify exceptions?"
+    ],
+    "sourceIds": [
+      "cpp-guidelines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

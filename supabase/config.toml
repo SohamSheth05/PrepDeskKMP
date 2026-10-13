@@ -1,0 +1,5 @@
+project_id = "prepdesk"
+
+[functions.prepdesk]
+# The handler validates every bearer token against Auth; supports publishable keys.
+verify_jwt = false

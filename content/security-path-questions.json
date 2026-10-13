@@ -1,0 +1,898 @@
+[
+  {
+    "id": "security-path-01",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Trust boundaries",
+    "round": "Fundamentals",
+    "q": "What is a trust boundary in application security?",
+    "a": "It separates different authority or trust levels.",
+    "explanation": "It separates different authority or trust levels. Validate data crossing the boundary. Identify assets and permitted actions.",
+    "mistake": "Trusting input merely because it came from your UI.",
+    "rubric": [
+      "It separates different authority or trust levels",
+      "Validate data crossing the boundary",
+      "Identify assets and permitted actions"
+    ],
+    "followups": [
+      "Where does browser input become server authority?",
+      "Walk through a concrete example of trust boundaries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-02",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Authentication",
+    "round": "Fundamentals",
+    "q": "What should password verification avoid?",
+    "a": "Never store recoverable plain passwords.",
+    "explanation": "Never store recoverable plain passwords. Use suitable password hashing and parameters. Protect recovery and attempt limits.",
+    "mistake": "Hashing passwords with a fast general-purpose hash.",
+    "rubric": [
+      "Never store recoverable plain passwords",
+      "Use suitable password hashing and parameters",
+      "Protect recovery and attempt limits"
+    ],
+    "followups": [
+      "How would password reset be secured?",
+      "Walk through a concrete example of authentication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-03",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Authorization",
+    "round": "Fundamentals",
+    "q": "Why is login insufficient for object access?",
+    "a": "Identity does not imply resource ownership.",
+    "explanation": "Identity does not imply resource ownership. Authorize the requested action and object. Test cross-user paths.",
+    "mistake": "Allowing any logged-in user to fetch any identifier.",
+    "rubric": [
+      "Identity does not imply resource ownership",
+      "Authorize the requested action and object",
+      "Test cross-user paths"
+    ],
+    "followups": [
+      "How would batch access be checked?",
+      "Walk through a concrete example of authorization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-04",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Injection",
+    "round": "Fundamentals",
+    "q": "How do parameterized queries prevent value-based SQL injection?",
+    "a": "They separate values from SQL syntax.",
+    "explanation": "They separate values from SQL syntax. Use actual database binding. Validate dynamic identifiers independently.",
+    "mistake": "Escaping a string manually as the only defense.",
+    "rubric": [
+      "They separate values from SQL syntax",
+      "Use actual database binding",
+      "Validate dynamic identifiers independently"
+    ],
+    "followups": [
+      "How would sort-column selection be validated?",
+      "Walk through a concrete example of injection and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-05",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "XSS",
+    "round": "Fundamentals",
+    "q": "How should an application render untrusted text?",
+    "a": "Use safe text rendering and contextual escaping.",
+    "explanation": "Use safe text rendering and contextual escaping. Sanitize intentional markup. Apply defense-in-depth policies.",
+    "mistake": "Concatenating user content into executable HTML.",
+    "rubric": [
+      "Use safe text rendering and contextual escaping",
+      "Sanitize intentional markup",
+      "Apply defense-in-depth policies"
+    ],
+    "followups": [
+      "Why does output context matter?",
+      "Walk through a concrete example of xss and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-06",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Secrets",
+    "round": "Fundamentals",
+    "q": "Where should privileged service credentials live?",
+    "a": "Keep them on trusted servers.",
+    "explanation": "Keep them on trusted servers. Use managed access and rotation. Avoid shipping or logging them.",
+    "mistake": "Embedding server keys in mobile or browser bundles.",
+    "rubric": [
+      "Keep them on trusted servers",
+      "Use managed access and rotation",
+      "Avoid shipping or logging them"
+    ],
+    "followups": [
+      "How would an exposed credential be rotated?",
+      "Walk through a concrete example of secrets and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-07",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Encryption",
+    "round": "Fundamentals",
+    "q": "How do encryption and hashing differ?",
+    "a": "Encryption is reversible with keys.",
+    "explanation": "Encryption is reversible with keys. Hashing produces a digest. Choose from confidentiality or verification needs.",
+    "mistake": "Encrypting passwords to retrieve them later.",
+    "rubric": [
+      "Encryption is reversible with keys",
+      "Hashing produces a digest",
+      "Choose from confidentiality or verification needs"
+    ],
+    "followups": [
+      "When is a keyed MAC appropriate?",
+      "Walk through a concrete example of encryption and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-08",
+    "area": "Security",
+    "level": 1,
+    "subtopic": "Least privilege",
+    "round": "Fundamentals",
+    "q": "Why should service identities have limited permissions?",
+    "a": "Narrow rights reduce compromise impact.",
+    "explanation": "Narrow rights reduce compromise impact. Separate duties and resources. Review unused access over time.",
+    "mistake": "Giving every service administrator access.",
+    "rubric": [
+      "Narrow rights reduce compromise impact",
+      "Separate duties and resources",
+      "Review unused access over time"
+    ],
+    "followups": [
+      "How would emergency access be audited?",
+      "Walk through a concrete example of least privilege and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-09",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "Sessions",
+    "round": "Scenario",
+    "q": "How should session expiration and revocation work?",
+    "a": "Use bounded credential lifetime.",
+    "explanation": "Use bounded credential lifetime. Refresh under trusted server contracts. Revoke affected sessions explicitly.",
+    "mistake": "Using permanent bearer tokens for every client.",
+    "rubric": [
+      "Use bounded credential lifetime",
+      "Refresh under trusted server contracts",
+      "Revoke affected sessions explicitly"
+    ],
+    "followups": [
+      "How would password reset affect sessions?",
+      "Walk through a concrete example of sessions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-10",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "CSRF",
+    "round": "Scenario",
+    "q": "When does cross-site request forgery become a concern?",
+    "a": "Browsers can attach ambient credentials.",
+    "explanation": "Browsers can attach ambient credentials. State-changing requests need appropriate protection. Combine token origin and cookie policies as needed.",
+    "mistake": "Assuming a custom UI prevents forged requests.",
+    "rubric": [
+      "Browsers can attach ambient credentials",
+      "State-changing requests need appropriate protection",
+      "Combine token origin and cookie policies as needed"
+    ],
+    "followups": [
+      "How does cookie authentication differ from explicit bearer headers?",
+      "Walk through a concrete example of csrf and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-11",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "SSRF",
+    "round": "Scenario",
+    "q": "How should servers constrain user-selected fetch URLs?",
+    "a": "Restrict schemes destinations and redirects.",
+    "explanation": "Restrict schemes destinations and redirects. Validate resolved network targets. Bound response size and time.",
+    "mistake": "Checking only the initial URL hostname.",
+    "rubric": [
+      "Restrict schemes destinations and redirects",
+      "Validate resolved network targets",
+      "Bound response size and time"
+    ],
+    "followups": [
+      "How would metadata-service access be blocked?",
+      "Walk through a concrete example of ssrf and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-12",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "File uploads",
+    "round": "Scenario",
+    "q": "What should an upload security policy cover?",
+    "a": "Bound size and accepted content.",
+    "explanation": "Bound size and accepted content. Validate ownership and storage paths. Isolate risky processing.",
+    "mistake": "Trusting extensions and client MIME labels.",
+    "rubric": [
+      "Bound size and accepted content",
+      "Validate ownership and storage paths",
+      "Isolate risky processing"
+    ],
+    "followups": [
+      "How would you handle decompression bombs?",
+      "Walk through a concrete example of file uploads and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-13",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "Logging",
+    "round": "Scenario",
+    "q": "How do you keep diagnostic logs from exposing secrets?",
+    "a": "Redact credentials and sensitive fields.",
+    "explanation": "Redact credentials and sensitive fields. Collect only necessary context. Control access retention and export.",
+    "mistake": "Logging full authentication headers.",
+    "rubric": [
+      "Redact credentials and sensitive fields",
+      "Collect only necessary context",
+      "Control access retention and export"
+    ],
+    "followups": [
+      "How would automated tests verify redaction?",
+      "Walk through a concrete example of logging and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-14",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "TLS",
+    "round": "Scenario",
+    "q": "What does TLS protect and what does it not authorize?",
+    "a": "It protects authenticated transport confidentiality and integrity.",
+    "explanation": "It protects authenticated transport confidentiality and integrity. Correct certificate validation matters. Application authorization remains separate.",
+    "mistake": "Disabling certificate checks to fix connection errors.",
+    "rubric": [
+      "It protects authenticated transport confidentiality and integrity",
+      "Correct certificate validation matters",
+      "Application authorization remains separate"
+    ],
+    "followups": [
+      "How would a proxy certificate affect trust?",
+      "Walk through a concrete example of tls and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-15",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "Rate limiting",
+    "round": "Scenario",
+    "q": "How can rate limits reduce security abuse?",
+    "a": "Bound repeated expensive or sensitive operations.",
+    "explanation": "Bound repeated expensive or sensitive operations. Use trusted identity and scope. Combine limits with monitoring and recovery.",
+    "mistake": "Using one global limit for every user.",
+    "rubric": [
+      "Bound repeated expensive or sensitive operations",
+      "Use trusted identity and scope",
+      "Combine limits with monitoring and recovery"
+    ],
+    "followups": [
+      "How would credential-guessing limits avoid lockout abuse?",
+      "Walk through a concrete example of rate limiting and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-16",
+    "area": "Security",
+    "level": 2,
+    "subtopic": "Security tests",
+    "round": "Scenario",
+    "q": "Which authorization cases should be tested?",
+    "a": "Cross-user cross-tenant and role boundaries.",
+    "explanation": "Cross-user cross-tenant and role boundaries. Missing revoked or expired credentials. Administrative and bulk endpoints.",
+    "mistake": "Testing only the intended owner's successful request.",
+    "rubric": [
+      "Cross-user cross-tenant and role boundaries",
+      "Missing revoked or expired credentials",
+      "Administrative and bulk endpoints"
+    ],
+    "followups": [
+      "How would you test deleted-user access?",
+      "Walk through a concrete example of security tests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-17",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Threat modeling",
+    "round": "Debugging",
+    "q": "How do you start a useful threat model?",
+    "a": "Map assets actors and data flows.",
+    "explanation": "Map assets actors and data flows. Identify trust boundaries and abuse cases. Prioritize realistic impact and mitigations.",
+    "mistake": "Listing vulnerabilities without relating them to the product.",
+    "rubric": [
+      "Map assets actors and data flows",
+      "Identify trust boundaries and abuse cases",
+      "Prioritize realistic impact and mitigations"
+    ],
+    "followups": [
+      "Which asset needs the strongest protection?",
+      "Walk through a concrete example of threat modeling and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-18",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Token verification",
+    "round": "Debugging",
+    "q": "What must a server verify before trusting a signed token?",
+    "a": "Signature issuer audience and expiration.",
+    "explanation": "Signature issuer audience and expiration. Permitted algorithms and key provenance. Resource authorization after identity validation.",
+    "mistake": "Decoding claims without verifying the signature.",
+    "rubric": [
+      "Signature issuer audience and expiration",
+      "Permitted algorithms and key provenance",
+      "Resource authorization after identity validation"
+    ],
+    "followups": [
+      "How should key rotation be handled?",
+      "Walk through a concrete example of token verification and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-19",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Key management",
+    "round": "Debugging",
+    "q": "What makes encryption-key lifecycle management important?",
+    "a": "Keys need controlled creation storage and access.",
+    "explanation": "Keys need controlled creation storage and access. Rotation must preserve required recoverability. Revocation and audit need ownership.",
+    "mistake": "Keeping keys beside encrypted data with identical access.",
+    "rubric": [
+      "Keys need controlled creation storage and access",
+      "Rotation must preserve required recoverability",
+      "Revocation and audit need ownership"
+    ],
+    "followups": [
+      "How would old ciphertext survive rotation?",
+      "Walk through a concrete example of key management and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-20",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Dependency risk",
+    "round": "Debugging",
+    "q": "How do you assess a vulnerable dependency?",
+    "a": "Identify actual affected versions and paths.",
+    "explanation": "Identify actual affected versions and paths. Evaluate exposure and compensating controls. Deploy validated fixes and track completion.",
+    "mistake": "Assuming no direct import means no risk.",
+    "rubric": [
+      "Identify actual affected versions and paths",
+      "Evaluate exposure and compensating controls",
+      "Deploy validated fixes and track completion"
+    ],
+    "followups": [
+      "How would a transitive package be identified?",
+      "Walk through a concrete example of dependency risk and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-21",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Tenant isolation",
+    "round": "Debugging",
+    "q": "How should multi-tenant access be defended?",
+    "a": "Derive tenant context from trusted identity.",
+    "explanation": "Derive tenant context from trusted identity. Scope data caches and background jobs. Test privileged exceptions carefully.",
+    "mistake": "Trusting tenant headers supplied by clients.",
+    "rubric": [
+      "Derive tenant context from trusted identity",
+      "Scope data caches and background jobs",
+      "Test privileged exceptions carefully"
+    ],
+    "followups": [
+      "How would administrative impersonation be controlled?",
+      "Walk through a concrete example of tenant isolation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-22",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Incident response",
+    "round": "Debugging",
+    "q": "What happens first after suspected credential compromise?",
+    "a": "Contain exposure and revoke affected access.",
+    "explanation": "Contain exposure and revoke affected access. Preserve evidence and assess impact. Communicate and remediate under ownership.",
+    "mistake": "Deleting logs before investigation.",
+    "rubric": [
+      "Contain exposure and revoke affected access",
+      "Preserve evidence and assess impact",
+      "Communicate and remediate under ownership"
+    ],
+    "followups": [
+      "How would you determine affected sessions?",
+      "Walk through a concrete example of incident response and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-23",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Abuse prevention",
+    "round": "Debugging",
+    "q": "How should business-logic abuse be analyzed?",
+    "a": "Model legitimate workflow invariants.",
+    "explanation": "Model legitimate workflow invariants. Test reordered repeated and concurrent actions. Bound incentives and expensive operations.",
+    "mistake": "Assuming input validation covers workflow abuse.",
+    "rubric": [
+      "Model legitimate workflow invariants",
+      "Test reordered repeated and concurrent actions",
+      "Bound incentives and expensive operations"
+    ],
+    "followups": [
+      "How would coupon reuse be prevented?",
+      "Walk through a concrete example of abuse prevention and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-24",
+    "area": "Security",
+    "level": 3,
+    "subtopic": "Data privacy",
+    "round": "Debugging",
+    "q": "How should personal data retention be defined?",
+    "a": "Collect only necessary data.",
+    "explanation": "Collect only necessary data. Set explicit retention and deletion workflows. Include derived stores and backups.",
+    "mistake": "Retaining everything indefinitely for possible analysis.",
+    "rubric": [
+      "Collect only necessary data",
+      "Set explicit retention and deletion workflows",
+      "Include derived stores and backups"
+    ],
+    "followups": [
+      "How would users verify deletion completion?",
+      "Walk through a concrete example of data privacy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-25",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Security architecture",
+    "round": "Design",
+    "q": "How do you choose security controls proportionally?",
+    "a": "Start from assets and threat impact.",
+    "explanation": "Start from assets and threat impact. Apply layered controls at trust boundaries. Measure usability and operational consequences.",
+    "mistake": "Adding controls with no threat model.",
+    "rubric": [
+      "Start from assets and threat impact",
+      "Apply layered controls at trust boundaries",
+      "Measure usability and operational consequences"
+    ],
+    "followups": [
+      "Which control would mitigate the highest risk?",
+      "Walk through a concrete example of security architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-26",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Secure delivery",
+    "round": "Design",
+    "q": "How should release pipelines protect artifact integrity?",
+    "a": "Control build identities and inputs.",
+    "explanation": "Control build identities and inputs. Record provenance and immutable artifacts. Limit signing and deployment privileges.",
+    "mistake": "Sharing signing credentials across unrestricted jobs.",
+    "rubric": [
+      "Control build identities and inputs",
+      "Record provenance and immutable artifacts",
+      "Limit signing and deployment privileges"
+    ],
+    "followups": [
+      "How would compromised build access be detected?",
+      "Walk through a concrete example of secure delivery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-27",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Risk acceptance",
+    "round": "Design",
+    "q": "What should a documented security exception include?",
+    "a": "Describe impact scope and rationale.",
+    "explanation": "Describe impact scope and rationale. Assign accountable ownership and expiry. Specify monitoring and compensating controls.",
+    "mistake": "Granting permanent undocumented exceptions.",
+    "rubric": [
+      "Describe impact scope and rationale",
+      "Assign accountable ownership and expiry",
+      "Specify monitoring and compensating controls"
+    ],
+    "followups": [
+      "Who can approve the residual risk?",
+      "Walk through a concrete example of risk acceptance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-28",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Zero trust",
+    "round": "Design",
+    "q": "How does continuous explicit trust assessment affect service design?",
+    "a": "Verify identity and policy at boundaries.",
+    "explanation": "Verify identity and policy at boundaries. Grant least-privilege access. Observe changes and revoke stale authority.",
+    "mistake": "Assuming internal networks are automatically trustworthy.",
+    "rubric": [
+      "Verify identity and policy at boundaries",
+      "Grant least-privilege access",
+      "Observe changes and revoke stale authority"
+    ],
+    "followups": [
+      "How would service-to-service identity work?",
+      "Walk through a concrete example of zero trust and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-29",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Security review",
+    "round": "Design",
+    "q": "How should a critical design be reviewed before launch?",
+    "a": "Inspect trust boundaries and failure cases.",
+    "explanation": "Inspect trust boundaries and failure cases. Verify highest-impact controls with evidence. Assign remediation and ongoing ownership.",
+    "mistake": "Reviewing only the happy path.",
+    "rubric": [
+      "Inspect trust boundaries and failure cases",
+      "Verify highest-impact controls with evidence",
+      "Assign remediation and ongoing ownership"
+    ],
+    "followups": [
+      "Which issue would block launch?",
+      "Walk through a concrete example of security review and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-30",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Organizational readiness",
+    "round": "Design",
+    "q": "How do you make security response practical across teams?",
+    "a": "Define escalation and incident ownership.",
+    "explanation": "Define escalation and incident ownership. Rehearse realistic scenarios. Maintain usable inventories and runbooks.",
+    "mistake": "Writing policies no team can execute.",
+    "rubric": [
+      "Define escalation and incident ownership",
+      "Rehearse realistic scenarios",
+      "Maintain usable inventories and runbooks"
+    ],
+    "followups": [
+      "How would you rehearse token leakage?",
+      "Walk through a concrete example of organizational readiness and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-31",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Metrics",
+    "round": "Design",
+    "q": "Which security metrics support meaningful decisions?",
+    "a": "Track exposure remediation and recurrence.",
+    "explanation": "Track exposure remediation and recurrence. Measure control outcomes rather than raw counts. Interpret against asset impact.",
+    "mistake": "Using vulnerability totals as the sole risk score.",
+    "rubric": [
+      "Track exposure remediation and recurrence",
+      "Measure control outcomes rather than raw counts",
+      "Interpret against asset impact"
+    ],
+    "followups": [
+      "How would you measure patch deployment completeness?",
+      "Walk through a concrete example of metrics and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "security-path-32",
+    "area": "Security",
+    "level": 4,
+    "subtopic": "Defense in depth",
+    "round": "Design",
+    "q": "Why can a secure language still need application security controls?",
+    "a": "Memory safety does not enforce authorization.",
+    "explanation": "Memory safety does not enforce authorization. Inputs dependencies and workflows remain attackable. Review the complete product boundary.",
+    "mistake": "Equating memory safety with complete security.",
+    "rubric": [
+      "Memory safety does not enforce authorization",
+      "Inputs dependencies and workflows remain attackable",
+      "Review the complete product boundary"
+    ],
+    "followups": [
+      "How would a safe-language API leak another user's data?",
+      "Walk through a concrete example of defense in depth and explain one trade-off."
+    ],
+    "sourceIds": [
+      "owasp-api",
+      "owasp-testing",
+      "android-security"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

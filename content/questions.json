@@ -1,0 +1,610 @@
+[
+  {
+    "area": "Frontend",
+    "level": 1,
+    "q": "Explain the JavaScript event loop.",
+    "a": "JS has one call stack. Async callbacks wait in queues and move to the stack when it is empty. Microtasks (promises) run before macrotasks (setTimeout).",
+    "id": "general-6be419f6483dff30",
+    "version": 1
+  },
+  {
+    "area": "Frontend",
+    "level": 1,
+    "q": "var vs let vs const?",
+    "a": "var is function-scoped and hoisted as undefined. let and const are block-scoped with a temporal dead zone. const blocks reassignment, not mutation.",
+    "id": "general-49afa1ffa150c280",
+    "version": 1
+  },
+  {
+    "area": "Frontend",
+    "level": 2,
+    "q": "What is a closure?",
+    "a": "A function that keeps access to variables from the scope where it was defined, even after that scope has finished. Used for private state, factories and callbacks.",
+    "id": "general-b1d67aae0afbdfa9",
+    "version": 1
+  },
+  {
+    "area": "Frontend",
+    "level": 2,
+    "q": "useEffect vs useMemo in React?",
+    "a": "useEffect runs side effects after render, with cleanup and a dependency array. useMemo caches a computed value until its dependencies change.",
+    "id": "general-2e8793cd63aa05e0",
+    "version": 1
+  },
+  {
+    "area": "Frontend",
+    "level": 2,
+    "q": "Why do list items need keys in React?",
+    "a": "Stable unique keys let React match items between renders, so it updates or reorders them instead of remounting. Avoid array indexes if the list can change.",
+    "id": "general-956ad5b0df20a0e4",
+    "version": 1
+  },
+  {
+    "area": "Frontend",
+    "level": 2,
+    "q": "Flexbox vs Grid?",
+    "a": "Flexbox lays out in one dimension (row or column). Grid handles rows and columns together. Flexbox suits components, Grid suits page layouts.",
+    "id": "general-f39234a688c69c19",
+    "version": 1
+  },
+  {
+    "area": "Frontend",
+    "level": 3,
+    "q": "How do you improve web performance?",
+    "a": "Split and shrink bundles, lazy-load, size and compress images, use a CDN and caching, avoid layout thrashing, and measure Core Web Vitals (LCP, INP, CLS).",
+    "id": "general-f3b2ff886633ee0d",
+    "version": 1
+  },
+  {
+    "area": "Backend",
+    "level": 1,
+    "q": "REST vs GraphQL?",
+    "a": "REST exposes resources through URLs and HTTP verbs. GraphQL lets clients ask for exactly the fields they need from one endpoint. It cuts over-fetching but complicates caching.",
+    "id": "general-db055744f8f47a23",
+    "version": 1
+  },
+  {
+    "area": "Backend",
+    "level": 2,
+    "q": "What does idempotent mean for an API?",
+    "a": "Repeating a request has the same effect as sending it once. GET, PUT and DELETE are idempotent by design. For POST, use idempotency keys stored server-side.",
+    "id": "general-479d954faaa6de91",
+    "version": 1
+  },
+  {
+    "area": "Backend",
+    "level": 2,
+    "q": "Authentication vs authorization? JWT pitfalls?",
+    "a": "AuthN proves who you are; AuthZ decides what you may do. JWTs are stateless but hard to revoke, so use short expiry plus refresh tokens and keep secrets out of the payload.",
+    "id": "general-1385d9003aca042f",
+    "version": 1
+  },
+  {
+    "area": "Backend",
+    "level": 2,
+    "q": "What is the N+1 query problem?",
+    "a": "One query loads a list, then one extra query runs per item. Fix with joins, batch loading or eager fetching (JOIN FETCH in JPA).",
+    "id": "general-9a068a64fc9f4255",
+    "version": 1
+  },
+  {
+    "area": "Backend",
+    "level": 3,
+    "q": "How do you handle race conditions?",
+    "a": "Use transactions with suitable isolation, optimistic locking (version column) or pessimistic locks, atomic operations, and idempotent consumers.",
+    "id": "general-29d4b65ae76aad99",
+    "version": 1
+  },
+  {
+    "area": "Backend",
+    "level": 3,
+    "q": "How would you implement rate limiting?",
+    "a": "Token bucket or sliding window per user or IP, enforced at the gateway or with Redis counters. Return 429 with a Retry-After header.",
+    "id": "general-c2dd5d6b7af119da",
+    "version": 1
+  },
+  {
+    "area": "Backend",
+    "level": 3,
+    "q": "Monolith vs microservices?",
+    "a": "A monolith is simpler to build and deploy. Microservices scale and deploy independently but add network failures, distributed data and ops cost. Start simple, split on clear boundaries.",
+    "id": "general-48ca5e77e30d458e",
+    "version": 1
+  },
+  {
+    "area": "Mobile",
+    "level": 1,
+    "q": "Android activity lifecycle?",
+    "a": "onCreate, onStart, onResume, onPause, onStop, onDestroy. Rotation and process death recreate activities, so keep UI state in a ViewModel or saved state.",
+    "id": "general-c67e1ff47c092576",
+    "version": 1
+  },
+  {
+    "area": "Mobile",
+    "level": 2,
+    "q": "What is recomposition in Jetpack Compose?",
+    "a": "Compose re-runs only the composables that read changed state. Hoist state, use remember and stable types to avoid unnecessary recomposition.",
+    "id": "general-705eb9437dead42d",
+    "version": 1
+  },
+  {
+    "area": "Mobile",
+    "level": 2,
+    "q": "What is a retain cycle in iOS?",
+    "a": "ARC frees an object when strong references reach zero. Two objects (or a closure and self) holding each other strongly never free. Break it with weak or unowned references.",
+    "id": "general-75faebc7c42dc758",
+    "version": 1
+  },
+  {
+    "area": "Mobile",
+    "level": 3,
+    "q": "Native vs Flutter vs React Native vs KMP?",
+    "a": "Native gives the best platform fidelity. Flutter and React Native share UI code. KMP shares business logic and optionally UI. Choose by team skills, performance needs and time to market.",
+    "id": "general-dcae1acdfafbbf0c",
+    "version": 1
+  },
+  {
+    "area": "Mobile",
+    "level": 3,
+    "q": "How do you design an offline-first app?",
+    "a": "Make a local database (Room, Core Data) the source of truth, sync in the background, queue writes, define conflict rules and retry with backoff.",
+    "id": "general-18b4a49267ebe313",
+    "version": 1
+  },
+  {
+    "area": "Mobile",
+    "level": 3,
+    "q": "How do you reduce app startup time and size?",
+    "a": "Lazy-init, move heavy work off the main thread, use R8 and app bundles, compress assets and add baseline profiles.",
+    "id": "general-4dd2a3461a201053",
+    "version": 1
+  },
+  {
+    "area": "Mobile",
+    "level": 3,
+    "q": "Mobile security basics?",
+    "a": "Store secrets in Keystore or Keychain, encrypt local data, pin certificates, keep keys out of the binary, obfuscate, and validate deep links.",
+    "id": "general-4c5dedee7a202f32",
+    "version": 1
+  },
+  {
+    "area": "Database",
+    "level": 1,
+    "q": "What does ACID mean?",
+    "a": "Atomicity: all or nothing. Consistency: data stays valid. Isolation: concurrent transactions do not interfere. Durability: committed data survives crashes.",
+    "id": "general-dcb20b3e4a17e680",
+    "version": 1
+  },
+  {
+    "area": "Database",
+    "level": 1,
+    "q": "SQL vs NoSQL?",
+    "a": "SQL gives a fixed schema, joins and strong consistency. NoSQL gives flexible schemas and easy horizontal scale with trade-offs. Choose by access patterns.",
+    "id": "general-cf184ec829cf4877",
+    "version": 1
+  },
+  {
+    "area": "Database",
+    "level": 1,
+    "q": "Normalization vs denormalization?",
+    "a": "Normalizing removes redundancy and update anomalies. Denormalizing duplicates data to speed reads, at the cost of keeping copies consistent.",
+    "id": "general-f7e55329d1c5e16e",
+    "version": 1
+  },
+  {
+    "area": "Database",
+    "level": 3,
+    "q": "Transaction isolation levels?",
+    "a": "Read uncommitted, read committed, repeatable read, serializable. Higher levels prevent dirty reads, non-repeatable reads, then phantoms, with less concurrency.",
+    "id": "general-3cbcddedafbef969",
+    "version": 1
+  },
+  {
+    "area": "Database",
+    "level": 2,
+    "q": "How do you optimize a slow query?",
+    "a": "Read the EXPLAIN plan, add or fix indexes, avoid SELECT *, filter early, do not wrap indexed columns in functions, and paginate.",
+    "id": "general-4d5b8bf473a26d00",
+    "version": 1
+  },
+  {
+    "area": "Database",
+    "level": 2,
+    "q": "Common caching strategies?",
+    "a": "Cache-aside, write-through and write-back, with TTLs and invalidation. Watch for stampedes and stale data. Redis is a common choice.",
+    "id": "general-eb4d241356e6c5ad",
+    "version": 1
+  },
+  {
+    "area": "DevOps and Cloud",
+    "level": 1,
+    "q": "Docker container vs virtual machine?",
+    "a": "Containers share the host kernel, so they are lighter and start faster. VMs run a full guest OS and isolate more strongly.",
+    "id": "general-e9c8ba14fc15c1da",
+    "version": 1
+  },
+  {
+    "area": "DevOps and Cloud",
+    "level": 2,
+    "q": "Stages of a CI/CD pipeline?",
+    "a": "Commit, build, unit tests, static analysis, package, deploy to staging, integration tests, then a gated production deploy with rollback.",
+    "id": "general-ffa1dfa06c18588f",
+    "version": 1
+  },
+  {
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "q": "Pod, Deployment and Service in Kubernetes?",
+    "a": "A Pod runs containers. A Deployment manages replicas and rollouts. A Service gives pods a stable network endpoint.",
+    "id": "general-8e2b690648331fe0",
+    "version": 1
+  },
+  {
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "q": "Blue-green vs canary deployment?",
+    "a": "Blue-green switches all traffic between two full environments. Canary sends a small share of traffic to the new version first to catch problems early.",
+    "id": "general-d926c2b5c9df9462",
+    "version": 1
+  },
+  {
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "q": "What is Infrastructure as Code?",
+    "a": "Infrastructure defined in versioned files (Terraform, CloudFormation) so environments are reproducible, reviewable and automated.",
+    "id": "general-fded89904af541c6",
+    "version": 1
+  },
+  {
+    "area": "DevOps and Cloud",
+    "level": 3,
+    "q": "Logs, metrics and traces?",
+    "a": "Logs record events, metrics show trends for alerting, and traces follow one request across services. Together they speed up root-cause analysis.",
+    "id": "general-49469aac108598f3",
+    "version": 1
+  },
+  {
+    "area": "System Design",
+    "level": 2,
+    "q": "Design a URL shortener.",
+    "a": "Generate unique IDs (base62 counter or hash), store id-to-URL in a key-value store, cache hot links, redirect with 301 or 302, add rate limits and analytics.",
+    "id": "general-0484a8388b85daa9",
+    "version": 1
+  },
+  {
+    "area": "System Design",
+    "level": 3,
+    "q": "How do you scale a system horizontally?",
+    "a": "Stateless services behind a load balancer, shared cache, read replicas then sharding, async queues, and a CDN for static content.",
+    "id": "general-001a18d9434c2cc2",
+    "version": 1
+  },
+  {
+    "area": "System Design",
+    "level": 3,
+    "q": "Explain the CAP theorem.",
+    "a": "In a network partition you must choose consistency or availability. Many systems tune this per feature, using eventual consistency where it is acceptable.",
+    "id": "general-bbf3c0339a5153a3",
+    "version": 1
+  },
+  {
+    "area": "System Design",
+    "level": 3,
+    "q": "When do you use a message queue?",
+    "a": "To decouple producers and consumers, absorb traffic spikes, retry failures and run async work. Kafka suits streams; RabbitMQ or SQS suit task queues.",
+    "id": "general-65658ef21ed58f21",
+    "version": 1
+  },
+  {
+    "area": "System Design",
+    "level": 2,
+    "q": "Load balancing algorithms?",
+    "a": "Round robin, least connections, IP hash and weighted variants. L4 routes on network info, L7 on HTTP content.",
+    "id": "general-926f26718e532d9a",
+    "version": 1
+  },
+  {
+    "area": "System Design",
+    "level": 4,
+    "q": "How do you approach a system design question?",
+    "a": "Clarify requirements and scale, estimate load, sketch the high-level design, deep-dive bottlenecks, then discuss trade-offs and failure modes.",
+    "id": "general-aeadbcbcb0f9a1e1",
+    "version": 1
+  },
+  {
+    "area": "Testing and QA",
+    "level": 1,
+    "q": "Unit vs integration vs end-to-end tests?",
+    "a": "Unit tests isolate one piece, integration tests check components together, e2e tests run full user flows. Keep many unit tests and fewer e2e (test pyramid).",
+    "id": "general-45c76f2bd6a139cf",
+    "version": 1
+  },
+  {
+    "area": "Testing and QA",
+    "level": 1,
+    "q": "Mock vs stub?",
+    "a": "A stub returns canned data. A mock also verifies interactions, such as which calls were made.",
+    "id": "general-a352324b920013b4",
+    "version": 1
+  },
+  {
+    "area": "Testing and QA",
+    "level": 2,
+    "q": "What should you automate?",
+    "a": "Stable, repetitive, high-risk regression paths. Keep exploratory testing and one-off checks manual.",
+    "id": "general-b0321164cd65847b",
+    "version": 1
+  },
+  {
+    "area": "Testing and QA",
+    "level": 2,
+    "q": "What makes a test flaky and how do you fix it?",
+    "a": "Shared state, timing, network or order dependence. Isolate data, use deterministic waits and fakes, and quarantine then fix the test.",
+    "id": "general-bea9d783b546ca0a",
+    "version": 1
+  },
+  {
+    "area": "Testing and QA",
+    "level": 2,
+    "q": "How do you test an API?",
+    "a": "Check status codes, schema, auth, validation and error paths, idempotency and performance, using contract tests plus automated suites (Postman, REST Assured).",
+    "id": "general-7ba0cfeb8a510e14",
+    "version": 1
+  },
+  {
+    "area": "Tech Lead",
+    "level": 3,
+    "q": "How do you handle an underperforming engineer?",
+    "a": "Give early, specific feedback, find the cause (skill, clarity, motivation), set clear goals with support and checkpoints, and escalate only after documented effort.",
+    "id": "general-96034da1b50628fb",
+    "version": 1
+  },
+  {
+    "area": "Tech Lead",
+    "level": 3,
+    "q": "How do you balance tech debt and features?",
+    "a": "Make debt visible and costed, reserve regular capacity, tie fixes to business risk, and clean up while touching the same area.",
+    "id": "general-b97e3e2f91ee82c6",
+    "version": 1
+  },
+  {
+    "area": "Tech Lead",
+    "level": 2,
+    "q": "How do you run effective code reviews?",
+    "a": "Review correctness, clarity and risk; automate style. Keep PRs small, be specific and kind, and respond quickly.",
+    "id": "general-aff319ee7feb181b",
+    "version": 1
+  },
+  {
+    "area": "Tech Lead",
+    "level": 3,
+    "q": "How do you mentor and grow engineers?",
+    "a": "Set growth goals in 1:1s, delegate stretch work with safety nets, give regular feedback and create visible opportunities.",
+    "id": "general-10f88e3299eeb921",
+    "version": 1
+  },
+  {
+    "area": "Tech Lead",
+    "level": 3,
+    "q": "How do you handle technical disagreements?",
+    "a": "Hear each side, return to goals and data, prototype if cheap, then decide, commit and document the reasoning.",
+    "id": "general-216f8b574a40f973",
+    "version": 1
+  },
+  {
+    "area": "Tech Lead",
+    "level": 4,
+    "q": "How do you estimate and reduce delivery risk?",
+    "a": "Slice work small, estimate in ranges, run spikes on unknowns early, and review risks weekly.",
+    "id": "general-c61ba369eb45abec",
+    "version": 1
+  },
+  {
+    "area": "Project Management",
+    "level": 1,
+    "q": "Agile vs Waterfall?",
+    "a": "Waterfall runs sequential phases with fixed scope. Agile delivers in short iterations and adapts to feedback. Waterfall fits stable, well-understood requirements.",
+    "id": "general-6ce589e4b2eccca1",
+    "version": 1
+  },
+  {
+    "area": "Project Management",
+    "level": 1,
+    "q": "Scrum roles and events?",
+    "a": "Roles: Product Owner, Scrum Master, Developers. Events: sprint, sprint planning, daily scrum, sprint review, retrospective.",
+    "id": "general-703622f1f8644e95",
+    "version": 1
+  },
+  {
+    "area": "Project Management",
+    "level": 2,
+    "q": "How do you manage scope creep?",
+    "a": "Baseline the scope, assess each change for time, cost and risk, get stakeholder approval, and trade scope for scope.",
+    "id": "general-7dc1ca78a7997ae8",
+    "version": 1
+  },
+  {
+    "area": "Project Management",
+    "level": 3,
+    "q": "Critical path and risk management?",
+    "a": "The critical path is the longest chain of dependent tasks and sets minimum duration. Track risks in a register with probability, impact, owner and mitigation.",
+    "id": "general-71585e09e08982f0",
+    "version": 1
+  },
+  {
+    "area": "Project Management",
+    "level": 3,
+    "q": "Which project metrics do you track?",
+    "a": "Velocity or throughput, cycle time, burndown, defect rate and milestone delivery. Use them to see trends, not to rank people.",
+    "id": "general-cd5b4e21c27e6721",
+    "version": 1
+  },
+  {
+    "area": "Project Management",
+    "level": 3,
+    "q": "How do you resolve stakeholder conflicts?",
+    "a": "Clarify each priority, tie decisions to goals and constraints, explain trade-offs openly, and escalate with options when needed.",
+    "id": "general-ced9d07b29e84faa",
+    "version": 1
+  },
+  {
+    "area": "Java and Spring",
+    "level": 1,
+    "q": "What are the four pillars of OOP?",
+    "a": "Encapsulation, abstraction, inheritance and polymorphism: hide state, expose behavior, reuse and specialize types, and let one interface have many implementations.",
+    "id": "general-2b57fc29f4fef5d0",
+    "version": 1
+  },
+  {
+    "area": "Java and Spring",
+    "level": 2,
+    "q": "Abstract class vs interface?",
+    "a": "An abstract class can hold state and constructors, and a class extends only one. An interface defines a contract, can have default methods, and a class can implement many.",
+    "id": "general-a6b0ffca47b98ccd",
+    "version": 1
+  },
+  {
+    "area": "Java and Spring",
+    "level": 3,
+    "q": "How does @Transactional work and what are its pitfalls?",
+    "a": "Spring wraps the bean in a proxy that starts and commits transactions. Calls from inside the same class bypass the proxy, and checked exceptions do not roll back by default.",
+    "id": "general-f7965c3ca414db36",
+    "version": 1
+  },
+  {
+    "area": "Java and Spring",
+    "level": 3,
+    "q": "How does JVM garbage collection work and how do you tune it?",
+    "a": "It reclaims unreachable objects by generation. Pick a collector (G1, ZGC) for your latency or throughput goal, size the heap, and read GC logs before changing flags.",
+    "id": "general-ac44dff55c6abe61",
+    "version": 1
+  },
+  {
+    "area": "Python",
+    "level": 1,
+    "q": "List vs tuple?",
+    "a": "Lists are mutable. Tuples are immutable, and hashable when their items are, so they can be dict keys.",
+    "id": "general-2c6fb108692d22a1",
+    "version": 1
+  },
+  {
+    "area": "Python",
+    "level": 2,
+    "q": "What is the GIL?",
+    "a": "CPython lets one thread run bytecode at a time, so threads do not speed up CPU-bound code. Use multiprocessing or native extensions; threads still help with I/O.",
+    "id": "general-6dd6dd7c619bd29b",
+    "version": 1
+  },
+  {
+    "area": "Python",
+    "level": 2,
+    "q": "What are generators and why use them?",
+    "a": "Functions that yield values lazily, saving memory on large or endless streams.",
+    "id": "general-f953a26622aecee1",
+    "version": 1
+  },
+  {
+    "area": "DSA and Coding",
+    "level": 1,
+    "q": "Array vs linked list?",
+    "a": "Arrays give O(1) index access and good cache locality. Linked lists give O(1) insert at a known node but O(n) lookup.",
+    "id": "general-9e2247178eaceb02",
+    "version": 1
+  },
+  {
+    "area": "DSA and Coding",
+    "level": 2,
+    "q": "How do you detect a cycle in a linked list?",
+    "a": "Floyd's method: a slow and a fast pointer meet if a cycle exists. O(n) time, O(1) space.",
+    "id": "general-909108e7d8bd02ef",
+    "version": 1
+  },
+  {
+    "area": "DSA and Coding",
+    "level": 3,
+    "q": "When do you use dynamic programming?",
+    "a": "When subproblems overlap and the optimal solution builds from optimal parts. Define the state, recurrence and base cases, then memoize or tabulate.",
+    "id": "general-c0d7be70aad697e2",
+    "version": 1
+  },
+  {
+    "area": "Security",
+    "level": 2,
+    "q": "What is SQL injection and how do you prevent it?",
+    "a": "Untrusted input changing a query. Use parameterized queries, least-privilege database users and input validation.",
+    "id": "general-7f1f7c1a24e1c872",
+    "version": 1
+  },
+  {
+    "area": "Security",
+    "level": 3,
+    "q": "XSS vs CSRF?",
+    "a": "XSS injects script into pages; defend with output encoding and CSP. CSRF tricks a logged-in browser into sending requests; defend with SameSite cookies and CSRF tokens.",
+    "id": "general-2e07147ca6537c75",
+    "version": 1
+  },
+  {
+    "area": "Security",
+    "level": 4,
+    "q": "How do you build a threat model?",
+    "a": "Map assets, entry points and trust boundaries, list threats (STRIDE), rank by risk, then assign mitigations and owners.",
+    "id": "general-7e6faa90ab198100",
+    "version": 1
+  },
+  {
+    "area": "AI and Data",
+    "level": 1,
+    "q": "What is overfitting and how do you avoid it?",
+    "a": "The model memorizes training data and fails on new data. Use more data, regularization, cross-validation and simpler models.",
+    "id": "general-08e5deb7cd9476fd",
+    "version": 1
+  },
+  {
+    "area": "AI and Data",
+    "level": 2,
+    "q": "Precision vs recall?",
+    "a": "Precision: of predicted positives, how many are right. Recall: of real positives, how many you found. Choose the trade-off by the cost of each error.",
+    "id": "general-4807ba834dad4774",
+    "version": 1
+  },
+  {
+    "area": "AI and Data",
+    "level": 3,
+    "q": "What is RAG?",
+    "a": "Retrieval-augmented generation fetches relevant documents and gives them to an LLM as context, improving factual grounding without retraining.",
+    "id": "general-c85fc746173f8d5d",
+    "version": 1
+  },
+  {
+    "area": "HR and Behavioral",
+    "level": 1,
+    "q": "Why should we hire you?",
+    "a": "Match two or three of your strengths to the role's top needs, with one concrete result for each.",
+    "id": "general-00f16701dcf2bb93",
+    "version": 1
+  },
+  {
+    "area": "HR and Behavioral",
+    "level": 2,
+    "q": "How do you approach salary negotiation?",
+    "a": "Research the market range, state your range with reasons, discuss total compensation, and stay collaborative.",
+    "id": "general-aa3c0f52086dd797",
+    "version": 1
+  },
+  {
+    "area": "HR and Behavioral",
+    "level": 3,
+    "q": "Tell me about a time you led without authority.",
+    "a": "Use STAR: how you aligned people on a shared goal with data and influence, and the outcome.",
+    "id": "general-cdb5d1ca7a9722db",
+    "version": 1
+  },
+  {
+    "area": "HR and Behavioral",
+    "level": 4,
+    "q": "How do you align engineering strategy with business goals?",
+    "a": "Turn business outcomes into technical bets, set measurable goals, explain trade-offs to executives and review results regularly.",
+    "id": "general-3a558845bf42ca80",
+    "version": 1
+  }
+]

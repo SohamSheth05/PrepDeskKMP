@@ -1,0 +1,216 @@
+[
+  {
+    "id": "mobile-lifetimes",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Lifecycle",
+    "round": "Fundamentals",
+    "q": "Which mobile state belongs in a screen, and which must survive app termination?",
+    "a": "Keep temporary presentation state with the screen; persist important user data and recoverable workflow state durably.",
+    "explanation": "A recreated screen or process is not the same as a new user action. Define restoration requirements for navigation, drafts, and completed transactions rather than persisting every UI detail.",
+    "mistake": "Keeping the only copy of an important draft in memory.",
+    "rubric": [
+      "Separate transient and durable state",
+      "Define restoration behavior",
+      "Test termination during a workflow"
+    ],
+    "followups": [
+      "Should a loading indicator be restored?",
+      "What changes after sign-out?"
+    ],
+    "sourceIds": [
+      "android-lifecycle",
+      "swiftui-data"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-network",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Networking",
+    "round": "Debugging",
+    "q": "A mobile app shows a spinner forever when the network disappears. What should change?",
+    "a": "Model explicit loading, failure, retry, and usable cached-data states, with a bounded request timeout.",
+    "explanation": "Reconnect does not prove the earlier operation failed. Preserve input, distinguish retriable reads from writes, and show actionable feedback. Test airplane mode and interrupted responses.",
+    "mistake": "Treating every network failure as an endless loading state.",
+    "rubric": [
+      "Bound request lifetime",
+      "Preserve user work",
+      "Provide clear recovery behavior"
+    ],
+    "followups": [
+      "What if a write succeeded before disconnect?",
+      "When should cached data be shown?"
+    ],
+    "sourceIds": [
+      "android-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-repository",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Architecture",
+    "round": "Coding",
+    "q": "Design a repository for a feed that can read cached data and refresh remotely.",
+    "a": "Expose a consistent local source of truth and coordinate network refreshes separately from presentation logic.",
+    "explanation": "Persist a successful refresh before publishing it when durability matters. Define freshness, empty versus unavailable data, pagination, and cancellation. Inject dependencies for deterministic failure tests.",
+    "mistake": "Returning conflicting local and remote data without a defined ownership rule.",
+    "rubric": [
+      "Define source of truth",
+      "Model freshness and errors",
+      "Test refresh and persistence failure"
+    ],
+    "followups": [
+      "How does pull-to-refresh work offline?",
+      "What if only one page refreshes?"
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "flutter-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-leak",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "Memory rises after repeatedly opening and closing a mobile screen. What would you inspect?",
+    "a": "Measure retained screens and resources, then inspect subscriptions, callbacks, images, and lifecycle ownership.",
+    "explanation": "Use platform profiling tools and reproduce a bounded navigation loop. Clean up owned observers and avoid long-lived objects retaining short-lived UI. Compare retained memory after the screen should be gone.",
+    "mistake": "Calling memory cleanup blindly without identifying retained owners.",
+    "rubric": [
+      "Reproduce retention",
+      "Inspect lifecycle ownership",
+      "Verify cleanup under repeated navigation"
+    ],
+    "followups": [
+      "What if image caches explain the growth?",
+      "How would you detect a retained activity?"
+    ],
+    "sourceIds": [
+      "android-performance",
+      "android-lifecycle"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-sync",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Offline synchronization",
+    "round": "System design",
+    "q": "Two devices edit the same mobile record offline. Design the sync behavior.",
+    "a": "Use stable identity, version-aware updates, durable pending changes, and a conflict policy visible to users when needed.",
+    "explanation": "Track deletions explicitly and do not rely on device clocks alone. Retries must be idempotent. Test out-of-order delivery, duplicate sync, and interruptions before marking edits synchronized.",
+    "mistake": "Using last-write-wins without defining whose clock or which data can be lost.",
+    "rubric": [
+      "Persist pending edits",
+      "Define version/conflict rules",
+      "Handle replay and deletions"
+    ],
+    "followups": [
+      "Which fields can merge automatically?",
+      "What if a device stays offline for months?"
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-startup",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "App startup slowed after adding several SDKs. How would you respond?",
+    "a": "Profile startup phases and main-thread work, then defer initialization that is not required for the first usable screen.",
+    "explanation": "Separate cold startup from restoration and measure representative devices. Account for disk, class loading, network, and SDK callbacks. Verify deferred initialization does not lose necessary events.",
+    "mistake": "Moving all work later without checking correctness.",
+    "rubric": [
+      "Measure startup phases",
+      "Prioritize the first usable workflow",
+      "Verify deferred work and device coverage"
+    ],
+    "followups": [
+      "Which SDKs truly need early startup?",
+      "How do you avoid duplicate initialization?"
+    ],
+    "sourceIds": [
+      "android-performance"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-modularity",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Leadership",
+    "q": "How would you structure mobile feature teams around a shared app?",
+    "a": "Define capability boundaries, shared contracts, dependency rules, and ownership of navigation and platform services.",
+    "explanation": "Measure build speed and coordination cost before and after changes. Prevent shared modules from becoming dumping grounds and provide compatibility and migration rules for consumers.",
+    "mistake": "Using module count as the main architecture success metric.",
+    "rubric": [
+      "Define feature ownership",
+      "Control shared contracts",
+      "Measure build and delivery outcomes"
+    ],
+    "followups": [
+      "Who owns a cross-feature workflow?",
+      "How do you govern shared UI components?"
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "flutter-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-release",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Release strategy",
+    "round": "System design",
+    "q": "Plan a mobile rollout when users keep old app versions for months.",
+    "a": "Maintain compatible backend and local-data evolution, use phased releases, and observe version-specific failures.",
+    "explanation": "Store rollout and rollback differ from a server redeploy. Use carefully bounded feature controls, define minimum-version policy, and test old clients. A rollback may not undo an on-device migration.",
+    "mistake": "Assuming every installed app upgrades when a server changes.",
+    "rubric": [
+      "Support long-lived client versions",
+      "Plan local data compatibility",
+      "Observe and control staged rollout"
+    ],
+    "followups": [
+      "When should you require an upgrade?",
+      "How do you retire an API safely?"
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

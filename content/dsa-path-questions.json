@@ -1,0 +1,834 @@
+[
+  {
+    "id": "dsa-path-01",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Complexity",
+    "round": "Fundamentals",
+    "q": "How do time and space complexity differ?",
+    "a": "Time measures growing work.",
+    "explanation": "Time measures growing work. Space measures growing memory. State input-size and worst-case assumptions.",
+    "mistake": "Ignoring auxiliary memory in analysis.",
+    "rubric": [
+      "Time measures growing work",
+      "Space measures growing memory",
+      "State input-size and worst-case assumptions"
+    ],
+    "followups": [
+      "When is amortized cost useful?",
+      "Walk through a concrete example of complexity and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-02",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Arrays",
+    "round": "Fundamentals",
+    "q": "How would you find two values summing to a target?",
+    "a": "Track previously seen values in a hash map.",
+    "explanation": "Track previously seen values in a hash map. Check each complement before inserting. Return valid distinct positions.",
+    "mistake": "Reusing the same element twice.",
+    "rubric": [
+      "Track previously seen values in a hash map",
+      "Check each complement before inserting",
+      "Return valid distinct positions"
+    ],
+    "followups": [
+      "How would sorted input change the approach?",
+      "Walk through a concrete example of arrays and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-03",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Stacks",
+    "round": "Fundamentals",
+    "q": "How would you validate matching brackets?",
+    "a": "Push opening brackets.",
+    "explanation": "Push opening brackets. Match each closing bracket with the top. Reject mismatches and leftover opens.",
+    "mistake": "Checking only bracket counts.",
+    "rubric": [
+      "Push opening brackets",
+      "Match each closing bracket with the top",
+      "Reject mismatches and leftover opens"
+    ],
+    "followups": [
+      "How would non-bracket characters be handled?",
+      "Walk through a concrete example of stacks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-04",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Queues",
+    "round": "Fundamentals",
+    "q": "Why does breadth-first traversal use a queue?",
+    "a": "It processes discovered nodes by layer.",
+    "explanation": "It processes discovered nodes by layer. Track visited nodes to avoid repetition. First arrival is shortest in unweighted graphs.",
+    "mistake": "Using the same claim for weighted graphs.",
+    "rubric": [
+      "It processes discovered nodes by layer",
+      "Track visited nodes to avoid repetition",
+      "First arrival is shortest in unweighted graphs"
+    ],
+    "followups": [
+      "How would you reconstruct the path?",
+      "Walk through a concrete example of queues and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-05",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Linked lists",
+    "round": "Fundamentals",
+    "q": "How do you reverse a singly linked list iteratively?",
+    "a": "Keep previous current and next references.",
+    "explanation": "Keep previous current and next references. Redirect each link once. Return the new head.",
+    "mistake": "Losing the remaining list before saving next.",
+    "rubric": [
+      "Keep previous current and next references",
+      "Redirect each link once",
+      "Return the new head"
+    ],
+    "followups": [
+      "How would you handle an empty list?",
+      "Walk through a concrete example of linked lists and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-06",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Binary search",
+    "round": "Fundamentals",
+    "q": "What invariant makes binary search correct?",
+    "a": "The candidate range contains possible answers.",
+    "explanation": "The candidate range contains possible answers. Each comparison shrinks that range. Choose consistent boundary conventions.",
+    "mistake": "Mixing inclusive and exclusive endpoints.",
+    "rubric": [
+      "The candidate range contains possible answers",
+      "Each comparison shrinks that range",
+      "Choose consistent boundary conventions"
+    ],
+    "followups": [
+      "How would you find the first matching value?",
+      "Walk through a concrete example of binary search and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-07",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Hash maps",
+    "round": "Fundamentals",
+    "q": "What trade-offs do hash maps introduce?",
+    "a": "Average lookup can be efficient.",
+    "explanation": "Average lookup can be efficient. Collisions and hashing quality affect behavior. Memory overhead can be significant.",
+    "mistake": "Claiming constant worst-case lookup unconditionally.",
+    "rubric": [
+      "Average lookup can be efficient",
+      "Collisions and hashing quality affect behavior",
+      "Memory overhead can be significant"
+    ],
+    "followups": [
+      "When might a balanced tree be preferable?",
+      "Walk through a concrete example of hash maps and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-08",
+    "area": "DSA and Coding",
+    "level": 1,
+    "subtopic": "Recursion",
+    "round": "Fundamentals",
+    "q": "What must every terminating recursive solution establish?",
+    "a": "Define a valid base case.",
+    "explanation": "Define a valid base case. Make progress toward it. Account for call-stack depth.",
+    "mistake": "Recursing without decreasing the problem.",
+    "rubric": [
+      "Define a valid base case",
+      "Make progress toward it",
+      "Account for call-stack depth"
+    ],
+    "followups": [
+      "How would you convert traversal to iteration?",
+      "Walk through a concrete example of recursion and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-09",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Two pointers",
+    "round": "Scenario",
+    "q": "How would you remove duplicates from a sorted array in place?",
+    "a": "Maintain a write position for unique values.",
+    "explanation": "Maintain a write position for unique values. Scan input once. Return the logical output length.",
+    "mistake": "Treating the unused tail as valid output.",
+    "rubric": [
+      "Maintain a write position for unique values",
+      "Scan input once",
+      "Return the logical output length"
+    ],
+    "followups": [
+      "How would unsorted input change the strategy?",
+      "Walk through a concrete example of two pointers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-10",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Sliding windows",
+    "round": "Scenario",
+    "q": "How would you find the longest substring without repeated characters?",
+    "a": "Track characters in the active window.",
+    "explanation": "Track characters in the active window. Advance the left boundary past conflicts. Maintain the best observed length.",
+    "mistake": "Resetting the entire window on every duplicate.",
+    "rubric": [
+      "Track characters in the active window",
+      "Advance the left boundary past conflicts",
+      "Maintain the best observed length"
+    ],
+    "followups": [
+      "How would you handle Unicode tokens?",
+      "Walk through a concrete example of sliding windows and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-11",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Prefix sums",
+    "round": "Scenario",
+    "q": "How do prefix sums answer range-sum queries?",
+    "a": "Store cumulative sums.",
+    "explanation": "Store cumulative sums. Subtract appropriate boundary totals. Use a numeric type that avoids overflow.",
+    "mistake": "Using inconsistent inclusive range boundaries.",
+    "rubric": [
+      "Store cumulative sums",
+      "Subtract appropriate boundary totals",
+      "Use a numeric type that avoids overflow"
+    ],
+    "followups": [
+      "How would mutable values change the data structure?",
+      "Walk through a concrete example of prefix sums and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-12",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Intervals",
+    "round": "Scenario",
+    "q": "How would you merge overlapping intervals?",
+    "a": "Sort by starting endpoint.",
+    "explanation": "Sort by starting endpoint. Extend the active interval when overlapping. Emit separate intervals otherwise.",
+    "mistake": "Failing to define whether touching endpoints overlap.",
+    "rubric": [
+      "Sort by starting endpoint",
+      "Extend the active interval when overlapping",
+      "Emit separate intervals otherwise"
+    ],
+    "followups": [
+      "How would half-open intervals affect merging?",
+      "Walk through a concrete example of intervals and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-13",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Trees",
+    "round": "Scenario",
+    "q": "How would you check whether a binary tree is balanced?",
+    "a": "Compute subtree heights.",
+    "explanation": "Compute subtree heights. Propagate imbalance from descendants. Avoid recomputing heights repeatedly.",
+    "mistake": "Checking only the root height difference.",
+    "rubric": [
+      "Compute subtree heights",
+      "Propagate imbalance from descendants",
+      "Avoid recomputing heights repeatedly"
+    ],
+    "followups": [
+      "How would an empty tree be classified?",
+      "Walk through a concrete example of trees and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-14",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Heaps",
+    "round": "Scenario",
+    "q": "How would you find the largest k values in a stream?",
+    "a": "Maintain a size-k minimum heap.",
+    "explanation": "Maintain a size-k minimum heap. Replace its minimum for larger values. Bound retained memory by k.",
+    "mistake": "Sorting the complete stream after every item.",
+    "rubric": [
+      "Maintain a size-k minimum heap",
+      "Replace its minimum for larger values",
+      "Bound retained memory by k"
+    ],
+    "followups": [
+      "What happens when k exceeds the item count?",
+      "Walk through a concrete example of heaps and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-15",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Graphs",
+    "round": "Scenario",
+    "q": "How would you detect a cycle in a directed graph?",
+    "a": "Track unvisited active and completed nodes.",
+    "explanation": "Track unvisited active and completed nodes. An edge to an active node reveals a cycle. Handle disconnected components.",
+    "mistake": "Treating any visited neighbor as a cycle.",
+    "rubric": [
+      "Track unvisited active and completed nodes",
+      "An edge to an active node reveals a cycle",
+      "Handle disconnected components"
+    ],
+    "followups": [
+      "How would topological sorting provide another approach?",
+      "Walk through a concrete example of graphs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-16",
+    "area": "DSA and Coding",
+    "level": 2,
+    "subtopic": "Dynamic programming",
+    "round": "Scenario",
+    "q": "How do you recognize overlapping subproblems?",
+    "a": "Different paths request the same states.",
+    "explanation": "Different paths request the same states. Memoize or tabulate reusable results. Define state and recurrence explicitly.",
+    "mistake": "Caching before understanding the recurrence.",
+    "rubric": [
+      "Different paths request the same states",
+      "Memoize or tabulate reusable results",
+      "Define state and recurrence explicitly"
+    ],
+    "followups": [
+      "How would you choose a bottom-up order?",
+      "Walk through a concrete example of dynamic programming and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-17",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Shortest paths",
+    "round": "Debugging",
+    "q": "When is Dijkstra's algorithm unsuitable?",
+    "a": "It relies on non-negative edge weights.",
+    "explanation": "It relies on non-negative edge weights. Negative weights can invalidate settled distances. Choose an algorithm matching graph assumptions.",
+    "mistake": "Using it blindly with negative edges.",
+    "rubric": [
+      "It relies on non-negative edge weights",
+      "Negative weights can invalidate settled distances",
+      "Choose an algorithm matching graph assumptions"
+    ],
+    "followups": [
+      "How would you detect a negative cycle?",
+      "Walk through a concrete example of shortest paths and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-18",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Topological sorting",
+    "round": "Debugging",
+    "q": "How would you order tasks with prerequisites?",
+    "a": "Compute a directed dependency graph.",
+    "explanation": "Compute a directed dependency graph. Process nodes with no remaining prerequisites. Detect cycles if nodes remain.",
+    "mistake": "Assuming every graph has a valid ordering.",
+    "rubric": [
+      "Compute a directed dependency graph",
+      "Process nodes with no remaining prerequisites",
+      "Detect cycles if nodes remain"
+    ],
+    "followups": [
+      "How would multiple valid orders be handled?",
+      "Walk through a concrete example of topological sorting and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-19",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Union-find",
+    "round": "Debugging",
+    "q": "What operations does disjoint-set union support?",
+    "a": "Find identifies a component representative.",
+    "explanation": "Find identifies a component representative. Union merges components. Compression and balancing improve repeated operations.",
+    "mistake": "Expecting easy support for arbitrary edge deletions.",
+    "rubric": [
+      "Find identifies a component representative",
+      "Union merges components",
+      "Compression and balancing improve repeated operations"
+    ],
+    "followups": [
+      "How would you count connected components?",
+      "Walk through a concrete example of union-find and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-20",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Backtracking",
+    "round": "Debugging",
+    "q": "How do you avoid redundant work in backtracking?",
+    "a": "Define a partial-state invariant.",
+    "explanation": "Define a partial-state invariant. Prune impossible branches early. Restore state after each choice.",
+    "mistake": "Forgetting to undo a mutation.",
+    "rubric": [
+      "Define a partial-state invariant",
+      "Prune impossible branches early",
+      "Restore state after each choice"
+    ],
+    "followups": [
+      "How would you avoid duplicate permutations?",
+      "Walk through a concrete example of backtracking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-21",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "LRU cache",
+    "round": "Debugging",
+    "q": "How would you implement a bounded LRU cache?",
+    "a": "Use a map for lookup.",
+    "explanation": "Use a map for lookup. Use ordered links for recency. Evict the least-recent item when over capacity.",
+    "mistake": "Updating values without updating recency.",
+    "rubric": [
+      "Use a map for lookup",
+      "Use ordered links for recency",
+      "Evict the least-recent item when over capacity"
+    ],
+    "followups": [
+      "What should zero capacity mean?",
+      "Walk through a concrete example of lru cache and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-22",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Tries",
+    "round": "Debugging",
+    "q": "When is a trie useful for string problems?",
+    "a": "Shared prefixes organize lookup.",
+    "explanation": "Shared prefixes organize lookup. Traversal follows token sequences. Memory cost depends on branching representation.",
+    "mistake": "Assuming a trie is always smaller than a hash map.",
+    "rubric": [
+      "Shared prefixes organize lookup",
+      "Traversal follows token sequences",
+      "Memory cost depends on branching representation"
+    ],
+    "followups": [
+      "How would you support prefix suggestions?",
+      "Walk through a concrete example of tries and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-23",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Monotonic stacks",
+    "round": "Debugging",
+    "q": "How would you find the next greater element efficiently?",
+    "a": "Keep unresolved indexes in a monotonic stack.",
+    "explanation": "Keep unresolved indexes in a monotonic stack. Resolve smaller elements when a larger one arrives. Each index enters and leaves once.",
+    "mistake": "Scanning the full suffix for every element.",
+    "rubric": [
+      "Keep unresolved indexes in a monotonic stack",
+      "Resolve smaller elements when a larger one arrives",
+      "Each index enters and leaves once"
+    ],
+    "followups": [
+      "How would a circular array change the algorithm?",
+      "Walk through a concrete example of monotonic stacks and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-24",
+    "area": "DSA and Coding",
+    "level": 3,
+    "subtopic": "Binary-search answers",
+    "round": "Debugging",
+    "q": "When can binary search operate on a solution value?",
+    "a": "Candidate feasibility must be monotonic.",
+    "explanation": "Candidate feasibility must be monotonic. Define valid lower and upper bounds. Use a correct feasibility check.",
+    "mistake": "Applying it to non-monotonic decisions.",
+    "rubric": [
+      "Candidate feasibility must be monotonic",
+      "Define valid lower and upper bounds",
+      "Use a correct feasibility check"
+    ],
+    "followups": [
+      "How would you minimize a maximum workload?",
+      "Walk through a concrete example of binary-search answers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-25",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Correctness",
+    "round": "Design",
+    "q": "How do you justify an algorithm beyond examples?",
+    "a": "State invariants and termination.",
+    "explanation": "State invariants and termination. Show transitions preserve required properties. Check boundary and adversarial cases.",
+    "mistake": "Treating passing examples as a proof.",
+    "rubric": [
+      "State invariants and termination",
+      "Show transitions preserve required properties",
+      "Check boundary and adversarial cases"
+    ],
+    "followups": [
+      "How would you build a counterexample to a greedy rule?",
+      "Walk through a concrete example of correctness and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-26",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Trade-offs",
+    "round": "Design",
+    "q": "How do you choose between sorting and hashing?",
+    "a": "Compare ordering needs memory and complexity.",
+    "explanation": "Compare ordering needs memory and complexity. Consider worst-case and data constraints. Choose a justified simple approach.",
+    "mistake": "Always selecting the nominal fastest average complexity.",
+    "rubric": [
+      "Compare ordering needs memory and complexity",
+      "Consider worst-case and data constraints",
+      "Choose a justified simple approach"
+    ],
+    "followups": [
+      "How would limited memory change your choice?",
+      "Walk through a concrete example of trade-offs and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-27",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Testing",
+    "round": "Design",
+    "q": "What makes algorithm tests informative?",
+    "a": "Cover empty minimal and extreme inputs.",
+    "explanation": "Cover empty minimal and extreme inputs. Include duplicates overflow and adversarial structure. Check properties against a trusted small oracle.",
+    "mistake": "Testing only typical random inputs.",
+    "rubric": [
+      "Cover empty minimal and extreme inputs",
+      "Include duplicates overflow and adversarial structure",
+      "Check properties against a trusted small oracle"
+    ],
+    "followups": [
+      "How would you use brute force to verify small cases?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-28",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Streaming",
+    "round": "Design",
+    "q": "How do you solve problems when input cannot fit in memory?",
+    "a": "Process incremental sufficient state.",
+    "explanation": "Process incremental sufficient state. Use bounded data structures or external storage. State approximation and exactness requirements.",
+    "mistake": "Assuming the entire input can be sorted in RAM.",
+    "rubric": [
+      "Process incremental sufficient state",
+      "Use bounded data structures or external storage",
+      "State approximation and exactness requirements"
+    ],
+    "followups": [
+      "How would you count frequent items approximately?",
+      "Walk through a concrete example of streaming and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-29",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Parallelism",
+    "round": "Design",
+    "q": "Why might parallelizing an algorithm not speed it up?",
+    "a": "Coordination and transfer add overhead.",
+    "explanation": "Coordination and transfer add overhead. Serial fractions limit improvement. Memory bandwidth can dominate.",
+    "mistake": "Ignoring synchronization cost in analysis.",
+    "rubric": [
+      "Coordination and transfer add overhead",
+      "Serial fractions limit improvement",
+      "Memory bandwidth can dominate"
+    ],
+    "followups": [
+      "Which part of the algorithm is independently parallelizable?",
+      "Walk through a concrete example of parallelism and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-30",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Optimization",
+    "round": "Design",
+    "q": "How should you move from a correct solution to a faster one?",
+    "a": "Identify measured or asymptotic bottlenecks.",
+    "explanation": "Identify measured or asymptotic bottlenecks. Preserve invariants while changing representation. Validate complexity and edge cases again.",
+    "mistake": "Optimizing before obtaining a correct baseline.",
+    "rubric": [
+      "Identify measured or asymptotic bottlenecks",
+      "Preserve invariants while changing representation",
+      "Validate complexity and edge cases again"
+    ],
+    "followups": [
+      "How would you compare two candidate implementations?",
+      "Walk through a concrete example of optimization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-31",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Interview communication",
+    "round": "Design",
+    "q": "How should you explain a coding solution while implementing?",
+    "a": "Clarify constraints and examples.",
+    "explanation": "Clarify constraints and examples. Describe state invariants and complexity. Walk through edge cases and trade-offs.",
+    "mistake": "Coding silently without validating assumptions.",
+    "rubric": [
+      "Clarify constraints and examples",
+      "Describe state invariants and complexity",
+      "Walk through edge cases and trade-offs"
+    ],
+    "followups": [
+      "How would you respond to a changed constraint?",
+      "Walk through a concrete example of interview communication and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "dsa-path-32",
+    "area": "DSA and Coding",
+    "level": 4,
+    "subtopic": "Production adaptation",
+    "round": "Design",
+    "q": "What changes when an interview algorithm enters production?",
+    "a": "Handle real input limits and failures.",
+    "explanation": "Handle real input limits and failures. Define observability ownership and cancellation. Verify resource and numeric safety.",
+    "mistake": "Assuming an accepted coding solution is deployment-ready.",
+    "rubric": [
+      "Handle real input limits and failures",
+      "Define observability ownership and cancellation",
+      "Verify resource and numeric safety"
+    ],
+    "followups": [
+      "Which operational limit would you enforce first?",
+      "Walk through a concrete example of production adaptation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mit-algorithms"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

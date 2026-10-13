@@ -1,0 +1,965 @@
+{
+  "questionCount": 1157,
+  "sourceCount": 98,
+  "readingResourceCount": 40,
+  "packs": [
+    "questions.json",
+    "ai-data-path-questions.json",
+    "ai-data-questions.json",
+    "android-balanced-path-questions.json",
+    "android-company-questions.json",
+    "android-path-questions.json",
+    "android-practical-questions.json",
+    "android-questions.json",
+    "android-senior-questions.json",
+    "backend-path-questions.json",
+    "backend-questions.json",
+    "behavioral-path-questions.json",
+    "behavioral-questions.json",
+    "cpp-path-questions.json",
+    "cpp-questions.json",
+    "database-path-questions.json",
+    "database-questions.json",
+    "devops-path-questions.json",
+    "devops-questions.json",
+    "dotnet-path-questions.json",
+    "dotnet-questions.json",
+    "dsa-path-questions.json",
+    "dsa-questions.json",
+    "flutter-path-questions.json",
+    "flutter-questions.json",
+    "frontend-path-questions.json",
+    "frontend-questions.json",
+    "go-path-questions.json",
+    "go-questions.json",
+    "java-path-questions.json",
+    "java-spring-questions.json",
+    "javascript-path-questions.json",
+    "javascript-questions.json",
+    "kotlin-company-questions.json",
+    "kotlin-path-questions.json",
+    "kotlin-practical-questions.json",
+    "kotlin-questions.json",
+    "lead-path-questions.json",
+    "mobile-path-questions.json",
+    "mobile-questions.json",
+    "node-path-questions.json",
+    "node-questions.json",
+    "project-path-questions.json",
+    "project-questions.json",
+    "python-path-questions.json",
+    "python-questions.json",
+    "react-path-questions.json",
+    "react-questions.json",
+    "rust-path-questions.json",
+    "rust-questions.json",
+    "security-path-questions.json",
+    "security-questions.json",
+    "swift-path-questions.json",
+    "swift-questions.json",
+    "system-design-questions.json",
+    "system-path-questions.json",
+    "tech-lead-questions.json",
+    "testing-path-questions.json",
+    "testing-questions.json"
+  ],
+  "tracks": [
+    {
+      "area": "AI and Data",
+      "total": 43,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "google-ml",
+        "owasp-api",
+        "owasp-llm",
+        "postgres-schema",
+        "sklearn"
+      ]
+    },
+    {
+      "area": "Android",
+      "total": 71,
+      "enriched": 71,
+      "practical": 5,
+      "levels": [
+        {
+          "level": 1,
+          "total": 19,
+          "enriched": 19
+        },
+        {
+          "level": 2,
+          "total": 27,
+          "enriched": 27
+        },
+        {
+          "level": 3,
+          "total": 13,
+          "enriched": 13
+        },
+        {
+          "level": 4,
+          "total": 12,
+          "enriched": 12
+        }
+      ],
+      "sourceIds": [
+        "amit-android",
+        "android-architecture",
+        "android-company-experiences",
+        "android-lifecycle",
+        "android-performance",
+        "android-room",
+        "android-security",
+        "android-testing",
+        "android-work",
+        "compose-state",
+        "kotlin-coroutines"
+      ]
+    },
+    {
+      "area": "Backend",
+      "total": 47,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 13,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 13,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "http-semantics",
+        "owasp-api",
+        "postgres-isolation",
+        "postgres-schema",
+        "sre-book",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "C and C++",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "cpp-guidelines"
+      ]
+    },
+    {
+      "area": "C# and .NET",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "csharp-language",
+        "dotnet-async",
+        "ef-querying",
+        "postgres-isolation",
+        "postgres-schema",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "DSA and Coding",
+      "total": 43,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "mit-algorithms"
+      ]
+    },
+    {
+      "area": "Database",
+      "total": 46,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 13,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "owasp-api",
+        "postgres-explain",
+        "postgres-indexes",
+        "postgres-isolation",
+        "postgres-schema",
+        "sre-book"
+      ]
+    },
+    {
+      "area": "DevOps and Cloud",
+      "total": 46,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 14,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "docker-build",
+        "kubernetes",
+        "sre-book",
+        "sre-overload",
+        "terraform-state"
+      ]
+    },
+    {
+      "area": "Flutter",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "dart-language",
+        "flutter-architecture",
+        "flutter-performance",
+        "w3c-accessibility"
+      ]
+    },
+    {
+      "area": "Frontend",
+      "total": 47,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 14,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "http-caching",
+        "mdn-javascript",
+        "owasp-api",
+        "react",
+        "sre-book",
+        "w3c-accessibility"
+      ]
+    },
+    {
+      "area": "Go",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "go-language",
+        "go-races",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "HR and Behavioral",
+      "total": 44,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 11,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "structured-interviews"
+      ]
+    },
+    {
+      "area": "Java and Spring",
+      "total": 44,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "java-collections",
+        "java-concurrency",
+        "java-language",
+        "postgres-isolation",
+        "spring-transactions",
+        "sre-book",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "JavaScript and TypeScript",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "mdn-javascript",
+        "node-event-loop",
+        "typescript"
+      ]
+    },
+    {
+      "area": "Kotlin",
+      "total": 50,
+      "enriched": 50,
+      "practical": 5,
+      "levels": [
+        {
+          "level": 1,
+          "total": 15,
+          "enriched": 15
+        },
+        {
+          "level": 2,
+          "total": 13,
+          "enriched": 13
+        },
+        {
+          "level": 3,
+          "total": 11,
+          "enriched": 11
+        },
+        {
+          "level": 4,
+          "total": 11,
+          "enriched": 11
+        }
+      ],
+      "sourceIds": [
+        "android-architecture",
+        "android-company-experiences",
+        "kotlin-coroutines",
+        "kotlin-language"
+      ]
+    },
+    {
+      "area": "Mobile",
+      "total": 47,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 14,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "android-architecture",
+        "android-lifecycle",
+        "android-performance",
+        "flutter-architecture",
+        "http-semantics",
+        "postgres-isolation",
+        "swiftui-data"
+      ]
+    },
+    {
+      "area": "Node.js",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "docker-build",
+        "http-semantics",
+        "kubernetes",
+        "mdn-javascript",
+        "node-event-loop",
+        "node-streams",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "Project Management",
+      "total": 46,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 13,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "scrum-guide",
+        "sre-book"
+      ]
+    },
+    {
+      "area": "Python",
+      "total": 43,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "postgres-isolation",
+        "python-asyncio",
+        "python-iterators",
+        "python-tutorial",
+        "sre-book"
+      ]
+    },
+    {
+      "area": "React",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "http-caching",
+        "react",
+        "react-effects",
+        "w3c-accessibility"
+      ]
+    },
+    {
+      "area": "Rust",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "rust-book"
+      ]
+    },
+    {
+      "area": "Security",
+      "total": 43,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 11,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "android-security",
+        "owasp-api",
+        "owasp-testing",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "System Design",
+      "total": 46,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 13,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 11,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "http-caching",
+        "http-semantics",
+        "postgres-isolation",
+        "sre-book",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "Tech Lead",
+      "total": 46,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 11,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 14,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 11,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "scrum-guide",
+        "sre-book"
+      ]
+    },
+    {
+      "area": "Testing and QA",
+      "total": 45,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 12,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 13,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "android-testing",
+        "owasp-testing",
+        "playwright",
+        "postgres-indexes",
+        "postgres-isolation",
+        "pytest",
+        "sre-overload"
+      ]
+    },
+    {
+      "area": "iOS and Swift",
+      "total": 40,
+      "enriched": 40,
+      "practical": 0,
+      "levels": [
+        {
+          "level": 1,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 2,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 3,
+          "total": 10,
+          "enriched": 10
+        },
+        {
+          "level": 4,
+          "total": 10,
+          "enriched": 10
+        }
+      ],
+      "sourceIds": [
+        "android-architecture",
+        "swift-concurrency",
+        "swift-language",
+        "swiftui-data"
+      ]
+    }
+  ]
+}

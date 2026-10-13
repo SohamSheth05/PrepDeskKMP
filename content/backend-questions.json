@@ -1,0 +1,214 @@
+[
+  {
+    "id": "backend-methods",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "HTTP APIs",
+    "round": "Fundamentals",
+    "q": "How do HTTP safety and idempotency differ?",
+    "a": "Safety describes intended absence of state-changing effects; idempotency describes the intended effect of repeated identical requests.",
+    "explanation": "A GET should be safe, while a PUT can change state yet remain idempotent. Logging does not invalidate the intended semantics. Response bodies or status codes can still differ on repeated requests.",
+    "mistake": "Calling idempotency a guarantee of identical response bytes.",
+    "rubric": [
+      "Separate safety and idempotency",
+      "Give method examples",
+      "Explain repeated-effect semantics"
+    ],
+    "followups": [
+      "Is POST always non-idempotent?",
+      "Why does this matter for retries?"
+    ],
+    "sourceIds": [
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-authorization",
+    "area": "Backend",
+    "level": 1,
+    "subtopic": "API security",
+    "round": "Debugging",
+    "q": "A logged-in user can read another user's order by changing an ID. What is missing?",
+    "a": "The service must authorize access to the specific order, not just authenticate the caller.",
+    "explanation": "Scope reads and writes to permitted objects and test negative cases across users and tenants. Unguessable IDs can reduce discovery but are not an authorization rule.",
+    "mistake": "Assuming authentication or UUIDs prevent unauthorized access.",
+    "rubric": [
+      "Distinguish authentication and authorization",
+      "Check object permissions",
+      "Test cross-user denial"
+    ],
+    "followups": [
+      "How do administrators differ?",
+      "How should list endpoints be scoped?"
+    ],
+    "sourceIds": [
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-idempotency",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "Reliable APIs",
+    "round": "Coding",
+    "q": "A payment client retries after a timeout. How can the API prevent a duplicate charge?",
+    "a": "Associate an idempotency key with the request identity and durable result, and coordinate it with the charge workflow.",
+    "explanation": "A timeout does not prove the charge failed. Reject conflicting reuse of a key, handle in-progress duplicates, and define key retention and reconciliation with the payment provider.",
+    "mistake": "Storing an in-memory key after performing the charge.",
+    "rubric": [
+      "Persist retry identity",
+      "Handle concurrent duplicate requests",
+      "Define provider reconciliation"
+    ],
+    "followups": [
+      "What if the response is lost after commit?",
+      "How long should keys be retained?"
+    ],
+    "sourceIds": [
+      "http-semantics",
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-validation",
+    "area": "Backend",
+    "level": 2,
+    "subtopic": "API contracts",
+    "round": "Debugging",
+    "q": "A PATCH request changes fields a user should never control. How would you fix it?",
+    "a": "Allowlist writable fields and validate field-level permissions, types, and business constraints at the service boundary.",
+    "explanation": "Binding arbitrary JSON directly into a persistence entity can expose internal fields. Separate update contracts from storage models and test unauthorized property changes.",
+    "mistake": "Trusting hidden UI fields to remain unchanged.",
+    "rubric": [
+      "Define writable fields",
+      "Enforce property permissions",
+      "Test hostile updates"
+    ],
+    "followups": [
+      "What about nested objects?",
+      "How do you preserve backwards compatibility?"
+    ],
+    "sourceIds": [
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-outbox",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Distributed writes",
+    "round": "System design",
+    "q": "An order is stored but its event is not published after a crash. How do you avoid this gap?",
+    "a": "Write the order and an outbox record in one local transaction; publish from the outbox with retry and idempotent consumption.",
+    "explanation": "Publication can happen more than once, so consumers must deduplicate or tolerate replay. Monitor delivery lag and failures. Define event schema versions and aggregate ordering requirements.",
+    "mistake": "Calling a local transaction atomic across a separate message broker.",
+    "rubric": [
+      "Atomically record business data and event",
+      "Handle repeated delivery",
+      "Monitor lag and poison messages"
+    ],
+    "followups": [
+      "How do you order events per order?",
+      "When can outbox entries be removed?"
+    ],
+    "sourceIds": [
+      "postgres-isolation",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-retry",
+    "area": "Backend",
+    "level": 3,
+    "subtopic": "Reliability",
+    "round": "Debugging",
+    "q": "A dependency fails briefly and the API remains overloaded long afterward. What might retries be doing?",
+    "a": "Unbounded synchronized retries can amplify load. Use retry limits, deadlines, randomized delays, and admission control.",
+    "explanation": "Retry only suitable failures and operations with safe replay semantics. Account for retries at every layer so one request does not multiply unexpectedly. Verify recovery under dependency slowdown.",
+    "mistake": "Adding retries at each layer without an overall budget.",
+    "rubric": [
+      "Identify retry amplification",
+      "Budget retries and deadlines",
+      "Validate recovery under load"
+    ],
+    "followups": [
+      "When should a circuit breaker open?",
+      "Which errors should not be retried?"
+    ],
+    "sourceIds": [
+      "sre-overload",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-ownership",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Leadership",
+    "q": "Two services write the same business tables. How would you establish ownership?",
+    "a": "Define an accountable owner for each invariant and write contract, then migrate competing writers through compatible interfaces.",
+    "explanation": "Map reporting and integration consumers as well as direct writes. Use events or query contracts where suitable, plan reconciliation, and measure whether coupling and incidents decrease.",
+    "mistake": "Reassigning table ownership without mapping existing writers.",
+    "rubric": [
+      "Identify invariants and writers",
+      "Define ownership contracts",
+      "Plan migration and reconciliation"
+    ],
+    "followups": [
+      "When is shared storage acceptable?",
+      "How do consumers request new data?"
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "backend-platform-api",
+    "area": "Backend",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design API evolution for clients that cannot all upgrade together.",
+    "a": "Use compatible additive changes where possible and explicit deprecation/versioning for changed semantics.",
+    "explanation": "Test old clients against new servers and new clients against rollout variants. Consider unknown fields, enum values, error contracts, and pagination. Set deprecation dates with usage evidence.",
+    "mistake": "Assuming adding an enum member is harmless to every client.",
+    "rubric": [
+      "Define compatibility guarantees",
+      "Test mixed-version consumers",
+      "Use observed deprecation criteria"
+    ],
+    "followups": [
+      "How do you handle emergency breaking fixes?",
+      "What if a client never upgrades?"
+    ],
+    "sourceIds": [
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

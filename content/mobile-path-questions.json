@@ -1,0 +1,930 @@
+[
+  {
+    "id": "mobile-path-01",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "App state",
+    "round": "Fundamentals",
+    "q": "Why distinguish persistent state from screen-local state?",
+    "a": "Persistent state survives process loss.",
+    "explanation": "Persistent state survives process loss. Screen state follows interaction lifetime. Choose storage from ownership needs.",
+    "mistake": "Persisting every transient UI flag forever.",
+    "rubric": [
+      "Persistent state survives process loss",
+      "Screen state follows interaction lifetime",
+      "Choose storage from ownership needs"
+    ],
+    "followups": [
+      "Which form values should survive a restart?",
+      "Walk through a concrete example of app state and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-02",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Lifecycle",
+    "round": "Fundamentals",
+    "q": "Why should mobile apps expect process termination?",
+    "a": "The operating system manages resources.",
+    "explanation": "The operating system manages resources. Background processes may be removed. Persist important state before relying on memory.",
+    "mistake": "Assuming background means continuously running.",
+    "rubric": [
+      "The operating system manages resources",
+      "Background processes may be removed",
+      "Persist important state before relying on memory"
+    ],
+    "followups": [
+      "How would you restore a partially completed task?",
+      "Walk through a concrete example of lifecycle and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-03",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Networking",
+    "round": "Fundamentals",
+    "q": "How should a mobile screen display poor connectivity?",
+    "a": "Preserve useful current data.",
+    "explanation": "Preserve useful current data. Show recoverable loading and failure states. Bound requests with deadlines.",
+    "mistake": "Erasing all content after one request fails.",
+    "rubric": [
+      "Preserve useful current data",
+      "Show recoverable loading and failure states",
+      "Bound requests with deadlines"
+    ],
+    "followups": [
+      "How would retry differ for reads and writes?",
+      "Walk through a concrete example of networking and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-04",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Navigation",
+    "round": "Fundamentals",
+    "q": "How should back navigation handle unsaved user input?",
+    "a": "Define draft ownership and save behavior.",
+    "explanation": "Define draft ownership and save behavior. Preserve or confirm meaningful changes. Keep navigation predictable.",
+    "mistake": "Silently discarding important edits.",
+    "rubric": [
+      "Define draft ownership and save behavior",
+      "Preserve or confirm meaningful changes",
+      "Keep navigation predictable"
+    ],
+    "followups": [
+      "When would automatic draft saving help?",
+      "Walk through a concrete example of navigation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-05",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Layouts",
+    "round": "Fundamentals",
+    "q": "Why test multiple text sizes and orientations?",
+    "a": "Layout constraints vary by device and settings.",
+    "explanation": "Layout constraints vary by device and settings. Long text can expose clipping. Keep essential controls reachable.",
+    "mistake": "Designing only for one emulator size.",
+    "rubric": [
+      "Layout constraints vary by device and settings",
+      "Long text can expose clipping",
+      "Keep essential controls reachable"
+    ],
+    "followups": [
+      "How would a landscape keyboard affect a form?",
+      "Walk through a concrete example of layouts and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-06",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Permissions",
+    "round": "Fundamentals",
+    "q": "When should a mobile app request permission?",
+    "a": "Ask in the feature's context.",
+    "explanation": "Ask in the feature's context. Explain the user benefit. Provide denial and revocation behavior.",
+    "mistake": "Requesting every permission on first launch.",
+    "rubric": [
+      "Ask in the feature's context",
+      "Explain the user benefit",
+      "Provide denial and revocation behavior"
+    ],
+    "followups": [
+      "How should permanently denied access be handled?",
+      "Walk through a concrete example of permissions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-07",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Accessibility",
+    "round": "Fundamentals",
+    "q": "How should touch controls communicate meaning?",
+    "a": "Use meaningful labels and states.",
+    "explanation": "Use meaningful labels and states. Provide usable target sizes. Test screen-reader and keyboard behavior.",
+    "mistake": "Relying only on icons or color.",
+    "rubric": [
+      "Use meaningful labels and states",
+      "Provide usable target sizes",
+      "Test screen-reader and keyboard behavior"
+    ],
+    "followups": [
+      "How should a custom progress indicator be announced?",
+      "Walk through a concrete example of accessibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-08",
+    "area": "Mobile",
+    "level": 1,
+    "subtopic": "Storage",
+    "round": "Fundamentals",
+    "q": "How should an app choose local persistence?",
+    "a": "Match durability and query needs.",
+    "explanation": "Match durability and query needs. Separate secrets from ordinary preferences. Test schema and recovery behavior.",
+    "mistake": "Putting every data type in one preferences blob.",
+    "rubric": [
+      "Match durability and query needs",
+      "Separate secrets from ordinary preferences",
+      "Test schema and recovery behavior"
+    ],
+    "followups": [
+      "When would a database be appropriate?",
+      "Walk through a concrete example of storage and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-09",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Offline writes",
+    "round": "Scenario",
+    "q": "How do you make an offline edit durable?",
+    "a": "Persist the intended operation.",
+    "explanation": "Persist the intended operation. Assign a stable deduplication identity. Expose pending sync status.",
+    "mistake": "Keeping queued operations only in memory.",
+    "rubric": [
+      "Persist the intended operation",
+      "Assign a stable deduplication identity",
+      "Expose pending sync status"
+    ],
+    "followups": [
+      "How would replay survive restart?",
+      "Walk through a concrete example of offline writes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-10",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Conflict handling",
+    "round": "Scenario",
+    "q": "How should two devices edit the same record?",
+    "a": "Use versions or explicit merge rules.",
+    "explanation": "Use versions or explicit merge rules. Detect incompatible concurrent changes. Present a recoverable conflict flow.",
+    "mistake": "Blindly replacing newer remote data.",
+    "rubric": [
+      "Use versions or explicit merge rules",
+      "Detect incompatible concurrent changes",
+      "Present a recoverable conflict flow"
+    ],
+    "followups": [
+      "When is a field-level merge safe?",
+      "Walk through a concrete example of conflict handling and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-11",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Deep links",
+    "round": "Scenario",
+    "q": "What should a deep-link handler validate?",
+    "a": "Check destination and input shape.",
+    "explanation": "Check destination and input shape. Enforce authentication and authorization. Handle unavailable or expired content.",
+    "mistake": "Treating link possession as permission.",
+    "rubric": [
+      "Check destination and input shape",
+      "Enforce authentication and authorization",
+      "Handle unavailable or expired content"
+    ],
+    "followups": [
+      "How would you test cold-start entry?",
+      "Walk through a concrete example of deep links and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-12",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Battery",
+    "round": "Scenario",
+    "q": "How can synchronization waste mobile battery?",
+    "a": "Frequent wakeups and network work cost energy.",
+    "explanation": "Frequent wakeups and network work cost energy. Batch deferrable work where appropriate. Use platform scheduling contracts.",
+    "mistake": "Polling constantly while the app is backgrounded.",
+    "rubric": [
+      "Frequent wakeups and network work cost energy",
+      "Batch deferrable work where appropriate",
+      "Use platform scheduling contracts"
+    ],
+    "followups": [
+      "How would you measure battery impact?",
+      "Walk through a concrete example of battery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-13",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Caching",
+    "round": "Scenario",
+    "q": "How should a mobile cache communicate freshness?",
+    "a": "Define expiration and revalidation policy.",
+    "explanation": "Define expiration and revalidation policy. Label stale data when meaningful. Keep authoritative writes separate.",
+    "mistake": "Assuming cached data is always current.",
+    "rubric": [
+      "Define expiration and revalidation policy",
+      "Label stale data when meaningful",
+      "Keep authoritative writes separate"
+    ],
+    "followups": [
+      "How would reconnect refresh visible data?",
+      "Walk through a concrete example of caching and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-14",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Security",
+    "round": "Scenario",
+    "q": "Why should server credentials never ship inside a mobile app?",
+    "a": "App artifacts can be inspected.",
+    "explanation": "App artifacts can be inspected. Trusted operations belong on servers. Use scoped user access and authorization.",
+    "mistake": "Hiding secrets by obfuscating string constants.",
+    "rubric": [
+      "App artifacts can be inspected",
+      "Trusted operations belong on servers",
+      "Use scoped user access and authorization"
+    ],
+    "followups": [
+      "How would an extracted public key be constrained?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-15",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What should cross-platform mobile tests cover?",
+    "a": "Shared rules need deterministic tests.",
+    "explanation": "Shared rules need deterministic tests. Native integrations need platform checks. Critical user journeys need device coverage.",
+    "mistake": "Assuming shared unit tests prove native behavior.",
+    "rubric": [
+      "Shared rules need deterministic tests",
+      "Native integrations need platform checks",
+      "Critical user journeys need device coverage"
+    ],
+    "followups": [
+      "Which tests cover permissions and backgrounding?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-16",
+    "area": "Mobile",
+    "level": 2,
+    "subtopic": "Data migration",
+    "round": "Scenario",
+    "q": "How do you validate a mobile database upgrade?",
+    "a": "Test realistic previous schemas and data.",
+    "explanation": "Test realistic previous schemas and data. Preserve progress and drafts. Verify interruption and recovery.",
+    "mistake": "Testing only a new installation.",
+    "rubric": [
+      "Test realistic previous schemas and data",
+      "Preserve progress and drafts",
+      "Verify interruption and recovery"
+    ],
+    "followups": [
+      "Which historic versions remain supported?",
+      "Walk through a concrete example of data migration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-17",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "How do you diagnose slow mobile startup?",
+    "a": "Measure release startup stages.",
+    "explanation": "Measure release startup stages. Separate storage network and rendering work. Defer nonessential initialization.",
+    "mistake": "Starting every SDK before showing useful UI.",
+    "rubric": [
+      "Measure release startup stages",
+      "Separate storage network and rendering work",
+      "Defer nonessential initialization"
+    ],
+    "followups": [
+      "What counts as useful first content?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-18",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "How should an app handle large media efficiently?",
+    "a": "Decode or process near needed dimensions.",
+    "explanation": "Decode or process near needed dimensions. Bound caches and retained buffers. Release temporary resources under ownership.",
+    "mistake": "Loading original media into every thumbnail.",
+    "rubric": [
+      "Decode or process near needed dimensions",
+      "Bound caches and retained buffers",
+      "Release temporary resources under ownership"
+    ],
+    "followups": [
+      "How would you investigate repeated-screen memory growth?",
+      "Walk through a concrete example of memory and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-19",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Background work",
+    "round": "Debugging",
+    "q": "Why can mobile background work not promise exact timing?",
+    "a": "Execution is controlled by the platform.",
+    "explanation": "Execution is controlled by the platform. Resource and power conditions matter. Design resumable opportunistic work.",
+    "mistake": "Guaranteeing an exact background sync minute.",
+    "rubric": [
+      "Execution is controlled by the platform",
+      "Resource and power conditions matter",
+      "Design resumable opportunistic work"
+    ],
+    "followups": [
+      "How should expired work resume later?",
+      "Walk through a concrete example of background work and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-20",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Push notifications",
+    "round": "Debugging",
+    "q": "What should a notification payload contain?",
+    "a": "Provide minimal useful routing context.",
+    "explanation": "Provide minimal useful routing context. Fetch protected content through authorized APIs. Handle revoked or stale destinations.",
+    "mistake": "Putting sensitive full records in push payloads.",
+    "rubric": [
+      "Provide minimal useful routing context",
+      "Fetch protected content through authorized APIs",
+      "Handle revoked or stale destinations"
+    ],
+    "followups": [
+      "What if the user is signed out?",
+      "Walk through a concrete example of push notifications and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-21",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Uploads",
+    "round": "Debugging",
+    "q": "How should a mobile upload handle interruption?",
+    "a": "Persist resumable progress where supported.",
+    "explanation": "Persist resumable progress where supported. Bound retries and resource use. Expose cancellation and recovery.",
+    "mistake": "Restarting huge uploads blindly after every failure.",
+    "rubric": [
+      "Persist resumable progress where supported",
+      "Bound retries and resource use",
+      "Expose cancellation and recovery"
+    ],
+    "followups": [
+      "How would duplicate finalization be prevented?",
+      "Walk through a concrete example of uploads and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-22",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Observability",
+    "round": "Debugging",
+    "q": "Which context helps diagnose mobile failures?",
+    "a": "Release device and OS characteristics.",
+    "explanation": "Release device and OS characteristics. Redacted workflow and timing metadata. Service correlation when available.",
+    "mistake": "Capturing entire user content by default.",
+    "rubric": [
+      "Release device and OS characteristics",
+      "Redacted workflow and timing metadata",
+      "Service correlation when available"
+    ],
+    "followups": [
+      "How would you detect a device-specific regression?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-23",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Release compatibility",
+    "round": "Debugging",
+    "q": "How should older apps interact with a changing server?",
+    "a": "Version and preserve supported contracts.",
+    "explanation": "Version and preserve supported contracts. Use compatible feature rollouts. Communicate unsupported versions explicitly.",
+    "mistake": "Removing API fields before old users upgrade.",
+    "rubric": [
+      "Version and preserve supported contracts",
+      "Use compatible feature rollouts",
+      "Communicate unsupported versions explicitly"
+    ],
+    "followups": [
+      "How would feature capabilities be negotiated?",
+      "Walk through a concrete example of release compatibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-24",
+    "area": "Mobile",
+    "level": 3,
+    "subtopic": "Auth sessions",
+    "round": "Debugging",
+    "q": "How should mobile sessions survive token expiry?",
+    "a": "Keep tokens in suitable secure storage.",
+    "explanation": "Keep tokens in suitable secure storage. Refresh through controlled ownership. Handle revocation without losing offline progress.",
+    "mistake": "Storing privileged permanent tokens in plain preferences.",
+    "rubric": [
+      "Keep tokens in suitable secure storage",
+      "Refresh through controlled ownership",
+      "Handle revocation without losing offline progress"
+    ],
+    "followups": [
+      "How would simultaneous refresh attempts be coordinated?",
+      "Walk through a concrete example of auth sessions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-25",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Platform choice",
+    "round": "Design",
+    "q": "How would you choose native versus shared mobile development?",
+    "a": "Compare domain reuse and platform requirements.",
+    "explanation": "Compare domain reuse and platform requirements. Assess team skills and maintenance. Prototype risky integrations.",
+    "mistake": "Choosing solely from code-sharing percentages.",
+    "rubric": [
+      "Compare domain reuse and platform requirements",
+      "Assess team skills and maintenance",
+      "Prototype risky integrations"
+    ],
+    "followups": [
+      "Which feature should prove feasibility first?",
+      "Walk through a concrete example of platform choice and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-26",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Release rollout",
+    "round": "Design",
+    "q": "How should a mobile release be staged?",
+    "a": "Validate release builds and upgrades.",
+    "explanation": "Validate release builds and upgrades. Monitor crash and key journey signals. Keep a feasible mitigation path.",
+    "mistake": "Assuming immediate rollback on every app store.",
+    "rubric": [
+      "Validate release builds and upgrades",
+      "Monitor crash and key journey signals",
+      "Keep a feasible mitigation path"
+    ],
+    "followups": [
+      "How would remote feature disabling help?",
+      "Walk through a concrete example of release rollout and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-27",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Privacy",
+    "round": "Design",
+    "q": "How should a mobile app manage collected user data?",
+    "a": "Minimize collection and permissions.",
+    "explanation": "Minimize collection and permissions. Define retention deletion and consent. Audit actual SDK behavior.",
+    "mistake": "Copying privacy labels without tracing data flows.",
+    "rubric": [
+      "Minimize collection and permissions",
+      "Define retention deletion and consent",
+      "Audit actual SDK behavior"
+    ],
+    "followups": [
+      "How would account deletion cover local data?",
+      "Walk through a concrete example of privacy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-28",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Design systems",
+    "round": "Design",
+    "q": "What should a cross-platform mobile design system preserve?",
+    "a": "Shared intent and visual language.",
+    "explanation": "Shared intent and visual language. Platform accessibility and navigation expectations. Clear component ownership.",
+    "mistake": "Forcing identical interactions despite native conventions.",
+    "rubric": [
+      "Shared intent and visual language",
+      "Platform accessibility and navigation expectations",
+      "Clear component ownership"
+    ],
+    "followups": [
+      "How would platform-specific components be documented?",
+      "Walk through a concrete example of design systems and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-29",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Dependency policy",
+    "round": "Design",
+    "q": "How should a team evaluate mobile SDKs?",
+    "a": "Review security privacy license and maintenance.",
+    "explanation": "Review security privacy license and maintenance. Measure startup size and runtime impact. Keep integrations replaceable.",
+    "mistake": "Adding trackers without checking transmitted data.",
+    "rubric": [
+      "Review security privacy license and maintenance",
+      "Measure startup size and runtime impact",
+      "Keep integrations replaceable"
+    ],
+    "followups": [
+      "How would a vulnerable SDK be removed quickly?",
+      "Walk through a concrete example of dependency policy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-30",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Reliability budgets",
+    "round": "Design",
+    "q": "How do you define mobile quality thresholds?",
+    "a": "Measure crashes startup and key workflow success.",
+    "explanation": "Measure crashes startup and key workflow success. Include representative device cohorts. Tie thresholds to user impact.",
+    "mistake": "Measuring quality only on high-end devices.",
+    "rubric": [
+      "Measure crashes startup and key workflow success",
+      "Include representative device cohorts",
+      "Tie thresholds to user impact"
+    ],
+    "followups": [
+      "Which signal would halt a rollout?",
+      "Walk through a concrete example of reliability budgets and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-31",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How should mobile domain logic depend on platform services?",
+    "a": "Use bounded service contracts.",
+    "explanation": "Use bounded service contracts. Keep state ownership explicit. Test shared rules and native implementations separately.",
+    "mistake": "Leaking native framework types throughout domain models.",
+    "rubric": [
+      "Use bounded service contracts",
+      "Keep state ownership explicit",
+      "Test shared rules and native implementations separately"
+    ],
+    "followups": [
+      "How would secure storage be abstracted?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "mobile-path-32",
+    "area": "Mobile",
+    "level": 4,
+    "subtopic": "Recovery",
+    "round": "Design",
+    "q": "How do you prevent user data loss across failures?",
+    "a": "Persist important intent before risky operations.",
+    "explanation": "Persist important intent before risky operations. Use transactional updates and tested migrations. Provide bounded recovery and backups.",
+    "mistake": "Treating a clean installation as recovery validation.",
+    "rubric": [
+      "Persist important intent before risky operations",
+      "Use transactional updates and tested migrations",
+      "Provide bounded recovery and backups"
+    ],
+    "followups": [
+      "How would you test power loss during a save?",
+      "Walk through a concrete example of recovery and explain one trade-off."
+    ],
+    "sourceIds": [
+      "android-architecture",
+      "android-lifecycle",
+      "swiftui-data",
+      "http-semantics"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

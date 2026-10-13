@@ -1,0 +1,898 @@
+[
+  {
+    "id": "python-path-01",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Collections",
+    "round": "Fundamentals",
+    "q": "When should you use a tuple instead of a list?",
+    "a": "Tuples express fixed ordered values.",
+    "explanation": "Tuples express fixed ordered values. Lists support changing collections. Nested values can still be mutable.",
+    "mistake": "Assuming tuples deeply freeze contents.",
+    "rubric": [
+      "Tuples express fixed ordered values",
+      "Lists support changing collections",
+      "Nested values can still be mutable"
+    ],
+    "followups": [
+      "When is a tuple hashable?",
+      "Walk through a concrete example of collections and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-02",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Equality",
+    "round": "Fundamentals",
+    "q": "How do is and equality differ in Python?",
+    "a": "Is compares object identity.",
+    "explanation": "Is compares object identity. Equality compares defined values. Use identity for singleton checks.",
+    "mistake": "Using is to compare strings.",
+    "rubric": [
+      "Is compares object identity",
+      "Equality compares defined values",
+      "Use identity for singleton checks"
+    ],
+    "followups": [
+      "Why can small-number identity appear misleading?",
+      "Walk through a concrete example of equality and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-03",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Hashing",
+    "round": "Fundamentals",
+    "q": "Why cannot a list be a dictionary key?",
+    "a": "Keys need stable hash behavior.",
+    "explanation": "Keys need stable hash behavior. Lists are mutable and unhashable. Use an appropriate immutable representation.",
+    "mistake": "Making mutable equality depend on changing fields.",
+    "rubric": [
+      "Keys need stable hash behavior",
+      "Lists are mutable and unhashable",
+      "Use an appropriate immutable representation"
+    ],
+    "followups": [
+      "When can a tuple be a key?",
+      "Walk through a concrete example of hashing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-04",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Iteration",
+    "round": "Fundamentals",
+    "q": "What happens when an iterator is exhausted?",
+    "a": "It signals completion with StopIteration.",
+    "explanation": "It signals completion with StopIteration. A generator cannot automatically restart. Create a new iterator for another pass.",
+    "mistake": "Reusing an exhausted generator.",
+    "rubric": [
+      "It signals completion with StopIteration",
+      "A generator cannot automatically restart",
+      "Create a new iterator for another pass"
+    ],
+    "followups": [
+      "How would you stream a large file?",
+      "Walk through a concrete example of iteration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-05",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Arguments",
+    "round": "Fundamentals",
+    "q": "Why can a mutable default argument share state?",
+    "a": "Defaults are evaluated at function definition.",
+    "explanation": "Defaults are evaluated at function definition. Calls reuse the same object. Use a sentinel and create per-call values.",
+    "mistake": "Using an empty list as an accumulating default.",
+    "rubric": [
+      "Defaults are evaluated at function definition",
+      "Calls reuse the same object",
+      "Use a sentinel and create per-call values"
+    ],
+    "followups": [
+      "How would you test independent calls?",
+      "Walk through a concrete example of arguments and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-06",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Exceptions",
+    "round": "Fundamentals",
+    "q": "When should you catch a specific exception?",
+    "a": "Catch failures you can handle.",
+    "explanation": "Catch failures you can handle. Preserve unexpected failures and tracebacks. Use finally for necessary cleanup.",
+    "mistake": "Catching BaseException for ordinary recovery.",
+    "rubric": [
+      "Catch failures you can handle",
+      "Preserve unexpected failures and tracebacks",
+      "Use finally for necessary cleanup"
+    ],
+    "followups": [
+      "How would you add context without losing the cause?",
+      "Walk through a concrete example of exceptions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-07",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Comprehensions",
+    "round": "Fundamentals",
+    "q": "When is a generator expression preferable to a list comprehension?",
+    "a": "Generators compute values lazily.",
+    "explanation": "Generators compute values lazily. Lists retain materialized results. Consider reuse and memory requirements.",
+    "mistake": "Assuming lazy expressions cache previous results.",
+    "rubric": [
+      "Generators compute values lazily",
+      "Lists retain materialized results",
+      "Consider reuse and memory requirements"
+    ],
+    "followups": [
+      "Which operation consumes the generator?",
+      "Walk through a concrete example of comprehensions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-08",
+    "area": "Python",
+    "level": 1,
+    "subtopic": "Modules",
+    "round": "Fundamentals",
+    "q": "Why guard command-line code with a main check?",
+    "a": "Imports should not execute CLI work.",
+    "explanation": "Imports should not execute CLI work. The guard separates entry behavior. Keep reusable functions importable.",
+    "mistake": "Starting network work during module import.",
+    "rubric": [
+      "Imports should not execute CLI work",
+      "The guard separates entry behavior",
+      "Keep reusable functions importable"
+    ],
+    "followups": [
+      "How would you test the command handler?",
+      "Walk through a concrete example of modules and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-09",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Copying",
+    "round": "Scenario",
+    "q": "When does a shallow copy fail to isolate state?",
+    "a": "Nested objects remain shared.",
+    "explanation": "Nested objects remain shared. Copy required ownership boundaries. Deep copies may duplicate unintended resources.",
+    "mistake": "Assuming dict.copy clones nested structures.",
+    "rubric": [
+      "Nested objects remain shared",
+      "Copy required ownership boundaries",
+      "Deep copies may duplicate unintended resources"
+    ],
+    "followups": [
+      "How would you copy a graph with shared references?",
+      "Walk through a concrete example of copying and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-10",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Decorators",
+    "round": "Scenario",
+    "q": "How can a decorator accidentally change an API's behavior?",
+    "a": "Wrappers affect signatures and metadata.",
+    "explanation": "Wrappers affect signatures and metadata. Preserve metadata with wraps. Keep exception and return behavior explicit.",
+    "mistake": "Forgetting to return the wrapped result.",
+    "rubric": [
+      "Wrappers affect signatures and metadata",
+      "Preserve metadata with wraps",
+      "Keep exception and return behavior explicit"
+    ],
+    "followups": [
+      "How would you decorate an async function?",
+      "Walk through a concrete example of decorators and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-11",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Context managers",
+    "round": "Scenario",
+    "q": "Why use a context manager for a file?",
+    "a": "It binds cleanup to scope.",
+    "explanation": "It binds cleanup to scope. Cleanup runs through ordinary exceptions. Avoid relying on garbage collection timing.",
+    "mistake": "Leaving file closure to eventual collection.",
+    "rubric": [
+      "It binds cleanup to scope",
+      "Cleanup runs through ordinary exceptions",
+      "Avoid relying on garbage collection timing"
+    ],
+    "followups": [
+      "How would you build a custom context manager?",
+      "Walk through a concrete example of context managers and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-12",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Typing",
+    "round": "Scenario",
+    "q": "Do Python type hints prevent invalid runtime input?",
+    "a": "Hints support static tooling.",
+    "explanation": "Hints support static tooling. Runtime values remain unchecked by default. Validate external data explicitly.",
+    "mistake": "Assuming annotations enforce network payload schemas.",
+    "rubric": [
+      "Hints support static tooling",
+      "Runtime values remain unchecked by default",
+      "Validate external data explicitly"
+    ],
+    "followups": [
+      "Where should validation occur?",
+      "Walk through a concrete example of typing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-13",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Async I/O",
+    "round": "Scenario",
+    "q": "When is asyncio a poor fit for CPU-heavy work?",
+    "a": "Event loops need cooperative scheduling.",
+    "explanation": "Event loops need cooperative scheduling. CPU work delays other tasks. Use suitable worker execution for expensive computation.",
+    "mistake": "Running large computations directly in async handlers.",
+    "rubric": [
+      "Event loops need cooperative scheduling",
+      "CPU work delays other tasks",
+      "Use suitable worker execution for expensive computation"
+    ],
+    "followups": [
+      "How would you preserve cancellation across a worker boundary?",
+      "Walk through a concrete example of async i/o and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-14",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What makes a pytest fixture useful?",
+    "a": "It centralizes reusable setup.",
+    "explanation": "It centralizes reusable setup. Scope controls lifetime. Yield supports reliable teardown.",
+    "mistake": "Sharing mutable session fixtures between unrelated tests.",
+    "rubric": [
+      "It centralizes reusable setup",
+      "Scope controls lifetime",
+      "Yield supports reliable teardown"
+    ],
+    "followups": [
+      "How would you isolate database state?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-15",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Packaging",
+    "round": "Scenario",
+    "q": "Why use an isolated environment for an application?",
+    "a": "Dependencies stay project-specific.",
+    "explanation": "Dependencies stay project-specific. Pinned versions improve reproducibility. Record runtime and platform assumptions.",
+    "mistake": "Depending on whatever is globally installed.",
+    "rubric": [
+      "Dependencies stay project-specific",
+      "Pinned versions improve reproducibility",
+      "Record runtime and platform assumptions"
+    ],
+    "followups": [
+      "How would CI reproduce the environment?",
+      "Walk through a concrete example of packaging and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-16",
+    "area": "Python",
+    "level": 2,
+    "subtopic": "Logging",
+    "round": "Scenario",
+    "q": "Why avoid print as production error reporting?",
+    "a": "Structured logs carry searchable context.",
+    "explanation": "Structured logs carry searchable context. Levels distinguish severity. Redact secrets before emitting output.",
+    "mistake": "Logging passwords while debugging.",
+    "rubric": [
+      "Structured logs carry searchable context",
+      "Levels distinguish severity",
+      "Redact secrets before emitting output"
+    ],
+    "followups": [
+      "How would you correlate logs across a request?",
+      "Walk through a concrete example of logging and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-17",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "How should you choose threads processes or async tasks?",
+    "a": "Threads suit many blocking I/O workloads.",
+    "explanation": "Threads suit many blocking I/O workloads. Processes can isolate CPU work. Async tasks suit cooperative I/O.",
+    "mistake": "Assuming one concurrency model fits every workload.",
+    "rubric": [
+      "Threads suit many blocking I/O workloads",
+      "Processes can isolate CPU work",
+      "Async tasks suit cooperative I/O"
+    ],
+    "followups": [
+      "What changes under a free-threaded interpreter build?",
+      "Walk through a concrete example of concurrency and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-18",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "GIL",
+    "round": "Debugging",
+    "q": "Why is a GIL not a complete thread-safety strategy?",
+    "a": "Interpreter behavior is build-dependent.",
+    "explanation": "Interpreter behavior is build-dependent. Compound invariants still need synchronization. Protect shared application state explicitly.",
+    "mistake": "Assuming all Python operations are atomic.",
+    "rubric": [
+      "Interpreter behavior is build-dependent",
+      "Compound invariants still need synchronization",
+      "Protect shared application state explicitly"
+    ],
+    "followups": [
+      "How would you protect a check-then-update sequence?",
+      "Walk through a concrete example of gil and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-19",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "How do you decide whether to optimize a Python function?",
+    "a": "Profile representative input.",
+    "explanation": "Profile representative input. Measure time and memory separately. Fix dominant cost before micro-optimizing.",
+    "mistake": "Rewriting code based on intuition alone.",
+    "rubric": [
+      "Profile representative input",
+      "Measure time and memory separately",
+      "Fix dominant cost before micro-optimizing"
+    ],
+    "followups": [
+      "What would a benchmark need to exclude?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-20",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Protocols",
+    "round": "Debugging",
+    "q": "When can a Protocol clarify a dependency boundary?",
+    "a": "It describes required structural behavior.",
+    "explanation": "It describes required structural behavior. Implementations need no shared base class. Keep the contract small and meaningful.",
+    "mistake": "Using a giant interface for every dependency.",
+    "rubric": [
+      "It describes required structural behavior",
+      "Implementations need no shared base class",
+      "Keep the contract small and meaningful"
+    ],
+    "followups": [
+      "How would you substitute a test implementation?",
+      "Walk through a concrete example of protocols and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-21",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Data classes",
+    "round": "Debugging",
+    "q": "What should you consider before enabling dataclass equality?",
+    "a": "Generated equality compares declared fields.",
+    "explanation": "Generated equality compares declared fields. Mutable fields affect stable comparisons. Hashing needs compatible ownership rules.",
+    "mistake": "Hashing an object whose equality changes.",
+    "rubric": [
+      "Generated equality compares declared fields",
+      "Mutable fields affect stable comparisons",
+      "Hashing needs compatible ownership rules"
+    ],
+    "followups": [
+      "How would you model an immutable identifier?",
+      "Walk through a concrete example of data classes and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-22",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Cancellation",
+    "round": "Debugging",
+    "q": "How should async cleanup handle task cancellation?",
+    "a": "Release owned resources in finally.",
+    "explanation": "Release owned resources in finally. Propagate cancellation unless intentionally handled. Bound cleanup that delays shutdown.",
+    "mistake": "Swallowing cancellation and continuing forever.",
+    "rubric": [
+      "Release owned resources in finally",
+      "Propagate cancellation unless intentionally handled",
+      "Bound cleanup that delays shutdown"
+    ],
+    "followups": [
+      "How would you test cancellation during I/O?",
+      "Walk through a concrete example of cancellation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-23",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Serialization",
+    "round": "Debugging",
+    "q": "Why should untrusted pickle payloads be rejected?",
+    "a": "Deserialization can execute code.",
+    "explanation": "Deserialization can execute code. Use safe validated formats for external input. Authenticate trusted internal channels separately.",
+    "mistake": "Treating pickle as safe JSON.",
+    "rubric": [
+      "Deserialization can execute code",
+      "Use safe validated formats for external input",
+      "Authenticate trusted internal channels separately"
+    ],
+    "followups": [
+      "How would you migrate an old serialized format?",
+      "Walk through a concrete example of serialization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-24",
+    "area": "Python",
+    "level": 3,
+    "subtopic": "Memory",
+    "round": "Debugging",
+    "q": "How would you investigate growth in a Python worker?",
+    "a": "Compare allocations over repeated workloads.",
+    "explanation": "Compare allocations over repeated workloads. Inspect retained caches and references. Separate allocator behavior from actual leaks.",
+    "mistake": "Assuming high RSS alone proves a leak.",
+    "rubric": [
+      "Compare allocations over repeated workloads",
+      "Inspect retained caches and references",
+      "Separate allocator behavior from actual leaks"
+    ],
+    "followups": [
+      "Which measurements show persistent retention?",
+      "Walk through a concrete example of memory and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-25",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Service design",
+    "round": "Design",
+    "q": "How should a Python service limit concurrent expensive work?",
+    "a": "Bound queues and active jobs.",
+    "explanation": "Bound queues and active jobs. Use deadlines and admission control. Expose overload rather than exhausting memory.",
+    "mistake": "Launching unlimited tasks from incoming requests.",
+    "rubric": [
+      "Bound queues and active jobs",
+      "Use deadlines and admission control",
+      "Expose overload rather than exhausting memory"
+    ],
+    "followups": [
+      "How would you set an initial concurrency limit?",
+      "Walk through a concrete example of service design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-26",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Dependency upgrades",
+    "round": "Design",
+    "q": "How do you upgrade Python dependencies safely?",
+    "a": "Check compatibility and security changes.",
+    "explanation": "Check compatibility and security changes. Run boundary and integration tests. Pin and stage validated releases.",
+    "mistake": "Updating production dependencies without a reproducible lock.",
+    "rubric": [
+      "Check compatibility and security changes",
+      "Run boundary and integration tests",
+      "Pin and stage validated releases"
+    ],
+    "followups": [
+      "How would you handle a vulnerable transitive package?",
+      "Walk through a concrete example of dependency upgrades and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-27",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Database access",
+    "round": "Design",
+    "q": "How would you prevent a Python endpoint from issuing N plus one queries?",
+    "a": "Inspect query counts under representative data.",
+    "explanation": "Inspect query counts under representative data. Batch or eagerly fetch required relationships. Limit response size and fields.",
+    "mistake": "Loading relationships inside an unbounded loop.",
+    "rubric": [
+      "Inspect query counts under representative data",
+      "Batch or eagerly fetch required relationships",
+      "Limit response size and fields"
+    ],
+    "followups": [
+      "How would you prove the improvement?",
+      "Walk through a concrete example of database access and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-28",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "API evolution",
+    "round": "Design",
+    "q": "How should a shared Python library communicate breaking changes?",
+    "a": "Version public contracts deliberately.",
+    "explanation": "Version public contracts deliberately. Maintain documented deprecation periods. Test real consumer behavior.",
+    "mistake": "Calling a changed default harmless.",
+    "rubric": [
+      "Version public contracts deliberately",
+      "Maintain documented deprecation periods",
+      "Test real consumer behavior"
+    ],
+    "followups": [
+      "How would you migrate callers gradually?",
+      "Walk through a concrete example of api evolution and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-29",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Deployment",
+    "round": "Design",
+    "q": "What should a Python service do before graceful shutdown completes?",
+    "a": "Stop accepting new work.",
+    "explanation": "Stop accepting new work. Finish or cancel work within a deadline. Close resources and report uncompleted jobs.",
+    "mistake": "Exiting immediately with acknowledged unfinished work.",
+    "rubric": [
+      "Stop accepting new work",
+      "Finish or cancel work within a deadline",
+      "Close resources and report uncompleted jobs"
+    ],
+    "followups": [
+      "How would you avoid duplicate job processing?",
+      "Walk through a concrete example of deployment and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-30",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How do you keep business logic independent of a web framework?",
+    "a": "Use explicit domain inputs and outputs.",
+    "explanation": "Use explicit domain inputs and outputs. Inject persistence and service boundaries. Keep transport mapping outside domain rules.",
+    "mistake": "Passing request objects through every layer.",
+    "rubric": [
+      "Use explicit domain inputs and outputs",
+      "Inject persistence and service boundaries",
+      "Keep transport mapping outside domain rules"
+    ],
+    "followups": [
+      "How would you test logic without HTTP?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-31",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Reliability",
+    "round": "Design",
+    "q": "How would you process a message safely after worker restart?",
+    "a": "Persist outcomes and deduplicate identities.",
+    "explanation": "Persist outcomes and deduplicate identities. Acknowledge after durable processing. Make retries bounded and observable.",
+    "mistake": "Acknowledging before the business write commits.",
+    "rubric": [
+      "Persist outcomes and deduplicate identities",
+      "Acknowledge after durable processing",
+      "Make retries bounded and observable"
+    ],
+    "followups": [
+      "How would you handle an irrecoverable message?",
+      "Walk through a concrete example of reliability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "python-path-32",
+    "area": "Python",
+    "level": 4,
+    "subtopic": "Platform strategy",
+    "round": "Design",
+    "q": "How would you choose a Python runtime for a critical service?",
+    "a": "Evaluate dependency support and workload behavior.",
+    "explanation": "Evaluate dependency support and workload behavior. Benchmark candidate runtimes under load. Define upgrade and incident ownership.",
+    "mistake": "Choosing solely from a microbenchmark.",
+    "rubric": [
+      "Evaluate dependency support and workload behavior",
+      "Benchmark candidate runtimes under load",
+      "Define upgrade and incident ownership"
+    ],
+    "followups": [
+      "How would you evaluate operational memory limits?",
+      "Walk through a concrete example of platform strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "python-tutorial",
+      "python-asyncio",
+      "python-iterators"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

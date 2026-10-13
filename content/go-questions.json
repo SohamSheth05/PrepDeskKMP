@@ -1,0 +1,213 @@
+[
+  {
+    "id": "go-slices",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Slices",
+    "round": "Fundamentals",
+    "q": "Two Go slices unexpectedly change together. Explain the likely cause.",
+    "a": "Slices can refer to the same backing array. Copy elements when independent storage is required.",
+    "explanation": "A slice has length and capacity in addition to its array reference. Appending may reuse capacity or allocate a new array, so sharing behavior depends on the operation and available capacity.",
+    "mistake": "Treating every slice assignment as a deep copy.",
+    "rubric": [
+      "Explain shared backing storage",
+      "Distinguish length and capacity",
+      "Create an independent copy"
+    ],
+    "followups": [
+      "What happens after append reallocates?",
+      "Can a small slice retain a large array?"
+    ],
+    "sourceIds": [
+      "go-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-nil-interface",
+    "area": "Go",
+    "level": 1,
+    "subtopic": "Interfaces",
+    "round": "Debugging",
+    "q": "A Go function returns an error interface containing a nil pointer, but err != nil. Why?",
+    "a": "An interface can hold a dynamic type with a nil value. That interface is not the same as a nil interface.",
+    "explanation": "Return a plain nil when there is no error. Trace both the dynamic type and stored value when debugging interface comparisons.",
+    "mistake": "Assuming every interface containing nil compares equal to nil.",
+    "rubric": [
+      "Describe type and value",
+      "Return an actual nil interface",
+      "Test the error path"
+    ],
+    "followups": [
+      "Can calling a method on a nil receiver work?",
+      "How does this affect optional interfaces?"
+    ],
+    "sourceIds": [
+      "go-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-context",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Concurrency",
+    "round": "Coding",
+    "q": "A cancelled HTTP request leaves Go workers running. How should the workers be designed?",
+    "a": "Propagate context cancellation and make blocking operations select on cancellation or use context-aware APIs.",
+    "explanation": "The owner should wait for worker completion and define who closes channels. Cancellation signals intent; it does not forcibly stop a goroutine. Release resources when returning.",
+    "mistake": "Creating goroutines with no cancellation or completion path.",
+    "rubric": [
+      "Propagate context",
+      "Make blocking work cancellable",
+      "Define completion and cleanup"
+    ],
+    "followups": [
+      "Who should close the result channel?",
+      "What if a library ignores context?"
+    ],
+    "sourceIds": [
+      "go-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-race",
+    "area": "Go",
+    "level": 2,
+    "subtopic": "Concurrency",
+    "round": "Debugging",
+    "q": "Concurrent requests write to a shared Go map. How do you verify and fix the issue?",
+    "a": "Run the race detector on exercised paths and use synchronization or a concurrency-safe ownership design.",
+    "explanation": "Choose a mutex, an appropriate concurrent map, or single-owner access based on operations. A clean race run is useful evidence but only covers executions actually observed.",
+    "mistake": "Assuming no detector warning proves all paths are race-free.",
+    "rubric": [
+      "Reproduce with race detection",
+      "Protect compound operations",
+      "Test realistic concurrent paths"
+    ],
+    "followups": [
+      "Would RWMutex always be faster?",
+      "How do you avoid holding a lock during I/O?"
+    ],
+    "sourceIds": [
+      "go-races",
+      "go-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-workers",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Concurrency",
+    "round": "System design",
+    "q": "Design a bounded Go worker pool for batch requests.",
+    "a": "Use a bounded queue, a fixed or controlled worker count, cancellation, and a clear result/error policy.",
+    "explanation": "Specify ownership of input and output channels. Limit upstream admission as well as workers; otherwise pending work may still grow without bound. Test early cancellation and one failing task.",
+    "mistake": "Launching one goroutine per item for an unbounded batch.",
+    "rubric": [
+      "Bound workers and queue",
+      "Define channel ownership",
+      "Handle cancellation and failures"
+    ],
+    "followups": [
+      "How do you preserve input ordering?",
+      "How does shutdown avoid blocked sends?"
+    ],
+    "sourceIds": [
+      "go-language",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-allocation",
+    "area": "Go",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "A Go service spends too much time collecting garbage. What would you investigate?",
+    "a": "Profile allocation and retained memory, then reduce measured temporary allocations or unnecessarily retained objects.",
+    "explanation": "Inspect buffers, interface conversions, and collection growth with representative traffic. Pools can add complexity and retain memory; benchmark them rather than assuming they help.",
+    "mistake": "Adding object pools everywhere before profiling.",
+    "rubric": [
+      "Measure allocation sources",
+      "Distinguish allocation and retention",
+      "Validate latency and memory trade-offs"
+    ],
+    "followups": [
+      "When can pooling hurt?",
+      "How would a retained slice affect memory?"
+    ],
+    "sourceIds": [
+      "go-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-contracts",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Leadership",
+    "q": "How would you design shared Go packages without creating a tightly coupled platform?",
+    "a": "Use small consumer-oriented interfaces, clear compatibility boundaries, and minimal dependencies.",
+    "explanation": "Keep domain policy out of generic packages. Review error behavior, context ownership, and public types. Test real consumers before changes and document a versioning and deprecation policy.",
+    "mistake": "Building one shared package that every service must import.",
+    "rubric": [
+      "Keep contracts small",
+      "Control dependency direction",
+      "Validate compatibility with consumers"
+    ],
+    "followups": [
+      "Where should interfaces live?",
+      "How do you retire an exported type?"
+    ],
+    "sourceIds": [
+      "go-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "go-service",
+    "area": "Go",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "System design",
+    "q": "Design an ingestion service in Go that remains stable when a dependency slows down.",
+    "a": "Bound admission, queueing, concurrency, and retries; propagate deadlines and expose saturation metrics.",
+    "explanation": "Define accepted-work durability and retry identity. Protect the event loop of upstream systems by responding predictably under overload. Test degraded dependency behavior, not just peak healthy throughput.",
+    "mistake": "Increasing goroutine counts until memory runs out.",
+    "rubric": [
+      "Bound outstanding work",
+      "Define durability and deadlines",
+      "Test degraded-mode recovery"
+    ],
+    "followups": [
+      "Which work can be rejected?",
+      "How would you enforce tenant fairness?"
+    ],
+    "sourceIds": [
+      "go-language",
+      "sre-overload"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

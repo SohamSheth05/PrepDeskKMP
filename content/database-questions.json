@@ -1,0 +1,213 @@
+[
+  {
+    "id": "database-constraints",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Relational modeling",
+    "round": "Fundamentals",
+    "q": "Should an application check that a username is unique before inserting it?",
+    "a": "A pre-check helps user feedback but cannot prevent races. Enforce the uniqueness rule with a database constraint.",
+    "explanation": "Concurrent requests can both pass a pre-check. Define case normalization and null behavior explicitly, then translate a constraint violation into a useful application error.",
+    "mistake": "Relying only on application-side validation.",
+    "rubric": [
+      "Describe the concurrent race",
+      "Enforce a unique constraint",
+      "Define normalization semantics"
+    ],
+    "followups": [
+      "What if uniqueness is tenant-scoped?",
+      "How should duplicate requests be handled?"
+    ],
+    "sourceIds": [
+      "postgres-schema"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-index-cost",
+    "area": "Database",
+    "level": 1,
+    "subtopic": "Indexes",
+    "round": "Fundamentals",
+    "q": "Why not create an index on every column?",
+    "a": "Indexes can speed selected reads but consume storage and add write and maintenance work.",
+    "explanation": "Choose indexes from query filters, joins, ordering, and actual plans. Selectivity and combined predicates matter. Measure read benefit against insertion and update cost.",
+    "mistake": "Assuming an index guarantees that the planner will use it.",
+    "rubric": [
+      "Explain read benefit",
+      "Account for write/storage cost",
+      "Use query plans to validate"
+    ],
+    "followups": [
+      "When is a composite index useful?",
+      "Why might a scan be faster?"
+    ],
+    "sourceIds": [
+      "postgres-indexes",
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-explain",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Query performance",
+    "round": "Debugging",
+    "q": "A query is fast in development and slow in production. What evidence do you collect?",
+    "a": "Compare plans, data distribution, statistics, parameters, row counts, and I/O under representative load.",
+    "explanation": "EXPLAIN ANALYZE executes the statement, so handle writes carefully. Large estimated-versus-actual row differences can indicate stale statistics or skew. Measure before and after an index or query change.",
+    "mistake": "Running EXPLAIN ANALYZE on production writes casually.",
+    "rubric": [
+      "Compare representative plans",
+      "Inspect estimate errors",
+      "Validate an actionable change"
+    ],
+    "followups": [
+      "What can a bad join estimate cause?",
+      "How would lock waits appear?"
+    ],
+    "sourceIds": [
+      "postgres-explain"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-lost-update",
+    "area": "Database",
+    "level": 2,
+    "subtopic": "Transactions",
+    "round": "Coding",
+    "q": "Two requests read stock=1 and both sell the item. How can SQL prevent this?",
+    "a": "Use an atomic conditional update or lock the row within a transaction, and check whether the update succeeded.",
+    "explanation": "For example, decrement only where stock > 0 and inspect affected rows. Tie reservation and order creation together according to the business invariant. Retry appropriate transaction conflicts.",
+    "mistake": "Assuming a read followed by a write is automatically safe.",
+    "rubric": [
+      "Show the read/write race",
+      "Enforce stock invariant atomically",
+      "Handle unsuccessful updates"
+    ],
+    "followups": [
+      "What if multiple items are reserved?",
+      "How do you release expired reservations?"
+    ],
+    "sourceIds": [
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-keyset",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Pagination",
+    "round": "System design",
+    "q": "A feed with millions of rows gets slower on deep pages. How would you change pagination?",
+    "a": "Use keyset pagination over a stable total order and an index matching its filter and ordering.",
+    "explanation": "Include a tie-breaker such as ID, encode the last seen keys, and define concurrent-insert behavior. Keyset pagination trades arbitrary page jumps for efficient sequential traversal.",
+    "mistake": "Using a timestamp cursor without resolving ties.",
+    "rubric": [
+      "Specify a total order",
+      "Align cursor and index",
+      "Explain navigation trade-offs"
+    ],
+    "followups": [
+      "How do deletions affect a cursor?",
+      "Can you support reverse navigation?"
+    ],
+    "sourceIds": [
+      "postgres-indexes"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-isolation",
+    "area": "Database",
+    "level": 3,
+    "subtopic": "Transactions",
+    "round": "Debugging",
+    "q": "A reporting transaction sees rows change between two reads. Is the database broken?",
+    "a": "Behavior depends on isolation level. PostgreSQL Read Committed uses a new snapshot for each command.",
+    "explanation": "Choose repeatable read or serializable when required by the invariant, and account for their conflict behavior. Serializable failures require retrying the whole transaction safely.",
+    "mistake": "Assuming all databases and isolation levels share identical semantics.",
+    "rubric": [
+      "Identify the isolation level",
+      "Define the consistency requirement",
+      "Handle transaction retries"
+    ],
+    "followups": [
+      "How does write skew differ from a lost update?",
+      "What does a long snapshot cost?"
+    ],
+    "sourceIds": [
+      "postgres-isolation"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-schema-rollout",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Schema evolution",
+    "round": "System design",
+    "q": "How would you rename a heavily used database column without a coordinated outage?",
+    "a": "Use an expand-and-contract rollout: add compatible structure, migrate readers/writers and data, then remove old structure.",
+    "explanation": "Control backfill load and lock duration. Define who owns dual-write consistency and verify no old consumers remain. Rollback must still understand the data written by new versions.",
+    "mistake": "Dropping the old column immediately after deploying one service.",
+    "rubric": [
+      "Maintain mixed-version compatibility",
+      "Plan and verify backfill",
+      "Define safe contraction and rollback"
+    ],
+    "followups": [
+      "How do you detect forgotten consumers?",
+      "What if the backfill is interrupted?"
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "sre-book"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "database-tenancy",
+    "area": "Database",
+    "level": 4,
+    "subtopic": "Data architecture",
+    "round": "Leadership",
+    "q": "Choose a multi-tenant data isolation strategy for a growing SaaS platform.",
+    "a": "Compare shared tables, schemas, and separate databases against isolation, operational scale, customization, and cost.",
+    "explanation": "Enforce tenant boundaries in every access path and test negative cases. Include backups, restore granularity, migrations, and noisy-neighbor limits. Document when a tenant moves to stronger isolation.",
+    "mistake": "Choosing the cheapest layout without testing cross-tenant access.",
+    "rubric": [
+      "Compare isolation trade-offs",
+      "Validate tenant access boundaries",
+      "Plan operations and exceptions"
+    ],
+    "followups": [
+      "How do you restore one tenant?",
+      "Which workloads justify dedicated storage?"
+    ],
+    "sourceIds": [
+      "postgres-schema",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]

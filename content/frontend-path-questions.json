@@ -1,0 +1,930 @@
+[
+  {
+    "id": "frontend-path-01",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "HTML",
+    "round": "Fundamentals",
+    "q": "Why use semantic HTML for interactive pages?",
+    "a": "Elements convey structure and behavior.",
+    "explanation": "Elements convey structure and behavior. Browsers provide useful defaults. Assistive technologies depend on semantics.",
+    "mistake": "Replacing every element with an unlabeled div.",
+    "rubric": [
+      "Elements convey structure and behavior",
+      "Browsers provide useful defaults",
+      "Assistive technologies depend on semantics"
+    ],
+    "followups": [
+      "When should you use a button instead of a link?",
+      "Walk through a concrete example of html and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-02",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "Forms",
+    "round": "Fundamentals",
+    "q": "How should form labels relate to inputs?",
+    "a": "Associate labels programmatically.",
+    "explanation": "Associate labels programmatically. Provide clear names and instructions. Expose validation feedback accessibly.",
+    "mistake": "Using placeholder text as the only label.",
+    "rubric": [
+      "Associate labels programmatically",
+      "Provide clear names and instructions",
+      "Expose validation feedback accessibly"
+    ],
+    "followups": [
+      "How would a screen reader announce an error?",
+      "Walk through a concrete example of forms and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-03",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "CSS layout",
+    "round": "Fundamentals",
+    "q": "How do Flexbox and Grid differ in common use?",
+    "a": "Flexbox organizes a primary axis.",
+    "explanation": "Flexbox organizes a primary axis. Grid coordinates rows and columns. Choose from layout requirements.",
+    "mistake": "Choosing a layout system by habit alone.",
+    "rubric": [
+      "Flexbox organizes a primary axis",
+      "Grid coordinates rows and columns",
+      "Choose from layout requirements"
+    ],
+    "followups": [
+      "Which suits a dashboard with aligned columns?",
+      "Walk through a concrete example of css layout and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-04",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "Box model",
+    "round": "Fundamentals",
+    "q": "How does box-sizing affect declared dimensions?",
+    "a": "Content-box excludes padding and borders.",
+    "explanation": "Content-box excludes padding and borders. Border-box includes them in declared size. Account for margins separately.",
+    "mistake": "Assuming width always equals the outer box.",
+    "rubric": [
+      "Content-box excludes padding and borders",
+      "Border-box includes them in declared size",
+      "Account for margins separately"
+    ],
+    "followups": [
+      "How would padding cause overflow?",
+      "Walk through a concrete example of box model and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-05",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "Responsive design",
+    "round": "Fundamentals",
+    "q": "How should a page adapt to small screens?",
+    "a": "Use flexible layouts and content priorities.",
+    "explanation": "Use flexible layouts and content priorities. Choose breakpoints from actual layout needs. Test varied text and viewport sizes.",
+    "mistake": "Targeting only one named device.",
+    "rubric": [
+      "Use flexible layouts and content priorities",
+      "Choose breakpoints from actual layout needs",
+      "Test varied text and viewport sizes"
+    ],
+    "followups": [
+      "How would a wide comparison table behave?",
+      "Walk through a concrete example of responsive design and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-06",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "Events",
+    "round": "Fundamentals",
+    "q": "How does event bubbling support delegation?",
+    "a": "Events propagate through ancestor elements.",
+    "explanation": "Events propagate through ancestor elements. A parent can handle relevant child interactions. Check the intended event target.",
+    "mistake": "Assuming target and currentTarget always match.",
+    "rubric": [
+      "Events propagate through ancestor elements",
+      "A parent can handle relevant child interactions",
+      "Check the intended event target"
+    ],
+    "followups": [
+      "When would stopPropagation be justified?",
+      "Walk through a concrete example of events and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-07",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "Loading states",
+    "round": "Fundamentals",
+    "q": "What should a loading state preserve?",
+    "a": "Keep useful layout and navigation stable.",
+    "explanation": "Keep useful layout and navigation stable. Communicate pending work clearly. Handle completion failure and cancellation.",
+    "mistake": "Leaving an indefinite spinner after failure.",
+    "rubric": [
+      "Keep useful layout and navigation stable",
+      "Communicate pending work clearly",
+      "Handle completion failure and cancellation"
+    ],
+    "followups": [
+      "How would you expose loading to assistive technology?",
+      "Walk through a concrete example of loading states and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-08",
+    "area": "Frontend",
+    "level": 1,
+    "subtopic": "URLs",
+    "round": "Fundamentals",
+    "q": "Why should shareable page state appear in the URL?",
+    "a": "URLs support direct entry and history.",
+    "explanation": "URLs support direct entry and history. Encode safe meaningful state. Avoid exposing sensitive values.",
+    "mistake": "Keeping every filter only in component memory.",
+    "rubric": [
+      "URLs support direct entry and history",
+      "Encode safe meaningful state",
+      "Avoid exposing sensitive values"
+    ],
+    "followups": [
+      "How would back navigation restore filters?",
+      "Walk through a concrete example of urls and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-09",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Focus",
+    "round": "Scenario",
+    "q": "How should keyboard focus behave after a modal closes?",
+    "a": "Restore focus to a meaningful trigger.",
+    "explanation": "Restore focus to a meaningful trigger. Keep active modal navigation contained. Support expected dismissal controls.",
+    "mistake": "Losing focus into an invisible region.",
+    "rubric": [
+      "Restore focus to a meaningful trigger",
+      "Keep active modal navigation contained",
+      "Support expected dismissal controls"
+    ],
+    "followups": [
+      "How would opening a nested dialog affect focus?",
+      "Walk through a concrete example of focus and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-10",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Requests",
+    "round": "Scenario",
+    "q": "How should search handle stale network responses?",
+    "a": "Identify current request ownership.",
+    "explanation": "Identify current request ownership. Cancel obsolete work when possible. Ignore results from older requests.",
+    "mistake": "Applying responses strictly by arrival order.",
+    "rubric": [
+      "Identify current request ownership",
+      "Cancel obsolete work when possible",
+      "Ignore results from older requests"
+    ],
+    "followups": [
+      "How would you test fast consecutive searches?",
+      "Walk through a concrete example of requests and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-11",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Caching",
+    "round": "Scenario",
+    "q": "How do cache-control policies affect page data?",
+    "a": "They define storage and freshness behavior.",
+    "explanation": "They define storage and freshness behavior. Private data needs explicit protection. Validate freshness with server contracts.",
+    "mistake": "Caching personalized responses publicly.",
+    "rubric": [
+      "They define storage and freshness behavior",
+      "Private data needs explicit protection",
+      "Validate freshness with server contracts"
+    ],
+    "followups": [
+      "How would conditional requests reduce transferred bytes?",
+      "Walk through a concrete example of caching and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-12",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Images",
+    "round": "Scenario",
+    "q": "How do responsive images improve page efficiency?",
+    "a": "Serve appropriate dimensions and formats.",
+    "explanation": "Serve appropriate dimensions and formats. Reserve layout space to reduce shifts. Avoid unnecessary eager loading.",
+    "mistake": "Downloading huge assets for small thumbnails.",
+    "rubric": [
+      "Serve appropriate dimensions and formats",
+      "Reserve layout space to reduce shifts",
+      "Avoid unnecessary eager loading"
+    ],
+    "followups": [
+      "Which image should be loaded promptly?",
+      "Walk through a concrete example of images and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-13",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Validation",
+    "round": "Scenario",
+    "q": "How should browser and server validation cooperate?",
+    "a": "Client checks improve immediate feedback.",
+    "explanation": "Client checks improve immediate feedback. Server checks enforce trusted invariants. Use consistent understandable error messages.",
+    "mistake": "Treating client validation as security enforcement.",
+    "rubric": [
+      "Client checks improve immediate feedback",
+      "Server checks enforce trusted invariants",
+      "Use consistent understandable error messages"
+    ],
+    "followups": [
+      "How should server field errors map into the form?",
+      "Walk through a concrete example of validation and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-14",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Accessibility",
+    "round": "Scenario",
+    "q": "How should dynamic status updates be announced?",
+    "a": "Use appropriate live-region semantics.",
+    "explanation": "Use appropriate live-region semantics. Keep announcements useful and bounded. Avoid disrupting focus unnecessarily.",
+    "mistake": "Announcing every tiny visual update.",
+    "rubric": [
+      "Use appropriate live-region semantics",
+      "Keep announcements useful and bounded",
+      "Avoid disrupting focus unnecessarily"
+    ],
+    "followups": [
+      "How would a completed file upload be announced?",
+      "Walk through a concrete example of accessibility and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-15",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Testing",
+    "round": "Scenario",
+    "q": "What makes a browser interaction test maintainable?",
+    "a": "Exercise user-visible behavior.",
+    "explanation": "Exercise user-visible behavior. Use accessible stable locators. Control data and asynchronous conditions.",
+    "mistake": "Using fixed sleeps and brittle CSS positions.",
+    "rubric": [
+      "Exercise user-visible behavior",
+      "Use accessible stable locators",
+      "Control data and asynchronous conditions"
+    ],
+    "followups": [
+      "How would you test a form failure?",
+      "Walk through a concrete example of testing and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-16",
+    "area": "Frontend",
+    "level": 2,
+    "subtopic": "Security",
+    "round": "Scenario",
+    "q": "Why should raw HTML rendering be tightly controlled?",
+    "a": "Untrusted markup can execute harmful behavior.",
+    "explanation": "Untrusted markup can execute harmful behavior. Sanitize intentional rich content. Prefer text rendering for ordinary input.",
+    "mistake": "Assuming all framework rendering APIs escape HTML.",
+    "rubric": [
+      "Untrusted markup can execute harmful behavior",
+      "Sanitize intentional rich content",
+      "Prefer text rendering for ordinary input"
+    ],
+    "followups": [
+      "How would you test unsafe links?",
+      "Walk through a concrete example of security and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-17",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Performance",
+    "round": "Debugging",
+    "q": "How do you diagnose a slow page interaction?",
+    "a": "Measure actual interaction traces.",
+    "explanation": "Measure actual interaction traces. Separate JavaScript layout and network costs. Optimize the dominant cause.",
+    "mistake": "Assuming every problem is bundle size.",
+    "rubric": [
+      "Measure actual interaction traces",
+      "Separate JavaScript layout and network costs",
+      "Optimize the dominant cause"
+    ],
+    "followups": [
+      "Which measurement validates improvement?",
+      "Walk through a concrete example of performance and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-18",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Rendering",
+    "round": "Debugging",
+    "q": "What trade-offs exist between server and client rendering?",
+    "a": "Server rendering can deliver initial markup.",
+    "explanation": "Server rendering can deliver initial markup. Client rendering supports ongoing interaction. Consider hydration caching and infrastructure cost.",
+    "mistake": "Assuming one rendering strategy fits every route.",
+    "rubric": [
+      "Server rendering can deliver initial markup",
+      "Client rendering supports ongoing interaction",
+      "Consider hydration caching and infrastructure cost"
+    ],
+    "followups": [
+      "Which page benefits from static generation?",
+      "Walk through a concrete example of rendering and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-19",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Hydration",
+    "round": "Debugging",
+    "q": "Why must initial server and client output agree?",
+    "a": "Hydration attaches behavior to existing markup.",
+    "explanation": "Hydration attaches behavior to existing markup. Different data can produce mismatches. Keep initial rendering deterministic.",
+    "mistake": "Using random output during initial rendering.",
+    "rubric": [
+      "Hydration attaches behavior to existing markup",
+      "Different data can produce mismatches",
+      "Keep initial rendering deterministic"
+    ],
+    "followups": [
+      "How would time-dependent content be handled?",
+      "Walk through a concrete example of hydration and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-20",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Virtualization",
+    "round": "Debugging",
+    "q": "When does list virtualization help?",
+    "a": "It limits rendered rows for large collections.",
+    "explanation": "It limits rendered rows for large collections. Manage focus and accessibility carefully. Measure complexity against real list sizes.",
+    "mistake": "Virtualizing tiny lists without need.",
+    "rubric": [
+      "It limits rendered rows for large collections",
+      "Manage focus and accessibility carefully",
+      "Measure complexity against real list sizes"
+    ],
+    "followups": [
+      "How would keyboard navigation reach offscreen rows?",
+      "Walk through a concrete example of virtualization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-21",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Offline UX",
+    "round": "Debugging",
+    "q": "How should a page handle edits made offline?",
+    "a": "Persist appropriate drafts or queued intent.",
+    "explanation": "Persist appropriate drafts or queued intent. Show pending and stale states clearly. Reconcile conflicts when connectivity returns.",
+    "mistake": "Discarding user input after a failed save.",
+    "rubric": [
+      "Persist appropriate drafts or queued intent",
+      "Show pending and stale states clearly",
+      "Reconcile conflicts when connectivity returns"
+    ],
+    "followups": [
+      "How would duplicate replay be prevented?",
+      "Walk through a concrete example of offline ux and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-22",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Internationalization",
+    "round": "Debugging",
+    "q": "What can break when a page is translated?",
+    "a": "Text length and direction can change.",
+    "explanation": "Text length and direction can change. Formatting depends on locale. Keep layout flexible and labels meaningful.",
+    "mistake": "Concatenating translated sentence fragments blindly.",
+    "rubric": [
+      "Text length and direction can change",
+      "Formatting depends on locale",
+      "Keep layout flexible and labels meaningful"
+    ],
+    "followups": [
+      "How would you test right-to-left layout?",
+      "Walk through a concrete example of internationalization and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-23",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Storage",
+    "round": "Debugging",
+    "q": "When should browser storage avoid sensitive credentials?",
+    "a": "Scripts may access ordinary storage.",
+    "explanation": "Scripts may access ordinary storage. Choose authentication storage under a threat model. Minimize persisted secrets and clear ownership.",
+    "mistake": "Storing privileged server credentials in localStorage.",
+    "rubric": [
+      "Scripts may access ordinary storage",
+      "Choose authentication storage under a threat model",
+      "Minimize persisted secrets and clear ownership"
+    ],
+    "followups": [
+      "How would sign-out affect cached personal data?",
+      "Walk through a concrete example of storage and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-24",
+    "area": "Frontend",
+    "level": 3,
+    "subtopic": "Observability",
+    "round": "Debugging",
+    "q": "What should frontend error reports contain?",
+    "a": "Include release route and workflow context.",
+    "explanation": "Include release route and workflow context. Redact sensitive input. Correlate with relevant service failures.",
+    "mistake": "Sending entire form state in telemetry.",
+    "rubric": [
+      "Include release route and workflow context",
+      "Redact sensitive input",
+      "Correlate with relevant service failures"
+    ],
+    "followups": [
+      "How would you measure affected users?",
+      "Walk through a concrete example of observability and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-25",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Design systems",
+    "round": "Design",
+    "q": "How should shared UI evolve across products?",
+    "a": "Define component interaction contracts.",
+    "explanation": "Define component interaction contracts. Test visual and accessibility states. Provide documented migration paths.",
+    "mistake": "Treating shared styling as a complete design system.",
+    "rubric": [
+      "Define component interaction contracts",
+      "Test visual and accessibility states",
+      "Provide documented migration paths"
+    ],
+    "followups": [
+      "Who owns a breaking interaction change?",
+      "Walk through a concrete example of design systems and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-26",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Dependency strategy",
+    "round": "Design",
+    "q": "How do you evaluate a frontend dependency?",
+    "a": "Assess maintenance security and license.",
+    "explanation": "Assess maintenance security and license. Measure bundle and runtime impact. Keep integration boundaries replaceable.",
+    "mistake": "Choosing solely from popularity.",
+    "rubric": [
+      "Assess maintenance security and license",
+      "Measure bundle and runtime impact",
+      "Keep integration boundaries replaceable"
+    ],
+    "followups": [
+      "How would you remove an abandoned package?",
+      "Walk through a concrete example of dependency strategy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-27",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Architecture",
+    "round": "Design",
+    "q": "How should feature boundaries guide a frontend codebase?",
+    "a": "Group cohesive user capabilities.",
+    "explanation": "Group cohesive user capabilities. Keep domain contracts explicit. Share proven patterns rather than speculative abstractions.",
+    "mistake": "Creating a universal component for unrelated flows.",
+    "rubric": [
+      "Group cohesive user capabilities",
+      "Keep domain contracts explicit",
+      "Share proven patterns rather than speculative abstractions"
+    ],
+    "followups": [
+      "How would you detect cross-feature coupling?",
+      "Walk through a concrete example of architecture and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-28",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Release safety",
+    "round": "Design",
+    "q": "How would you roll out a risky frontend change?",
+    "a": "Stage exposure and monitor user journeys.",
+    "explanation": "Stage exposure and monitor user journeys. Keep compatible API and asset contracts. Define rollback or disable behavior.",
+    "mistake": "Deploying incompatible cached assets and APIs together.",
+    "rubric": [
+      "Stage exposure and monitor user journeys",
+      "Keep compatible API and asset contracts",
+      "Define rollback or disable behavior"
+    ],
+    "followups": [
+      "How would you handle stale open tabs?",
+      "Walk through a concrete example of release safety and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-29",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Privacy",
+    "round": "Design",
+    "q": "How should analytics support product learning responsibly?",
+    "a": "Collect necessary events only.",
+    "explanation": "Collect necessary events only. Redact personal or secret values. Define retention and consent behavior.",
+    "mistake": "Recording every keystroke by default.",
+    "rubric": [
+      "Collect necessary events only",
+      "Redact personal or secret values",
+      "Define retention and consent behavior"
+    ],
+    "followups": [
+      "How would you audit a third-party tracker?",
+      "Walk through a concrete example of privacy and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-30",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Performance budgets",
+    "round": "Design",
+    "q": "How do you choose meaningful frontend performance budgets?",
+    "a": "Measure key journeys on representative devices.",
+    "explanation": "Measure key journeys on representative devices. Set thresholds tied to user impact. Track regressions per release.",
+    "mistake": "Measuring only on fast development hardware.",
+    "rubric": [
+      "Measure key journeys on representative devices",
+      "Set thresholds tied to user impact",
+      "Track regressions per release"
+    ],
+    "followups": [
+      "Which budget fits a low-bandwidth onboarding flow?",
+      "Walk through a concrete example of performance budgets and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-31",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Platform decisions",
+    "round": "Design",
+    "q": "When is a microfrontend approach justified?",
+    "a": "Independent ownership can require deployment autonomy.",
+    "explanation": "Independent ownership can require deployment autonomy. Shared runtime contracts add complexity. Compare against a modular single application.",
+    "mistake": "Adopting it only because there are several teams.",
+    "rubric": [
+      "Independent ownership can require deployment autonomy",
+      "Shared runtime contracts add complexity",
+      "Compare against a modular single application"
+    ],
+    "followups": [
+      "Who owns shared navigation and authentication?",
+      "Walk through a concrete example of platform decisions and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  },
+  {
+    "id": "frontend-path-32",
+    "area": "Frontend",
+    "level": 4,
+    "subtopic": "Resilience",
+    "round": "Design",
+    "q": "How should a product handle an unavailable critical API?",
+    "a": "Preserve useful cached state and drafts.",
+    "explanation": "Preserve useful cached state and drafts. Offer clear recovery actions. Bound retries and communicate limitations.",
+    "mistake": "Turning every failure into an endless loading screen.",
+    "rubric": [
+      "Preserve useful cached state and drafts",
+      "Offer clear recovery actions",
+      "Bound retries and communicate limitations"
+    ],
+    "followups": [
+      "Which operations can remain useful offline?",
+      "Walk through a concrete example of resilience and explain one trade-off."
+    ],
+    "sourceIds": [
+      "mdn-javascript",
+      "w3c-accessibility",
+      "http-caching",
+      "owasp-api"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-09",
+    "origin": "PrepDesk original; linked documentation is further reading, not a claim of an actual company interview"
+  }
+]

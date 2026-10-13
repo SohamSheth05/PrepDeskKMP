@@ -1,0 +1,212 @@
+[
+  {
+    "id": "kotlin-nulls",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Null safety",
+    "round": "Fundamentals",
+    "q": "Does a non-null Kotlin type guarantee that an Android or Java caller can never supply null?",
+    "a": "Kotlin checks many null mistakes at compile time, but Java interoperability and unsafe constructs can still produce runtime failures.",
+    "explanation": "Validate external inputs at the boundary. Avoid !! as a default strategy and decide whether missing data is an error or a valid optional value. Platform types need deliberate handling.",
+    "mistake": "Treating all foreign data as compile-time safe.",
+    "rubric": [
+      "Explain nullable types",
+      "Identify interoperability boundaries",
+      "Handle missing values intentionally"
+    ],
+    "followups": [
+      "What is a platform type?",
+      "When use requireNotNull?"
+    ],
+    "sourceIds": [
+      "kotlin-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-copy",
+    "area": "Kotlin",
+    "level": 1,
+    "subtopic": "Data classes",
+    "round": "Debugging",
+    "q": "A copied data class shares a mutable list with the original. Why?",
+    "a": "Data-class copy is shallow. Nested mutable objects remain shared unless explicitly copied or redesigned.",
+    "explanation": "Prefer immutable domain values and make mutation ownership clear. Test changes to nested structures; making the outer property val does not freeze its referenced list.",
+    "mistake": "Assuming val or copy creates deep immutability.",
+    "rubric": [
+      "Explain shallow copying",
+      "Distinguish reference and object mutation",
+      "Choose immutable nested state"
+    ],
+    "followups": [
+      "How would you copy a tree?",
+      "Which fields participate in generated equality?"
+    ],
+    "sourceIds": [
+      "kotlin-language"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-scope",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Coroutines",
+    "round": "Coding",
+    "q": "Fetch two resources concurrently and return only when both are available.",
+    "a": "Use structured concurrency, start independent child tasks, and await both inside the owning scope.",
+    "explanation": "Define failure policy before choosing coroutineScope or supervision. Pick dispatchers for actual blocking work, preserve cancellation, and avoid launching tasks in an unrelated global lifetime.",
+    "mistake": "Launching unowned jobs just to make calls concurrent.",
+    "rubric": [
+      "Give tasks a shared lifetime",
+      "Run independent work concurrently",
+      "Define failure and cancellation"
+    ],
+    "followups": [
+      "When should one failure cancel the other?",
+      "What changes for blocking clients?"
+    ],
+    "sourceIds": [
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-cancellation",
+    "area": "Kotlin",
+    "level": 2,
+    "subtopic": "Coroutines",
+    "round": "Debugging",
+    "q": "A coroutine continues its CPU loop after cancellation. How would you fix it?",
+    "a": "Cancellation is cooperative. Check cancellation or use appropriate suspension points within bounded computation chunks.",
+    "explanation": "Ensure cleanup runs and normally rethrow CancellationException when caught. Do not add delays merely to slow the loop; choose checkpoints based on responsiveness and overhead.",
+    "mistake": "Assuming cancellation forcibly stops arbitrary code immediately.",
+    "rubric": [
+      "Explain cooperative cancellation",
+      "Add suitable checkpoints",
+      "Preserve cancellation propagation"
+    ],
+    "followups": [
+      "What if the loop calls native code?",
+      "How would you test cleanup?"
+    ],
+    "sourceIds": [
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-flows",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Flow",
+    "round": "System design",
+    "q": "Design a stream of current application state and a stream of user-triggered events.",
+    "a": "Choose state and event semantics explicitly; current-value state and broadcast events have different replay and delivery requirements.",
+    "explanation": "Specify subscribers, replay, buffering, and behavior when nobody listens. Immutable state updates help observation, while durable actions may need storage rather than an in-memory flow.",
+    "mistake": "Expecting an in-memory event stream to survive process death.",
+    "rubric": [
+      "Separate state and event semantics",
+      "Define replay/backpressure",
+      "Handle required durability"
+    ],
+    "followups": [
+      "When is a channel useful?",
+      "How do slow subscribers affect producers?"
+    ],
+    "sourceIds": [
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-api-types",
+    "area": "Kotlin",
+    "level": 3,
+    "subtopic": "Type design",
+    "round": "Coding",
+    "q": "Model a repository result without throwing away error information or using nullable success values.",
+    "a": "Use a sealed result model with explicit success and failure variants and exhaustive handling.",
+    "explanation": "Keep expected domain failures distinct from cancellation and programming defects. Attach actionable error information without leaking secrets. Check mappings at network and persistence boundaries.",
+    "mistake": "Turning every throwable, including cancellation, into a generic failure.",
+    "rubric": [
+      "Model explicit result variants",
+      "Preserve cancellation",
+      "Define boundary error mapping"
+    ],
+    "followups": [
+      "How would you add partial success?",
+      "Can a new variant break consumers?"
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-kmp",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Multiplatform architecture",
+    "round": "System design",
+    "q": "What should be shared in a Kotlin Multiplatform interview-prep product?",
+    "a": "Share domain rules, data contracts, and suitable persistence/network logic; define boundaries for platform-specific behavior.",
+    "explanation": "Evaluate library support and platform lifecycle differences. Keep APIs testable and document threading and ownership. Sharing more code is only useful when maintenance and user experience improve.",
+    "mistake": "Assuming platform lifecycles and services are identical.",
+    "rubric": [
+      "Define shared and platform boundaries",
+      "Check library support",
+      "Validate lifecycle and concurrency"
+    ],
+    "followups": [
+      "How do you handle platform authentication?",
+      "When keep UI platform-specific?"
+    ],
+    "sourceIds": [
+      "kotlin-language",
+      "android-architecture"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  },
+  {
+    "id": "kotlin-adoption",
+    "area": "Kotlin",
+    "level": 4,
+    "subtopic": "Platform strategy",
+    "round": "Leadership",
+    "q": "How would you introduce Kotlin coroutines into a callback-heavy codebase?",
+    "a": "Start with clear ownership boundaries, bridge cancellation correctly, and migrate with behavioral tests and monitoring.",
+    "explanation": "Define scope ownership, error policy, and dispatcher rules. Support mixed code during rollout and train reviewers to detect unowned jobs and swallowed cancellation.",
+    "mistake": "Replacing callbacks mechanically without defining lifetime.",
+    "rubric": [
+      "Define lifetime and error policy",
+      "Test callback bridges",
+      "Plan incremental rollout and training"
+    ],
+    "followups": [
+      "How do you unregister a callback on cancellation?",
+      "Which boundary would you migrate first?"
+    ],
+    "sourceIds": [
+      "kotlin-coroutines"
+    ],
+    "version": 1,
+    "reviewedAt": "2026-10-05",
+    "origin": "PrepDesk original; linked documentation is learning material, not a claim of an actual company interview"
+  }
+]
