@@ -36,6 +36,7 @@ The migration creates:
 - `interview_questions`: a trusted server-only reference/rubric catalog for AI assessment.
 - `service_usage`: atomic daily per-user quotas for optional provider calls.
 - `code_jobs`: server-only job ownership for code-output retrieval.
+- `search_questions` (migration `202610130001`): server-only full-text search over `interview_questions`, used by the Ask PrepDesk agent.
 
 All user-owned tables cascade when their Auth user is deleted. There are no direct client write grants on these tables. The Edge Function has gateway JWT verification disabled to support current publishable keys, but **every action validates the bearer token against Supabase Auth before acting**, including capabilities and deletion. Do not remove that handler authentication.
 
@@ -61,6 +62,8 @@ supabase secrets set --env-file supabase/.env.local
 ```
 
 Set `OPENAI_API_KEY`, `OPENAI_FEEDBACK_MODEL`, and `OPENAI_TRANSCRIPTION_MODEL` to models available to your OpenAI project. Feedback and Ask PrepDesk answers both use `OPENAI_FEEDBACK_MODEL` through the Responses API with strict JSON structured output and `store=false`. Ask sends the learner's question, up to six earlier turns, and the referenced library questions loaded from `interview_questions`, never client-supplied reference text. It is limited to 40 requests per user per day; transcription uses multipart m4a uploads. Select supported models using the current [structured output](https://developers.openai.com/api/docs/guides/structured-outputs) and [speech-to-text](https://developers.openai.com/api/docs/guides/speech-to-text) documentation. No key or model is supplied by this repository.
+
+**Ask PrepDesk with Gemini (preferred when set).** Set `GEMINI_API_KEY` and `GEMINI_MODEL` (a current Gemini model id from the [Gemini models page](https://ai.google.dev/gemini-api/docs/models)). Ask then uses Gemini's Interactions API as an agent: Gemini receives the learner's question, up to six earlier turns, and the referenced library questions, and may call a `search_library` tool up to three times, which the Edge Function answers with `search_questions`. Requests are stateless with `store=false`. The key never reaches the app. Without Gemini, Ask falls back to the OpenAI feedback model; feedback and transcription always use OpenAI.
 
 Code execution requires an authenticated HTTPS **Judge0 CE-compatible** service, configured with `JUDGE0_URL` (without a trailing slash) and `JUDGE0_AUTH_TOKEN`. The handler uses the `X-Auth-Token` convention; providers using another authentication scheme need a server adapter. Use a maintained runner with patched isolation, restricted host credentials, concurrency limits, network disabled, and an output/storage retention policy. Client submissions cannot override the server's 2-second CPU, 5-second wall, 64 MB memory, or 128 KB file limits. Do not run submitted code inside the Edge Function or on an application/database host. See [Judge0 API documentation](https://ce.judge0.com/).
 

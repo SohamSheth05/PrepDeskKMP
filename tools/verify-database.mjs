@@ -13,7 +13,8 @@ try {
  create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub',true),'')::uuid $$;
  grant usage on schema auth to anon,authenticated,service_role;
  insert into auth.users values('${a}'),('${b}');`);
- await db.exec(fs.readFileSync('supabase/migrations/202610090001_prepdesk.sql','utf8'));
+ // Apply every migration in order, as Supabase does.
+ for (const name of fs.readdirSync('supabase/migrations').filter(n=>n.endsWith('.sql')).sort()) await db.exec(fs.readFileSync(`supabase/migrations/${name}`,'utf8'));
  await db.exec(`set role authenticated; set request.jwt.claim.sub='${a}'`);
  assert.equal((await db.query('select public.save_progress(0,$1::jsonb) as revision',[doc])).rows[0].revision,1);checks++;
  await rejects('select public.save_progress(0,$1::jsonb)',[doc]);
@@ -43,12 +44,19 @@ try {
  assert.equal((await db.query('select document from public.interview_questions')).rows[0].document.version,2);checks++;
  assert.equal((await db.query(`select public.consume_budget('${a}','assess',1) as allowed`)).rows[0].allowed,true);checks++;
  assert.equal((await db.query(`select public.consume_budget('${a}','assess',1) as allowed`)).rows[0].allowed,false);checks++;
+ await db.query('select public.publish_content($1::jsonb)',[JSON.stringify({...pack,questions:[{id:'q1',version:3,q:'How does structured concurrency cancel child coroutines?',area:'Kotlin',subtopic:'Coroutines',a:'Cancelling a parent cancels its children.'},{id:'q2',version:1,q:'How do you migrate a Room schema?',area:'Android',subtopic:'Database',a:'Write and test a Migration.'}]})]);
+ await db.exec('set role authenticated');
+ await rejects(`select * from public.search_questions('coroutines')`);
  await db.exec('set role service_role');
- assert.equal((await db.query('select * from public.interview_questions')).rows.length,1);checks++;
+ assert.equal((await db.query('select * from public.interview_questions')).rows.length,2);checks++;
+ assert.deepEqual((await db.query(`select id from public.search_questions('cancel coroutines')`)).rows.map(r=>r.id),['q1']);checks++;
+ assert.deepEqual((await db.query(`select id from public.search_questions('Room migration', 1)`)).rows.map(r=>r.id),['q2']);checks++;
+ assert.equal((await db.query(`select * from public.search_questions('quantum chromodynamics')`)).rows.length,0);checks++;
+ assert.equal((await db.query(`select * from public.search_questions(') or 1=1 --')`)).rows.length,0);checks++;
  await db.exec(`insert into public.code_jobs(token,user_id) values ('job','${a}');`);
  await db.exec(`reset role; delete from auth.users where id='${a}';`);
  assert.equal((await db.query('select * from public.progress')).rows.length,0);checks++;
  assert.equal((await db.query('select * from public.code_jobs')).rows.length,0);checks++;
  assert.equal((await db.query('select * from public.service_usage')).rows.length,0);checks++;
- console.log(`Passed ${checks} PostgreSQL checks: owner isolation, permissions, revision conflicts, quotas, atomic publication, account cascade.`);
+ console.log(`Passed ${checks} PostgreSQL checks: owner isolation, permissions, revision conflicts, quotas, atomic publication, library search, account cascade.`);
 } finally { await db.close(); }
