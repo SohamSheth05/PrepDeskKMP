@@ -6,8 +6,8 @@ jobs:
   content-and-server:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: '22'
       - run: npm ci --ignore-scripts
@@ -17,24 +17,24 @@ jobs:
   android:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
-      - run: sdkmanager 'platforms;android-37.0' 'build-tools;36.0.0'
+      - name: Install Android SDK 37 (the runner image already provides the SDK)
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37.0" "build-tools;36.0.0"'
       - uses: gradle/actions/setup-gradle@v4
       - run: ./gradlew :composeApp:assembleDebug testDebugUnitTest :composeApp:assembleRelease --console=plain
   ios:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-java@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '17'
-      - uses: android-actions/setup-android@v3
-      - run: sdkmanager 'platforms;android-37.0' 'build-tools;36.0.0'
+      - name: Install Android SDK 37 (the runner image already provides the SDK)
+        run: '"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" "platforms;android-37.0" "build-tools;36.0.0"'
       - uses: gradle/actions/setup-gradle@v4
       - run: xcodebuild -project iosApp/PrepDesk.xcodeproj -scheme PrepDesk -configuration Debug -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' CODE_SIGNING_ALLOWED=NO build
