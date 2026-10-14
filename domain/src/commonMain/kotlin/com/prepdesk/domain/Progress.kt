@@ -37,7 +37,7 @@ fun encodeBackup(state: AppState, mock: MockRun?) = CONTENT_JSON.encodeToString(
 fun decodeBackup(document: String, bank: List<Q>): ProgressBackup {
     require(document.encodeToByteArray().size <= 2_000_000) { "Backup exceeds the 2 MB limit" }
     val backup = CONTENT_JSON.decodeFromString<ProgressBackup>(document)
-    require(backup.format == 1) { "This backup needs a newer version of PrepDesk" }
+    require(backup.format == 1) { "This backup needs a newer version of MockMentor" }
     val s = backup.state
     require(s.cards.size <= 10_000 && s.history.size <= 2_000 && s.days.size <= 10_000)
     require(s.pomos >= 0 && s.plan.lv in 1..4 && s.plan.days in 1..120)

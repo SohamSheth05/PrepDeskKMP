@@ -100,7 +100,8 @@ fun QuestionDetails(q: Q, sources: List<Source>, showShortAnswer: Boolean = true
             q.followups.forEachIndexed { i, text -> Text("${i + 1}. $text") }
         }
         HorizontalDivider()
-        Text(q.origin, style = MaterialTheme.typography.bodySmall)
+        // Content credits predate the MockMentor name; renaming them in the bank would need new content versions.
+        Text(q.origin.replace("PrepDesk original", "MockMentor original"), style = MaterialTheme.typography.bodySmall)
         Text("Content v${q.version}${if (q.reviewedAt.isNotBlank()) " · ${q.reviewedAt}" else ""}", style = MaterialTheme.typography.bodySmall)
         q.sourceIds.forEach { id -> sources.firstOrNull { it.id == id }?.let { source ->
             TextButton({ linkError = runCatching { uri.openUri(source.url) }.isFailure }) {

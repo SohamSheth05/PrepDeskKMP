@@ -18,7 +18,7 @@ import com.prepdesk.domain.TutorAction
 @Composable
 fun AskActions(modifier: Modifier = Modifier, onAsk: (TutorAction) -> Unit) {
     Column(modifier, verticalArrangement = Arrangement.spacedBy(4.dp)) {
-        Text("Ask PrepDesk", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text("Ask MockMentor", style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.onSurfaceVariant)
         Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
             TutorAction.entries.forEach { action ->
                 AssistChip(onClick = { onAsk(action) }, label = { Text(action.label) },

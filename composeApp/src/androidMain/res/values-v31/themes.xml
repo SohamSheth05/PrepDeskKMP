@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12+ draws its own splash: the icon on an indigo circle over the same navy. -->
+    <style name="Theme.MockMentor" parent="@android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+        <item name="android:windowSplashScreenBackground">#FF262C5C</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/app_icon_foreground</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">#FF3E4796</item>
+    </style>
+</resources>

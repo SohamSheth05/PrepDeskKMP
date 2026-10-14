@@ -45,7 +45,7 @@ fun App(vm: AppViewModel = koinViewModel()) {
                 TopAppBar(
                     title = {
                         Column {
-                            Text(if (screen == AppScreen.Today) "PrepDesk" else screen.label, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text(if (screen == AppScreen.Today) "MockMentor" else screen.label, maxLines = 1, overflow = TextOverflow.Ellipsis)
                             if (screen == AppScreen.Today && ui.ready) Text("Level ${ui.level} · ${ui.due} due · ${ui.streak}-day streak",
                                 style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                         }

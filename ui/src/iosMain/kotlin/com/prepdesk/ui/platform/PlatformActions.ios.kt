@@ -62,7 +62,7 @@ private class ImportDelegate(private val imported: (String) -> Unit, private val
 @Composable actual fun BackupFileActions(actions: BackupActions) {
     val scope = rememberCoroutineScope()
     var incoming by remember { mutableStateOf<String?>(null) }
-    val delegate = remember { ImportDelegate({ incoming = it }, { actions.reportError("Could not read this backup. Choose a PrepDesk JSON file under 2 MB.") }) }
+    val delegate = remember { ImportDelegate({ incoming = it }, { actions.reportError("Could not read this backup. Choose a MockMentor JSON file under 2 MB.") }) }
     fun export(document: String) {
         val bytes = document.encodeToByteArray()
         val file = NSURL.fileURLWithPath(NSTemporaryDirectory() + "prepdesk-backup.json")

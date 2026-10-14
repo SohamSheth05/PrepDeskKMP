@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Splash for Android 7-11 and the brief window background before the first frame: navy with the icon tile. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item><shape android:shape="rectangle"><solid android:color="#FF262C5C"/></shape></item>
+    <item android:gravity="center" android:width="120dp" android:height="120dp" android:drawable="@drawable/splash_logo"/>
+</layer-list>

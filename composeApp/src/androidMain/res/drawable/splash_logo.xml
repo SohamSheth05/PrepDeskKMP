@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The icon tile for the splash screen; same artwork as the Android 7.x launcher icon (drawable/app_icon.xml). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android" android:width="48dp" android:height="48dp" android:viewportWidth="120" android:viewportHeight="120">
+    <path android:fillColor="#3E4796" android:pathData="M27,0 H93 Q120,0 120,27 V93 Q120,120 93,120 H27 Q0,120 0,93 V27 Q0,0 27,0 Z"/>
+    <path android:fillColor="#8F97D8" android:pathData="M24,32 Q24,25 31,25 H67 Q74,25 74,32 V56 Q74,63 67,63 H45 L33,73 V63 H31 Q24,63 24,56 Z"/>
+    <path android:fillColor="#FFFFFF" android:pathData="M46,52 Q46,45 53,45 H89 Q96,45 96,52 V78 Q96,85 89,85 H87 V95 L75,85 H53 Q46,85 46,78 Z"/>
+    <path android:strokeColor="#F2B93B" android:strokeWidth="7" android:strokeLineCap="round" android:strokeLineJoin="round" android:pathData="M60,65 L68,73 L82,58"/>
+</vector>

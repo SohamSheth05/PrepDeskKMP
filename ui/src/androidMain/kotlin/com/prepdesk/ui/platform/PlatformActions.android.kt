@@ -88,7 +88,7 @@ actual fun BackupFileActions(actions: BackupActions) {
                     val bytes = output.toByteArray()
                     require(bytes.size <= 2_000_000); bytes.decodeToString()
                 } ?: error("Cannot read file")
-            } } catch (_: Exception) { actions.reportError("Could not read this backup. Choose a PrepDesk JSON file under 2 MB.") }
+            } } catch (_: Exception) { actions.reportError("Could not read this backup. Choose a MockMentor JSON file under 2 MB.") }
         }
     }
     OutlinedButton({ scope.launch { actions.prepare()?.let { document = it; export.launch("prepdesk-backup.json") } } }, enabled = actions.enabled) { Text("Save backup file") }

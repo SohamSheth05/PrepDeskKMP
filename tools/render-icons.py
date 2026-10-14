@@ -1,11 +1,11 @@
-"""Renders the MockMentor app icon PNGs (iOS 1024, Play Store 512) from the master shapes.
+"""Renders the MockMentor icon PNGs (iOS 1024, Play Store 512) and the iOS launch logo from the master shapes.
 
 The same shapes, in a 120-unit square, appear in artwork/mockmentor-icon.svg and in the Android
 vector drawables (composeApp/src/androidMain/res/drawable*/app_icon*.xml); keep them in sync.
 Run from the repository root: python3 tools/render-icons.py   (needs Pillow)
 """
-import re
-from PIL import Image, ImageDraw
+import json, os, re
+from PIL import Image, ImageDraw, ImageFont
 
 BACKGROUND = "#3E4796"
 BACK_BUBBLE = ("#8F97D8", "M24 32 Q24 25 31 25 H67 Q74 25 74 32 V56 Q74 63 67 63 H45 L33 73 V63 H31 Q24 63 24 56 Z")
@@ -51,7 +51,47 @@ def render(size):
     return image.resize((size, size), Image.LANCZOS)
 
 
+LAUNCH_DIR = "iosApp/PrepDesk/Assets.xcassets"
+LAUNCH_BACKGROUND = (0x26, 0x2C, 0x5C)  # splash navy, also used by the Android splash
+TILE, GAP, WORD_SIZE, WIDTH, HEIGHT = 120, 20, 30, 240, 186  # launch logo layout, in points
+
+
+def launch_logo(scale):
+    """The icon tile with the MockMentor wordmark below, on transparency, for the iOS launch screen."""
+    tile = render(TILE * scale).convert("RGBA")
+    mask = Image.new("L", tile.size, 0)
+    ImageDraw.Draw(mask).rounded_rectangle((0, 0, tile.width - 1, tile.height - 1), radius=round(tile.width * 27 / 120), fill=255)
+    tile.putalpha(mask)
+    image = Image.new("RGBA", (WIDTH * scale, HEIGHT * scale), (0, 0, 0, 0))
+    image.paste(tile, ((image.width - tile.width) // 2, 0), tile)
+    font = ImageFont.truetype("/System/Library/Fonts/SFNS.ttf", WORD_SIZE * scale)
+    font.set_variation_by_name("Semibold")  # the system font is variable; pick the standard-width named style
+    draw = ImageDraw.Draw(image)
+    text = "MockMentor"
+    left, top, right, bottom = draw.textbbox((0, 0), text, font=font)
+    draw.text(((image.width - (right - left)) / 2 - left, (TILE + GAP) * scale - top), text, font=font, fill="white")
+    return image
+
+
+def write_launch_assets():
+    logo_dir = f"{LAUNCH_DIR}/LaunchLogo.imageset"
+    os.makedirs(logo_dir, exist_ok=True)
+    images = []
+    for scale in (1, 2, 3):
+        name = f"LaunchLogo@{scale}x.png" if scale > 1 else "LaunchLogo.png"
+        launch_logo(scale).save(f"{logo_dir}/{name}")
+        images.append({"filename": name, "idiom": "universal", "scale": f"{scale}x"})
+    info = {"author": "xcode", "version": 1}
+    with open(f"{logo_dir}/Contents.json", "w") as f: json.dump({"images": images, "info": info}, f, indent=2); f.write("\n")
+    color_dir = f"{LAUNCH_DIR}/LaunchBackground.colorset"
+    os.makedirs(color_dir, exist_ok=True)
+    r, g, b = (f"0x{c:02X}" for c in LAUNCH_BACKGROUND)
+    color = {"color": {"color-space": "srgb", "components": {"red": r, "green": g, "blue": b, "alpha": "1.000"}}, "idiom": "universal"}
+    with open(f"{color_dir}/Contents.json", "w") as f: json.dump({"colors": [color], "info": info}, f, indent=2); f.write("\n")
+
+
 if __name__ == "__main__":
     render(1024).save("iosApp/PrepDesk/Assets.xcassets/AppIcon.appiconset/AppIcon1024.png")
     render(512).convert("RGBA").save("artwork/play-store-icon-512.png")  # Play asks for a 32-bit PNG
-    print("Rendered iOS 1024 px and Play Store 512 px icons.")
+    write_launch_assets()
+    print("Rendered iOS 1024 px and Play Store 512 px icons and the iOS launch logo.")

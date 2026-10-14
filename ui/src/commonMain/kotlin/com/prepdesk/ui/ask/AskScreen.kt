@@ -82,7 +82,7 @@ private fun AskIntro(ai: Boolean) {
         Box(Modifier.size(48.dp).clip(CircleShape).background(MaterialTheme.colorScheme.primaryContainer), contentAlignment = Alignment.Center) {
             Icon(PrepIcons.Ask, null, tint = MaterialTheme.colorScheme.onPrimaryContainer)
         }
-        Text("Ask PrepDesk", style = MaterialTheme.typography.headlineSmall)
+        Text("Ask MockMentor", style = MaterialTheme.typography.headlineSmall)
         Text(if (ai) "Ask anything about interviews and engineering. Answers use AI, grounded in your question library, and link to questions you can save for review."
             else "Ask anything and get the closest answers from your question library, even offline. Sign in under More → Account and data to get AI answers.",
             color = MaterialTheme.colorScheme.onSurfaceVariant)
@@ -112,7 +112,7 @@ private fun UserBubble(text: String) {
 @Composable
 private fun ReplyBubble(m: TutorMessage, related: List<Q>, open: (Q) -> Unit) {
     Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
-        Text(if (m.source == TutorSource.AI) "PrepDesk AI" else "From your library", style = MaterialTheme.typography.labelMedium,
+        Text(if (m.source == TutorSource.AI) "MockMentor AI" else "From your library", style = MaterialTheme.typography.labelMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant)
         Surface(color = MaterialTheme.colorScheme.surfaceContainerLowest, shape = RoundedCornerShape(6.dp, 20.dp, 20.dp, 20.dp),
             modifier = Modifier.fillMaxWidth().border(1.dp, MaterialTheme.colorScheme.outlineVariant, RoundedCornerShape(6.dp, 20.dp, 20.dp, 20.dp))) {
