@@ -1,6 +1,7 @@
 package com.prepdesk.data
 
 import com.prepdesk.domain.*
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,13 +24,29 @@ class SupabaseAccountRepository(
     override val otpSent: StateFlow<Boolean> = _otpSent.asStateFlow()
     override val onlineConfigured get() = api.configured
 
-    /** Restores a saved sign-in. A broken secure store must never block offline preparation. */
+    /** Restores a saved sign-in, then connects. A broken secure store must never block offline preparation. */
     override fun restoreSession() = queue.launch {
         _session.value = runCatching { vault.read()?.let { CONTENT_JSON.decodeFromString<AuthSession>(it) } }.getOrElse {
             runCatching { vault.write(null) }
             queue.notify("Your sign-in session could not be restored. You can continue preparing offline or sign in again.")
             null
         }
+        connect()
+    }
+
+    /**
+     * Starts a guest (anonymous) session when there is none, so AI tools work without email sign-in,
+     * and loads which online tools the server offers. Offline or unavailable services quietly leave library mode on.
+     */
+    private suspend fun connect() {
+        if (!api.configured) return
+        try {
+            if (_session.value == null) {
+                val guest = api.signInAnonymously()
+                vault.write(CONTENT_JSON.encodeToString(guest)); _session.value = guest
+            }
+            _capabilities.value = api.capabilities(token())
+        } catch (e: CancellationException) { throw e } catch (_: Exception) {}
     }
 
     /** A valid access token, refreshed when it is about to expire. */
@@ -64,12 +81,13 @@ class SupabaseAccountRepository(
             vault.write(null); _session.value = null; _capabilities.value = ServiceCapabilities(); _conflict.value = null
             queue.notify("Signed out. Your preparation remains on this device.")
         }
+        connect()
     }
 
     override fun refreshCapabilities() = queue.launch { if (_session.value != null) _capabilities.value = api.capabilities(token()) }
 
     override fun synchronize() = queue.launch {
-        val user = _session.value?.user ?: error("Sign in to sync your progress")
+        val user = _session.value?.user?.takeUnless { it.is_anonymous } ?: error("Sign in with email to sync your progress")
         val state = progress.current
         check(state.sync.ownerId == null || state.sync.ownerId == user.id) { "This device has another account’s progress. Sign in to that account, or clear device data before syncing a different account." }
         val access = token()
@@ -110,6 +128,7 @@ class SupabaseAccountRepository(
         vault.write(null); _session.value = null; _capabilities.value = ServiceCapabilities()
         progress.clearNow(); _conflict.value = null
         queue.notify("Your account and its cloud progress were deleted.")
+        connect()
     }
 
     override fun clearDevice() = queue.launch {

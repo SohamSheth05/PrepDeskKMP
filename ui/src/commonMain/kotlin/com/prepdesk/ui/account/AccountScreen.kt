@@ -27,7 +27,7 @@ fun AccountScreen(vm: AccountViewModel = koinViewModel()) {
             Text("Prepare offline without an account. Sign in to sync progress and use available online interview tools.")
             ui.message?.let { Text(it, color = MaterialTheme.colorScheme.primary) }
             if (!ui.onlineConfigured) Text("Online services are not available in this build. Offline preparation and backups work normally.")
-            else if (ui.session == null) {
+            else if (ui.session?.user?.is_anonymous != false) {
                 OutlinedTextField(email, { email = it }, label = { Text("Email") }, singleLine = true, modifier = Modifier.fillMaxWidth())
                 Button({ vm.sendCode(email.trim()) }, enabled = !saving && email.isNotBlank()) { Text(if (ui.otpSent) "Resend code" else "Send sign-in code") }
                 if (ui.otpSent) {

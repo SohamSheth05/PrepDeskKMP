@@ -7,7 +7,8 @@ import kotlinx.serialization.Serializable
 /** The question bank, its sources, and curated reading. */
 data class Library(val questions: List<Q> = emptyList(), val sources: List<Source> = emptyList(), val resources: List<StudyResource> = emptyList())
 
-@Serializable data class SignedInUser(val id: String, val email: String = "")
+/** [is_anonymous] marks a guest session: it unlocks AI tools, while email sign-in adds cloud sync. */
+@Serializable data class SignedInUser(val id: String, val email: String = "", val is_anonymous: Boolean = false)
 @Serializable data class AuthSession(val access_token: String, val refresh_token: String, val expires_at: Long = 0, val expires_in: Long = 3600, val user: SignedInUser) {
     fun withExpiry() = if (expires_at > 0) this else copy(expires_at = nowMs() / 1000 + expires_in)
 }

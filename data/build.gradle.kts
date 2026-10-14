@@ -38,11 +38,17 @@ dependencies {
 }
 
 // Only public project configuration belongs in the client. Service-role/AI keys stay on the server.
+// Environment variables win; the gitignored root .env is a fallback so IDE and Xcode builds pick up local config.
+val dotEnv = providers.fileContents(rootProject.layout.projectDirectory.file(".env")).asText.map { text ->
+    text.lines().map(String::trim).filter { it.isNotEmpty() && !it.startsWith("#") && "=" in it }
+        .associate { it.substringBefore("=").trim() to it.substringAfter("=").trim() }
+}.orElse(emptyMap())
+fun publicSetting(name: String) = providers.environmentVariable(name).orElse(dotEnv.map { it[name].orEmpty() })
 val generateServiceConfig by tasks.registering {
-    val url = providers.environmentVariable("PREPDESK_SUPABASE_URL").orElse("")
-    val key = providers.environmentVariable("PREPDESK_SUPABASE_PUBLIC_KEY").orElse("")
-    val privacy = providers.environmentVariable("PREPDESK_PRIVACY_URL").orElse("")
-    val support = providers.environmentVariable("PREPDESK_SUPPORT_EMAIL").orElse("")
+    val url = publicSetting("PREPDESK_SUPABASE_URL")
+    val key = publicSetting("PREPDESK_SUPABASE_PUBLIC_KEY")
+    val privacy = publicSetting("PREPDESK_PRIVACY_URL")
+    val support = publicSetting("PREPDESK_SUPPORT_EMAIL")
     inputs.property("url", url); inputs.property("publicKey", key)
     inputs.property("privacyUrl", privacy); inputs.property("supportEmail", support)
     val output = layout.buildDirectory.file("generated/serviceConfig/com/prepdesk/ServiceConfig.kt")

@@ -29,7 +29,7 @@ class SyncTest {
     private class Repos(val progress: ProgressStore, val account: SupabaseAccountRepository, val queue: OperationQueue) {
         val idle get() = queue.pending.value == 0
     }
-    private suspend fun withStore(owner: String? = null, remote: CloudProgress? = null, vaultBroken: Boolean = false, test: suspend (Repos,PrepRepository,MutableList<String>) -> Unit) {
+    private suspend fun withStore(owner: String? = null, remote: CloudProgress? = null, vaultBroken: Boolean = false, saved: Boolean = true, guestAvailable: Boolean = false, test: suspend (Repos,PrepRepository,MutableList<String>) -> Unit) {
         val db=Room.inMemoryDatabaseBuilder<PrepDatabase>(RuntimeEnvironment.getApplication()).setDriver(AndroidSQLiteDriver()).setQueryCoroutineContext(Dispatchers.IO).build()
         val scope=CoroutineScope(SupervisorJob()+Dispatchers.Default)
         val repository=PrepRepository(db,MapSettings());val initial=repository.initialize()
@@ -40,18 +40,20 @@ class SyncTest {
             val response=when(request.url.encodedPath) {
                 "/rest/v1/progress" -> CONTENT_JSON.encodeToString(listOfNotNull(remote))
                 "/rest/v1/rpc/save_progress" -> "3"
+                "/auth/v1/signup" -> if(guestAvailable) CONTENT_JSON.encodeToString(AuthSession("guest-access","guest-refresh",nowMs()/1000+3600,user=SignedInUser("guest",is_anonymous=true))) else "{}"
+                "/functions/v1/prepdesk" -> """{"assessment":true,"transcription":false,"code":false,"tutor":true}"""
                 else -> "{}"
             }
             respond(response,HttpStatusCode.OK,headersOf(HttpHeaders.ContentType,"application/json"))
         }) { install(HttpTimeout) })
-        val vault=Vault(CONTENT_JSON.encodeToString(AuthSession("access","refresh",nowMs()/1000+3600,user=SignedInUser("account-a","a@example.com"))))
+        val vault=Vault(if(saved) CONTENT_JSON.encodeToString(AuthSession("access","refresh",nowMs()/1000+3600,user=SignedInUser("account-a","a@example.com"))) else null)
         val secureVault = if (vaultBroken) object : SessionVault { override fun read(): String? = error("Keychain unavailable"); override fun write(value: String?) {} } else vault
         val queue=OperationQueue(scope)
         val progress=ProgressStore(repository,queue)
         val account=SupabaseAccountRepository(api,secureVault,progress,queue)
         progress.load();account.restoreSession()
         val repos=Repos(progress,account,queue)
-        try { waitFor { progress.ready.value && repos.idle };test(repos,repository,calls) } finally { scope.cancel();account.close();db.close() }
+        try { waitFor { progress.ready.value && repos.idle };synchronized(calls) { calls.clear() };test(repos,repository,calls) } finally { scope.cancel();account.close();db.close() }
     }
     @Test fun dirtyCopiesConflictInsteadOfSilentlyOverwritingCloud() = runBlocking {
         val cloud=CloudProgress(2,ProgressBackup(state=AppState(cards=emptyList(),pomos=7)))
@@ -62,6 +64,19 @@ class SyncTest {
             val state=store.progress.state.value
             assertEquals(7,state.pomos);assertFalse(state.sync.dirty);assertEquals(2L,state.sync.revision)
             assertNotNull(repository.recovery());assertNull(store.account.conflict.value)
+        }
+    }
+    @Test fun savedSessionLoadsOnlineToolsAtLaunch() = runBlocking {
+        withStore { store,_,_ ->
+            assertEquals("account-a",store.account.session.value?.user?.id);assertTrue(store.account.capabilities.value.tutor)
+        }
+    }
+    @Test fun withoutSignInAGuestSessionUnlocksAiButNotSync() = runBlocking {
+        withStore(saved=false,guestAvailable=true) { store,_,calls ->
+            val user=store.account.session.value?.user
+            assertEquals("guest",user?.id);assertEquals(true,user?.is_anonymous);assertTrue(store.account.capabilities.value.tutor)
+            store.account.synchronize();waitFor { store.idle }
+            assertTrue(store.queue.error.value!!.contains("email"));assertTrue(calls.isEmpty())
         }
     }
     @Test fun anotherAccountsDeviceDataCannotBeUploaded() = runBlocking {

@@ -49,6 +49,7 @@ class SupabaseApi(val baseUrl: String, private val publicKey: String, private va
     suspend fun requestCode(email: String) { request("/auth/v1/otp", HttpMethod.Post, buildJsonObject { put("email", email); put("create_user", true) }.toString()) }
     suspend fun verifyCode(email: String, code: String) = CONTENT_JSON.decodeFromString<AuthSession>(request("/auth/v1/verify", HttpMethod.Post,
         buildJsonObject { put("email", email); put("token", code); put("type", "email") }.toString())).withExpiry()
+    suspend fun signInAnonymously() = CONTENT_JSON.decodeFromString<AuthSession>(request("/auth/v1/signup", HttpMethod.Post, "{}")).withExpiry()
     suspend fun refresh(session: AuthSession) = CONTENT_JSON.decodeFromString<AuthSession>(request("/auth/v1/token?grant_type=refresh_token", HttpMethod.Post,
         buildJsonObject { put("refresh_token", session.refresh_token) }.toString())).withExpiry()
     suspend fun logout(token: String) { request("/auth/v1/logout?scope=local", HttpMethod.Post, "{}", token) }
