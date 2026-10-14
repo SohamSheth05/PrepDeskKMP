@@ -28,7 +28,7 @@ class SupabaseAccountRepository(
     override fun restoreSession() = queue.launch {
         _session.value = runCatching { vault.read()?.let { CONTENT_JSON.decodeFromString<AuthSession>(it) } }.getOrElse {
             runCatching { vault.write(null) }
-            queue.notify("Your sign-in session could not be restored. You can continue preparing offline or sign in again.")
+            queue.notify("Your saved session could not be restored. You can continue preparing offline.")
             null
         }
         connect()
@@ -57,7 +57,11 @@ class SupabaseAccountRepository(
                 current = api.refresh(current)
                 vault.write(CONTENT_JSON.encodeToString(current)); _session.value = current
             } catch (e: ServiceException) {
-                if (e.status in listOf(400, 401)) { vault.write(null); _session.value = null }
+                if (e.status in listOf(400, 401)) {
+                    vault.write(null); _session.value = null
+                    // An expired guest is replaced at once, so the next attempt works without a restart.
+                    if (current.user.is_anonymous) connect()
+                }
                 throw e
             }
         }

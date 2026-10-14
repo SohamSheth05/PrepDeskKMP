@@ -84,7 +84,7 @@ private fun AskIntro(ai: Boolean) {
         }
         Text("Ask MockMentor", style = MaterialTheme.typography.headlineSmall)
         Text(if (ai) "Ask anything about interviews and engineering. Answers use AI, grounded in your question library, and link to questions you can save for review."
-            else "Ask anything and get the closest answers from your question library, even offline. Sign in under More → Account and data to get AI answers.",
+            else "Ask anything and get the closest answers from your question library, even offline. Connect to the internet to get AI answers.",
             color = MaterialTheme.colorScheme.onSurfaceVariant)
         ModeBadge(ai)
     }

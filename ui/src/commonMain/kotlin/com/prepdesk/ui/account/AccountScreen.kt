@@ -9,6 +9,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.prepdesk.ui.Features
 import com.prepdesk.ui.platform.BackupFileActions
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -24,10 +25,14 @@ fun AccountScreen(vm: AccountViewModel = koinViewModel()) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item {
             Text("Account and your data", style = MaterialTheme.typography.headlineSmall)
-            Text("Prepare offline without an account. Sign in to sync progress and use available online interview tools.")
+            Text(if (Features.EMAIL_SIGN_IN) "Prepare offline without an account. Sign in to sync progress and use available online interview tools."
+                else "MockMentor works without an account. AI tools use an anonymous guest session created on this device; no email or name is collected. Your progress stays on this device; use a backup to move it.")
             ui.message?.let { Text(it, color = MaterialTheme.colorScheme.primary) }
             if (!ui.onlineConfigured) Text("Online services are not available in this build. Offline preparation and backups work normally.")
-            else if (ui.session?.user?.is_anonymous != false) {
+            else if (!Features.EMAIL_SIGN_IN) {
+                OutlinedButton({ vm.refreshCapabilities() }, enabled = !saving) { Text("Check available online tools") }
+                if (ui.session != null) TextButton({ confirmation = "delete" }, enabled = !saving) { Text("Delete my online guest data") }
+            } else if (ui.session?.user?.is_anonymous != false) {
                 OutlinedTextField(email, { email = it }, label = { Text("Email") }, singleLine = true, modifier = Modifier.fillMaxWidth())
                 Button({ vm.sendCode(email.trim()) }, enabled = !saving && email.isNotBlank()) { Text(if (ui.otpSent) "Resend code" else "Send sign-in code") }
                 if (ui.otpSent) {
@@ -71,7 +76,14 @@ fun AccountScreen(vm: AccountViewModel = koinViewModel()) {
         item {
             HorizontalDivider()
             Text("Privacy", style = MaterialTheme.typography.titleLarge)
-            Text("Offline study data stays on this device. Sync sends your preparation data to your account’s cloud storage. AI feedback sends only the selected answer and follow-up notes. Transcription sends a recording only when you choose Send. Code runs send your program and standard input to the execution service.")
+            Text(buildString {
+                append("Offline study data stays on this device. ")
+                if (Features.EMAIL_SIGN_IN) append("Sync sends your preparation data to your account’s cloud storage. ")
+                append("Ask sends your question and the last few chat turns to our server, which answers with Google Gemini using the question library. ")
+                append("AI feedback sends only the selected answer and follow-up notes, with the question’s reference material, to Google Gemini. ")
+                append("Requests use an anonymous guest session and are not stored by our server. ")
+                append("Transcription and code runs, when available, send a recording or program only when you choose to.")
+            })
             if (vm.support.privacyUrl.isNotBlank()) TextButton({ runCatching { uri.openUri(vm.support.privacyUrl) }.onFailure { vm.reportError("Could not open the privacy policy. Please try again.") } }) { Text("Read the full privacy policy") }
             if (vm.support.supportEmail.isNotBlank()) Text("Support and privacy requests: ${vm.support.supportEmail}")
             Text("You can continue using self-assessment and typed answers without any online tool. AI suggestions can be inaccurate; check them against the reference explanation.")
@@ -80,7 +92,8 @@ fun AccountScreen(vm: AccountViewModel = koinViewModel()) {
     confirmation?.let { action ->
         val description = when (action) {
             "clear" -> "This removes your cards, bookmarks, history, plan, saved sessions, and recovery copy from this device. Export a backup first if you want to keep them."
-            "delete" -> "This permanently deletes your account and its cloud data, and clears preparation data on this device. Copies on other devices and exported files must be removed separately."
+            "delete" -> if (Features.EMAIL_SIGN_IN) "This permanently deletes your account and its cloud data, and clears preparation data on this device. Copies on other devices and exported files must be removed separately."
+                else "This permanently deletes this device’s online guest session and its usage records, and clears preparation data on this device. Export a backup first if you want to keep your progress."
             "cloud" -> "Replace device progress with the cloud copy? Your current device progress will be kept as a local recovery backup."
             "device" -> "Replace cloud progress with this device’s copy? Other devices will see this copy on their next sync."
             else -> "Replace current device progress with the backup? Your existing progress will be retained as a recovery copy."

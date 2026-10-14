@@ -29,7 +29,7 @@ class SyncTest {
     private class Repos(val progress: ProgressStore, val account: SupabaseAccountRepository, val queue: OperationQueue) {
         val idle get() = queue.pending.value == 0
     }
-    private suspend fun withStore(owner: String? = null, remote: CloudProgress? = null, vaultBroken: Boolean = false, saved: Boolean = true, guestAvailable: Boolean = false, test: suspend (Repos,PrepRepository,MutableList<String>) -> Unit) {
+    private suspend fun withStore(owner: String? = null, remote: CloudProgress? = null, vaultBroken: Boolean = false, saved: Boolean = true, guestAvailable: Boolean = false, expiredGuest: Boolean = false, test: suspend (Repos,PrepRepository,MutableList<String>) -> Unit) {
         val db=Room.inMemoryDatabaseBuilder<PrepDatabase>(RuntimeEnvironment.getApplication()).setDriver(AndroidSQLiteDriver()).setQueryCoroutineContext(Dispatchers.IO).build()
         val scope=CoroutineScope(SupervisorJob()+Dispatchers.Default)
         val repository=PrepRepository(db,MapSettings());val initial=repository.initialize()
@@ -44,9 +44,14 @@ class SyncTest {
                 "/functions/v1/prepdesk" -> """{"assessment":true,"transcription":false,"code":false,"tutor":true}"""
                 else -> "{}"
             }
-            respond(response,HttpStatusCode.OK,headersOf(HttpHeaders.ContentType,"application/json"))
+            val status=if(request.url.encodedPath=="/auth/v1/token") HttpStatusCode.Unauthorized else HttpStatusCode.OK
+            respond(response,status,headersOf(HttpHeaders.ContentType,"application/json"))
         }) { install(HttpTimeout) })
-        val vault=Vault(if(saved) CONTENT_JSON.encodeToString(AuthSession("access","refresh",nowMs()/1000+3600,user=SignedInUser("account-a","a@example.com"))) else null)
+        val vault=Vault(when {
+            expiredGuest -> CONTENT_JSON.encodeToString(AuthSession("old-access","old-refresh",1,user=SignedInUser("old-guest",is_anonymous=true)))
+            saved -> CONTENT_JSON.encodeToString(AuthSession("access","refresh",nowMs()/1000+3600,user=SignedInUser("account-a","a@example.com")))
+            else -> null
+        })
         val secureVault = if (vaultBroken) object : SessionVault { override fun read(): String? = error("Keychain unavailable"); override fun write(value: String?) {} } else vault
         val queue=OperationQueue(scope)
         val progress=ProgressStore(repository,queue)
@@ -77,6 +82,11 @@ class SyncTest {
             assertEquals("guest",user?.id);assertEquals(true,user?.is_anonymous);assertTrue(store.account.capabilities.value.tutor)
             store.account.synchronize();waitFor { store.idle }
             assertTrue(store.queue.error.value!!.contains("email"));assertTrue(calls.isEmpty())
+        }
+    }
+    @Test fun anExpiredGuestSessionIsReplacedWithoutARestart() = runBlocking {
+        withStore(expiredGuest=true,guestAvailable=true) { store,_,_ ->
+            assertEquals("guest",store.account.session.value?.user?.id);assertTrue(store.account.capabilities.value.tutor)
         }
     }
     @Test fun anotherAccountsDeviceDataCannotBeUploaded() = runBlocking {

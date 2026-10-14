@@ -41,7 +41,7 @@ private fun PracticalList(ui: PracticalUiState, open: (String) -> Unit) {
     LazyColumn(verticalArrangement = Arrangement.spacedBy(12.dp)) {
         item {
             Text("Practical exercises", style = MaterialTheme.typography.headlineSmall)
-            Text("Write, debug, and predict code as in a technical round. Every exercise works offline with test cases, hints, and a reference solution. Exercises with tests also run on the code service when you are signed in.")
+            Text("Write, debug, and predict code as in a technical round. Every exercise works offline with test cases, hints, and a reference solution. Exercises with tests also run on the code service when it is available.")
             if (all.isEmpty()) Text("No practical exercises are available yet.")
             else ChoiceRow(listOf(ALL_TRACKS) + areas, area) { area = it }
         }
@@ -122,7 +122,7 @@ private fun RunTests(vm: PracticalViewModel, run: CodeRunState, saving: Boolean,
     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
         Text("Run the tests", style = MaterialTheme.typography.titleMedium)
         when {
-            !run.signedIn -> Text("Sign in from Account to run tests on the code service. Without it, trace each test case by hand, then compare with the reference solution.")
+            !run.signedIn -> Text("Connect to the internet to run tests on the code service. Without it, trace each test case by hand, then compare with the reference solution.")
             !run.available -> Text("The code service is unavailable. Trace each test case by hand, then compare with the reference solution.")
             else -> {
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -153,7 +153,7 @@ private fun Workbench(vm: PracticalViewModel, run: CodeRunState, saving: Boolean
         item {
             Text("Coding practice", style = MaterialTheme.typography.headlineSmall)
             Text("Run a small program with your own input and inspect compiler errors or output. This is a practice workbench; output is not an interview score.")
-            if (!run.signedIn) Text("Sign in from Account to use code execution.")
+            if (!run.signedIn) Text("Connect to the internet to use code execution.")
             else if (!run.available) Text("Code execution is unavailable. Check available tools in Account.")
             else {
                 OutlinedButton(vm::loadLanguages, enabled = !saving) { Text("Load available languages") }

@@ -64,9 +64,9 @@ fun libraryAnswer(q: Q, action: TutorAction): TutorMessage {
     val text = when (action) {
         TutorAction.Explain -> q.explanation.ifBlank { q.a }.let { "In short: ${q.a}" + if (it != q.a) "\n\n$it" else "" }
         TutorAction.Example -> q.explanation.takeIf { it.isNotBlank() }?.let { "From the library's explanation:\n\n$it" }
-            ?: "Your library has no worked example for this question yet. Sign in to ask AI for one."
+            ?: "Your library has no worked example for this question yet. Connect to the internet to ask AI for one."
         TutorAction.Code -> q.code.takeIf { it.isNotBlank() }?.let { "```\n$it\n```" }
-            ?: "Your library has no code sample for this question. Sign in to ask AI for one."
+            ?: "Your library has no code sample for this question. Connect to the internet to ask AI for one."
         TutorAction.FollowUps -> q.followups.takeIf { it.isNotEmpty() }?.mapIndexed { i, f -> "${i + 1}. $f" }?.joinToString("\n")
             ?.let { "Interviewers often follow up with:\n\n$it" } ?: "No follow-up questions are saved for this question yet."
     }

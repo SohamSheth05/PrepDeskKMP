@@ -34,7 +34,7 @@ class SupabaseApi(val baseUrl: String, private val publicKey: String, private va
         }
         if (response.status.value !in 200..299) {
             val message = when (response.status.value) {
-                401 -> "Your session expired. Sign in again."
+                401 -> "Your session expired. Please try again."
                 409 -> "Cloud progress changed on another device. Resolve the conflict before syncing."
                 429 -> "Too many requests. Please wait and try again."
                 503 -> "This service is currently unavailable. Your local work is saved."
